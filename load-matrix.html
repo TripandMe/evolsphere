@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Load Matrix© 3D — EvolSphere</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap');
+:root{
+  --navy:#0b1829;--teal:#0d9488;--teal2:#14b8a6;--gold:#e8b84b;
+  --coral:#e05c4b;--green:#059669;--amber:#d97706;--purple:#7c3aed;
+  --bg:#f7f6f3;--bg2:#fff;--border:#e8e6de;--text:#0f1729;--text2:#5a6480;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text);padding:1.5rem}
+
+h1{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.sub{font-size:13px;color:var(--text2);margin-bottom:1.5rem}
+.badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;font-family:'DM Mono',monospace;margin-left:8px;vertical-align:middle}
+
+/* CONTROLS */
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem;align-items:flex-end}
+.ctrl-group{display:flex;flex-direction:column;gap:4px}
+.ctrl-label{font-size:11px;font-weight:600;color:var(--text2)}
+.ctrl-input{padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'Instrument Sans',sans-serif;color:var(--text);background:var(--bg2);outline:none}
+.ctrl-input:focus{border-color:var(--teal)}
+.btn{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Instrument Sans',sans-serif;border:none;transition:all 0.18s;display:inline-flex;align-items:center;gap:6px}
+.btn-teal{background:var(--teal);color:white}
+.btn-teal:hover{background:#0f766e}
+.btn-out{background:transparent;border:1.5px solid var(--border);color:var(--text)}
+.btn-out:hover{border-color:var(--navy)}
+.btn-sm{padding:5px 12px;font-size:11px}
+
+/* MATRIX */
+.matrix-wrap{overflow-x:auto;background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:1.5rem}
+.matrix-table{border-collapse:collapse;min-width:100%}
+.matrix-table th{background:var(--navy);color:white;padding:8px 12px;font-size:11px;font-weight:600;white-space:nowrap;text-align:center;border:1px solid rgba(255,255,255,0.1)}
+.matrix-table th.actor-hd{text-align:left;min-width:130px}
+.matrix-table th.task-hd{text-align:left;min-width:120px;background:#162840}
+.matrix-table td{border:1px solid var(--border);padding:0;vertical-align:middle}
+.actor-cell{padding:8px 12px;font-size:12px;font-weight:600;color:var(--navy);white-space:nowrap;background:var(--bg)}
+.task-cell{padding:6px 10px;font-size:11px;color:var(--text2);white-space:nowrap;background:#f8f8f6;min-width:110px}
+
+/* CHARGE CELL */
+.charge-cell{width:70px;min-width:70px;text-align:center;cursor:pointer;transition:all 0.15s;position:relative}
+.charge-cell:hover{filter:brightness(0.92)}
+.charge-input{width:46px;border:none;background:transparent;text-align:center;font-size:13px;font-weight:700;font-family:'DM Mono',monospace;outline:none;cursor:pointer;padding:0}
+.charge-pct{font-size:9px;font-family:'DM Mono',monospace;opacity:0.7;display:block;line-height:1}
+
+.c-libre{background:#f0fdf4;color:var(--green)}
+.c-normal{background:#d1fae5;color:#065f46}
+.c-charge{background:#fef3c7;color:#92400e}
+.c-surcharge{background:#fee2e2;color:#991b1b}
+.c-conge{background:#ede9fe;color:#5b21b6}
+.c-off{background:#f3f4f6;color:#9ca3af}
+
+/* LEGEND */
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2)}
+.leg-dot{width:14px;height:14px;border-radius:3px;flex-shrink:0}
+
+/* ALERTS */
+.alerts-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem;margin-bottom:1.5rem}
+.alert-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:0.75rem}
+.alert-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
+.alert-item:last-child{border-bottom:none}
+.alert-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.a-crit{background:var(--coral)}
+.a-warn{background:var(--amber)}
+.a-ok{background:var(--green)}
+
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.5rem}
+.sum-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.sum-val{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--navy)}
+.sum-lbl{font-size:11px;color:var(--text2);margin-top:3px}
+
+/* MODAL SAISIE */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(11,24,41,0.5);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--bg2);border-radius:16px;padding:1.75rem;max-width:440px;width:90%;box-shadow:0 20px 60px rgba(11,24,41,0.2);animation:min 0.2s ease}
+@keyframes min{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.modal-sub{font-size:12px;color:var(--text2);margin-bottom:1.25rem}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
+.modal-field label{display:block;font-size:11px;font-weight:600;color:var(--text2);margin-bottom:4px}
+.modal-field input,
+.modal-field select{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'Instrument Sans',sans-serif;outline:none}
+.modal-field input:focus,
+.modal-field select:focus{border-color:var(--teal)}
+.range-wrap{margin-bottom:1rem}
+.range-wrap label{display:block;font-size:11px;font-weight:600;color:var(--text2);margin-bottom:6px}
+.range-row{display:flex;align-items:center;gap:10px}
+.range-row input[type=range]{flex:1;accent-color:var(--teal)}
+.range-val{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--teal);min-width:40px;text-align:right}
+.modal-btns{display:flex;gap:8px;margin-top:1.25rem}
+
+/* SAISIE RAPIDE INLINE */
+.quick-input{display:inline-flex;align-items:center;gap:4px}
+.qi-btn{width:22px;height:22px;border-radius:4px;border:none;cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;transition:all 0.15s}
+</style>
+</head>
+<body>
+
+<h1>Load Matrix© 3D <span class="badge">★ INÉDIT</span></h1>
+<div class="sub">Matrice de charge quotidienne — Qui · Fait Quoi · Quand · Détection automatique des conflits de capacité</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="ctrl-group">
+    <div class="ctrl-label">Semaine du</div>
+    <input type="date" class="ctrl-input" id="week-start" onchange="updateWeek()">
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label">Vue</div>
+    <select class="ctrl-input" id="view-mode" onchange="renderMatrix()">
+      <option value="week">Semaine (5j)</option>
+      <option value="2weeks">2 semaines (10j)</option>
+      <option value="month">Mois (22j)</option>
+    </select>
+  </div>
+  <div class="ctrl-group">
+    <div class="ctrl-label">Capacité max/j</div>
+    <select class="ctrl-input" id="max-cap" onchange="renderMatrix()">
+      <option value="7">7h/j</option>
+      <option value="8" selected>8h/j</option>
+      <option value="10">10h/j</option>
+    </select>
+  </div>
+  <button class="btn btn-teal btn-sm" onclick="openActorModal()">+ Acteur</button>
+  <button class="btn btn-teal btn-sm" onclick="openTaskModal()">+ Livrable</button>
+  <button class="btn btn-out btn-sm" onclick="exportCSV()">⬇ Export CSV</button>
+  <button class="btn btn-out btn-sm" onclick="resetAll()">↺ Reset</button>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="leg-item"><div class="leg-dot" style="background:#f0fdf4;border:1px solid #86efac"></div>Libre (0-30%)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#d1fae5;border:1px solid #6ee7b7"></div>Normal (30-70%)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#fef3c7;border:1px solid #fcd34d"></div>Chargé (70-90%)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#fee2e2;border:1px solid #fca5a5"></div>Surchargé (>90%)</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#ede9fe;border:1px solid #c4b5fd"></div>Congé / Absent</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#f3f4f6;border:1px solid #d1d5db"></div>Hors projet</div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary-grid" id="summary-grid"></div>
+
+<!-- ALERTS -->
+<div class="alerts-box" id="alerts-box">
+  <div class="alert-title">🔴 Alertes de capacité</div>
+  <div id="alerts-list"><div style="font-size:12px;color:var(--text2)">Aucune alerte — saisir des charges pour générer l'analyse</div></div>
+</div>
+
+<!-- MATRIX -->
+<div class="matrix-wrap">
+  <table class="matrix-table" id="matrix-table"></table>
+</div>
+
+<!-- MODAL ACTEUR -->
+<div class="modal-overlay" id="modal-actor">
+  <div class="modal-box">
+    <div class="modal-title">Ajouter un acteur</div>
+    <div class="modal-sub">Définissez le profil et la capacité quotidienne de l'acteur</div>
+    <div class="modal-row">
+      <div class="modal-field"><label>Prénom Nom</label><input type="text" id="actor-name" placeholder="Ex: Marie Dupont"></div>
+      <div class="modal-field"><label>Rôle</label><input type="text" id="actor-role" placeholder="Ex: Architecte SI"></div>
+    </div>
+    <div class="modal-row">
+      <div class="modal-field"><label>Capacité max (h/j)</label>
+        <select id="actor-cap">
+          <option value="4">4h/j (mi-temps)</option>
+          <option value="6">6h/j (partiel)</option>
+          <option value="7">7h/j</option>
+          <option value="8" selected>8h/j (plein temps)</option>
+          <option value="10">10h/j (surcharge)</option>
+        </select>
+      </div>
+      <div class="modal-field"><label>Couleur</label>
+        <select id="actor-color">
+          <option value="#0d9488">Teal</option>
+          <option value="#0b1829">Navy</option>
+          <option value="#e8b84b">Gold</option>
+          <option value="#e05c4b">Coral</option>
+          <option value="#059669">Green</option>
+          <option value="#7c3aed">Purple</option>
+          <option value="#d97706">Amber</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-teal" style="flex:1" onclick="addActor()">Ajouter</button>
+      <button class="btn btn-out" onclick="closeModal('modal-actor')">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL LIVRABLE -->
+<div class="modal-overlay" id="modal-task">
+  <div class="modal-box">
+    <div class="modal-title">Ajouter un livrable</div>
+    <div class="modal-sub">Nommez le livrable ou l'activité à planifier</div>
+    <div class="modal-field" style="margin-bottom:1rem"><label>Nom du livrable</label><input type="text" id="task-name" placeholder="Ex: Recette UAT · Architecture SI · Formation"></div>
+    <div class="modal-row">
+      <div class="modal-field"><label>Phase</label>
+        <select id="task-phase">
+          <option>Cadrage</option><option>Conception</option><option>Réalisation</option>
+          <option>Tests</option><option>Déploiement</option><option>Pilotage</option><option>Autre</option>
+        </select>
+      </div>
+      <div class="modal-field"><label>Priorité</label>
+        <select id="task-priority">
+          <option value="high">🔴 Haute</option>
+          <option value="med" selected>🟡 Moyenne</option>
+          <option value="low">🟢 Faible</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-teal" style="flex:1" onclick="addTask()">Ajouter</button>
+      <button class="btn btn-out" onclick="closeModal('modal-task')">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SAISIE CHARGE -->
+<div class="modal-overlay" id="modal-charge">
+  <div class="modal-box">
+    <div class="modal-title" id="charge-modal-title">Saisir la charge</div>
+    <div class="modal-sub" id="charge-modal-sub">Acteur · Livrable · Jour</div>
+    <div class="range-wrap">
+      <label>Charge allouée (heures)</label>
+      <div class="range-row">
+        <input type="range" id="charge-range" min="0" max="10" step="0.5" value="0" oninput="updateChargePreview()">
+        <span class="range-val" id="charge-range-val">0h</span>
+      </div>
+    </div>
+    <div class="modal-field" style="margin-bottom:1rem">
+      <label>Statut particulier</label>
+      <select id="charge-status" onchange="updateChargePreview()">
+        <option value="">Normal</option>
+        <option value="conge">Congé / Absent</option>
+        <option value="off">Hors projet</option>
+        <option value="formation">Formation</option>
+        <option value="astreinte">Astreinte</option>
+      </select>
+    </div>
+    <div id="charge-preview" style="background:var(--bg);border-radius:8px;padding:10px;font-size:12px;color:var(--text2);text-align:center;margin-bottom:1rem"></div>
+    <div class="modal-btns">
+      <button class="btn btn-teal" style="flex:1" onclick="saveCharge()">Enregistrer</button>
+      <button class="btn btn-out" onclick="closeModal('modal-charge')">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== STATE =====
+let actors = [
+  { id:1, name:"Raphaël de Bruijn", role:"Chef de Programme", cap:8, color:"#0b1829" },
+  { id:2, name:"Marie Dupont", role:"MOA / Référente", cap:8, color:"#0d9488" },
+  { id:3, name:"Thomas Laurent", role:"Architecte SI", cap:8, color:"#7c3aed" },
+  { id:4, name:"Sophie Martin", role:"Consultant externe", cap:6, color:"#d97706" },
+];
+
+let tasks = [
+  { id:1, name:"Cadrage & Gouvernance", phase:"Cadrage", priority:"high" },
+  { id:2, name:"Architecture SI", phase:"Conception", priority:"high" },
+  { id:3, name:"Développement / Intégration", phase:"Réalisation", priority:"med" },
+  { id:4, name:"Recette UAT", phase:"Tests", priority:"high" },
+  { id:5, name:"Formation utilisateurs", phase:"Déploiement", priority:"med" },
+  { id:6, name:"COPIL / Reporting", phase:"Pilotage", priority:"med" },
+];
+
+// charge[actorId][taskId][dateStr] = { hours, status }
+let charges = {};
+
+let currentCell = null;
+let days = [];
+
+// ===== INIT =====
+function init() {
+  const today = new Date();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+  document.getElementById('week-start').valueAsDate = monday;
+  generateDays();
+  renderMatrix();
+}
+
+function generateDays() {
+  const start = document.getElementById('week-start').valueAsDate || new Date();
+  const mode = document.getElementById('view-mode').value;
+  const count = mode === 'week' ? 5 : mode === '2weeks' ? 10 : 22;
+  days = [];
+  let d = new Date(start);
+  while (days.length < count) {
+    const dow = d.getDay();
+    if (dow !== 0 && dow !== 6) {
+      days.push(new Date(d));
+    }
+    d.setDate(d.getDate() + 1);
+  }
+}
+
+function updateWeek() { generateDays(); renderMatrix(); }
+
+// ===== RENDER =====
+function renderMatrix() {
+  generateDays();
+  const maxCap = parseInt(document.getElementById('max-cap').value);
+
+  const fmtDay = d => d.toLocaleDateString('fr-FR', { weekday:'short', day:'numeric', month:'short' });
+  const fmtKey = d => d.toISOString().split('T')[0];
+  const isToday = d => fmtKey(d) === fmtKey(new Date());
+
+  let html = '<thead><tr>';
+  html += `<th class="actor-hd">Acteur</th><th class="task-hd">Livrable</th>`;
+  days.forEach(d => {
+    const today = isToday(d);
+    html += `<th style="${today?'background:var(--teal)':''}">${fmtDay(d)}</th>`;
+  });
+  html += '<th style="background:#1e3a5f">Total</th></tr></thead><tbody>';
+
+  actors.forEach(actor => {
+    tasks.forEach((task, ti) => {
+      html += '<tr>';
+      if (ti === 0) {
+        html += `<td class="actor-cell" rowspan="${tasks.length}" style="border-left:3px solid ${actor.color}">
+          <div style="font-weight:600;font-size:12px">${actor.name}</div>
+          <div style="font-size:10px;color:var(--text2)">${actor.role}</div>
+          <div style="font-size:10px;color:var(--text2);font-family:'DM Mono',monospace">${actor.cap}h/j max</div>
+        </td>`;
+      }
+      html += `<td class="task-cell">
+        <div style="font-size:11px;font-weight:500">${task.name}</div>
+        <div style="font-size:9px;color:var(--text2)">${task.phase}</div>
+      </td>`;
+
+      let rowTotal = 0;
+      days.forEach(d => {
+        const key = fmtKey(d);
+        const c = getCharge(actor.id, task.id, key);
+        const h = c ? c.hours : 0;
+        const st = c ? c.status : '';
+        rowTotal += h;
+
+        let cls = 'c-libre';
+        let label = h > 0 ? h+'h' : '—';
+        if (st === 'conge') { cls = 'c-conge'; label = '🏖'; }
+        else if (st === 'off') { cls = 'c-off'; label = '—'; }
+        else if (st === 'formation') { cls = 'c-conge'; label = '📚'; }
+        else if (h > 0) {
+          const pct = h / actor.cap;
+          if (pct <= 0.3) cls = 'c-libre';
+          else if (pct <= 0.7) cls = 'c-normal';
+          else if (pct <= 0.9) cls = 'c-charge';
+          else cls = 'c-surcharge';
+        }
+
+        html += `<td class="charge-cell ${cls}" onclick="openChargeModal(${actor.id},${task.id},'${key}','${actor.name}','${task.name}','${fmtDay(d)}')" title="Cliquer pour saisir">
+          <span class="charge-input">${label}</span>
+        </td>`;
+      });
+
+      html += `<td style="text-align:center;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;background:var(--bg);color:${rowTotal>0?'var(--navy)':'var(--text2)'}">${rowTotal>0?rowTotal+'h':'—'}</td>`;
+      html += '</tr>';
+    });
+
+    // Ligne total acteur par jour
+    html += `<tr style="background:#f0f0ee">
+      <td colspan="2" style="padding:6px 12px;font-size:11px;font-weight:700;color:var(--navy);background:#f0f0ee">📊 Total ${actor.name.split(' ')[0]}</td>`;
+
+    let grandTotal = 0;
+    days.forEach(d => {
+      const key = fmtKey(d);
+      let dayTotal = 0;
+      tasks.forEach(task => {
+        const c = getCharge(actor.id, task.id, key);
+        if (c && !c.status) dayTotal += (c.hours || 0);
+      });
+      grandTotal += dayTotal;
+      const overloaded = dayTotal > actor.cap;
+      const pct = actor.cap > 0 ? Math.round(dayTotal / actor.cap * 100) : 0;
+      html += `<td style="text-align:center;padding:5px;background:${overloaded?'#fee2e2':dayTotal>actor.cap*0.8?'#fef3c7':'#f0f0ee'}">
+        <div style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:${overloaded?'var(--coral)':dayTotal>0?'var(--navy)':'var(--text2)'}">${dayTotal>0?dayTotal+'h':'—'}</div>
+        ${dayTotal>0?`<div style="font-size:9px;color:var(--text2)">${pct}%</div>`:''}
+      </td>`;
+    });
+    html += `<td style="text-align:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:800;background:#e8e6de;color:var(--navy)">${grandTotal}h</td>`;
+    html += '</tr>';
+    // Séparateur
+    html += `<tr><td colspan="${days.length+3}" style="height:6px;background:var(--bg)"></td></tr>`;
+  });
+
+  html += '</tbody>';
+  document.getElementById('matrix-table').innerHTML = html;
+
+  updateSummary(maxCap);
+  updateAlerts(maxCap);
+}
+
+function getCharge(actorId, taskId, dateStr) {
+  return charges[`${actorId}_${taskId}_${dateStr}`] || null;
+}
+
+// ===== MODAL CHARGE =====
+let _chargeContext = null;
+
+function openChargeModal(actorId, taskId, dateStr, actorName, taskName, dayLabel) {
+  _chargeContext = { actorId, taskId, dateStr };
+  const existing = getCharge(actorId, taskId, dateStr);
+  document.getElementById('charge-modal-title').textContent = `Charge — ${actorName}`;
+  document.getElementById('charge-modal-sub').textContent = `${taskName} · ${dayLabel}`;
+  document.getElementById('charge-range').value = existing ? existing.hours : 0;
+  document.getElementById('charge-status').value = existing ? (existing.status || '') : '';
+  updateChargePreview();
+  document.getElementById('modal-charge').classList.add('open');
+}
+
+function updateChargePreview() {
+  const h = parseFloat(document.getElementById('charge-range').value);
+  const st = document.getElementById('charge-status').value;
+  document.getElementById('charge-range-val').textContent = h + 'h';
+
+  let msg = '';
+  if (st === 'conge') msg = '🏖 Congé / Absence enregistrée';
+  else if (st === 'off') msg = 'Hors projet ce jour';
+  else if (st === 'formation') msg = '📚 En formation';
+  else if (h === 0) msg = 'Aucune charge ce jour';
+  else if (h <= 2) msg = `${h}h allouées — charge légère`;
+  else if (h <= 5) msg = `${h}h allouées — charge normale`;
+  else if (h <= 7) msg = `${h}h allouées — charge élevée`;
+  else msg = `⚠ ${h}h allouées — risque de surcharge`;
+
+  document.getElementById('charge-preview').textContent = msg;
+}
+
+function saveCharge() {
+  if (!_chargeContext) return;
+  const { actorId, taskId, dateStr } = _chargeContext;
+  const h = parseFloat(document.getElementById('charge-range').value);
+  const st = document.getElementById('charge-status').value;
+  const key = `${actorId}_${taskId}_${dateStr}`;
+  if (h === 0 && !st) {
+    delete charges[key];
+  } else {
+    charges[key] = { hours: h, status: st };
+  }
+  closeModal('modal-charge');
+  renderMatrix();
+}
+
+// ===== ACTORS & TASKS =====
+function openActorModal() { document.getElementById('actor-name').value=''; document.getElementById('actor-role').value=''; document.getElementById('modal-actor').classList.add('open'); }
+function openTaskModal() { document.getElementById('task-name').value=''; document.getElementById('modal-task').classList.add('open'); }
+
+function addActor() {
+  const name = document.getElementById('actor-name').value.trim();
+  if (!name) return;
+  actors.push({ id: Date.now(), name, role: document.getElementById('actor-role').value, cap: parseInt(document.getElementById('actor-cap').value), color: document.getElementById('actor-color').value });
+  closeModal('modal-actor');
+  renderMatrix();
+}
+
+function addTask() {
+  const name = document.getElementById('task-name').value.trim();
+  if (!name) return;
+  tasks.push({ id: Date.now(), name, phase: document.getElementById('task-phase').value, priority: document.getElementById('task-priority').value });
+  closeModal('modal-task');
+  renderMatrix();
+}
+
+// ===== SUMMARY =====
+function updateSummary(maxCap) {
+  const fmtKey = d => d.toISOString().split('T')[0];
+  let totalH = 0, overloadDays = 0, coveredDays = 0;
+  const totalCells = actors.length * tasks.length * days.length;
+
+  actors.forEach(actor => {
+    days.forEach(d => {
+      const key = fmtKey(d);
+      let dayTotal = 0;
+      tasks.forEach(task => {
+        const c = getCharge(actor.id, task.id, key);
+        if (c && !c.status) { dayTotal += c.hours; totalH += c.hours; if (c.hours > 0) coveredDays++; }
+      });
+      if (dayTotal > actor.cap) overloadDays++;
+    });
+  });
+
+  document.getElementById('summary-grid').innerHTML = [
+    { val: actors.length, lbl: "Acteurs" },
+    { val: tasks.length, lbl: "Livrables" },
+    { val: totalH + "h", lbl: "Charge totale saisie" },
+    { val: overloadDays, lbl: "Jours en surcharge", warn: overloadDays > 0 },
+    { val: Math.round(coveredDays / (actors.length * tasks.length * days.length) * 100) + "%", lbl: "Taux de remplissage" },
+  ].map(s => `<div class="sum-card">
+    <div class="sum-val" style="color:${s.warn?'var(--coral)':'var(--navy)'}">${s.val}</div>
+    <div class="sum-lbl">${s.lbl}</div>
+  </div>`).join('');
+}
+
+// ===== ALERTS =====
+function updateAlerts(maxCap) {
+  const fmtKey = d => d.toISOString().split('T')[0];
+  const fmtDay = d => d.toLocaleDateString('fr-FR', { weekday:'short', day:'numeric', month:'short' });
+  let alerts = [];
+
+  actors.forEach(actor => {
+    days.forEach(d => {
+      const key = fmtKey(d);
+      let dayTotal = 0;
+      tasks.forEach(task => {
+        const c = getCharge(actor.id, task.id, key);
+        if (c && !c.status) dayTotal += c.hours;
+      });
+      if (dayTotal > actor.cap) {
+        alerts.push({ type:'crit', msg:`⚠ Surcharge : ${actor.name} — ${fmtDay(d)} — ${dayTotal}h / ${actor.cap}h max (${Math.round(dayTotal/actor.cap*100)}%)` });
+      } else if (dayTotal > actor.cap * 0.85) {
+        alerts.push({ type:'warn', msg:`▲ Charge élevée : ${actor.name} — ${fmtDay(d)} — ${dayTotal}h (${Math.round(dayTotal/actor.cap*100)}%)` });
+      }
+    });
+  });
+
+  // Trous de couverture (livrables sans charge assignée)
+  tasks.forEach(task => {
+    if (task.priority === 'high') {
+      let hasCoverage = false;
+      actors.forEach(actor => {
+        days.forEach(d => {
+          const c = getCharge(actor.id, task.id, fmtKey(d));
+          if (c && c.hours > 0) hasCoverage = true;
+        });
+      });
+      if (!hasCoverage) alerts.push({ type:'warn', msg:`📋 Livrable sans charge assignée : "${task.name}" (priorité haute)` });
+    }
+  });
+
+  if (alerts.length === 0) {
+    document.getElementById('alerts-list').innerHTML = '<div style="font-size:12px;color:var(--green)">✓ Aucune alerte — capacité équilibrée</div>';
+    return;
+  }
+
+  document.getElementById('alerts-list').innerHTML = alerts.map(a =>
+    `<div class="alert-item"><div class="alert-dot ${a.type==='crit'?'a-crit':'a-warn'}"></div><div style="font-size:12px">${a.msg}</div></div>`
+  ).join('');
+}
+
+// ===== EXPORT CSV =====
+function exportCSV() {
+  const fmtKey = d => d.toISOString().split('T')[0];
+  let csv = 'Acteur,Rôle,Livrable,Phase,' + days.map(d => fmtKey(d)).join(',') + ',Total\n';
+  actors.forEach(actor => {
+    tasks.forEach(task => {
+      let row = `"${actor.name}","${actor.role}","${task.name}","${task.phase}",`;
+      let total = 0;
+      row += days.map(d => {
+        const c = getCharge(actor.id, task.id, fmtKey(d));
+        const h = c ? (c.status || c.hours) : 0;
+        if (typeof h === 'number') total += h;
+        return h || 0;
+      }).join(',');
+      row += ',' + total;
+      csv += row + '\n';
+    });
+  });
+  const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'load-matrix-evolsphere.csv';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+function resetAll() { if (confirm('Réinitialiser toutes les charges saisies ?')) { charges = {}; renderMatrix(); } }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.addEventListener('click', e => { if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('open'); });
+
+init();
+</script>
+</body>
+</html>
