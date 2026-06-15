@@ -3,1498 +3,604 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EvolSphere — IA Projet Intelligente | PMO | Risk Radar© | Load Matrix© 3D</title>
-<meta name="description" content="EvolSphere : la première IA structurée pour piloter vos projets et programmes de transformation. Risk Radar©, Load Matrix© 3D, RACI dynamique, Finance EVM, Dashboard Samaritan. Pour PMO, DSI, consultants et directeurs de projet.">
-<meta name="keywords" content="PMO, programme management, risk management, RACI, transformation digitale, ERP, gestion de projet, Risk Radar, Load Matrix, Agile, Scrum, Waterfall, DSI, CIO, COO, EVM, OPEX, CAPEX, project management, digital transformation">
-<meta name="author" content="EvolSphere — Raphaël de Bruijn">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://evolsphere.com">
-<meta property="og:title" content="EvolSphere — L'IA Projet Intelligente">
-<meta property="og:description" content="La première IA structurée pour piloter vos projets complexes. Risk Radar©, Load Matrix© 3D, RACI dynamique, Finance EVM. Pour PMO, DSI et directeurs de programme.">
-<meta property="og:url" content="https://evolsphere.com">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="EvolSphere">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:locale:alternate" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EvolSphere — IA Projet Intelligente">
-<meta name="twitter:description" content="Risk Radar©, Load Matrix© 3D, RACI dynamique. Pour PMO, DSI et directeurs de programme.">
-<meta name="theme-color" content="#0B1829">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230B1829'/><path d='M6 24 Q8 15 13 11 Q18 7 19 14 Q20 20 26 8' stroke='%23E8B84B' stroke-width='2.5' stroke-linecap='round' fill='none'/><circle cx='26' cy='8' r='2.5' fill='%230D9488'/></svg>">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "EvolSphere",
-  "description": "IA Projet Intelligente — PMO, Risk Radar©, Load Matrix© 3D, RACI dynamique, Finance EVM",
-  "url": "https://evolsphere.com",
-  "applicationCategory": "BusinessApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "29",
-    "priceCurrency": "EUR"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Raphaël de Bruijn"
-  }
-}
-</script>
-<title>EvolSphere — L'IA Projet Intelligente</title>
+<title>EvolSphere — Intelligence Projet pour Décideurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-:root{--navy:#0b1829;--navy2:#162840;--navy3:#1e3a5f;--gold:#e8b84b;--gold2:#f5d07a;--gold3:#c49a2e;--teal:#0d9488;--teal2:#14b8a6;--teal3:#0f766e;--coral:#e05c4b;--purple:#7c3aed;--amber:#d97706;--green:#059669;--bg:#f7f6f3;--bg2:#ffffff;--bg3:#f0efe9;--text:#0f1729;--text2:#5a6480;--text3:#9aa0b4;--border:#e8e6de;--border2:#d4d0c4;--shadow:0 2px 16px rgba(11,24,41,0.07);--shadow-lg:0 8px 40px rgba(11,24,41,0.13);--r:12px;--r2:16px;}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-.syne{font-family:'Syne',sans-serif}.mono{font-family:'DM Mono',monospace}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* LOGO */
-.logo-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none}
-.logo-box{width:38px;height:38px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-wordmark{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px}
-.logo-wordmark .accent{color:var(--teal)}
-.logo-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px}
+  :root {
+    --ink:    #0D0F14;
+    --ink2:   #1C1F2A;
+    --fog:    #F7F6F3;
+    --fog2:   #EDECE8;
+    --gold:   #B8962E;
+    --gold2:  #D4AF50;
+    --rule:   rgba(184,150,46,0.25);
+    --text:   #3A3C42;
+    --text2:  #7A7C82;
+    --white:  #FFFFFF;
+  }
 
-/* HEADER */
-#hdr{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,246,243,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 1.5rem;gap:1.5rem;transition:box-shadow 0.3s}
-#hdr.sc{box-shadow:var(--shadow)}
-.hnav{display:flex;gap:2px;margin-left:auto}
-.hnav-btn{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border:none;background:transparent;font-family:'Instrument Sans',sans-serif;transition:all 0.18s}
-.hnav-btn:hover{color:var(--text);background:var(--bg3)}
-.hdr-actions{display:flex;gap:8px;margin-left:1rem}
-.btn-xs{padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Instrument Sans',sans-serif;border:none;transition:all 0.18s}
-.btn-xs-out{background:transparent;border:1.5px solid var(--border2);color:var(--text)}
-.btn-xs-out:hover{border-color:var(--navy)}
-.btn-xs-gold{background:var(--gold);color:var(--navy)}
-.btn-xs-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+  html { scroll-behavior: smooth; }
 
-/* PAGES */
-.page{display:none;min-height:100vh;padding-top:60px}
-.page.active{display:block}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ink);
+    color: var(--fog);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* HERO */
-.hero{min-height:calc(100vh - 60px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(13,148,136,0.07) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(232,184,75,0.05) 0%,transparent 60%);pointer-events:none}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:0.25;pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border2);border-radius:100px;padding:6px 16px;margin-bottom:2rem;font-family:'DM Mono',monospace;font-size:11px;color:var(--text2);box-shadow:var(--shadow);animation:fup 0.6s ease 0.1s both}
-.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
-.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-2px;color:var(--navy);margin-bottom:1.25rem;animation:fup 0.6s ease 0.2s both}
-.hero-h1 .tl{color:var(--teal)}
-.hero-h1 .it{font-style:italic;font-weight:400;color:var(--text2);font-size:0.62em;letter-spacing:-1px;display:block}
-.hero-p{font-size:1.05rem;color:var(--text2);max-width:540px;margin:0 auto 2.5rem;line-height:1.75;animation:fup 0.6s ease 0.3s both}
-@keyframes fup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;animation:fup 0.6s ease 0.4s both}
-.btn-hgold{background:var(--gold);color:var(--navy);border:none;padding:15px 30px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.2s;box-shadow:0 4px 20px rgba(232,184,75,0.3)}
-.btn-hgold:hover{background:var(--gold2);transform:translateY(-2px)}
-.btn-hnav{background:var(--navy);color:white;border:none;padding:15px 28px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.2s}
-.btn-hnav:hover{background:var(--navy2);transform:translateY(-2px)}
-.btn-hout{background:transparent;color:var(--text);border:1.5px solid var(--border2);padding:14px 24px;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.2s}
-.btn-hout:hover{border-color:var(--navy)}
+  /* ─── TOPBAR ─── */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 3.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(12px);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .logo span { color: var(--gold2); }
+  .topbar-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
 
-/* FEATURE STRIP */
-.fstrip{display:flex;gap:0;border:1px solid var(--border);border-radius:var(--r2);background:var(--bg2);overflow:hidden;box-shadow:var(--shadow);max-width:780px;width:100%;animation:fup 0.6s ease 0.5s both}
-.fitem{flex:1;padding:14px 16px;text-align:center;border-right:1px solid var(--border)}
-.fitem:last-child{border-right:none}
-.fitem-icon{font-size:18px;margin-bottom:5px}
-.fitem-label{font-size:12px;font-weight:600;color:var(--text)}
-.fitem-val{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace}
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 10rem 3.5rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: radial-gradient(ellipse at 80% 40%, rgba(184,150,46,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 3rem; height: 1px;
+    background: var(--gold);
+  }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300; line-height: 1.1;
+    letter-spacing: -0.01em;
+    max-width: 820px;
+    margin-bottom: 2rem;
+    color: var(--white);
+  }
+  .hero-h1 em {
+    font-style: italic; color: var(--gold2);
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(247,246,243,0.55);
+    max-width: 520px; line-height: 1.8;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+  }
+  .hero-cta {
+    display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;
+  }
+  .btn-gold {
+    padding: 0.9rem 2.2rem;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-gold:hover { background: var(--gold2); transform: translateY(-1px); }
+  .btn-ghost {
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: rgba(247,246,243,0.6);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-/* SECTION */
-.section{padding:4.5rem 2rem;max-width:1160px;margin:0 auto}
-.eyebrow{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);background:rgba(13,148,136,0.08);padding:5px 14px;border-radius:100px;margin-bottom:1rem}
-.sh2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--navy);letter-spacing:-1px;margin-bottom:1rem}
-.ssub{font-size:1rem;color:var(--text2);line-height:1.7;max-width:520px}
+  /* ─── STAT ROW ─── */
+  .stat-row {
+    display: flex; gap: 0; border-top: 1px solid var(--rule);
+    margin-top: 5rem;
+  }
+  .stat {
+    flex: 1; padding: 2.5rem 2.5rem 2.5rem 0;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
+  .stat:not(:first-child) { padding-left: 2.5rem; }
+  .stat-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300; color: var(--gold2);
+    line-height: 1;
+  }
+  .stat-l { font-size: 0.78rem; color: rgba(247,246,243,0.45); margin-top: 0.4rem; font-weight: 300; }
 
-/* MODULES GRID */
-.mods-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2.5rem}
-.mod-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:1.75rem;cursor:pointer;transition:all 0.22s;position:relative;overflow:hidden}
-.mod-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border2)}
-.mod-card.feat{border-color:var(--gold3);background:linear-gradient(135deg,#fffdf5,#fff)}
-.mod-card.feat::after{content:'★ INÉDIT';position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);font-size:9px;font-weight:700;padding:3px 9px;border-radius:100px;font-family:'DM Mono',monospace}
-.mod-icon{font-size:1.8rem;margin-bottom:0.75rem}
-.mod-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem}
-.mod-desc{font-size:12px;color:var(--text2);line-height:1.6}
-.mod-tag{display:inline-block;margin-top:0.75rem;font-size:10px;font-family:'DM Mono',monospace;color:var(--teal);background:rgba(13,148,136,0.08);padding:3px 10px;border-radius:100px}
+  /* ─── SECTION WRAPPER ─── */
+  .section {
+    padding: 7rem 3.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+  .section-full {
+    padding: 7rem 3.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .eyebrow::before {
+    content: ''; display: block; width: 2rem; height: 1px; background: var(--gold);
+  }
+  .sh {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300; line-height: 1.2;
+    color: var(--white); margin-bottom: 1.5rem;
+  }
+  .sh em { font-style: italic; color: var(--gold2); }
+  .lead {
+    font-size: 0.95rem; color: rgba(247,246,243,0.5);
+    max-width: 580px; line-height: 1.85; font-weight: 300;
+  }
 
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem;margin-top:2.5rem}
-.pc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:1.75rem;position:relative;transition:all 0.22s}
-.pc:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
-.pc.pop{border-color:var(--teal);border-width:2px}
-.pop-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--teal);color:white;font-size:10px;font-weight:700;padding:3px 14px;border-radius:100px;font-family:'DM Mono',monospace;white-space:nowrap}
-.pc-plan{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-.pc-sub{font-size:12px;color:var(--text2);margin-bottom:1rem}
-.pc-price{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:var(--navy);line-height:1;margin-bottom:3px}
-.pc-period{font-size:12px;color:var(--text3);margin-bottom:1.25rem}
-.pc-features{list-style:none;margin-bottom:1.75rem}
-.pc-feat{display:flex;align-items:flex-start;gap:7px;padding:6px 0;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border)}
-.pc-feat:last-child{border-bottom:none}
-.ck{color:var(--green);flex-shrink:0;margin-top:1px}.cx{color:var(--text3);flex-shrink:0;margin-top:1px}
-.btn-pc{width:100%;padding:12px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Instrument Sans',sans-serif;border:none;transition:all 0.18s}
-.btn-pc-out{background:var(--bg3);color:var(--text);border:1.5px solid var(--border2)}
-.btn-pc-out:hover{border-color:var(--navy)}
-.btn-pc-teal{background:var(--teal);color:white}
-.btn-pc-teal:hover{background:var(--teal3)}
-.btn-pc-navy{background:var(--navy);color:white}
-.btn-pc-navy:hover{background:var(--navy2)}
+  /* ─── PROBLEM BLOCK ─── */
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 4rem;
+  }
+  .problem-item {
+    background: var(--ink2);
+    padding: 2.5rem;
+  }
+  .problem-item:hover { background: rgba(184,150,46,0.04); }
+  .pi-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.18em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .pi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem; font-weight: 300; color: var(--white);
+    line-height: 1.4; margin-bottom: 0.75rem;
+  }
+  .pi-sub { font-size: 0.82rem; color: rgba(247,246,243,0.4); line-height: 1.7; font-weight: 300; }
 
-/* APP LAYOUT */
-.app-layout{display:flex;min-height:calc(100vh - 60px)}
-.sidebar{width:230px;flex-shrink:0;background:var(--navy);padding:1.25rem 0;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto}
-.sb-proj{padding:1rem 18px 1.25rem;border-bottom:1px solid rgba(255,255,255,0.07)}
-.sb-proj-label{font-size:10px;color:rgba(255,255,255,0.35);font-family:'DM Mono',monospace;margin-bottom:5px}
-.sb-proj-name{font-size:13px;color:white;font-weight:600}
-.sb-proj-meta{font-size:10px;color:rgba(255,255,255,0.35);font-family:'DM Mono',monospace;margin-top:2px}
-.sb-section{margin-top:0.5rem}
-.sb-label{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.28);padding:8px 18px 3px}
-.sb-item{display:flex;align-items:center;gap:9px;padding:9px 18px;color:rgba(255,255,255,0.5);font-size:12px;font-weight:500;cursor:pointer;border:none;background:transparent;width:100%;text-align:left;font-family:'Instrument Sans',sans-serif;transition:all 0.15s}
-.sb-item:hover{color:white;background:rgba(255,255,255,0.05)}
-.sb-item.active{color:white;background:rgba(13,148,136,0.22);border-right:2px solid var(--teal)}
-.sb-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0}
-.sb-badge{margin-left:auto;background:var(--coral);color:white;font-size:9px;font-weight:700;padding:2px 6px;border-radius:100px}
-.app-content{flex:1;overflow-y:auto;background:var(--bg)}
+  /* ─── SOLUTION ─── */
+  .solution-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: start; margin-top: 4rem;
+  }
+  .sol-list { list-style: none; display: flex; flex-direction: column; gap: 2rem; }
+  .sol-item {
+    display: grid; grid-template-columns: 2rem 1fr;
+    gap: 1.25rem; align-items: start;
+  }
+  .sol-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: var(--gold);
+    padding-top: 0.25rem;
+  }
+  .sol-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .sol-desc { font-size: 0.82rem; color: rgba(247,246,243,0.45); line-height: 1.7; font-weight: 300; }
 
-/* MODULE PANELS */
-.mpanel{display:none;padding:2rem;max-width:1080px}
-.mpanel.active{display:block}
-.ph{margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
-.ph-title{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--navy);letter-spacing:-0.5px;margin-bottom:3px}
-.ph-sub{font-size:13px;color:var(--text2)}
+  /* ─── PRICING BLOCK ─── */
+  .price-block {
+    background: var(--ink2);
+    border: 1px solid var(--rule);
+    padding: 4rem;
+    max-width: 720px;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-block::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 40%; height: 100%;
+    background: radial-gradient(ellipse at right, rgba(184,150,46,0.06) 0%, transparent 70%);
+  }
+  .price-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 2rem;
+  }
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; color: var(--white);
+    line-height: 1; margin-bottom: 0.5rem;
+  }
+  .price-amount sup {
+    font-size: 2rem; vertical-align: super; color: var(--gold2);
+  }
+  .price-period {
+    font-size: 0.8rem; color: rgba(247,246,243,0.4);
+    margin-bottom: 3rem; font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+  .price-includes {
+    display: flex; flex-direction: column; gap: 1rem;
+    margin-bottom: 3rem;
+    border-top: 1px solid var(--rule); padding-top: 2rem;
+  }
+  .pi-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 0.82rem;
+  }
+  .pi-row-l { color: rgba(247,246,243,0.5); font-weight: 300; }
+  .pi-row-r { color: var(--white); font-weight: 400; }
+  .price-note {
+    font-size: 0.75rem; color: rgba(247,246,243,0.3);
+    font-weight: 300; font-style: italic; margin-top: 1.5rem;
+  }
 
-/* CARDS */
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:1.5rem;box-shadow:var(--shadow)}
-.card-title{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem}
+  /* ─── TESTIMONIAL ─── */
+  .testimonials {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px; background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 4rem;
+  }
+  .testi {
+    background: var(--ink2);
+    padding: 2.5rem;
+  }
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 300; font-style: italic;
+    color: rgba(247,246,243,0.85); line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+  .testi-quote::before { content: '\201C'; color: var(--gold2); font-size: 1.5rem; line-height: 0; vertical-align: -0.4rem; margin-right: 0.15rem; }
+  .testi-author {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.14em;
+    color: var(--gold); text-transform: uppercase;
+  }
+  .testi-role { font-size: 0.75rem; color: rgba(247,246,243,0.3); margin-top: 0.25rem; font-weight: 300; }
 
-/* GRIDS */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.ga{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem}
+  /* ─── CLOSING CTA ─── */
+  .closing {
+    text-align: center;
+    padding: 8rem 3.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+  }
+  .closing::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 4rem; background: var(--gold);
+  }
+  .closing .sh { max-width: 600px; margin: 0 auto 1.5rem; }
+  .closing .lead { margin: 0 auto 3.5rem; text-align: center; }
 
-/* BADGES */
-.badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;font-family:'DM Mono',monospace}
-.bg-green{background:rgba(5,150,105,0.1);color:var(--green)}
-.bg-amber{background:rgba(217,119,6,0.1);color:var(--amber)}
-.bg-red{background:rgba(224,92,75,0.1);color:var(--coral)}
-.bg-teal{background:rgba(13,148,136,0.1);color:var(--teal)}
-.bg-purple{background:rgba(124,58,237,0.1);color:var(--purple)}
-.bg-navy{background:rgba(11,24,41,0.08);color:var(--navy)}
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2.5rem 3.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .foot-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: rgba(247,246,243,0.3);
+  }
+  .foot-logo span { color: var(--gold); }
+  .foot-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.12em;
+    color: rgba(247,246,243,0.2); text-transform: uppercase;
+  }
 
-/* FORMS */
-.fl{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px}
-.fi{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'Instrument Sans',sans-serif;color:var(--text);background:var(--bg2);outline:none;transition:border-color 0.18s}
-.fi:focus{border-color:var(--teal)}
-.fsel{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'Instrument Sans',sans-serif;color:var(--text);background:var(--bg2);cursor:pointer;outline:none;appearance:none}
-.fta{width:100%;padding:11px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'Instrument Sans',sans-serif;color:var(--text);background:var(--bg2);resize:vertical;min-height:110px;outline:none;line-height:1.6}
-.fta:focus{border-color:var(--teal)}
+  /* ─── DIVIDER LINE ─── */
+  .gold-line {
+    width: 3rem; height: 1px; background: var(--gold);
+    margin: 3rem 0;
+  }
 
-/* BUTTONS */
-.btn{padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Instrument Sans',sans-serif;border:none;transition:all 0.18s;display:inline-flex;align-items:center;gap:7px}
-.btn-primary{background:var(--navy);color:white}
-.btn-primary:hover{background:var(--navy2);transform:translateY(-1px)}
-.btn-teal{background:var(--teal);color:white}
-.btn-teal:hover{background:var(--teal3)}
-.btn-gold{background:var(--gold);color:var(--navy)}
-.btn-gold:hover{background:var(--gold2)}
-.btn-out{background:transparent;border:1.5px solid var(--border2);color:var(--text)}
-.btn-out:hover{border-color:var(--navy);background:var(--bg3)}
+  /* ─── FADE IN ─── */
+  .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade.visible { opacity: 1; transform: translateY(0); }
 
-/* TABS */
-.tabs{display:flex;gap:3px;background:var(--bg3);padding:3px;border-radius:9px;width:fit-content;margin-bottom:1.25rem;border:1px solid var(--border)}
-.tab-btn{padding:7px 16px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text2);font-family:'Instrument Sans',sans-serif;transition:all 0.18s}
-.tab-btn.active{background:var(--bg2);color:var(--navy);box-shadow:0 1px 4px rgba(0,0,0,0.08)}
-
-/* EXPORT BAR */
-.ebar{display:flex;gap:7px;align-items:center;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);margin-bottom:1.25rem;flex-wrap:wrap}
-.ebar-label{font-size:11px;font-weight:600;color:var(--text2);margin-right:3px}
-.ebar-btn{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px;border:1px solid var(--border2);background:var(--bg2);font-size:12px;font-weight:500;color:var(--text);cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.18s}
-.ebar-btn:hover{background:var(--navy);color:white;border-color:var(--navy)}
-
-/* RACI */
-.raci-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--border)}
-.raci-tbl{width:100%;border-collapse:collapse;font-size:12px}
-.raci-tbl th{background:var(--navy);color:white;padding:9px 12px;text-align:left;font-size:11px;font-weight:600;white-space:nowrap}
-.raci-tbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
-.raci-tbl tr:last-child td{border-bottom:none}
-.raci-tbl tr:nth-child(even) td{background:var(--bg3)}
-.rc{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;font-family:'DM Mono',monospace;font-size:12px;font-weight:700}
-.rR{background:rgba(5,150,105,0.12);color:var(--green)}
-.rA{background:rgba(224,92,75,0.12);color:var(--coral)}
-.rC{background:rgba(124,58,237,0.12);color:var(--purple)}
-.rI{background:rgba(13,148,136,0.12);color:var(--teal)}
-
-/* ORG */
-.org-tree{display:flex;flex-direction:column;align-items:center;padding:1.5rem;gap:0}
-.org-lv{display:flex;justify-content:center;gap:14px;margin-bottom:0}
-.org-vline{width:2px;height:22px;background:var(--border2);margin:0 auto}
-.org-node{padding:9px 14px;border-radius:9px;text-align:center;min-width:120px;border:1.5px solid;transition:all 0.2s}
-.org-node:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.org-rl{font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);margin-bottom:2px;text-transform:uppercase}
-.org-nm{font-size:12px;font-weight:600;color:var(--text)}
-.on-spo{background:rgba(11,24,41,0.06);border-color:var(--navy)}
-.on-cop{background:rgba(124,58,237,0.06);border-color:var(--purple)}
-.on-che{background:rgba(232,184,75,0.1);border-color:var(--gold3)}
-.on-moa{background:rgba(13,148,136,0.06);border-color:var(--teal)}
-.on-moe{background:rgba(5,150,105,0.06);border-color:var(--green)}
-.on-tea{background:var(--bg3);border-color:var(--border)}
-
-/* STATS */
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;text-align:center}
-.stat-v{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--navy);line-height:1}
-.stat-l{font-size:11px;color:var(--text2);margin-top:4px}
-.stat-t{font-family:'DM Mono',monospace;font-size:10px;margin-top:5px}
-.t-up{color:var(--green)}.t-dn{color:var(--coral)}
-
-/* KPI */
-.kpi-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.75rem}
-.kpi-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem;position:relative;overflow:hidden}
-.kpi-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--kc,var(--teal))}
-.kpi-label{font-size:11px;color:var(--text2);margin-bottom:5px}
-.kpi-value{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--navy);line-height:1}
-.kpi-sub{font-size:10px;color:var(--text3);margin-top:3px;font-family:'DM Mono',monospace}
-
-/* BUDGET BARS */
-.bb-wrap{margin-bottom:10px}
-.bb-hd{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:3px}
-.bb-track{height:9px;background:var(--bg3);border-radius:4px;overflow:hidden;border:1px solid var(--border)}
-.bb-fill{height:100%;border-radius:4px;transition:width 0.7s ease}
-.bf-ok{background:linear-gradient(90deg,var(--teal),var(--teal2))}
-.bf-w{background:linear-gradient(90deg,var(--amber),#f59e0b)}
-.bf-c{background:linear-gradient(90deg,var(--coral),#ef4444)}
-
-/* CAPACITY */
-.cap-wrap{margin-bottom:9px}
-.cap-hd{display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px}
-.cap-nm{color:var(--text);font-weight:500}
-.cap-pc{font-family:'DM Mono',monospace;color:var(--text2)}
-.cap-track{height:7px;background:var(--bg3);border-radius:4px;overflow:hidden;border:1px solid var(--border)}
-.cap-fill{height:100%;border-radius:4px;transition:width 0.7s ease}
-.cf-ok{background:var(--green)}.cf-w{background:var(--amber)}.cf-c{background:var(--coral)}
-
-/* SQL */
-.sql-area{background:var(--navy);border-radius:var(--r2);padding:1.25rem;font-family:'DM Mono',monospace;color:#e8f0fe;font-size:12px;line-height:1.7;min-height:110px;border:1px solid rgba(255,255,255,0.07);white-space:pre-wrap;overflow-x:auto}
-.sk{color:#79c0ff}.ss{color:#a5f3a8}.sc2{color:#8b949e;font-style:italic}.sn{color:#ffa657}
-
-/* SAMARITAN */
-.sam-hd{background:linear-gradient(135deg,var(--navy),var(--navy3));color:white;border-radius:var(--r2);padding:1.75rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
-.sam-hd::after{content:'SAMARITAN';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Syne',sans-serif;font-size:4.5rem;font-weight:800;opacity:0.04;white-space:nowrap}
-.sam-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:3px}
-.sam-sub{font-size:11px;opacity:0.5;font-family:'DM Mono',monospace}
-.proj-row{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer}
-.proj-row:last-child{border-bottom:none}
-.proj-row:hover{background:var(--bg3)}
-.proj-name{font-weight:500;font-size:13px;color:var(--text);flex:1}
-.proj-meta{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;display:flex;gap:8px;margin-top:2px}
-
-/* INVITE */
-.inv-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
-.inv-row:last-child{border-bottom:none}
-.inv-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0}
-.inv-nm{font-size:13px;font-weight:500;color:var(--text)}
-.inv-em{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace}
-
-/* WIZARD */
-.wiz-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;box-shadow:var(--shadow)}
-.wiz-top{background:var(--navy);padding:1.25rem 1.75rem}
-.wiz-prog-lbl{display:flex;justify-content:space-between;color:rgba(255,255,255,0.55);font-size:11px;font-family:'DM Mono',monospace;margin-bottom:0.6rem}
-.wiz-bar-track{height:3px;background:rgba(255,255,255,0.12);border-radius:2px}
-.wiz-bar-fill{height:3px;background:var(--gold);border-radius:2px;transition:width 0.4s ease}
-.wiz-body{padding:2rem 1.75rem}
-.wiz-qn{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);margin-bottom:5px}
-.wiz-qt{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:5px}
-.wiz-qh{font-size:12px;color:var(--text2);font-style:italic;margin-bottom:1.25rem}
-.wiz-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;margin-bottom:1.25rem}
-.wiz-opt{border:1.5px solid var(--border);border-radius:9px;padding:12px 14px;cursor:pointer;background:var(--bg2);text-align:left;transition:all 0.18s;font-family:'Instrument Sans',sans-serif}
-.wiz-opt:hover{border-color:var(--teal);background:rgba(13,148,136,0.03)}
-.wiz-opt.sel{border-color:var(--teal);background:rgba(13,148,136,0.07);box-shadow:0 0 0 2px rgba(13,148,136,0.14)}
-.wiz-oi{font-size:20px;margin-bottom:6px;display:block}
-.wiz-ol{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
-.wiz-od{font-size:11px;color:var(--text2);line-height:1.4}
-.wiz-nav{display:flex;justify-content:space-between;padding:1.25rem 1.75rem;border-top:1px solid var(--border);background:var(--bg3)}
-
-/* RESULT */
-.res-hero{background:linear-gradient(135deg,var(--navy),var(--navy3));border-radius:var(--r2);padding:1.75rem;color:white;margin-bottom:1.5rem;position:relative;overflow:hidden}
-.res-hero::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;background:rgba(232,184,75,0.07);border-radius:50%}
-.res-ey{font-family:'DM Mono',monospace;font-size:10px;color:rgba(232,184,75,0.8);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px}
-.res-nm{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:6px}
-.res-desc{font-size:13px;color:rgba(255,255,255,0.72);line-height:1.65;max-width:520px;margin-bottom:1.25rem}
-.conf-row{display:flex;align-items:center;gap:10px}
-.conf-bar{flex:1;max-width:160px;height:5px;background:rgba(255,255,255,0.12);border-radius:2px;overflow:hidden}
-.conf-fill{height:100%;background:var(--gold);border-radius:2px;transition:width 0.8s ease}
-.conf-pct{font-family:'DM Mono',monospace;font-size:12px;color:var(--gold2)}
-
-/* PLAN */
-.plan-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.plan-col{border-radius:var(--r);overflow:hidden}
-.plan-col-hd{padding:10px 14px;font-size:12px;font-weight:700;color:white}
-.plan-col-bd{background:var(--bg2);border:1px solid var(--border);border-top:none;padding:10px 14px}
-.plan-item{display:flex;gap:7px;padding:6px 0;border-bottom:1px solid var(--border);font-size:11px;color:var(--text)}
-.plan-item:last-child{border-bottom:none}
-.pck{color:var(--green);flex-shrink:0;margin-top:1px}
-
-/* MODAL */
-.modal-ov{display:none;position:fixed;inset:0;background:rgba(11,24,41,0.5);z-index:300;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
-.modal-ov.open{display:flex}
-.modal-box{background:var(--bg2);border-radius:var(--r2);padding:1.75rem;max-width:460px;width:90%;box-shadow:0 20px 60px rgba(11,24,41,0.2);position:relative;animation:min 0.25s ease}
-@keyframes min{from{opacity:0;transform:translateY(18px) scale(0.97)}to{opacity:1;transform:none}}
-.modal-x{position:absolute;top:14px;right:14px;background:var(--bg3);border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--text2)}
-.modal-x:hover{background:var(--border);color:var(--text)}
-.modal-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:4px}
-.modal-sub{font-size:12px;color:var(--text2);margin-bottom:1.25rem}
-
-/* TOAST */
-.toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:white;padding:12px 18px;border-radius:9px;font-size:13px;box-shadow:0 8px 32px rgba(11,24,41,0.25);z-index:500;display:none;align-items:center;gap:9px}
-.toast.show{display:flex;animation:tin 0.3s ease}
-@keyframes tin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-/* FOOTER */
-.land-foot{background:var(--navy);color:rgba(255,255,255,0.45);padding:2.5rem 2rem;text-align:center}
-.foot-logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:white;margin-bottom:4px}
-.foot-logo span{color:var(--teal)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .g2,.g3,.g4,.plan-cols{grid-template-columns:1fr}
-  .sidebar{display:none}
-  .fstrip{flex-direction:column}
-  .fitem{border-right:none;border-bottom:1px solid var(--border)}
-}
+  @media (max-width: 900px) {
+    .topbar { padding: 1.2rem 1.5rem; }
+    .hero { padding: 8rem 1.5rem 4rem; }
+    .section, .section-full { padding: 4rem 1.5rem; }
+    .problem-grid, .testimonials { grid-template-columns: 1fr; }
+    .solution-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .stat-row { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--rule); padding: 1.5rem 0; }
+    .stat:last-child { padding-left: 0; }
+    .price-block { padding: 2.5rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
 </style>
 </head>
 <body>
 
-<!-- ========== MODAL STRIPE CHECKOUT ========== -->
-<div class="modal-ov" id="stripe-modal">
-  <div class="modal-box" style="max-width:500px">
-    <button class="modal-x" onclick="closeStripe()">✕</button>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem">
-      <div style="width:40px;height:40px;background:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 6h16v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" fill="#e8b84b"/><path d="M2 6V5a2 2 0 012-2h12a2 2 0 012 2v1" stroke="#e8b84b" stroke-width="1.5"/><path d="M6 10h8M6 13h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <div>
-        <div class="modal-title" style="margin-bottom:0" id="stripe-plan-name">Plan Équipe</div>
-        <div style="font-size:12px;color:var(--text3)">EvolSphere · Practice Retail SAS</div>
-      </div>
-      <div style="margin-left:auto;text-align:right">
-        <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--navy)" id="stripe-plan-price">79€/mois</div>
-        <div style="font-size:10px;color:var(--text3)" id="stripe-plan-desc">5 utilisateurs</div>
-      </div>
-    </div>
-
-    <div style="background:rgba(5,150,105,0.07);border:1px solid rgba(5,150,105,0.2);border-radius:8px;padding:10px 12px;margin-bottom:1.25rem;font-size:12px;color:var(--text2)">
-      🔒 Paiement sécurisé par <strong>Stripe</strong> · Émis par <strong>Practice Retail SAS</strong> · Résiliable à tout moment
-    </div>
-
-    <div style="margin-bottom:1rem"><label class="fl">Email professionnel</label><input type="email" class="fi" id="stripe-email" placeholder="vous@entreprise.com"></div>
-    <div style="margin-bottom:1rem"><label class="fl">Société (optionnel)</label><input type="text" class="fi" id="stripe-company" placeholder="Nom de votre société"></div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.25rem">
-      <div><label class="fl">Numéro de carte</label><div style="padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--text3);background:var(--bg3)">•••• •••• •••• ••••</div></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div><label class="fl">MM/AA</label><div style="padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--text3);background:var(--bg3)">MM/AA</div></div>
-        <div><label class="fl">CVC</label><div style="padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--text3);background:var(--bg3)">•••</div></div>
-      </div>
-    </div>
-
-    <div style="font-size:11px;color:var(--text3);text-align:center;margin-bottom:1rem">
-      ⚠️ Formulaire de démonstration — Le paiement réel sera activé après configuration de la clé Stripe Practice Retail SAS dans le code.
-    </div>
-
-    <button class="btn btn-teal" style="width:100%;padding:13px;font-size:14px" onclick="submitStripe()">
-      🔒 Confirmer l'abonnement
-    </button>
-    <div style="font-size:10px;color:var(--text3);text-align:center;margin-top:0.75rem">Essai 14 jours gratuit · Aucun prélèvement avant la fin de l'essai · Annulation en 1 clic</div>
-  </div>
-</div>
-
-<style>
-/* STRIPE NOTICE */
-.stripe-notice{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text3);margin-top:0.75rem;justify-content:center;font-family:'DM Mono',monospace}
-</style>
-
-<!-- MODULE DOCUMENTS (dans l'app) -->
-<script>
-// MODULE DOCUMENTS
-function loadDocs(){
-  const cats=[
-    {icon:"📄",name:"Contrats prestataires",desc:"Import PDF · Extraction clauses clés · Alimentation Finance",col:"var(--teal)",action:"Analyser un contrat"},
-    {icon:"🏢",name:"Organigramme société",desc:"Import ou création · Alimentation RACI et Gouvernance",col:"var(--navy3)",action:"Créer l'organigramme"},
-    {icon:"📊",name:"Support COPIL",desc:"Génération auto depuis les données projet · Modifiable",col:"var(--gold3, #c49a2e)",action:"Générer le COPIL"},
-    {icon:"🔄",name:"Scénarios Sprint",desc:"Définition sprints · Stories · Capacité équipe · Vélocité",col:"var(--coral)",action:"Créer un sprint"},
-    {icon:"✅",name:"Reviews & Rétros",desc:"Templates pré-remplis · Historique · Tendances mesurées",col:"var(--green)",action:"Nouvelle review"},
-    {icon:"🤝",name:"Copros & Partenaires",desc:"Projets connexes · Dépendances · Vision Samaritan croisée",col:"var(--amber)",action:"Ajouter un copro"},
-  ];
-  const shared=[
-    {name:"Contrat_Prestataire_ESN_v2.pdf",type:"PDF",size:"1.2 Mo",date:"Hier",icon:"📄",status:"Analysé"},
-    {name:"Organigramme_DSI_v3.pptx",type:"PPT",size:"840 Ko",date:"Il y a 2j",icon:"🏢",status:"Importé"},
-    {name:"COPIL_Juin_2026_draft.pptx",type:"PPT",size:"2.1 Mo",date:"Aujourd'hui",icon:"📊",status:"En cours"},
-    {name:"Sprint_Q3_Planning.xlsx",type:"Excel",size:"320 Ko",date:"Il y a 3j",icon:"🔄",status:"Validé"},
-    {name:"Retrospective_Sprint4.docx",type:"Word",size:"180 Ko",date:"Il y a 5j",icon:"✅",status:"Archivé"},
-  ];
-
-  const modEl=document.getElementById('mod-docs');
-  if(!modEl)return;
-  modEl.innerHTML=`
-    <div class="ph"><div class="ph-title">📁 Documents & Templates</div><div class="ph-sub">GED intelligente · Import · Génération automatique · Partage sécurisé</div></div>
-    <div class="ebar">
-      <span class="ebar-label">Actions :</span>
-      <button class="ebar-btn" onclick="showToast('📤 Sélectionnez un fichier à importer')">📤 Importer</button>
-      <button class="ebar-btn" onclick="showToast('✨ Template sélectionné — paramétrage en cours')">✨ Nouveau template</button>
-      <button class="ebar-btn" onclick="openModal('m-export')">📄 Exporter tout</button>
-      <button class="btn btn-out" style="margin-left:auto;font-size:11px" onclick="openModal('m-invite')">👥 Partager</button>
-    </div>
-    <div class="ga" style="margin-bottom:1.5rem">
-      ${cats.map(c=>`
-        <div class="card" style="cursor:pointer;border-left:3px solid ${c.col};transition:all 0.2s" onclick="showToast('${c.action} — fonctionnalité disponible dans votre abonnement')">
-          <div style="font-size:1.5rem;margin-bottom:6px">${c.icon}</div>
-          <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px">${c.name}</div>
-          <div style="font-size:11px;color:var(--text2);margin-bottom:0.75rem">${c.desc}</div>
-          <div style="font-size:11px;font-weight:600;color:${c.col};cursor:pointer">${c.action} →</div>
-        </div>`).join('')}
-    </div>
-    <div class="card">
-      <div class="card-title">Documents récents du projet</div>
-      <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:0.5rem">
-        <thead><tr>${['Document','Type','Taille','Date','Statut','Actions'].map(h=>`<th style="background:var(--bg3);padding:7px 12px;text-align:left;font-size:11px;border-bottom:1px solid var(--border)">${h}</th>`).join('')}</tr></thead>
-        <tbody>${shared.map((d,i)=>`<tr style="${i%2?'background:var(--bg3)':''}">
-          <td style="padding:9px 12px;font-weight:500">${d.icon} ${d.name}</td>
-          <td style="padding:9px 12px"><span class="badge bg-navy">${d.type}</span></td>
-          <td style="padding:9px 12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text3)">${d.size}</td>
-          <td style="padding:9px 12px;font-size:11px;color:var(--text3)">${d.date}</td>
-          <td style="padding:9px 12px"><span class="badge ${d.status==='Validé'?'bg-green':d.status==='Analysé'?'bg-teal':d.status==='Importé'?'bg-purple':'bg-amber'}">${d.status}</span></td>
-          <td style="padding:9px 12px;display:flex;gap:5px">
-            <button class="btn btn-out" style="font-size:10px;padding:4px 8px" onclick="showToast('📄 Aperçu du document')">👁</button>
-            <button class="btn btn-out" style="font-size:10px;padding:4px 8px" onclick="showToast('🔗 Lien de partage copié !')">🔗</button>
-          </td>
-        </tr>`).join('')}</tbody>
-      </table>
-    </div>`;
-}
-
-// Surcharge initApp pour inclure docs
-const _initApp=window.initApp||function(){};
-</script>
-<div class="toast" id="toast"><span id="toast-msg">Action effectuée</span></div>
-
-<!-- MODAL INVITE -->
-<div class="modal-ov" id="m-invite">
-  <div class="modal-box">
-    <button class="modal-x" onclick="closeModal('m-invite')">✕</button>
-    <div class="modal-title">Inviter un collaborateur</div>
-    <div class="modal-sub">Ils accèdent au projet avec les droits que vous attribuez.</div>
-    <div style="margin-bottom:1rem"><label class="fl">Email</label><input type="email" class="fi" id="inv-email" placeholder="colleague@company.com"></div>
-    <div style="margin-bottom:1rem"><label class="fl">Rôle</label>
-      <select class="fsel" id="inv-role">
-        <option>Chef de Projet</option><option>PMO</option><option>Sponsor</option>
-        <option>MOA / Référent Métier</option><option>DSI / Architecte</option>
-        <option>Consultant externe</option><option>Éditeur / Prestataire</option>
-        <option>Observateur (lecture seule)</option>
-      </select>
-    </div>
-    <div style="background:rgba(13,148,136,0.07);border:1px solid rgba(13,148,136,0.2);border-radius:8px;padding:10px 12px;margin-bottom:1.25rem;font-size:12px;color:var(--text2)">
-      <strong style="color:var(--teal)">💡</strong> Il vous reste <strong>3 sièges</strong> sur votre abonnement Équipe. L'invité accède gratuitement.
-    </div>
-    <button class="btn btn-teal" style="width:100%" onclick="sendInvite()">📧 Envoyer l'invitation</button>
-  </div>
-</div>
-
-<!-- MODAL EXPORT -->
-<div class="modal-ov" id="m-export">
-  <div class="modal-box">
-    <button class="modal-x" onclick="closeModal('m-export')">✕</button>
-    <div class="modal-title">Exporter le document</div>
-    <div class="modal-sub">Choisissez le format d'export.</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem">
-      <div style="border:1.5px solid var(--border);border-radius:8px;padding:12px;cursor:pointer;text-align:center;transition:all 0.2s" onclick="this.style.borderColor='var(--teal)';this.style.background='rgba(13,148,136,0.05)'">
-        <div style="font-size:1.4rem;margin-bottom:5px">📄</div><div style="font-size:12px;font-weight:600">PDF</div><div style="font-size:10px;color:var(--text3)">Rapport mis en forme</div>
-      </div>
-      <div style="border:1.5px solid var(--border);border-radius:8px;padding:12px;cursor:pointer;text-align:center;transition:all 0.2s" onclick="this.style.borderColor='var(--teal)';this.style.background='rgba(13,148,136,0.05)'">
-        <div style="font-size:1.4rem;margin-bottom:5px">📊</div><div style="font-size:12px;font-weight:600">Excel / CSV</div><div style="font-size:10px;color:var(--text3)">Données exploitables</div>
-      </div>
-      <div style="border:1.5px solid var(--border);border-radius:8px;padding:12px;cursor:pointer;text-align:center;transition:all 0.2s" onclick="this.style.borderColor='var(--teal)';this.style.background='rgba(13,148,136,0.05)'">
-        <div style="font-size:1.4rem;margin-bottom:5px">📝</div><div style="font-size:12px;font-weight:600">Word (.docx)</div><div style="font-size:10px;color:var(--text3)">Document éditable</div>
-      </div>
-      <div style="border:1.5px solid var(--border);border-radius:8px;padding:12px;cursor:pointer;text-align:center;transition:all 0.2s" onclick="this.style.borderColor='var(--teal)';this.style.background='rgba(13,148,136,0.05)'">
-        <div style="font-size:1.4rem;margin-bottom:5px">🔗</div><div style="font-size:12px;font-weight:600">Lien partageable</div><div style="font-size:10px;color:var(--text3)">Accès lecture externes</div>
-      </div>
-    </div>
-    <button class="btn btn-primary" style="width:100%" onclick="doExport()">⬇ Télécharger maintenant</button>
-  </div>
-</div>
-
-<!-- HEADER -->
-<header id="hdr">
-  <a class="logo-wrap" onclick="showPage('landing')" style="text-decoration:none">
-    <div class="logo-box">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M4 19 Q6 12 10 9 Q14 6 15 12 Q16 17 20 6" stroke="#e8b84b" stroke-width="2" stroke-linecap="round" fill="none" style="stroke-dasharray:60;stroke-dashoffset:60;animation:dp 1.6s ease forwards"/>
-        <circle cx="20" cy="6" r="2.5" fill="#0d9488" style="opacity:0;animation:dp2 0.3s ease 1.4s forwards"/>
-      </svg>
-      <style>@keyframes dp{to{stroke-dashoffset:0}}@keyframes dp2{to{opacity:1}}</style>
-    </div>
-    <div>
-      <div class="logo-wordmark">EVOL<span class="accent">sphere</span></div>
-      <div class="logo-sub">De l'idée à la réalisation</div>
-    </div>
-  </a>
-  <nav class="hnav">
-    <button class="hnav-btn" onclick="showPage('landing')">Accueil</button>
-    <button class="hnav-btn" onclick="scrollToMods()">Modules</button>
-    <button class="hnav-btn" onclick="showPage('pricing')">Tarifs</button>
-    <button class="hnav-btn" onclick="showPage('app')">🚀 Demo</button>
-  </nav>
-  <div class="lang-switcher">
-    <button class="lang-btn active-lang" data-lang="fr" onclick="setLang('fr')">FR</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
-  </div>
-  <div class="hdr-actions">
-    <button class="btn-xs btn-xs-out" onclick="showPage('pricing')">Connexion</button>
-    <button class="btn-xs btn-xs-gold" onclick="showPage('pricing')">Essai gratuit →</button>
-  </div>
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="logo">Evol<span>Sphere</span></div>
+  <div class="topbar-right">Dossier décideurs · Confidentiel</div>
 </header>
 
-<!-- ===== LANDING ===== -->
-<div id="page-landing" class="page active">
-  <div class="hero">
-    <div class="hero-bg"></div><div class="hero-grid"></div>
-    <div class="hero-badge"><div class="badge-dot"></div><span id="hero-badge-txt">Disponible maintenant · Risk Radar© breveté · PMP 2026</span></div>
-    <h1 class="hero-h1 syne"><span id="hero-h1a">L'IA qui pilote</span><br><span class="tl" id="hero-h1b">vos projets complexes</span><span class="it" id="hero-h1c">De l'idée à la réalisation.</span></h1>
-    <p class="hero-p" id="hero-p">Méthode optimale, RACI dynamique, gouvernance, Risk Radar© double-niveau, Finance EVM, SQL-to-Jira, dashboard Samaritan. Le premier outil IA structuré pensé par et pour les pros du projet.</p>
-    <div class="hero-ctas">
-      <button class="btn-hgold" id="cta1" onclick="showPage('app')">⚡ Démarrer gratuitement</button>
-      <button class="btn-hnav" id="cta2" onclick="showPage('pricing')">Voir les offres →</button>
-      <button class="btn-hout" id="cta3" onclick="scrollToMods()">Explorer les modules</button>
+<!-- HERO -->
+<section class="hero">
+  <div style="max-width:1140px;margin:0 auto;width:100%">
+    <div class="hero-eyebrow">Intelligence Projet · Génération 2026</div>
+    <h1 class="hero-h1">
+      Vos projets IT<br>méritent une <em>intelligence</em><br>à leur mesure.
+    </h1>
+    <p class="hero-sub">
+      EvolSphere est la première plateforme PMO augmentée par l'IA qui transforme la complexité projet en décisions claires — en temps réel, sans friction.
+    </p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn-gold">Voir l'offre Elite</a>
+      <a href="#solution" class="btn-ghost">Voir comment ça fonctionne</a>
     </div>
-    <div class="fstrip">
-      <div class="fitem"><div class="fitem-icon">🧠</div><div class="fitem-label">IA Décisionnelle</div><div class="fitem-val">8 dimensions</div></div>
-      <div class="fitem"><div class="fitem-icon">🔴</div><div class="fitem-label">Risk Radar©</div><div class="fitem-val">Concept inédit</div></div>
-      <div class="fitem"><div class="fitem-icon">💬</div><div class="fitem-label">SQL → Jira</div><div class="fitem-val">Langage naturel</div></div>
-      <div class="fitem"><div class="fitem-icon">💰</div><div class="fitem-label">Finance EVM</div><div class="fitem-val">ROI temps réel</div></div>
-      <div class="fitem"><div class="fitem-icon">🌐</div><div class="fitem-label">Samaritan</div><div class="fitem-val">Multi-projets</div></div>
-    </div>
-  </div>
 
-  <div class="section" id="mods-section">
-    <div style="text-align:center;margin-bottom:2.5rem">
-      <div class="eyebrow">9 modules intégrés</div>
-      <div class="sh2 syne">Tout ce dont un PMO pro a besoin,<br>dans un seul outil.</div>
-    </div>
-    <div class="mods-grid">
-      <div class="mod-card" onclick="goMod('wizard')"><div class="mod-icon">🎯</div><div class="mod-title">IA Méthodo</div><div class="mod-desc">Analyse 8 dimensions et recommande la méthode optimale : Waterfall, Scrum, Kanban, SAFe, Hybride, PRINCE2...</div><div class="mod-tag">Questionnaire + IA libre</div></div>
-      <div class="mod-card" onclick="goMod('raci')"><div class="mod-icon">📋</div><div class="mod-title">RACI Dynamique</div><div class="mod-desc">Matrice RACI auto-générée selon la méthode et le contexte. Exportable PDF, Excel, Word.</div><div class="mod-tag">R · A · C · I</div></div>
-      <div class="mod-card feat" onclick="goMod('risk')"><div class="mod-icon">🔴</div><div class="mod-title">Risk Radar©</div><div class="mod-desc">Deux évaluations indépendantes : niveau brut (Approbateur) vs maîtrise (Responsable). Le delta révèle le risque résiduel réel.</div><div class="mod-tag">Concept breveté · Unique</div></div>
-      <div class="mod-card" onclick="goMod('governance')"><div class="mod-icon">🏛</div><div class="mod-title">Gouvernance</div><div class="mod-desc">Organigramme projet auto-généré : Sponsor, COPIL, MOA, MOE, Chef de Projet — adapté à chaque méthode.</div><div class="mod-tag">Enterprise · PME · Agile</div></div>
-      <div class="mod-card" onclick="goMod('finance')"><div class="mod-icon">💰</div><div class="mod-title">Finance Projet</div><div class="mod-desc">Budget, engagements, consommé, EVM (CPI/SPI), ROI, prévision à terminaison — alertes automatiques.</div><div class="mod-tag">EVM · ROI · OPEX/CAPEX</div></div>
-      <div class="mod-card" onclick="goMod('sql')"><div class="mod-icon">💬</div><div class="mod-title">SQL → Jira Translator</div><div class="mod-desc">Décrivez votre besoin en langage naturel, obtenez la requête JQL, SQL ou Monday prête à copier.</div><div class="mod-tag">JQL · SQL · Naturel</div></div>
-      <div class="mod-card" onclick="goMod('env')"><div class="mod-icon">🔗</div><div class="mod-title">Environnement Interne</div><div class="mod-desc">Projets connexes, capacité des équipes, dépendances SI — tout ce qui peut impacter votre planning.</div><div class="mod-tag">Capacité · Dépendances</div></div>
-      <div class="mod-card" onclick="goMod('samaritan')"><div class="mod-icon">🌐</div><div class="mod-title">Dashboard Samaritan</div><div class="mod-desc">Vue multi-projets temps réel : alertes Risk Radar, patterns, conflits ressources inter-projets.</div><div class="mod-tag">Portfolio · Alertes proactives</div></div>
-      <div class="mod-card" onclick="goMod('team')"><div class="mod-icon">👥</div><div class="mod-title">Équipe & Invitations</div><div class="mod-desc">Invitez consultants, éditeurs, développeurs, clients avec rôles définis. Partage et collaboration.</div><div class="mod-tag">Multi-users · Partage · Rôles</div></div>
+    <div class="stat-row fade">
+      <div class="stat">
+        <div class="stat-n">73%</div>
+        <div class="stat-l">des projets IT dépassent le budget prévu</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">4,9x</div>
+        <div class="stat-l">retour sur investissement moyen en 12 mois</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">−38%</div>
+        <div class="stat-l">de dérive planning sur les projets EvolSphere</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">14 j</div>
+        <div class="stat-l">pour déployer et former vos équipes PMO</div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div style="background:var(--navy);padding:4rem 2rem;text-align:center">
-    <div style="max-width:640px;margin:0 auto">
-      <div style="font-size:2.5rem;color:var(--gold);font-family:'Syne',sans-serif;font-weight:800;margin-bottom:0.75rem">"</div>
-      <div style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:600;color:white;line-height:1.5;margin-bottom:1.25rem">Le Risk Radar© change fondamentalement la façon dont on perçoit les risques projet. Pour la première fois, l'écart entre la perception du management et la réalité terrain est visible et actionnable.</div>
-      <div style="font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35)">Conçu par un expert PMP — 20 ans en transformation IT, Supply Chain, Retail & Finance</div>
-    </div>
-  </div>
+<!-- PROBLEM -->
+<div style="max-width:1140px;margin:0 auto">
+<section class="section fade" id="problem">
+  <div class="eyebrow">Le constat</div>
+  <h2 class="sh">Ce que vos PMO<br>vivent chaque semaine.</h2>
 
-  <div class="section">
-    <div class="g2" style="gap:3rem;align-items:center">
-      <div>
-        <div class="eyebrow">Pourquoi EvolSphere</div>
-        <div class="sh2 syne">Conçu par un praticien,<br>pour les praticiens.</div>
-        <p style="font-size:0.95rem;color:var(--text2);line-height:1.7;margin-bottom:1.5rem">EvolSphere est né d'une pratique terrain de 20 ans en transformation IT, supply chain, retail et finance. Chaque fonctionnalité répond à un vrai problème de PMO senior.</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <div style="width:34px;height:34px;border-radius:8px;background:rgba(13,148,136,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎯</div>
-            <div><div style="font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px">Méthode choisie par l'IA</div><div style="font-size:12px;color:var(--text2)">Fini les débats : l'IA analyse 8 dimensions et recommande avec 90%+ de confiance.</div></div>
-          </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <div style="width:34px;height:34px;border-radius:8px;background:rgba(232,184,75,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🔴</div>
-            <div><div style="font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px">Risk Radar© — le perçu vs le réel</div><div style="font-size:12px;color:var(--text2)">Management d'un côté, terrain de l'autre. Le delta révèle la vérité. Exclusif, breveté.</div></div>
-          </div>
-          <div style="display:flex;gap:10px;align-items:flex-start">
-            <div style="width:34px;height:34px;border-radius:8px;background:rgba(37,99,235,0.1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💬</div>
-            <div><div style="font-weight:600;font-size:13px;color:var(--text);margin-bottom:2px">SQL-to-Jira pour les PMO non-tech</div><div style="font-size:12px;color:var(--text2)">"Montre-moi les bugs critiques de Jean cette semaine" → JQL en 2 secondes.</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="g2" style="gap:10px">
-        <div style="background:var(--navy);border-radius:var(--r2);padding:1.25rem;color:white;grid-column:span 2">
-          <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.35);margin-bottom:7px">RISK RADAR© — APERÇU LIVE</div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-            <span style="font-size:12px;font-weight:500">Conformité RGPD + Sécurité des données</span>
-            <span style="color:var(--coral);font-family:'DM Mono',monospace;font-size:11px;font-weight:700">Δ3 ⚠ ALERTE</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-            <div><div style="font-size:9px;color:rgba(255,255,255,0.35);margin-bottom:3px;font-family:'DM Mono',monospace">NIVEAU BRUT (A)</div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:2px"><div style="width:100%;height:5px;background:#dc2626;border-radius:2px"></div></div><div style="font-size:10px;color:var(--coral);margin-top:2px;font-family:'DM Mono',monospace">5/5 CRITIQUE</div></div>
-            <div><div style="font-size:9px;color:rgba(255,255,255,0.35);margin-bottom:3px;font-family:'DM Mono',monospace">MAÎTRISE (R)</div><div style="height:5px;background:rgba(255,255,255,0.1);border-radius:2px"><div style="width:40%;height:5px;background:var(--amber);border-radius:2px"></div></div><div style="font-size:10px;color:var(--amber);margin-top:2px;font-family:'DM Mono',monospace">2/5 INSUFFISANT</div></div>
-          </div>
-          <div style="background:rgba(224,92,75,0.15);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--coral)">⚠ Alerte déclenchée — Delta = 3 — Plan d'action requis</div>
-        </div>
-        <div class="stat-card"><div class="stat-v syne">94%</div><div class="stat-l">Confiance IA moyenne</div><div class="stat-t t-up">↑ vs méthodes manuelles</div></div>
-        <div class="stat-card"><div class="stat-v syne">9</div><div class="stat-l">Modules intégrés</div><div class="stat-t t-up">Tout en un outil</div></div>
-        <div class="stat-card"><div class="stat-v syne">7</div><div class="stat-l">Méthodologies</div><div class="stat-t">Waterfall à SAFe</div></div>
-        <div class="stat-card"><div class="stat-v syne">∞</div><div class="stat-l">Projets / Programme</div><div class="stat-t t-up">Samaritan inclus</div></div>
-      </div>
+  <div class="problem-grid">
+    <div class="problem-item">
+      <div class="pi-label">01 · Méthode</div>
+      <div class="pi-text">La bonne méthode choisie trop tard — ou jamais vraiment.</div>
+      <div class="pi-sub">Waterfall ou Scrum ? Décidé en réunion, rarement validé par les données. Le recadrage coûte en moyenne 3 mois de dérive.</div>
+    </div>
+    <div class="problem-item">
+      <div class="pi-label">02 · Risques</div>
+      <div class="pi-text">Les risques identifiés, mais jamais réellement suivis.</div>
+      <div class="pi-sub">Les registres de risques sont remplis en kick-off, puis ignorés. Les alertes arrivent après la tempête, pas avant.</div>
+    </div>
+    <div class="problem-item">
+      <div class="pi-label">03 · Gouvernance</div>
+      <div class="pi-text">Les RACI, les COPIL, les reportings — une charge sans valeur.</div>
+      <div class="pi-sub">Vos équipes passent 30 % de leur temps à produire des documents que personne ne lit entièrement. Ce temps devrait être investi sur le projet.</div>
+    </div>
+    <div class="problem-item">
+      <div class="pi-label">04 · Visibilité</div>
+      <div class="pi-text">Le COMEX décide sans données fiables et en temps réel.</div>
+      <div class="pi-sub">Les tableaux de bord sont statiques, hebdomadaires, subjectifs. La réalité terrain arrive avec 5 jours de retard. Parfois davantage.</div>
     </div>
   </div>
-  <footer class="full-footer">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo-txt">EVOL<span>sphere</span></div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:1rem;font-family:'DM Mono',monospace" class="foot-desc">L'IA projet intelligente · Risk Radar© breveté · PMP 2026</div>
-        <div class="lang-switcher" style="justify-content:flex-start">
-          <button class="lang-btn active-lang" data-lang="fr" onclick="setLang('fr')" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)">FR</button>
-          <button class="lang-btn" data-lang="en" onclick="setLang('en')" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)">EN</button>
-          <button class="lang-btn" data-lang="es" onclick="setLang('es')" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)">ES</button>
-          <button class="lang-btn" data-lang="it" onclick="setLang('it')" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)">IT</button>
+</section>
+
+<!-- SOLUTION -->
+<section class="section fade" id="solution">
+  <div class="eyebrow">La réponse</div>
+  <h2 class="sh">Six modules. <em>Une seule plateforme.</em><br>Zéro angle mort.</h2>
+
+  <div class="solution-layout">
+    <ul class="sol-list">
+      <li class="sol-item">
+        <div class="sol-num">01</div>
+        <div>
+          <div class="sol-title">IA Méthodo©</div>
+          <div class="sol-desc">Questionnaire intelligent ou description libre en langage naturel. L'IA recommande Waterfall, Scrum, Hybride ou Kanban avec justification détaillée et niveau de confiance.</div>
         </div>
+      </li>
+      <li class="sol-item">
+        <div class="sol-num">02</div>
+        <div>
+          <div class="sol-title">Risk Radar©</div>
+          <div class="sol-desc">Cartographie dynamique des risques sur 5 axes : probabilité, impact, proximité, tendance, réponse. Alertes proactives avant que le risque ne devienne un incident.</div>
+        </div>
+      </li>
+      <li class="sol-item">
+        <div class="sol-num">03</div>
+        <div>
+          <div class="sol-title">RACI Dynamique</div>
+          <div class="sol-desc">Généré automatiquement selon la méthode choisie et les rôles saisis. Mis à jour en temps réel à chaque changement d'équipe ou de périmètre.</div>
+        </div>
+      </li>
+    </ul>
+    <ul class="sol-list">
+      <li class="sol-item">
+        <div class="sol-num">04</div>
+        <div>
+          <div class="sol-title">Finance EVM</div>
+          <div class="sol-desc">Earned Value Management intégré : CPI, SPI, EAC calculés en continu. Prévisions de dérive budgétaire à 30, 60 et 90 jours avec intervalles de confiance.</div>
+        </div>
+      </li>
+      <li class="sol-item">
+        <div class="sol-num">05</div>
+        <div>
+          <div class="sol-title">SQL → Jira Translator</div>
+          <div class="sol-desc">Vos requêtes métier en langage naturel, transformées en JQL ou SQL exploitables. Aucune compétence technique requise pour interroger vos données projet.</div>
+        </div>
+      </li>
+      <li class="sol-item">
+        <div class="sol-num">06</div>
+        <div>
+          <div class="sol-title">Dashboard Samaritan©</div>
+          <div class="sol-desc">Vue portfolio multi-projets pour le COMEX. Charge équipes, vélocité, alertes critiques, ROI en cours — tout sur une seule page, en temps réel.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section fade" id="pricing">
+  <div class="eyebrow">Investissement</div>
+  <h2 class="sh">Un investissement unique.<br><em>Un retour mesurable.</em></h2>
+  <p class="lead">Accès complet à la plateforme, formation incluse, déploiement accompagné. Sans engagement à long terme sur la première année.</p>
+
+  <div class="gold-line"></div>
+
+  <div class="price-block">
+    <div class="price-label">Licence Programme · Annuel · Tout inclus</div>
+    <div class="price-amount"><sup>€</sup>4 990</div>
+    <div class="price-period">par an · jusqu'à 20 utilisateurs · projets illimités</div>
+
+    <div class="price-includes">
+      <div class="pi-row">
+        <span class="pi-row-l">Accès aux 6 modules</span>
+        <span class="pi-row-r">Complet</span>
       </div>
-      <div>
-        <div class="footer-col-title">Produit</div>
-        <a class="footer-link" onclick="scrollToMods()">Modules</a>
-        <a class="footer-link" onclick="showPage('pricing')">Tarifs</a>
-        <a class="footer-link" onclick="showPage('app')">Démo</a>
-        <a class="footer-link" onclick="showPage('pricing')">Essai gratuit</a>
+      <div class="pi-row">
+        <span class="pi-row-l">Utilisateurs inclus</span>
+        <span class="pi-row-r">20 sièges</span>
       </div>
-      <div>
-        <div class="footer-col-title">Méthodes</div>
-        <a class="footer-link">Waterfall / Cycle en V</a>
-        <a class="footer-link">Scrum & Agile</a>
-        <a class="footer-link">Kanban</a>
-        <a class="footer-link">SAFe & Hybride</a>
-        <a class="footer-link">PRINCE2 / XP / DSDM</a>
+      <div class="pi-row">
+        <span class="pi-row-l">Projets simultanés</span>
+        <span class="pi-row-r">Illimités</span>
       </div>
-      <div>
-        <div class="footer-col-title">Légal & Contact</div>
-        <a class="footer-link link-contact" onclick="showPage('contact')">Nous contacter</a>
-        <a class="footer-link link-privacy" onclick="showPage('privacy')">Politique de confidentialité</a>
-        <a class="footer-link link-legal" onclick="showPage('legal')">Mentions légales</a>
-        <a class="footer-link" onclick="showPage('privacy')">Gestion des cookies</a>
-        <a class="footer-link" style="margin-top:0.5rem;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;font-size:10px">r&#97;ph&#97;el&#64;de&#45;bruijn&#46;com</a>
+      <div class="pi-row">
+        <span class="pi-row-l">Formation PMO (présentiel ou distanciel)</span>
+        <span class="pi-row-r">Incluse</span>
+      </div>
+      <div class="pi-row">
+        <span class="pi-row-l">Accompagnement au déploiement</span>
+        <span class="pi-row-r">14 jours</span>
+      </div>
+      <div class="pi-row">
+        <span class="pi-row-l">Support prioritaire</span>
+        <span class="pi-row-r">Réponse &lt; 4h</span>
+      </div>
+      <div class="pi-row">
+        <span class="pi-row-l">SLA disponibilité</span>
+        <span class="pi-row-r">99,9 %</span>
+      </div>
+      <div class="pi-row">
+        <span class="pi-row-l">Intégrations Jira · Monday · Notion</span>
+        <span class="pi-row-r">Natives</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div style="font-size:11px">© 2026 EvolSphere — Risk Radar© concept breveté — Tous droits réservés</div>
-      <div style="font-size:11px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.25)">v2.0 · PMP 2026 · PMBOK 8e édition</div>
+
+    <a href="mailto:contact@evolsphere.io?subject=Demande%20offre%20Programme%204990€" class="btn-gold">Demander un entretien</a>
+    <div class="price-note">Essai gratuit 14 jours sans engagement. Facturation annuelle. Prix HT.</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section fade">
+  <div class="eyebrow">Retours terrain</div>
+  <h2 class="sh">Ce que disent<br>ceux qui ont décidé.</h2>
+
+  <div class="testimonials">
+    <div class="testi">
+      <div class="testi-quote">En six semaines, EvolSphere a rendu nos COPIL inutiles dans leur forme actuelle. Nos décisions sont maintenant prises sur des données, pas sur des ressentis.</div>
+      <div class="testi-author">Directeur de Programme</div>
+      <div class="testi-role">Groupe industriel · 2 400 collaborateurs</div>
     </div>
-  </footer>
+    <div class="testi">
+      <div class="testi-quote">Le Risk Radar© a identifié une dérive budgétaire 3 semaines avant que nos chefs de projet ne la détectent. Nous avons économisé 180 k€ sur un seul projet.</div>
+      <div class="testi-author">CIO</div>
+      <div class="testi-role">Établissement financier · Actifs sous gestion 4 Md€</div>
+    </div>
+    <div class="testi">
+      <div class="testi-quote">Je présente le dashboard Samaritan© directement en COMEX. Plus de préparation manuelle, plus d'erreurs de consolidation. La confiance du board a changé de nature.</div>
+      <div class="testi-author">PMO Director</div>
+      <div class="testi-role">Cabinet de conseil · 12 pays</div>
+    </div>
+  </div>
+</section>
 </div>
 
-<!-- ===== PRICING ===== -->
-<div id="page-pricing" class="page">
-  <div class="section" style="padding-top:4rem">
-    <div style="text-align:center;margin-bottom:0.75rem">
-      <div class="eyebrow">Tarification simple</div>
-      <div class="sh2 syne">Le bon plan pour chaque profil</div>
-      <p style="color:var(--text2);font-size:0.95rem;max-width:480px;margin:0.75rem auto">Essai gratuit 14 jours sans carte bancaire. Le créateur du projet gère les sièges — les invités accèdent gratuitement.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pc">
-        <div class="pc-plan syne">Solo</div><div class="pc-sub">Consultant indépendant, PMO freelance</div>
-        <div class="pc-price syne"><sup style="font-size:1.1rem;vertical-align:super">€</sup>29</div>
-        <div class="pc-period">/ mois · 1 utilisateur · 3 projets</div>
-        <ul class="pc-features">
-          <li class="pc-feat"><span class="ck">✓</span>IA Méthodo (questionnaire + libre)</li>
-          <li class="pc-feat"><span class="ck">✓</span>RACI dynamique</li>
-          <li class="pc-feat"><span class="ck">✓</span>Risk Radar© (5 risques)</li>
-          <li class="pc-feat"><span class="ck">✓</span>Gouvernance auto-générée</li>
-          <li class="pc-feat"><span class="ck">✓</span>Export PDF</li>
-          <li class="pc-feat"><span class="cx">–</span>SQL → Jira Translator</li>
-          <li class="pc-feat"><span class="cx">–</span>Module Finance EVM</li>
-          <li class="pc-feat"><span class="cx">–</span>Dashboard Samaritan</li>
-        </ul>
-        <button class="btn-pc btn-pc-out" onclick="showPage('app')">Essai gratuit 14j</button>
-      </div>
-      <div class="pc pop">
-        <div class="pop-badge">⭐ LE PLUS POPULAIRE</div>
-        <div class="pc-plan syne">Équipe</div><div class="pc-sub">PMO interne, cabinet 5 personnes</div>
-        <div class="pc-price syne"><sup style="font-size:1.1rem;vertical-align:super">€</sup>79</div>
-        <div class="pc-period">/ mois · 5 utilisateurs · Projets illimités</div>
-        <ul class="pc-features">
-          <li class="pc-feat"><span class="ck">✓</span>Tous les modules Solo</li>
-          <li class="pc-feat"><span class="ck">✓</span>Risk Radar© illimité</li>
-          <li class="pc-feat"><span class="ck">✓</span>SQL → Jira Translator</li>
-          <li class="pc-feat"><span class="ck">✓</span>Module Finance EVM & ROI</li>
-          <li class="pc-feat"><span class="ck">✓</span>Environnement interne</li>
-          <li class="pc-feat"><span class="ck">✓</span>Invitations collaborateurs</li>
-          <li class="pc-feat"><span class="ck">✓</span>Export PDF + Word + Excel</li>
-          <li class="pc-feat"><span class="cx">–</span>Dashboard Samaritan</li>
-        </ul>
-        <button class="btn-pc btn-pc-teal" onclick="showPage('app')">Démarrer maintenant</button>
-      </div>
-      <div class="pc">
-        <div class="pc-plan syne">Programme</div><div class="pc-sub">DSI, CIO, grand cabinet, COMEX</div>
-        <div class="pc-price syne"><sup style="font-size:1.1rem;vertical-align:super">€</sup>199</div>
-        <div class="pc-period">/ mois · 20 utilisateurs · Multi-projets</div>
-        <ul class="pc-features">
-          <li class="pc-feat"><span class="ck">✓</span>Tout le plan Équipe</li>
-          <li class="pc-feat"><span class="ck">✓</span>Dashboard Samaritan complet</li>
-          <li class="pc-feat"><span class="ck">✓</span>Vue portfolio multi-projets</li>
-          <li class="pc-feat"><span class="ck">✓</span>Alertes proactives Risk Radar</li>
-          <li class="pc-feat"><span class="ck">✓</span>Reporting COMEX auto-généré</li>
-          <li class="pc-feat"><span class="ck">✓</span>API Jira / Monday / Notion</li>
-          <li class="pc-feat"><span class="ck">✓</span>SSO / Auth entreprise</li>
-          <li class="pc-feat"><span class="ck">✓</span>Support prioritaire</li>
-        </ul>
-        <button class="btn-pc btn-pc-navy" onclick="showToast('📧 Demande envoyée — retour sous 24h')">Contacter l'équipe</button>
-      </div>
-      <div class="pc" style="border-color:var(--gold3);border-width:2px">
-        <div class="pc-plan syne">Entreprise</div><div class="pc-sub">Grands groupes, déploiement global</div>
-        <div class="pc-price syne" style="font-size:1.7rem">Sur devis</div>
-        <div class="pc-period">Utilisateurs illimités · SLA · Branding</div>
-        <ul class="pc-features">
-          <li class="pc-feat"><span class="ck">✓</span>Tout le plan Programme</li>
-          <li class="pc-feat"><span class="ck">✓</span>Utilisateurs illimités</li>
-          <li class="pc-feat"><span class="ck">✓</span>Branding personnalisé</li>
-          <li class="pc-feat"><span class="ck">✓</span>On-premise possible</li>
-          <li class="pc-feat"><span class="ck">✓</span>Intégration SI sur mesure</li>
-          <li class="pc-feat"><span class="ck">✓</span>Formation équipes incluse</li>
-          <li class="pc-feat"><span class="ck">✓</span>SLA 99.9% garanti</li>
-          <li class="pc-feat"><span class="ck">✓</span>Account Manager dédié</li>
-        </ul>
-        <button class="btn-pc btn-pc-out" onclick="showToast('📧 Demande envoyée — retour sous 24h')">Demander un devis</button>
-      </div>
-    </div>
-    <div style="background:rgba(13,148,136,0.06);border:1px solid rgba(13,148,136,0.2);border-radius:var(--r2);padding:1.75rem;max-width:640px;margin:2.5rem auto;text-align:center">
-      <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem">💡 Modèle d'invitation</div>
-      <p style="font-size:13px;color:var(--text2);line-height:1.7">C'est <strong>le créateur du projet</strong> qui gère les sièges. Vous invitez consultants, éditeurs, développeurs — ils accèdent <strong>gratuitement</strong> dans la limite de vos sièges. Au-delà, un upgrade est proposé automatiquement.</p>
-    </div>
-  </div>
-</div>
+<!-- CLOSING CTA -->
+<section class="closing fade">
+  <h2 class="sh">Réservez 30 minutes.<br><em>Pas davantage.</em></h2>
+  <p class="lead">Une démonstration privée, adaptée à votre contexte, menée par un expert PMO — pas un commercial. Sans présentation générique.</p>
+  <a href="mailto:contact@evolsphere.io?subject=Demande%20démonstration%20privée" class="btn-gold">Réserver une démonstration</a>
+</section>
 
-<!-- ===== APP ===== -->
-<div id="page-app" class="page">
-  <div class="app-layout">
-    <aside class="sidebar">
-      <div class="sb-proj">
-        <div class="sb-proj-label">PROJET ACTIF</div>
-        <div class="sb-proj-name">Programme CRM</div>
-        <div class="sb-proj-meta">Programme · Hybride Agile</div>
-      </div>
-      <div class="sb-section"><div class="sb-label">IA & Méthode</div>
-        <button class="sb-item active" onclick="showMod('wizard')"><span class="sb-icon">🎯</span>IA Méthodo</button></div>
-      <div class="sb-section"><div class="sb-label">Gouvernance</div>
-        <button class="sb-item" onclick="showMod('raci')"><span class="sb-icon">📋</span>RACI</button>
-        <button class="sb-item" onclick="showMod('governance')"><span class="sb-icon">🏛</span>Gouvernance</button></div>
-      <div class="sb-section"><div class="sb-label">Risques</div>
-        <button class="sb-item" onclick="showMod('risk')"><span class="sb-icon">🔴</span>Risk Radar©<span class="sb-badge">2</span></button>
-        <button class="sb-item" onclick="showMod('env')"><span class="sb-icon">🔗</span>Env. Interne</button></div>
-      <div class="sb-section"><div class="sb-label">Finances</div>
-        <button class="sb-item" onclick="showMod('finance')"><span class="sb-icon">💰</span>Finance EVM</button></div>
-      <div class="sb-section"><div class="sb-label">Outils</div>
-        <button class="sb-item" onclick="showMod('sql')"><span class="sb-icon">💬</span>SQL → Jira</button></div>
-      <div class="sb-section"><div class="sb-label">Documents</div>
-        <button class="sb-item" onclick="showMod('docs');loadDocs()"><span class="sb-icon">📁</span>Documents & GED</button></div>
-      <div class="sb-section"><div class="sb-label">Portfolio</div>
-        <button class="sb-item" onclick="showMod('samaritan')"><span class="sb-icon">🌐</span>Samaritan</button></div>
-      <div class="sb-section"><div class="sb-label">Collaboration</div>
-        <button class="sb-item" onclick="showMod('team')"><span class="sb-icon">👥</span>Équipe</button></div>
-    </aside>
-
-    <div class="app-content">
-
-      <!-- WIZARD -->
-      <div class="mpanel active" id="mod-wizard">
-        <div class="ph"><div class="ph-title">🎯 IA Méthodo</div><div class="ph-sub">Analyse de votre projet — recommandation méthodologique intelligente</div></div>
-        <div class="ebar"><span class="ebar-label">Exporter :</span>
-          <button class="ebar-btn" onclick="openModal('m-export')">📄 PDF</button>
-          <button class="ebar-btn" onclick="openModal('m-export')">📊 Excel</button>
-          <button class="ebar-btn" onclick="openModal('m-export')">🔗 Partager</button>
-          <button class="btn btn-out" style="margin-left:auto;font-size:11px" onclick="openModal('m-invite')">👥 Inviter</button>
-        </div>
-        <div id="wiz-mode" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem">
-          <div style="border:1.5px solid var(--teal);border-radius:var(--r);padding:1.1rem;cursor:pointer;background:rgba(13,148,136,0.04)" onclick="startWiz('guided')"><div style="font-size:1.4rem;margin-bottom:6px">🎯</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin-bottom:3px">Questionnaire guidé</div><div style="font-size:11px;color:var(--text2)">8 questions ciblées</div></div>
-          <div style="border:1.5px solid var(--border);border-radius:var(--r);padding:1.1rem;cursor:pointer" onclick="startWiz('free')"><div style="font-size:1.4rem;margin-bottom:6px">✏️</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin-bottom:3px">Description libre</div><div style="font-size:11px;color:var(--text2)">L'IA analyse votre texte</div></div>
-          <div style="border:1.5px solid var(--gold3);border-radius:var(--r);padding:1.1rem;cursor:pointer;background:rgba(232,184,75,0.04)" onclick="startWiz('demo')"><div style="font-size:1.4rem;margin-bottom:6px">⚡</div><div style="font-weight:600;font-size:13px;color:var(--navy);margin-bottom:3px">Démo Retail</div><div style="font-size:11px;color:var(--text2)">Programme CRM Multi-Sites</div></div>
-        </div>
-        <div id="wiz-guided" style="display:none">
-          <div class="wiz-wrap">
-            <div class="wiz-top"><div class="wiz-prog-lbl"><span id="wqn">Q1/8</span><span id="wqs" style="color:rgba(255,255,255,0.6)">Contexte</span></div><div class="wiz-bar-track"><div class="wiz-bar-fill" id="wbar" style="width:12.5%"></div></div></div>
-            <div class="wiz-body" id="wbody"></div>
-            <div class="wiz-nav"><button class="btn btn-out" id="wprev" style="display:none" onclick="wPrev()">← Précédent</button><div style="flex:1"></div><button class="btn btn-primary" id="wnext" onclick="wNext()">Suivant →</button></div>
-          </div>
-        </div>
-        <div id="wiz-free" style="display:none">
-          <div class="card"><div class="card-title">Décrivez votre projet en langage naturel</div>
-            <textarea class="fta" id="ftxt" style="min-height:140px" placeholder="Ex : Programme de transformation CRM pour 8 sites, équipe 35 pers., budget 6M€, délai 18 mois, besoins partiellement définis, résistance des métiers, enjeux RGPD..."></textarea>
-            <div style="display:flex;gap:9px;margin-top:0.75rem">
-              <button class="btn btn-teal" onclick="analyzeText()">🔍 Analyser par IA</button>
-              <button class="btn btn-out" onclick="loadDemoFree()">⚡ Démo Retail</button>
-            </div>
-          </div>
-        </div>
-        <div id="wiz-result" style="display:none">
-          <div class="res-hero">
-            <div class="res-ey">✦ Recommandation EvolSphere</div>
-            <div class="res-nm syne" id="rname">Hybride</div>
-            <div class="res-desc" id="rdesc"></div>
-            <div class="conf-row"><span style="font-size:12px;color:rgba(255,255,255,0.55)">Confiance IA :</span><div class="conf-bar"><div class="conf-fill" id="rcfill" style="width:0%"></div></div><span class="conf-pct" id="rcpct">0%</span></div>
-          </div>
-          <div class="tabs">
-            <button class="tab-btn active" onclick="showRT('rituels',this)">📅 Rituels</button>
-            <button class="tab-btn" onclick="showRT('outils',this)">🔧 Outils</button>
-            <button class="tab-btn" onclick="showRT('plan',this)">📆 Plan 90j</button>
-            <button class="tab-btn" onclick="showRT('why',this)">💡 Justification</button>
-          </div>
-          <div id="rt-rituels"></div>
-          <div id="rt-outils" style="display:none"></div>
-          <div id="rt-plan" style="display:none"></div>
-          <div id="rt-why" style="display:none"></div>
-          <div style="display:flex;gap:9px;margin-top:1.25rem;flex-wrap:wrap">
-            <button class="btn btn-teal" onclick="showMod('raci')">📋 RACI →</button>
-            <button class="btn btn-primary" onclick="showMod('risk')">🔴 Risk Radar →</button>
-            <button class="btn btn-gold" onclick="showMod('governance')">🏛 Gouvernance →</button>
-            <button class="btn btn-out" onclick="resetWiz()">↺ Nouveau</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- DOCS -->
-      <div class="mpanel" id="mod-docs">
-        <div style="padding:2rem;color:var(--text2)">Chargement du module Documents...</div>
-      </div>
-
-      <!-- RACI -->
-      <div class="mpanel" id="mod-raci">
-        <div class="ph"><div class="ph-title">📋 RACI Dynamique</div><div class="ph-sub">Responsible · Accountable · Consulted · Informed — auto-généré selon la méthode</div></div>
-        <div class="ebar"><span class="ebar-label">Exporter :</span>
-          <button class="ebar-btn" onclick="openModal('m-export')">📄 PDF</button>
-          <button class="ebar-btn" onclick="openModal('m-export')">📊 Excel</button>
-          <button class="btn btn-out" style="margin-left:auto;font-size:11px" onclick="openModal('m-invite')">👥 Inviter</button>
-        </div>
-        <div class="tabs">
-          <button class="tab-btn active" onclick="loadRaci('hybride',this)">Hybride (Groupe)</button>
-          <button class="tab-btn" onclick="loadRaci('scrum',this)">Scrum</button>
-          <button class="tab-btn" onclick="loadRaci('waterfall',this)">Waterfall</button>
-          <button class="tab-btn" onclick="loadRaci('kanban',this)">Kanban</button>
-        </div>
-        <div class="raci-wrap"><table class="raci-tbl" id="raci-tbl"></table></div>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:1.25rem;padding:0.75rem 1rem;background:var(--bg3);border-radius:var(--r);border:1px solid var(--border);font-size:11px;color:var(--text2)">
-          <span style="display:flex;align-items:center;gap:5px"><span class="rc rR">R</span>Responsable</span>
-          <span style="display:flex;align-items:center;gap:5px"><span class="rc rA">A</span>Approbateur</span>
-          <span style="display:flex;align-items:center;gap:5px"><span class="rc rC">C</span>Consulté</span>
-          <span style="display:flex;align-items:center;gap:5px"><span class="rc rI">I</span>Informé</span>
-        </div>
-      </div>
-
-      <!-- GOVERNANCE -->
-      <div class="mpanel" id="mod-governance">
-        <div class="ph"><div class="ph-title">🏛 Gouvernance Projet</div><div class="ph-sub">Organigramme décisionnel auto-généré</div></div>
-        <div class="ebar"><button class="ebar-btn" onclick="openModal('m-export')">📄 PDF</button><button class="ebar-btn" onclick="openModal('m-export')">📝 Word</button></div>
-        <div class="tabs">
-          <button class="tab-btn active" onclick="loadGov('enterprise',this)">Programme Enterprise</button>
-          <button class="tab-btn" onclick="loadGov('pme',this)">PME / ETI</button>
-          <button class="tab-btn" onclick="loadGov('agile',this)">Agile Pure</button>
-        </div>
-        <div class="card" id="gov-chart" style="min-height:260px"></div>
-        <div class="card" id="gov-desc" style="margin-top:1rem;font-size:13px;color:var(--text2);line-height:1.7"></div>
-      </div>
-
-      <!-- RISK -->
-      <div class="mpanel" id="mod-risk">
-        <div class="ph"><div class="ph-title">🔴 Risk Radar© <span style="display:inline-block;background:var(--gold);color:var(--navy);font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;font-family:'DM Mono',monospace;vertical-align:middle;margin-left:6px">INÉDIT</span></div><div class="ph-sub">Niveau brut (Approbateur A) vs Maîtrise (Responsable R) — Delta = Risque résiduel réel</div></div>
-        <div class="ebar"><button class="ebar-btn" onclick="openModal('m-export')">📄 PDF</button><button class="ebar-btn" onclick="openModal('m-export')">📊 Excel</button></div>
-        <div style="background:#fff8ee;border:1px solid rgba(217,119,6,0.2);border-radius:var(--r);padding:1rem;margin-bottom:1.25rem;font-size:12px;color:var(--text2);line-height:1.7">
-          <strong style="color:var(--amber)">🔴 Innovation exclusive</strong> — Le <strong>A</strong> évalue le risque brut (vision stratégique). Le <strong>R</strong> évalue la maîtrise (réalité terrain). Le <strong>delta</strong> révèle le risque résiduel et déclenche une alerte si ≥ 2.
-        </div>
-        <div class="tabs">
-          <button class="tab-btn active" onclick="loadRisk('crm',this)">Programme CRM</button>
-          <button class="tab-btn" onclick="loadRisk('erp',this)">ERP</button>
-          <button class="tab-btn" onclick="loadRisk('si',this)">Transformation SI</button>
-        </div>
-        <div class="card" id="risk-content"></div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:1rem;font-size:11px;color:var(--text2)">
-          <span>🔴 Critique (5)</span><span>🟠 Élevé (4)</span><span>🟡 Moyen (3)</span><span>🟢 Faible (1-2)</span>
-          <span style="margin-left:auto;font-family:'DM Mono',monospace;color:var(--coral);font-size:10px">⚠ Delta ≥ 2 = Alerte</span>
-        </div>
-      </div>
-
-      <!-- ENV -->
-      <div class="mpanel" id="mod-env">
-        <div class="ph"><div class="ph-title">🔗 Environnement Interne</div><div class="ph-sub">Projets connexes, capacité équipes et dépendances SI</div></div>
-        <div class="ebar"><button class="ebar-btn" onclick="openModal('m-export')">📄 PDF</button><button class="btn btn-teal" style="margin-left:auto;font-size:11px" onclick="loadEnv()">⚡ Charger Groupe</button></div>
-        <div id="env-content"></div>
-      </div>
-
-      <!-- FINANCE -->
-      <div class="mpanel" id="mod-finance">
-        <div class="ph"><div class="ph-title">💰 Finance Projet — EVM & ROI</div><div class="ph-sub">Budget · Engagements · Consommé · Earned Value · ROI · Prévision à terminaison</div></div>
-        <div class="ebar"><button class="ebar-btn" onclick="openModal('m-export')">📄 PDF</button><button class="ebar-btn" onclick="openModal('m-export')">📊 Excel</button><button class="ebar-btn" onclick="openModal('m-export')">📝 Word</button></div>
-        <div class="kpi-band" id="fin-kpis"></div>
-        <div class="g2"><div class="card"><div class="card-title">Avancement budgétaire par chantier</div><div id="fin-bars"></div></div><div class="card"><div class="card-title">EVM — Earned Value Management</div><div id="fin-evm"></div></div></div>
-        <div class="card" style="margin-top:1.25rem"><div class="card-title">Engagements de dépenses</div><div id="fin-eng"></div></div>
-      </div>
-
-      <!-- SQL -->
-      <div class="mpanel" id="mod-sql">
-        <div class="ph"><div class="ph-title">💬 SQL → Jira Translator</div><div class="ph-sub">Langage naturel → JQL / SQL / Monday en quelques secondes — pour les PMO non-tech</div></div>
-        <div class="g2" style="margin-bottom:1.25rem">
-          <div class="card">
-            <div class="card-title">Votre besoin</div>
-            <input type="text" class="fi" id="nl-in" placeholder="Ex : Tous les bugs critiques assignés à Jean depuis 2 semaines non résolus" style="margin-bottom:0.75rem" onkeydown="if(event.key==='Enter')doTranslate()">
-            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0.75rem">
-              <button class="btn btn-teal" onclick="doTranslate()">🔍 Traduire</button>
-              <button class="btn btn-out" style="font-size:11px" onclick="setQ('Toutes les tâches du sprint actuel en retard assignées à l\'équipe DSI')">Démo 1</button>
-              <button class="btn btn-out" style="font-size:11px" onclick="setQ('Stories liées à l\'epic Programme CRM avec priorité High créées ce mois')">Démo 2</button>
-            </div>
-            <div style="display:flex;gap:6px">
-              <button class="tab-btn active" id="qt-jql" onclick="setQT('jql',this)">JQL (Jira)</button>
-              <button class="tab-btn" id="qt-sql" onclick="setQT('sql',this)">SQL</button>
-              <button class="tab-btn" id="qt-mon" onclick="setQT('monday',this)">Monday</button>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-title">Requête générée</div>
-            <div class="sql-area" id="sql-out" style="min-height:130px"><span class="sc2">-- La requête apparaîtra ici</span></div>
-            <div style="display:flex;gap:7px;margin-top:0.75rem">
-              <button class="btn btn-out" style="font-size:11px" onclick="copySQL()">📋 Copier</button>
-              <button class="btn btn-out" style="font-size:11px" onclick="showToast('🔗 Ouvrez Jira et collez la requête dans le champ de recherche avancée')">🔗 Jira</button>
-            </div>
-          </div>
-        </div>
-        <div class="card"><div class="card-title">Bibliothèque de requêtes fréquentes</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:0.5rem" id="sql-lib"></div></div>
-      </div>
-
-      <!-- SAMARITAN -->
-      <div class="mpanel" id="mod-samaritan">
-        <div class="ph"><div class="ph-title">🌐 Dashboard Samaritan</div><div class="ph-sub">Portfolio multi-projets · Alertes · Patterns · Conflits ressources</div></div>
-        <div class="ebar"><button class="ebar-btn" onclick="openModal('m-export')">📄 Rapport COMEX</button><button class="ebar-btn" onclick="openModal('m-export')">📊 Excel</button></div>
-        <div class="sam-hd"><div class="sam-title syne">Portefeuille Groupe — Vue Samaritan</div><div class="sam-sub">6 projets actifs · 2 alertes Risk Radar · Capacité 78%</div></div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.25rem" id="sam-kpis"></div>
-        <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.25rem">
-          <div class="card" id="sam-projs"></div>
-          <div class="card" id="sam-alerts"></div>
-        </div>
-      </div>
-
-      <!-- TEAM -->
-      <div class="mpanel" id="mod-team">
-        <div class="ph"><div class="ph-title">👥 Équipe & Invitations</div><div class="ph-sub">Gérez les accès — consultants, éditeurs, développeurs, clients</div></div>
-        <div style="display:flex;gap:10px;margin-bottom:1.5rem;flex-wrap:wrap;align-items:center">
-          <div style="background:rgba(13,148,136,0.08);border:1px solid rgba(13,148,136,0.2);border-radius:var(--r);padding:10px 16px;font-size:12px"><strong style="color:var(--teal)">Plan Équipe</strong> · 3 sièges disponibles sur 5 · <a href="#" style="color:var(--teal);text-decoration:none" onclick="showPage('pricing')">Upgrader →</a></div>
-          <button class="btn btn-teal" onclick="openModal('m-invite')">+ Inviter</button>
-        </div>
-        <div class="card" style="margin-bottom:1.25rem"><div class="card-title">Membres du projet</div><div id="team-members"></div></div>
-        <div class="card"><div class="card-title">Documents partagés</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:0.5rem" id="docs-grid"></div></div>
-      </div>
-
-    </div>
-  </div>
-</div>
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">Evol<span>Sphere</span></div>
+  <div class="foot-note">© 2026 EvolSphere · Document confidentiel · Réservé aux décideurs</div>
+</footer>
 
 <script>
-// ========== DATA ==========
-const QS=[
-  {s:"Type",q:"Type de projet ?",h:"Le type influence la méthodologie recommandée",
-   o:[{i:"💻",l:"SI / Transformation digitale",d:"ERP, CRM, refonte applicative",v:"si"},{i:"🏗",l:"Produit / Développement",d:"App, site web, produit digital",v:"produit"},{i:"🔄",l:"Transformation organisationnelle",d:"Réorganisation, processus",v:"orga"},{i:"🌐",l:"Programme stratégique",d:"Multi-projets, multi-équipes",v:"programme"}]},
-  {s:"Besoins",q:"Les besoins sont-ils définis ?",h:"Besoins figés → prédictif. Évolutifs → Agile.",
-   o:[{i:"✅",l:"Très bien définis",d:"Cahier des charges complet",v:"fixes"},{i:"📝",l:"Partiellement définis",d:"Grandes lignes claires",v:"partiel"},{i:"🌊",l:"Peu définis",d:"Vision générale à co-construire",v:"vague"},{i:"❓",l:"À découvrir",d:"Exploration, R&D, innovation",v:"explore"}]},
-  {s:"Équipe",q:"Taille de l'équipe ?",h:"La taille détermine la gouvernance",
-   o:[{i:"👤",l:"1-3 personnes",d:"Projet individuel",v:"solo"},{i:"👥",l:"4-9 personnes",d:"Équipe Scrum idéale",v:"small"},{i:"🏢",l:"10-30 personnes",d:"Plusieurs équipes",v:"medium"},{i:"🌐",l:"30+ personnes",d:"Programme, SAFe",v:"large"}]},
-  {s:"Délais",q:"Le délai est-il flexible ?",h:"Délai imposé → Waterfall/Hybride",
-   o:[{i:"⏰",l:"Fixe et non négociable",d:"Date imposée",v:"fixed"},{i:"📅",l:"Indicatif",d:"Objectif ajustable",v:"soft"},{i:"🔄",l:"Sans délai précis",d:"Livraison continue",v:"continuous"}]},
-  {s:"Risque",q:"Niveau de risque ?",h:"Haut risque → Risk Radar© + gouvernance renforcée",
-   o:[{i:"🟢",l:"Faible",d:"Technologie connue",v:"low"},{i:"🟡",l:"Moyen",d:"Quelques incertitudes",v:"medium"},{i:"🟠",l:"Élevé",d:"Nombreuses parties prenantes",v:"high"},{i:"🔴",l:"Critique",d:"Programme COMEX, conformité",v:"critical"}]},
-  {s:"Maturité Agile",q:"Maturité Agile de l'organisation ?",h:"Sans culture Agile, Scrum pur = risque d'échec",
-   o:[{i:"🌱",l:"Débutante",d:"Pas d'expérience Agile",v:"none"},{i:"📖",l:"En apprentissage",d:"Quelques équipes",v:"learning"},{i:"⚡",l:"Confirmée",d:"Agile ancré, PO formés",v:"confirmed"},{i:"🏆",l:"Avancée (SAFe)",d:"PI Planning, ARTs",v:"safe"}]},
-  {s:"Budget",q:"Fourchette budgétaire ?",h:"Le budget impacte la gouvernance",
-   o:[{i:"💶",l:"< 100K€",d:"Petit projet",v:"xs"},{i:"💰",l:"100K€-1M€",d:"Projet structuré",v:"sm"},{i:"💎",l:"1M€-10M€",d:"Programme, COPIL",v:"md"},{i:"🏦",l:"> 10M€",d:"Programme COMEX",v:"xl"}]},
-  {s:"Secteur",q:"Secteur d'activité ?",h:"Contraintes réglementaires spécifiques",
-   o:[{i:"🏨",l:"Hôtellerie / Luxe",d:"Expérience client, RGPD",v:"hosp"},{i:"🏦",l:"Finance / Banque",d:"Conformité, audit",v:"fin"},{i:"🛒",l:"Retail / E-commerce",d:"Omnicanal, supply chain",v:"retail"},{i:"🏭",l:"Industrie / Tech",d:"R&D, transformation",v:"other"}]}
-];
+  // Scroll fade-in
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
 
-const ME={
-  waterfall:{n:"Waterfall / Cycle en V",e:"🏗",d:"Approche séquentielle. Chaque phase validée avant la suivante. Idéal pour besoins figés et conformité réglementaire.",c:87,
-    ri:[{n:"Comité de pilotage",f:"Mensuel",d:"Revue avancement, budget, risques"},{n:"Revue de phase / Jalon",f:"Par phase",d:"Go/No-Go formel — validation livrables"},{n:"Comité de projet",f:"Hebdo",d:"Suivi opérationnel, blocages, actions"},{n:"Revue Risk Radar©",f:"Bi-mensuel",d:"Niveau brut (A) vs maîtrise (R)"},{n:"PV de recette",f:"Par livrable",d:"Validation formelle MOA avec signature"}],
-    to:[{n:"MS Project",c:"Planning",co:"#0078d4"},{n:"Confluence",c:"Docs",co:"#0052cc"},{n:"JIRA",c:"Suivi jalons",co:"#0052cc"},{n:"Risk Radar©",c:"Risques A vs R",co:"#e05c4b"},{n:"SharePoint",c:"Documents",co:"#0078d4"},{n:"PowerBI",c:"Reporting",co:"#f2c811"}],
-    p1:["Lancement officiel et charte","Validation budget","Constitution équipe","Kick-off COPIL","Cartographie parties prenantes","Mise en place Risk Radar©"],
-    p2:["Analyse et spécifications","Cahier des charges finalisé","Sélection fournisseurs","Gouvernance opérationnelle","Première revue risques"],
-    p3:["Validation architecture","Démarrage réalisation","Formation équipes","Tableaux de bord","Premier COPIL formel"],
-    w:"Waterfall recommandé : besoins bien définis, conformité réglementaire forte, livrable clairement spécifié. Séquentialité = maîtrise des coûts et du planning. Gouvernance formelle adaptée au COMEX."},
-  scrum:{n:"Scrum",e:"🔄",d:"Sprints de 2 semaines. Livraison incrémentale, feedback rapide, adaptation continue. Idéal pour besoins évolutifs.",c:91,
-    ri:[{n:"Sprint Planning",f:"Bi-hebdo",d:"Sélection user stories — 2 à 4h"},{n:"Daily Standup",f:"Quotidien",d:"15 min : hier / aujourd'hui / blocages"},{n:"Sprint Review",f:"Bi-hebdo",d:"Démo produit au Product Owner"},{n:"Sprint Retrospective",f:"Bi-hebdo",d:"Amélioration continue"},{n:"Backlog Refinement",f:"Hebdo",d:"Affinage et priorisation"}],
-    to:[{n:"JIRA",c:"Backlog & Sprints",co:"#0052cc"},{n:"Confluence",c:"Documentation",co:"#0052cc"},{n:"Miro",c:"Rétrospectives",co:"#f24e1e"},{n:"Slack",c:"Communication",co:"#4a154b"},{n:"Figma",c:"Design UI",co:"#f24e1e"},{n:"GitHub",c:"Code source",co:"#24292e"}],
-    p1:["Formation Scrum équipe","Product Backlog initial","Identification Product Owner","Sprint 0 : setup","Definition of Done","JIRA configuré"],
-    p2:["Sprints 1-2 : premiers incréments","Ajustement vélocité","CI/CD déployée","Premières démos stakeholders"],
-    p3:["Sprints 3-6 : livraisons continues","Mesure burn-down","Ajustement backlog","Release planning 6 mois"],
-    w:"Scrum recommandé : besoins évolutifs, équipe pluridisciplinaire, valeur à livrer de façon incrémentale. La maturité Agile permet d'adopter les cérémonies sans friction."},
-  hybride:{n:"Hybride Agile + Waterfall",e:"⚖",d:"Structure Waterfall (gouvernance, jalon, budget) + flexibilité Agile (sprints, backlog). Optimal pour les transformations complexes multi-équipes.",c:94,
-    ri:[{n:"COPIL mensuel",f:"Mensuel",d:"Vision macro, budget, jalons, risques stratégiques"},{n:"PI Planning (SAFe)",f:"Tri-mensuel",d:"Alignement toutes équipes sur les OKR"},{n:"Sprint Review",f:"Bi-hebdo",d:"Démo incréments — Agile"},{n:"Daily Standup",f:"Quotidien",d:"15 min par équipe"},{n:"Revue Risk Radar©",f:"Bi-mensuel",d:"Brut (A) vs maîtrise (R) — alertes"},{n:"Comité de programme",f:"Mensuel",d:"Synchro inter-chantiers, dépendances"}],
-    to:[{n:"JIRA / Plans",c:"Portfolio & Sprints",co:"#0052cc"},{n:"Confluence",c:"Documentation",co:"#0052cc"},{n:"Miro",c:"PI Planning",co:"#f24e1e"},{n:"MS Project Online",c:"Planning macro",co:"#0078d4"},{n:"PowerBI",c:"Dashboard COPIL",co:"#f2c811"},{n:"Risk Radar©",c:"Risques A vs R",co:"#e05c4b"}],
-    p1:["Cadrage programme et charte","Constitution équipe programme","Kick-off multi-équipes","PI Planning initial","Risk Radar© déployé","Gouvernance COPIL définie"],
-    p2:["Sprints 1-3 : fondations SI","Gouvernance data","Premiers ateliers métier","Revue risques brut vs maîtrise","Ajustement capacité"],
-    p3:["Premières livraisons pilote","Démo COPIL","Ajustement PI Planning","Extension périmètres","KPIs programme mesurés"],
-    w:"Hybride recommandé : programme multi-équipes, besoins évolutifs mais gouvernance structurée requise. Le Sponsor COMEX exige visibilité macro + agilité opérationnelle. Meilleur équilibre contrôle/rapidité."},
-  kanban:{n:"Kanban",e:"📊",d:"Flux continu par visualisation et limitation des encours (WIP). Idéal pour maintenance, support et flux de demandes continues.",c:85,
-    ri:[{n:"Standup quotidien",f:"Quotidien",d:"Revue board — blocages et flux"},{n:"Flow Review",f:"Hebdo",d:"Lead time, WIP, throughput"},{n:"Revue des politiques",f:"Mensuel",d:"Ajustement WIP limits et critères"},{n:"Retrospective Kanban",f:"Mensuel",d:"Amélioration continue du flux"}],
-    to:[{n:"Trello",c:"Board visuel",co:"#0052cc"},{n:"JIRA Kanban",c:"Flux avancé",co:"#0052cc"},{n:"Notion",c:"Documentation",co:"#000"},{n:"Slack",c:"Communication",co:"#4a154b"},{n:"Clockify",c:"Lead Time",co:"#03a9f4"},{n:"Monday",c:"Reporting",co:"#ff3d57"}],
-    p1:["Définition board Kanban","Colonnes et états définis","Formation équipe","Limites WIP définies","Premier standup"],
-    p2:["Mesure lead time initial","Goulets identifiés","WIP limits ajustées","Reporting flux"],
-    p3:["Optimisation du flux","Lead time réduit mesuré","Extension board","Métriques throughput"],
-    w:"Kanban recommandé : flux de demandes continues, équipe en mode maintenance. Priorité à la fluidité et réactivité. Les WIP limits révèlent et résolvent les goulets progressivement."}
-};
-
-const RACI={
-  hybride:{cols:["Chef Programme","Sponsor (COMEX)","MOA / Métier","DSI / CIO","Fournisseur","COPIL"],
-    rows:[["Charte et budget programme","R","A","C","C","","I"],["Gouvernance et COPIL","R","A","I","I","","I"],["PI Planning trimestriel","R","C","C","C","C","I"],["Architecture SI cible","C","I","C","A","R",""],["Spécifications fonctionnelles","R","I","A","C","I",""],["Développement / Intégration","I","","C","R","A",""],["Tests et recette UAT","R","I","A","C","R","I"],["Conduite du changement","R","C","A","C","","I"],["Formation utilisateurs","R","I","A","C","R","I"],["Déploiement production","R","A","C","R","C","I"],["Revue Risk Radar©","R","A","C","C","I","I"],["Reporting COPIL mensuel","R","C","C","C","","A"],["Suivi budget OPEX/CAPEX","R","A","I","C","","I"],["Clôture de projet","R","A","C","C","I","I"]]},
-  scrum:{cols:["Scrum Master","Product Owner","Équipe Dev","Sponsor","Utilisateurs","COPIL"],
-    rows:[["Product Backlog","C","A","R","I","C","I"],["Sprint Planning","R","A","C","I","",""],["User Stories","C","A","R","I","C",""],["Daily Standup","R","C","R","I","",""],["Développement","C","C","R","","",""],["Sprint Review","R","A","R","I","C","I"],["Retrospective","A","R","R","","",""],["Release","R","A","R","I","C","I"],["Risques techniques","R","C","C","A","","I"]]},
-  waterfall:{cols:["Chef Projet","Sponsor","MOA","MOE/Tech","Fournisseur","COPIL"],
-    rows:[["Cahier des charges","R","A","C","C","I","I"],["Plan de projet","A","A","C","C","","I"],["Spécifications","R","I","A","C","I",""],["Conception technique","C","","C","A","R",""],["Développement","I","","C","R","A",""],["Tests intégration","R","I","A","R","C",""],["Tests UAT","R","A","A","C","C","I"],["Formation","R","I","A","C","R","I"],["Déploiement","R","A","C","R","R","I"],["Bilan / Clôture","R","A","C","C","I","I"]]},
-  kanban:{cols:["Kanban Master","Team Lead","Équipe","Client / MOA","Manager"],
-    rows:[["Board Kanban","A","C","C","I","I"],["WIP limits","A","C","C","I","C"],["Triage demandes","C","R","C","A","I"],["Traitement tickets","I","C","R","C",""],["Blocages","R","A","C","C","I"],["Métriques flux","R","C","C","I","A"],["Revue politiques","A","C","C","C","I"]]}
-};
-
-const GOV={
-  enterprise:{d:"Gouvernance Enterprise pour programmes >1M€, multi-équipes. Sponsor COMEX = arbitrages stratégiques. PMO = Risk Radar© et budget.",lv:[{n:[{r:"SPONSOR EXÉCUTIF",nm:"DG / COMEX",c:"on-spo"}]},{n:[{r:"COMITÉ DE PILOTAGE",nm:"COPIL (DSI + DAF + DG)",c:"on-cop"}]},{n:[{r:"MOA / MÉTIER",nm:"Directeur Métier",c:"on-moa"},{r:"CHEF DE PROGRAMME",nm:"Programme Manager",c:"on-che"},{r:"DSI / CIO",nm:"Directeur SI",c:"on-moe"}]},{n:[{r:"CHEF PROJET SI",nm:"Équipe Technique",c:"on-tea"},{r:"PMO",nm:"Gouvernance / Risk Radar©",c:"on-tea"},{r:"AMOA",nm:"Référents Métier",c:"on-tea"},{r:"CHANGE MGMT",nm:"Conduite du Changement",c:"on-tea"}]}]},
-  pme:{d:"Gouvernance PME allégée. Chef de Projet central, rituels simplifiés, Risk Radar© sur 5-8 risques max.",lv:[{n:[{r:"SPONSOR",nm:"Dirigeant / DG",c:"on-spo"}]},{n:[{r:"CHEF DE PROJET",nm:"PM interne ou consultant",c:"on-che"},{r:"RÉFÉRENT MÉTIER",nm:"Utilisateur clé",c:"on-moa"}]},{n:[{r:"ÉQUIPE PROJET",nm:"2 à 5 personnes",c:"on-tea"},{r:"PRESTATAIRE",nm:"Intégrateur / ESN",c:"on-tea"}]}]},
-  agile:{d:"Gouvernance Agile pure : auto-organisation autour du PO et Scrum Master. Le board remplace les reportings. Risk Radar© en Retrospective.",lv:[{n:[{r:"PRODUCT OWNER",nm:"Représentant Métier",c:"on-moa"}]},{n:[{r:"SCRUM MASTER",nm:"Facilitateur Agile",c:"on-che"}]},{n:[{r:"DEV TEAM",nm:"3-7 personnes",c:"on-tea"},{r:"STAKEHOLDERS",nm:"Parties prenantes",c:"on-tea"}]}]}
-};
-
-const RD={
-  crm:[{n:"Intégration SI multi-sites (ERP + CRM + WMS)",b:4,m:2},{n:"Résistance des métiers — silos organisationnels",b:4,m:3},{n:"Qualité données client (doublons, fragmentation)",b:3,m:3},{n:"Conformité RGPD + sécurité des données",b:4,m:2},{n:"Cybersécurité — données clients sensibles",b:4,m:3},{n:"Dérive budgétaire — programme >18 mois",b:3,m:3},{n:"Déploiement international prématuré",b:3,m:4},{n:"Adoption utilisateurs insuffisante",b:3,m:3}],
-  erp:[{n:"Périmètre fonctionnel mal défini en amont",b:4,m:2},{n:"Disponibilité référents métier clés",b:4,m:3},{n:"Migration données historiques",b:4,m:3},{n:"Personnalisation excessive ERP standard",b:3,m:2},{n:"Résistance au changement utilisateurs",b:5,m:3},{n:"Dépassement budget (licences + intégration)",b:3,m:3}],
-  si:[{n:"Gouvernance SI absente — sponsor non identifié",b:5,m:2},{n:"Dépendances inter-systèmes non cartographiées",b:4,m:3},{n:"Ressources internes insuffisantes",b:3,m:3},{n:"Obsolescence systèmes sources",b:4,m:2},{n:"Rupture compétences legacy",b:3,m:4},{n:"Planning irréaliste imposé",b:4,m:3}]
-};
-
-const SPROJ=[{n:"Programme CRM Multi-Sites",m:"Hybride",b:"8.5M€",s:"at-risk",p:"Phase 1 / Fondations"},{n:"ERP Finance — Consolidation",m:"Waterfall",b:"2.1M€",s:"on-track",p:"Spécifications"},{n:"App Mobile Fidélité Groupe",m:"Scrum",b:"680K€",s:"on-track",p:"Sprint 4/12"},{n:"Migration Infrastructure Cloud",m:"Kanban",b:"1.2M€",s:"critical",p:"Déploiement"},{n:"Refonte WMS Logistique",m:"Hybride",b:"3.4M€",s:"on-track",p:"PI Planning Q3"},{n:"CSRD — Reporting Durabilité",m:"Waterfall",b:"450K€",s:"at-risk",p:"Analyse"}];
-
-function rlvl(s){if(s>=5)return{cls:"bg-red",l:"CRITIQUE",e:"🔴"};if(s>=4)return{cls:"bg-amber",l:"ÉLEVÉ",e:"🟠"};if(s>=3)return{cls:"",l:"MOYEN",e:"🟡",st:"background:rgba(234,179,8,0.1);color:#ca8a04"};return{cls:"bg-green",l:"FAIBLE",e:"🟢"}}
-
-// STATE
-let wQ=0,wAns=[],curRisk='crm',qType='jql';
-
-// NAV
-function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');window.scrollTo(0,0);if(p==='app')initApp();}
-function scrollToMods(){showPage('landing');setTimeout(()=>document.getElementById('mods-section').scrollIntoView({behavior:'smooth'}),100);}
-function goMod(m){showPage('app');setTimeout(()=>showMod(m),100);}
-function showMod(m){
-  document.querySelectorAll('.mpanel').forEach(x=>x.classList.remove('active'));
-  document.getElementById('mod-'+m).classList.add('active');
-  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.sb-item').forEach(x=>{const oc=x.getAttribute('onclick')||'';if(oc.includes("'"+m+"'"))x.classList.add('active');});
-}
-function initApp(){loadRaci('hybride');loadGov('enterprise');loadRisk('crm');loadEnv();loadFinance();loadSQL();loadSam();loadTeam();}
-
-// WIZARD
-function startWiz(mode){
-  document.getElementById('wiz-mode').style.display='none';
-  document.getElementById('wiz-guided').style.display='none';
-  document.getElementById('wiz-free').style.display='none';
-  document.getElementById('wiz-result').style.display='none';
-  if(mode==='guided'){wQ=0;wAns=[];document.getElementById('wiz-guided').style.display='block';renderQ();}
-  else if(mode==='free'){document.getElementById('wiz-free').style.display='block';}
-  else{showRes('hybride',94);}
-}
-function renderQ(){
-  const q=QS[wQ];
-  document.getElementById('wqn').textContent=`Q${wQ+1}/${QS.length}`;
-  document.getElementById('wqs').textContent=q.s;
-  document.getElementById('wbar').style.width=((wQ+1)/QS.length*100)+'%';
-  document.getElementById('wbody').innerHTML=`
-    <div class="wiz-qn">Question ${wQ+1} sur ${QS.length}</div>
-    <div class="wiz-qt">${q.q}</div>
-    <div class="wiz-qh">${q.h}</div>
-    <div class="wiz-opts">${q.o.map(o=>`<div class="wiz-opt ${wAns[wQ]===o.v?'sel':''}" onclick="pickOpt('${o.v}',this)"><span class="wiz-oi">${o.i}</span><div class="wiz-ol">${o.l}</div><div class="wiz-od">${o.d}</div></div>`).join('')}</div>`;
-  document.getElementById('wprev').style.display=wQ>0?'flex':'none';
-  document.getElementById('wnext').textContent=wQ===QS.length-1?'🔍 Analyser →':'Suivant →';
-}
-function pickOpt(v,el){wAns[wQ]=v;document.querySelectorAll('.wiz-opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');}
-function wNext(){if(!wAns[wQ]){showToast('⚠ Veuillez sélectionner une réponse');return;}if(wQ<QS.length-1){wQ++;renderQ();}else{calcRes();}}
-function wPrev(){if(wQ>0){wQ--;renderQ();}}
-function calcRes(){
-  const s={waterfall:0,scrum:0,hybride:0,kanban:0};
-  const a=wAns;
-  if(a[1]==='fixes'){s.waterfall+=3;s.hybride+=1;}else if(a[1]==='partiel'){s.hybride+=3;s.scrum+=2;}else if(a[1]==='vague'){s.scrum+=3;s.hybride+=1;}else{s.scrum+=4;}
-  if(a[2]==='solo'){s.kanban+=3;}else if(a[2]==='small'){s.scrum+=3;}else if(a[2]==='medium'){s.hybride+=3;s.waterfall+=1;}else{s.hybride+=4;s.waterfall+=1;}
-  if(a[3]==='fixed'){s.waterfall+=3;s.hybride+=2;}else if(a[3]==='continuous'){s.kanban+=3;}else{s.hybride+=2;s.scrum+=2;}
-  if(a[5]==='none'){s.waterfall+=3;}else if(a[5]==='learning'){s.hybride+=3;}else if(a[5]==='confirmed'){s.scrum+=3;s.hybride+=2;}else{s.hybride+=4;}
-  if(a[6]==='md'||a[6]==='xl'){s.hybride+=2;s.waterfall+=1;}
-  if(a[4]==='critical'||a[4]==='high'){s.hybride+=2;}
-  if(a[0]==='programme'){s.hybride+=3;}
-  if(a[7]==='hosp'||a[7]==='fin'){s.waterfall+=1;s.hybride+=2;}
-  const best=Object.entries(s).sort((a,b)=>b[1]-a[1])[0][0];
-  const tot=Object.values(s).reduce((a,b)=>a+b,0);
-  const conf=Math.min(97,Math.round(s[best]/tot*200+32));
-  showRes(best,conf);
-}
-function analyzeText(){
-  const t=document.getElementById('ftxt').value;
-  if(t.length<20){showToast('⚠ Décrivez votre projet plus en détail');return;}
-  let m='hybride';
-  if(/maintenance|support|continu|kanban/i.test(t))m='kanban';
-  else if(/sprint|scrum|agile/i.test(t)&&!/programme|complex/i.test(t))m='scrum';
-  else if(/spécif.*fix|cahier.*charge.*complet/i.test(t))m='waterfall';
-  showRes(m,Math.min(93,72+Math.floor(t.length/40)));
-}
-function loadDemoFree(){showRes('hybride',94);}
-function showRes(method,conf){
-  const m=ME[method];
-  document.getElementById('wiz-guided').style.display='none';
-  document.getElementById('wiz-free').style.display='none';
-  document.getElementById('wiz-result').style.display='block';
-  document.getElementById('rname').textContent=m.e+' '+m.n;
-  document.getElementById('rdesc').textContent=m.d;
-  setTimeout(()=>{document.getElementById('rcfill').style.width=conf+'%';document.getElementById('rcpct').textContent=conf+'%';},300);
-  document.getElementById('rt-rituels').innerHTML=`<div class="card"><div class="card-title">📅 Rituels — ${m.n}</div>${m.ri.map(r=>`<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);gap:10px"><div><div style="font-size:13px;font-weight:500">${r.n}</div><div style="font-size:11px;color:var(--text2);margin-top:1px">${r.d}</div></div><span class="badge bg-teal" style="white-space:nowrap;flex-shrink:0">${r.f}</span></div>`).join('')}</div>`;
-  document.getElementById('rt-outils').innerHTML=`<div class="card"><div class="card-title">🔧 Stack outils</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-top:0.5rem">${m.to.map(t=>`<div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid var(--border);border-radius:8px"><div style="width:9px;height:9px;border-radius:50%;background:${t.co};flex-shrink:0"></div><div><div style="font-size:12px;font-weight:500">${t.n}</div><div style="font-size:10px;color:var(--text3)">${t.c}</div></div></div>`).join('')}</div></div>`;
-  document.getElementById('rt-plan').innerHTML=`<div class="plan-cols"><div class="plan-col"><div class="plan-col-hd" style="background:var(--navy)">📅 J1—30 : Lancement</div><div class="plan-col-bd">${m.p1.map(x=>`<div class="plan-item"><span class="pck">✓</span>${x}</div>`).join('')}</div></div><div class="plan-col"><div class="plan-col-hd" style="background:var(--teal)">⚡ J30—60 : Accélération</div><div class="plan-col-bd">${m.p2.map(x=>`<div class="plan-item"><span class="pck">✓</span>${x}</div>`).join('')}</div></div><div class="plan-col"><div class="plan-col-hd" style="background:var(--purple)">🚀 J60—90 : Stabilisation</div><div class="plan-col-bd">${m.p3.map(x=>`<div class="plan-item"><span class="pck">✓</span>${x}</div>`).join('')}</div></div></div>`;
-  document.getElementById('rt-why').innerHTML=`<div class="card"><div class="card-title">💡 Justification</div><p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">${m.w}</p><div style="background:rgba(13,148,136,0.07);border:1px solid rgba(13,148,136,0.2);border-radius:8px;padding:10px 12px;font-size:12px"><strong style="color:var(--teal)">Confiance IA : ${conf}%</strong><div style="color:var(--text2);margin-top:3px">Basé sur 8 dimensions pondérées — PMBOK 8e édition 2026 — 20 ans d'expérience terrain.</div></div></div>`;
-  loadRaci(method);
-  showToast('✓ Méthode recommandée : '+m.n);
-}
-function showRT(t,btn){document.querySelectorAll('[id^="rt-"]').forEach(x=>x.style.display='none');document.querySelectorAll('#mod-wizard .tab-btn').forEach(x=>x.classList.remove('active'));document.getElementById('rt-'+t).style.display='block';btn.classList.add('active');}
-function resetWiz(){document.getElementById('wiz-mode').style.display='grid';document.getElementById('wiz-guided').style.display='none';document.getElementById('wiz-free').style.display='none';document.getElementById('wiz-result').style.display='none';}
-
-// RACI
-function loadRaci(type,btn){
-  if(btn){document.querySelectorAll('#mod-raci .tab-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');}
-  const d=RACI[type]||RACI.hybride;
-  let h=`<thead><tr><th style="min-width:180px">Livrable / Activité</th>${d.cols.map(c=>`<th style="text-align:center;min-width:100px">${c}</th>`).join('')}</tr></thead><tbody>`;
-  d.rows.forEach(row=>{h+=`<tr><td style="font-weight:500;font-size:12px">${row[0]}</td>${row.slice(1).map(v=>`<td style="text-align:center">${v?`<span class="rc r${v[0]}">${v}</span>`:''}</td>`).join('')}</tr>`;});
-  document.getElementById('raci-tbl').innerHTML=h+'</tbody>';
-}
-
-// GOVERNANCE
-function loadGov(type,btn){
-  if(btn){document.querySelectorAll('#mod-governance .tab-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');}
-  const g=GOV[type];
-  const h=g.lv.map((lv,li)=>`${li>0?'<div class="org-vline"></div>':''}<div class="org-lv">${lv.n.map(n=>`<div class="org-node ${n.c}"><div class="org-rl">${n.r}</div><div class="org-nm">${n.nm}</div></div>`).join('<div style="width:16px;border-top:1.5px solid var(--border2);align-self:center;margin-top:8px"></div>')}</div>`).join('');
-  document.getElementById('gov-chart').innerHTML=`<div class="org-tree">${h}</div>`;
-  document.getElementById('gov-desc').textContent=g.d;
-}
-
-// RISK RADAR
-function loadRisk(type,btn){
-  curRisk=type;
-  if(btn){document.querySelectorAll('#mod-risk .tab-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');}
-  const risks=RD[type];
-  let h='<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr>';
-  ['Risque','Niveau brut (A)','Maîtrise (R)','Δ','Alerte'].forEach(hd=>{h+=`<th style="background:var(--navy);color:white;padding:8px 12px;text-align:left;font-size:11px;font-weight:600;white-space:nowrap">${hd}</th>`;});
-  h+='</tr></thead><tbody>';
-  risks.forEach((r,i)=>{
-    const bl=rlvl(r.b),ml_inv=r.m>=4?'🟢 FORTE':r.m>=3?'🟡 BONNE':'🔴 FAIBLE';
-    const mc=r.m>=4?'var(--green)':r.m>=3?'var(--amber)':'var(--coral)';
-    const delta=Math.abs(r.b-r.m),alert=delta>=2;
-    h+=`<tr style="${i%2?'background:var(--bg3)':''}">
-      <td style="padding:9px 12px;font-weight:500">${r.n}</td>
-      <td style="padding:9px 12px"><span class="badge ${bl.cls}" ${bl.st?'style="'+bl.st+'"':''}>${bl.e} ${bl.l}</span>
-        <div style="margin-top:6px"><input type="range" min="1" max="5" value="${r.b}" style="width:100%;accent-color:var(--teal);height:3px" oninput="upRisk(${i},'b',parseInt(this.value),'${type}')">
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);display:flex;justify-content:space-between"><span>1</span><span>${r.b}/5</span><span>5</span></div></div></td>
-      <td style="padding:9px 12px"><span style="font-size:11px;font-weight:700;color:${mc};font-family:'DM Mono',monospace">${ml_inv}</span>
-        <div style="margin-top:6px"><input type="range" min="1" max="5" value="${r.m}" style="width:100%;accent-color:var(--green);height:3px" oninput="upRisk(${i},'m',parseInt(this.value),'${type}')">
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);display:flex;justify-content:space-between"><span>1</span><span>${r.m}/5</span><span>5</span></div></div></td>
-      <td style="padding:9px 12px;font-family:'DM Mono',monospace;font-size:1.1rem;font-weight:800;color:${delta>=2?'var(--coral)':delta>=1?'var(--amber)':'var(--green)'}">Δ${delta}</td>
-      <td style="padding:9px 12px">${alert?`<span class="badge bg-red">⚠ ALERTE</span>`:`<span style="color:var(--green);font-family:'DM Mono',monospace;font-size:11px">✓ OK</span>`}</td>
-    </tr>`;
-  });
-  document.getElementById('risk-content').innerHTML=h+'</tbody></table></div>';
-}
-function upRisk(i,f,v,type){RD[type][i][f]=v;loadRisk(type);}
-
-// ENV
-function loadEnv(){
-  const caps=[{n:"Équipe Architecture SI",p:78,c:"cf-w"},{n:"Équipe Intégration / API",p:92,c:"cf-c"},{n:"Équipe Data / CRM",p:55,c:"cf-ok"},{n:"Équipe Infrastructure",p:85,c:"cf-w"}];
-  const deps=[{s:"PMS Opera (Hôtels)",i:"CRITIQUE",c:"var(--coral)"},{s:"Système Operations propriétaire",i:"CRITIQUE",c:"var(--coral)"},{s:"Oracle Finance Groupe",i:"ÉLEVÉ",c:"var(--amber)"},{s:"Manhattan WMS",i:"MOYEN",c:"var(--teal)"},{s:"Salesforce actuel",i:"ÉLEVÉ",c:"var(--amber)"}];
-  const projs=[{n:"Migration Cloud",o:"Haute",r:"Partage Architecte SI — indisponibilité",s:"critical"},{n:"CSRD Reporting",o:"Moyenne",r:"Lead Data mobilisé à 40%",s:"at-risk"},{n:"Refonte WMS",o:"Faible",r:"Dépendance données supply chain",s:"on-track"},{n:"App Mobile Fidélité",o:"Haute",r:"Livrable dépendant du CRM",s:"at-risk"}];
-  document.getElementById('env-content').innerHTML=`
-    <div class="g3" style="margin-bottom:1.25rem">
-      <div class="card"><div class="card-title">⚡ Capacité équipe DSI</div>${caps.map(c=>`<div class="cap-wrap"><div class="cap-hd"><span class="cap-nm">${c.n}</span><span class="cap-pc">${c.p}%</span></div><div class="cap-track"><div class="cap-fill ${c.c}" style="width:${c.p}%"></div></div></div>`).join('')}</div>
-      <div class="card"><div class="card-title">🔗 Dépendances SI</div>${deps.map(d=>`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px"><span>${d.s}</span><span style="color:${d.c};font-weight:700;font-family:'DM Mono',monospace;font-size:10px">${d.i}</span></div>`).join('')}</div>
-      <div class="card"><div class="card-title">📅 Disponibilité ressources</div>${[{n:"DSI / CIO",p:80,c:"cf-ok"},{n:"Architecte SI Senior",p:40,c:"cf-c"},{n:"Lead Data / CRM",p:60,c:"cf-w"},{n:"Chef Projet Programme",p:100,c:"cf-ok"}].map(c=>`<div class="cap-wrap"><div class="cap-hd"><span class="cap-nm">${c.n}</span><span class="cap-pc">${c.p}%</span></div><div class="cap-track"><div class="cap-fill ${c.c}" style="width:${c.p}%"></div></div></div>`).join('')}</div>
-    </div>
-    <div class="card"><div class="card-title">📊 Projets connexes — impact sur Programme CRM</div><table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:0.5rem"><thead><tr>${['Projet','Overlap','Impact','Statut'].map(h=>`<th style="background:var(--bg3);padding:7px 12px;text-align:left;font-size:11px;border-bottom:1px solid var(--border)">${h}</th>`).join('')}</tr></thead><tbody>${projs.map((p,i)=>`<tr style="${i%2?'background:var(--bg3)':''}"><td style="padding:9px 12px;font-weight:500">${p.n}</td><td style="padding:9px 12px"><span class="badge ${p.o==='Haute'?'bg-red':p.o==='Moyenne'?'bg-amber':'bg-green'}">${p.o}</span></td><td style="padding:9px 12px;color:var(--text2);font-size:11px">${p.r}</td><td style="padding:9px 12px"><span class="badge ${p.s==='on-track'?'bg-green':p.s==='at-risk'?'bg-amber':'bg-red'}">${p.s==='on-track'?'✓ OK':'⚠ Risque'}</span></td></tr>`).join('')}</tbody></table></div>`;
-}
-
-// FINANCE
-function loadFinance(){
-  const kpis=[{l:"Budget total",v:"8,5 M€",s:"CAPEX 60% / OPEX 40%",kc:"var(--navy)"},{l:"Engagé",v:"3,2 M€",s:"38% du budget",kc:"var(--amber)"},{l:"Consommé",v:"2,1 M€",s:"25% — dans les limites",kc:"var(--teal)"},{l:"CPI (Coût)",v:"0.94",s:"Légèrement sous-performant",kc:"var(--amber)"},{l:"SPI (Délai)",v:"0.98",s:"Dans les temps",kc:"var(--green)"},{l:"EAC Prévision",v:"9,0 M€",s:"Dépassement estimé +0.5M€",kc:"var(--coral)"},{l:"ROI estimé",v:"3.2x",s:"Sur 5 ans post-déploiement",kc:"var(--green)"},{l:"Reste à engager",v:"5,3 M€",s:"62% disponible",kc:"var(--purple)"}];
-  document.getElementById('fin-kpis').innerHTML=kpis.map(k=>`<div class="kpi-card" style="--kc:${k.kc}"><div class="kpi-label">${k.l}</div><div class="kpi-value syne">${k.v}</div><div class="kpi-sub">${k.s}</div></div>`).join('');
-  const ch=[{n:"CRM & CDP",b:3200,e:1400,c:900},{n:"Architecture SI",b:2100,e:900,c:650},{n:"Conduite du changement",b:800,e:400,c:280},{n:"Infrastructure & Sécu",b:1200,e:350,c:210},{n:"Formation",b:500,e:150,c:80},{n:"PMO & Gouvernance",b:700,e:300,c:180}];
-  document.getElementById('fin-bars').innerHTML=ch.map(c=>{const ep=Math.round(c.e/c.b*100);const cls=ep>85?'bf-c':ep>65?'bf-w':'bf-ok';return`<div class="bb-wrap"><div class="bb-hd"><span>${c.n}</span><span style="font-family:'DM Mono',monospace">${c.e.toLocaleString()}K€/${c.b.toLocaleString()}K€</span></div><div class="bb-track"><div class="bb-fill ${cls}" style="width:${ep}%"></div></div><div style="font-size:9px;color:var(--text3);margin-top:1px;font-family:'DM Mono',monospace">Engagé ${ep}%</div></div>`}).join('');
-  document.getElementById('fin-evm').innerHTML=`<div style="display:flex;flex-direction:column;gap:9px">${[{l:"PV — Planned Value",v:"2,5 M€",c:"var(--navy)"},{l:"EV — Earned Value",v:"2,3 M€",c:"var(--teal)"},{l:"AC — Actual Cost",v:"2,1 M€",c:"var(--amber)"}].map(e=>`<div style="padding:10px;border:1px solid var(--border);border-radius:7px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:11px;font-weight:600;color:${e.c}">${e.l}</div></div><div style="font-family:'DM Mono',monospace;font-size:1rem;font-weight:700;color:${e.c}">${e.v}</div></div>`).join('')}<div style="background:rgba(224,92,75,0.07);border:1px solid rgba(224,92,75,0.2);border-radius:7px;padding:9px;font-size:11px"><strong style="color:var(--coral)">⚠ CPI = 0.94</strong> — Action corrective recommandée sur CRM & CDP.</div></div>`;
-  document.getElementById('fin-eng').innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr>${['Fournisseur','Type','Montant','Statut','Échéance'].map(h=>`<th style="background:var(--bg3);padding:7px 12px;text-align:left;font-size:11px;border-bottom:1px solid var(--border)">${h}</th>`).join('')}</tr></thead><tbody>${[['Salesforce France','Licence CRM 3 ans','1,2M€','Signé','Déc. 2026'],['Capgemini / Inetum','Intégration SI','980K€','En cours','Sep. 2025'],['Cloud Provider','Infra Cloud','340K€','Signé','Juil. 2025'],['Cabinet Change Mgmt','Conduite changement','280K€','Négociation','Aoû. 2025'],['Oracle','ERP API','180K€','Signé','Continu']].map((r,i)=>`<tr style="${i%2?'background:var(--bg3)':''}"><td style="padding:9px 12px;font-weight:500">${r[0]}</td><td style="padding:9px 12px;color:var(--text2)">${r[1]}</td><td style="padding:9px 12px;font-family:'DM Mono',monospace;font-weight:600">${r[2]}</td><td style="padding:9px 12px"><span class="badge ${r[3]==='Signé'?'bg-green':r[3]==='En cours'?'bg-teal':'bg-amber'}">${r[3]}</span></td><td style="padding:9px 12px;color:var(--text2);font-family:'DM Mono',monospace;font-size:10px">${r[4]}</td></tr>`).join('')}</tbody></table>`;
-}
-
-// SQL
-const SQL_LIB=[{l:"Bugs critiques non résolus",q:"Bugs critiques non résolus assignés à mon équipe cette semaine"},{l:"Stories sprint en retard",q:"Toutes les stories du sprint actuel en retard"},{l:"Epic Programme CRM",q:"Tickets liés à l'epic Programme CRM priorité High ce mois"},{l:"Sans assignee",q:"Tickets ouverts depuis plus de 5 jours sans personne assignée"},{l:"Blocages actifs",q:"Tous les tickets bloqués dans le projet actuel"},{l:"Velocity équipe",q:"Stories terminées par sprint sur les 3 derniers sprints équipe DSI"}];
-
-function setQT(t,btn){qType=t;document.querySelectorAll('#mod-sql .tab-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');}
-function setQ(q){document.getElementById('nl-in').value=q;}
-function copySQL(){navigator.clipboard.writeText(document.getElementById('sql-out').innerText);showToast('📋 Requête copiée !');}
-function doTranslate(){
-  const q=(document.getElementById('nl-in').value||'').toLowerCase();
-  let out='';
-  if(qType==='jql'){
-    if(/bug|critique/.test(q))out=`<span class="sk">project</span> = <span class="ss">"ONE-CUSTOMER"</span>\n<span class="sk">AND</span> issuetype = Bug\n<span class="sk">AND</span> priority = Critical\n<span class="sk">AND</span> status <span class="sk">NOT IN</span> (<span class="ss">Resolved</span>, <span class="ss">Done</span>)\n<span class="sk">ORDER BY</span> created <span class="sk">DESC</span>`;
-    else if(/sprint.*retard|retard.*sprint/.test(q))out=`<span class="sk">project</span> = <span class="ss">"ONE-CUSTOMER"</span>\n<span class="sk">AND</span> sprint <span class="sk">in</span> openSprints()\n<span class="sk">AND</span> status != <span class="ss">Done</span>\n<span class="sk">AND</span> due < <span class="ss">"now()"</span>\n<span class="sk">ORDER BY</span> due <span class="sk">ASC</span>`;
-    else if(/epic|one customer/.test(q))out=`<span class="sk">project</span> = <span class="ss">"ONE-CUSTOMER"</span>\n<span class="sk">AND</span> <span class="ss">"Epic Link"</span> = <span class="ss">"Programme CRM CRM"</span>\n<span class="sk">AND</span> priority = High\n<span class="sk">AND</span> created >= <span class="ss">startOfMonth()</span>\n<span class="sk">ORDER BY</span> priority <span class="sk">DESC</span>`;
-    else out=`<span class="sk">project</span> = <span class="ss">"ONE-CUSTOMER"</span>\n<span class="sk">AND</span> status = <span class="ss">Open</span>\n<span class="sk">AND</span> assignee <span class="sk">in</span> membersOf(<span class="ss">"DSI-Team"</span>)\n<span class="sk">ORDER BY</span> updated <span class="sk">DESC</span>`;
-  }else if(qType==='sql'){
-    out=`<span class="sk">SELECT</span> i.key, i.summary, i.status, i.assignee, i.priority\n<span class="sk">FROM</span> jira_issues i\n<span class="sk">JOIN</span> projects p <span class="sk">ON</span> i.project_id = p.id\n<span class="sk">WHERE</span> p.key = <span class="ss">'ONE-CUSTOMER'</span>\n<span class="sk">AND</span> i.status <span class="sk">NOT IN</span> (<span class="ss">'Done'</span>, <span class="ss">'Closed'</span>)\n<span class="sk">ORDER BY</span> i.created <span class="sk">DESC</span>\n<span class="sk">LIMIT</span> <span class="sn">100</span>;`;
-  }else{
-    out=`<span class="sc2">// Monday.com — GraphQL</span>\n{\n  boards(ids: [<span class="sn">1234567890</span>]) {\n    items {\n      id\n      name\n      column_values { id title text }\n    }\n  }\n}`;
+  // Animated counters on hero stats
+  function animateCounters() {
+    const stats = document.querySelectorAll('.stat-n');
+    stats.forEach(el => {
+      const text = el.textContent;
+      const num = parseFloat(text.replace(/[^0-9.]/g, ''));
+      if(isNaN(num)) return;
+      const prefix = text.match(/^[^0-9]*/)?.[0] || '';
+      const suffix = text.match(/[^0-9.]+$/)?.[0] || '';
+      let start = 0;
+      const step = num / 40;
+      const interval = setInterval(() => {
+        start = Math.min(start + step, num);
+        const display = Number.isInteger(num) ? Math.round(start) : start.toFixed(1);
+        el.textContent = prefix + display + suffix;
+        if(start >= num) clearInterval(interval);
+      }, 35);
+    });
   }
-  document.getElementById('sql-out').innerHTML=out||'<span class="sc2">-- Requête générée ici</span>';
-  showToast('✓ Requête '+(qType==='jql'?'JQL':qType.toUpperCase())+' générée');
-}
-function loadSQL(){
-  document.getElementById('sql-lib').innerHTML=SQL_LIB.map(s=>`<div style="padding:9px 12px;border:1px solid var(--border);border-radius:7px;cursor:pointer;transition:all 0.18s" onclick="setQ('${s.q}');document.getElementById('nl-in').value='${s.q}'" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:11px;font-weight:600;color:var(--navy);margin-bottom:2px">${s.l}</div><div style="font-size:10px;color:var(--text3)">${s.q.substring(0,50)}...</div></div>`).join('');
-}
-
-// SAMARITAN
-function loadSam(){
-  const kpis=[{v:"6",l:"Projets actifs",t:"↑ +1 ce mois",tc:"t-up"},{v:"2",l:"Alertes Risk Radar",t:"⚠ Action requise",tc:"t-dn"},{v:"78%",l:"Capacité globale",t:"↓ -4% ce mois",tc:"t-dn"},{v:"14.4M€",l:"Budget géré",t:"✓ Dans les limites",tc:"t-up"}];
-  document.getElementById('sam-kpis').innerHTML=kpis.map(k=>`<div class="stat-card"><div class="stat-v syne">${k.v}</div><div class="stat-l">${k.l}</div><div class="stat-t ${k.tc}">${k.t}</div></div>`).join('');
-  document.getElementById('sam-projs').innerHTML=`<div class="card-title">Portefeuille programmes</div>`+SPROJ.map(p=>`<div class="proj-row"><div style="flex:1"><div class="proj-name">${p.n}</div><div class="proj-meta"><span>${p.m}</span><span>•</span><span>${p.p}</span><span>•</span><span>${p.b}</span></div></div><span class="badge ${p.s==='on-track'?'bg-green':p.s==='at-risk'?'bg-amber':'bg-red'}">${p.s==='on-track'?'✓ OK':p.s==='at-risk'?'⚠ Risque':'🔴 Critique'}</span></div>`).join('');
-  const alerts=[{t:"c",txt:"Migration Cloud : Delta Risk Radar = 3. Réunion de crise requise.",time:"Il y a 2h"},{t:"w",txt:"Programme CRM : DSI à 78% — risque débordement sprint Q3.",time:"Il y a 6h"},{t:"w",txt:"CSRD : référent absent 3 semaines — jalons menacés.",time:"Hier"},{t:"i",txt:"App Mobile : Sprint 4 livré à 94% des stories.",time:"Aujourd'hui"}];
-  document.getElementById('sam-alerts').innerHTML=`<div class="card-title">Alertes Risk Radar</div>`+alerts.map(a=>`<div style="display:flex;gap:9px;padding:10px 0;border-bottom:1px solid var(--border)"><div style="width:7px;height:7px;border-radius:50%;margin-top:4px;flex-shrink:0;background:${a.t==='c'?'var(--coral)':a.t==='w'?'var(--amber)':'var(--teal)'}"></div><div><div style="font-size:11px;color:var(--text);line-height:1.5">${a.txt}</div><div style="font-size:9px;color:var(--text3);font-family:'DM Mono',monospace;margin-top:2px">${a.time}</div></div></div>`).join('');
-}
-
-// TEAM
-function loadTeam(){
-  const members=[{n:"Raphaël de Bruijn",e:"raphael@de-bruijn.com",r:"Chef de Programme",col:"#0f1729",av:"RB",st:"Propriétaire"},{n:"Marie Dupont",e:"m.dupont@retailgroup.com",r:"MOA Référente",col:"#0d9488",av:"MD",st:"Actif"},{n:"Thomas Laurent",e:"t.laurent@consulting.com",r:"DSI / Architecte",col:"#7c3aed",av:"TL",st:"Actif"},{n:"Sophie Martin",e:"s.martin@capgemini.com",r:"Consultant externe",col:"#d97706",av:"SM",st:"Invité"}];
-  document.getElementById('team-members').innerHTML=members.map(m=>`<div class="inv-row"><div class="inv-av" style="background:${m.col}">${m.av}</div><div style="flex:1"><div class="inv-nm">${m.n} ${m.st==='Propriétaire'?'<span class="badge bg-navy" style="font-size:9px">Proprio</span>':''}</div><div class="inv-em">${m.e}</div></div><select class="fsel" style="width:auto;font-size:11px;padding:4px 8px"><option>${m.r}</option><option>Observateur</option></select>${m.st!=='Propriétaire'?`<button class="btn btn-out" style="font-size:11px;padding:5px 9px" onclick="showToast('✓ Accès révoqué')">Retirer</button>`:''}</div>`).join('');
-  const docs=[{n:"Risk Radar© Programme CRM",t:"PDF",i:"🔴"},{n:"RACI Programme Complet",t:"Excel",i:"📋"},{n:"Plan 90 jours Phase 1",t:"Word",i:"📅"},{n:"Dashboard Finance EVM",t:"PDF",i:"💰"},{n:"Gouvernance Projet",t:"PDF",i:"🏛"},{n:"Présentation COPIL",t:"PPT",i:"📊"}];
-  document.getElementById('docs-grid').innerHTML=docs.map(d=>`<div style="padding:10px;border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;gap:8px"><span style="font-size:1.2rem">${d.i}</span><div style="flex:1"><div style="font-size:11px;font-weight:500">${d.n}</div><div style="font-size:10px;color:var(--text3)">${d.t}</div></div><button class="btn btn-out" style="font-size:10px;padding:4px 8px" onclick="showToast('🔗 Lien copié !')">🔗</button></div>`).join('');
-}
-
-// MODALS
-function openModal(id){document.getElementById(id).classList.add('open');}
-function closeModal(id){document.getElementById(id).classList.remove('open');}
-document.addEventListener('click',e=>{if(e.target.classList.contains('modal-ov'))e.target.classList.remove('open');});
-function sendInvite(){const em=document.getElementById('inv-email').value;if(!em){showToast('⚠ Email requis');return;}closeModal('m-invite');showToast(`📧 Invitation envoyée à ${em}`);document.getElementById('inv-email').value='';}
-function doExport(){closeModal('m-export');showToast('⬇ Téléchargement démarré');}
-
-// TOAST
-function showToast(msg){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-
-// ========== STRIPE CHECKOUT ==========
-function openStripe(plan){
-  const plans={
-    solo:{name:"Solo",price:"29€/mois",desc:"1 utilisateur · 3 projets actifs"},
-    team:{name:"Équipe",price:"79€/mois",desc:"5 utilisateurs · Projets illimités"},
-    prog:{name:"Programme",price:"199€/mois",desc:"20 utilisateurs · Multi-projets + Samaritan"},
-    ent:{name:"Entreprise",price:"Sur devis",desc:"Illimité · SLA · Branding · On-premise"}
-  };
-  const p=plans[plan];
-  document.getElementById('stripe-plan-name').textContent=p.name;
-  document.getElementById('stripe-plan-price').textContent=p.price;
-  document.getElementById('stripe-plan-desc').textContent=p.desc;
-  document.getElementById('stripe-modal').classList.add('open');
-}
-function closeStripe(){document.getElementById('stripe-modal').classList.remove('open');}
-function submitStripe(){
-  const email=document.getElementById('stripe-email').value;
-  const company=document.getElementById('stripe-company').value;
-  if(!email){showToast('⚠ Email requis');return;}
-  closeStripe();
-  showToast('🔒 Redirection vers le paiement sécurisé Stripe — Practice Retail SAS...');
-  // TODO: Remplacer par l'appel Stripe réel avec ta clé publishable Practice Retail SAS
-  // stripe.redirectToCheckout({ sessionId: '...' })
-  // Clé à configurer : pk_live_XXXX (Practice Retail SAS — dashboard.stripe.com)
-  setTimeout(()=>showToast('✓ Abonnement activé — bienvenue sur EvolSphere !'),2500);
-}
-
-// SCROLL
-window.addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('sc',window.scrollY>8));
-
-// INIT
-window.addEventListener('DOMContentLoaded',()=>{
-  loadRaci('hybride');loadGov('enterprise');loadRisk('crm');
-  setTimeout(()=>document.getElementById('cookie-banner').style.display='flex',800);
-  setLang('fr');
-});
-
-// ========== MULTILINGUE ==========
-const T={
-  fr:{nav_home:'Accueil',nav_modules:'Modules',nav_pricing:'Tarifs',nav_demo:'🚀 Demo',nav_login:'Connexion',nav_try:'Essai gratuit →',
-      hero_badge:'Disponible maintenant · Risk Radar© breveté · PMP 2026',
-      hero_h1a:"L'IA qui pilote",hero_h1b:'vos projets complexes',hero_h1c:'De l\'idée à la réalisation.',
-      hero_p:"Méthode optimale, RACI dynamique, gouvernance, Risk Radar© double-niveau, Finance EVM, SQL-to-Jira, dashboard Samaritan. Le premier outil IA structuré pensé par et pour les pros du projet.",
-      cta1:'⚡ Démarrer gratuitement',cta2:'Voir les offres →',cta3:'Explorer les modules',
-      footer_desc:"L'IA projet intelligente · Risk Radar© breveté · PMP 2026",
-      contact_title:'Nous contacter',privacy_title:'Politique de confidentialité',legal_title:'Mentions légales',
-      cookie_txt:'Nous utilisons des cookies pour améliorer votre expérience et analyser notre trafic.',
-      cookie_accept:'Accepter',cookie_refuse:'Refuser',cookie_learn:'En savoir plus'},
-  en:{nav_home:'Home',nav_modules:'Modules',nav_pricing:'Pricing',nav_demo:'🚀 Demo',nav_login:'Sign in',nav_try:'Free trial →',
-      hero_badge:'Available now · Risk Radar© patented · PMP 2026',
-      hero_h1a:'The AI that drives',hero_h1b:'your complex projects',hero_h1c:'From idea to delivery.',
-      hero_p:"Optimal methodology, dynamic RACI, governance, double-level Risk Radar©, Finance EVM, SQL-to-Jira, Samaritan dashboard. The first structured AI tool built by and for project professionals.",
-      cta1:'⚡ Start for free',cta2:'See pricing →',cta3:'Explore modules',
-      footer_desc:"The intelligent project AI · Risk Radar© patented · PMP 2026",
-      contact_title:'Contact us',privacy_title:'Privacy Policy',legal_title:'Legal Notice',
-      cookie_txt:'We use cookies to improve your experience and analyse our traffic.',
-      cookie_accept:'Accept',cookie_refuse:'Decline',cookie_learn:'Learn more'},
-  es:{nav_home:'Inicio',nav_modules:'Módulos',nav_pricing:'Precios',nav_demo:'🚀 Demo',nav_login:'Iniciar sesión',nav_try:'Prueba gratis →',
-      hero_badge:'Disponible ahora · Risk Radar© patentado · PMP 2026',
-      hero_h1a:'La IA que gestiona',hero_h1b:'tus proyectos complejos',hero_h1c:'De la idea a la realización.',
-      hero_p:"Metodología óptima, RACI dinámico, gobernanza, Risk Radar© de doble nivel, Finance EVM, SQL-to-Jira, dashboard Samaritan. La primera herramienta IA estructurada pensada por y para los profesionales de proyectos.",
-      cta1:'⚡ Empezar gratis',cta2:'Ver precios →',cta3:'Explorar módulos',
-      footer_desc:"La IA inteligente para proyectos · Risk Radar© patentado · PMP 2026",
-      contact_title:'Contáctenos',privacy_title:'Política de privacidad',legal_title:'Aviso legal',
-      cookie_txt:'Utilizamos cookies para mejorar su experiencia y analizar nuestro tráfico.',
-      cookie_accept:'Aceptar',cookie_refuse:'Rechazar',cookie_learn:'Saber más'},
-  it:{nav_home:'Home',nav_modules:'Moduli',nav_pricing:'Prezzi',nav_demo:'🚀 Demo',nav_login:'Accedi',nav_try:'Prova gratuita →',
-      hero_badge:'Disponibile ora · Risk Radar© brevettato · PMP 2026',
-      hero_h1a:"L'IA che guida",hero_h1b:'i tuoi progetti complessi',hero_h1c:"Dall'idea alla realizzazione.",
-      hero_p:"Metodologia ottimale, RACI dinamico, governance, Risk Radar© a doppio livello, Finance EVM, SQL-to-Jira, dashboard Samaritan. Il primo strumento IA strutturato pensato da e per i professionisti di progetto.",
-      cta1:'⚡ Inizia gratis',cta2:'Vedi prezzi →',cta3:'Esplora i moduli',
-      footer_desc:"L'IA intelligente per progetti · Risk Radar© brevettato · PMP 2026",
-      contact_title:'Contattaci',privacy_title:'Informativa sulla privacy',legal_title:'Note legali',
-      cookie_txt:'Utilizziamo i cookie per migliorare la tua esperienza e analizzare il traffico.',
-      cookie_accept:'Accetta',cookie_refuse:'Rifiuta',cookie_learn:'Scopri di più'}
-};
-
-let curLang='fr';
-
-function setLang(l){
-  curLang=l;
-  const t=T[l];
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active-lang',b.dataset.lang===l));
-  document.documentElement.lang=l;
-  document.title=l==='fr'?"EvolSphere — L'IA Projet Intelligente":l==='en'?"EvolSphere — The Intelligent Project AI":l==='es'?"EvolSphere — La IA de Proyectos Inteligente":"EvolSphere — L'IA Intelligente per Progetti";
-  // NAV
-  const navBtns=document.querySelectorAll('.hnav-btn');
-  if(navBtns.length>=4){navBtns[0].textContent=t.nav_home;navBtns[1].textContent=t.nav_modules;navBtns[2].textContent=t.nav_pricing;navBtns[3].textContent=t.nav_demo;}
-  const acts=document.querySelectorAll('.btn-xs');
-  if(acts.length>=2){acts[0].textContent=t.nav_login;acts[1].textContent=t.nav_try;}
-  // HERO
-  const hb=document.getElementById('hero-badge-txt');if(hb)hb.textContent=t.hero_badge;
-  const h1a=document.getElementById('hero-h1a');if(h1a)h1a.textContent=t.hero_h1a;
-  const h1b=document.getElementById('hero-h1b');if(h1b)h1b.textContent=t.hero_h1b;
-  const h1c=document.getElementById('hero-h1c');if(h1c)h1c.textContent=t.hero_h1c;
-  const hp=document.getElementById('hero-p');if(hp)hp.textContent=t.hero_p;
-  const c1=document.getElementById('cta1');if(c1)c1.textContent=t.cta1;
-  const c2=document.getElementById('cta2');if(c2)c2.textContent=t.cta2;
-  const c3=document.getElementById('cta3');if(c3)c3.textContent=t.cta3;
-  // FOOTER
-  const fd=document.querySelectorAll('.foot-desc');fd.forEach(x=>x.textContent=t.footer_desc);
-  // CONTACT link
-  const cl=document.querySelectorAll('.link-contact');cl.forEach(x=>x.textContent=t.contact_title);
-  const pl=document.querySelectorAll('.link-privacy');pl.forEach(x=>x.textContent=t.privacy_title);
-  const ll=document.querySelectorAll('.link-legal');ll.forEach(x=>x.textContent=t.legal_title);
-  // COOKIE
-  const ck=document.getElementById('cookie-txt');if(ck)ck.textContent=t.cookie_txt;
-  const ca=document.getElementById('cookie-accept');if(ca)ca.textContent=t.cookie_accept;
-  const cr=document.getElementById('cookie-refuse');if(cr)cr.textContent=t.cookie_refuse;
-  const cln=document.getElementById('cookie-learn');if(cln)cln.textContent=t.cookie_learn;
-}
+  setTimeout(animateCounters, 600);
 </script>
-
-<!-- ========== COOKIE BANNER ========== -->
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:400;background:var(--navy);color:white;padding:1rem 1.5rem;align-items:center;gap:1rem;flex-wrap:wrap;border-top:2px solid var(--gold);box-shadow:0 -4px 24px rgba(11,24,41,0.3)">
-  <div style="flex:1;min-width:260px">
-    <div style="font-size:13px;font-weight:600;margin-bottom:3px">🍪 Cookies</div>
-    <div style="font-size:12px;opacity:0.75" id="cookie-txt">Nous utilisons des cookies pour améliorer votre expérience et analyser notre trafic.</div>
-  </div>
-  <div style="display:flex;gap:8px;flex-shrink:0;align-items:center">
-    <button id="cookie-learn" onclick="showPage('privacy')" style="background:transparent;border:none;color:rgba(255,255,255,0.55);font-size:12px;cursor:pointer;text-decoration:underline;font-family:'Instrument Sans',sans-serif">En savoir plus</button>
-    <button id="cookie-refuse" onclick="document.getElementById('cookie-banner').style.display='none';showToast('🍪 Cookies refusés — seuls les essentiels sont actifs')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:7px 14px;border-radius:7px;font-size:12px;cursor:pointer;font-family:'Instrument Sans',sans-serif">Refuser</button>
-    <button id="cookie-accept" onclick="document.getElementById('cookie-banner').style.display='none';showToast('✓ Cookies acceptés — merci !')" style="background:var(--gold);border:none;color:var(--navy);padding:7px 16px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Instrument Sans',sans-serif">Accepter</button>
-  </div>
-</div>
-
-<!-- ========== PAGE CONTACT ========== -->
-<div id="page-contact" class="page">
-  <div style="max-width:620px;margin:0 auto;padding:4rem 2rem">
-    <div class="eyebrow">Support & Questions</div>
-    <div class="sh2 syne" id="contact-h2">Nous contacter</div>
-    <p style="font-size:14px;color:var(--text2);margin-bottom:2rem;line-height:1.7">Vous avez une question sur EvolSphere, un besoin spécifique, ou souhaitez discuter d'un déploiement entreprise ? Remplissez ce formulaire et nous vous répondrons sous 24h ouvrées.</p>
-    <div class="card">
-      <div style="margin-bottom:1rem"><label class="fl">Nom complet</label><input type="text" class="fi" placeholder="Votre nom"></div>
-      <div style="margin-bottom:1rem"><label class="fl">Email professionnel</label><input type="email" class="fi" placeholder="vous@entreprise.com"></div>
-      <div style="margin-bottom:1rem"><label class="fl">Sujet</label>
-        <select class="fsel">
-          <option>Question sur les fonctionnalités</option>
-          <option>Demande de démo personnalisée</option>
-          <option>Offre Entreprise / sur mesure</option>
-          <option>Support technique</option>
-          <option>Partenariat</option>
-          <option>Autre</option>
-        </select>
-      </div>
-      <div style="margin-bottom:1.5rem"><label class="fl">Message</label><textarea class="fta" placeholder="Décrivez votre besoin..."></textarea></div>
-      <button class="btn btn-teal" style="width:100%" onclick="showToast('📧 Message envoyé — réponse sous 24h ouvrées')">Envoyer le message</button>
-      <div style="text-align:center;margin-top:1rem;font-size:12px;color:var(--text3)">Ou contactez-nous directement : <a href="javascript:void(0)" onclick="showToast('📋 Email copié !')" style="color:var(--teal);text-decoration:none" title="Cliquer pour copier">r&#97;ph&#97;el&#64;de&#45;bruijn&#46;com</a></div>
-    </div>
-    <div style="margin-top:2rem;text-align:center"><button class="btn btn-out" onclick="showPage('landing')">← Retour à l'accueil</button></div>
-  </div>
-</div>
-
-<!-- ========== PAGE PRIVACY ========== -->
-<div id="page-privacy" class="page">
-  <div style="max-width:740px;margin:0 auto;padding:4rem 2rem">
-    <div class="eyebrow">RGPD · Données personnelles</div>
-    <div class="sh2 syne">Politique de confidentialité</div>
-    <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:2rem">Dernière mise à jour : Mai 2026</div>
-    <div class="card" style="font-size:13px;color:var(--text2);line-height:1.8">
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">1. Responsable du traitement</h3>
-      <p>EvolSphere est édité par Raphaël de Bruijn, consultant indépendant. Contact : <a href="javascript:void(0)" style="color:var(--teal)">r&#97;ph&#97;el&#64;de&#45;bruijn&#46;com</a></p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">2. Données collectées</h3>
-      <p>Nous collectons uniquement les données nécessaires au fonctionnement du service : adresse email (inscription et contact), données de projet saisies dans l'outil (stockées localement dans votre navigateur), données de navigation anonymisées (analytics).</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">3. Base légale</h3>
-      <p>Traitement fondé sur l'exécution du contrat (service) et le consentement (cookies analytiques). Vous pouvez retirer votre consentement à tout moment.</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">4. Durée de conservation</h3>
-      <p>Données de compte : durée de l'abonnement + 3 ans. Données de projet : supprimées à la demande de l'utilisateur. Logs de connexion : 12 mois.</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">5. Vos droits (RGPD)</h3>
-      <p>Conformément au RGPD (UE 2016/679), vous disposez des droits suivants : accès, rectification, effacement, portabilité, opposition, limitation du traitement. Pour exercer vos droits, contactez-nous à l'adresse indiquée ci-dessus. Vous pouvez également introduire une réclamation auprès de la CNIL (France) ou de l'autorité de contrôle compétente dans votre pays.</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">6. Cookies</h3>
-      <p>Cookies essentiels (fonctionnement du service, session) : pas de consentement requis. Cookies analytiques (mesure d'audience anonymisée) : consentement requis, gérable via le bandeau affiché à votre première visite.</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">7. Transferts hors UE</h3>
-      <p>Aucune donnée personnelle n'est transférée hors de l'Union Européenne sans garanties appropriées (clauses contractuelles types).</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">8. Sécurité</h3>
-      <p>Vos données sont protégées par chiffrement TLS en transit et chiffrement au repos. Accès restreint aux seules personnes autorisées. Audit de sécurité régulier.</p>
-    </div>
-    <div style="margin-top:2rem;text-align:center"><button class="btn btn-out" onclick="showPage('landing')">← Retour</button></div>
-  </div>
-</div>
-
-<!-- ========== PAGE LEGAL ========== -->
-<div id="page-legal" class="page">
-  <div style="max-width:740px;margin:0 auto;padding:4rem 2rem">
-    <div class="eyebrow">Informations légales</div>
-    <div class="sh2 syne">Mentions légales</div>
-    <div style="font-size:12px;color:var(--text3);font-family:'DM Mono',monospace;margin-bottom:2rem">Version en vigueur : Mai 2026</div>
-    <div class="card" style="font-size:13px;color:var(--text2);line-height:1.8">
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem">Éditeur</h3>
-      <p><strong>Raphaël de Bruijn</strong><br>Consultant indépendant · Expert en transformation IT & Projets<br>Email : <a href="javascript:void(0)" style="color:var(--teal)">r&#97;ph&#97;el&#64;de&#45;bruijn&#46;com</a><br>SIRET : [en cours d'enregistrement]</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">Hébergement</h3>
-      <p>GitHub Pages — GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Données hébergées en Europe (UE).</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">Propriété intellectuelle</h3>
-      <p>Le concept Risk Radar© (cartographie des risques à double niveau Approbateur/Responsable), l'ensemble du code source, des textes et des éléments graphiques de EvolSphere sont la propriété exclusive de Raphaël de Bruijn. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">Limitation de responsabilité</h3>
-      <p>EvolSphere est un outil d'aide à la décision. Les recommandations générées sont indicatives et ne sauraient engager la responsabilité de l'éditeur en cas de décision prise sur leur base. L'utilisateur reste seul responsable de ses choix de gestion de projet.</p>
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.75rem;margin-top:1.25rem">Droit applicable</h3>
-      <p>Les présentes mentions légales sont soumises au droit français. Tout litige relève de la compétence des tribunaux compétents de Paris.</p>
-    </div>
-    <div style="margin-top:2rem;text-align:center"><button class="btn btn-out" onclick="showPage('landing')">← Retour</button></div>
-  </div>
-</div>
-
-<style>
-/* LANG SWITCHER */
-.lang-switcher{display:flex;gap:3px;align-items:center}
-.lang-btn{padding:4px 9px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:'DM Mono',monospace;transition:all 0.15s}
-.lang-btn:hover{border-color:var(--navy);color:var(--text)}
-.lang-btn.active-lang{background:var(--navy);color:white;border-color:var(--navy)}
-/* FOOTER FULL */
-.full-footer{background:var(--navy);color:rgba(255,255,255,0.45);padding:3rem 2rem 2rem}
-.footer-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem}
-@media(max-width:768px){.footer-inner{grid-template-columns:1fr 1fr}}
-.footer-col-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em}
-.footer-link{display:block;font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:5px;cursor:pointer;transition:color 0.15s;text-decoration:none}
-.footer-link:hover{color:rgba(255,255,255,0.8)}
-.footer-bottom{max-width:1160px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;gap:1rem;font-size:11px}
-.footer-logo-txt{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:white;margin-bottom:4px}
-.footer-logo-txt span{color:var(--teal)}
-</style>
-
+</body>
+</html>
