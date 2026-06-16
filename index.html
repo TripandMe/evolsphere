@@ -16,25 +16,8 @@
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ivory);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ── GATE ── */
-#gate{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s ease,transform 0.8s ease}
-#gate.open{opacity:0;pointer-events:none;transform:scale(1.02)}
-.g-logo{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;letter-spacing:0.05em;color:var(--ivory);margin-bottom:0.3rem}
-.g-logo span{color:var(--gold)}
-.g-sub{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:3.5rem}
-.g-label{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;color:var(--dim);text-transform:uppercase;margin-bottom:0.6rem}
-.g-input-wrap{position:relative;margin-bottom:0.75rem}
-.g-input-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
-.g-input-wrap:focus-within::after{transform:scaleX(1)}
-#g-code{background:transparent;border:none;border-bottom:1px solid var(--dimmer);color:var(--ivory);font-family:'DM Mono',monospace;font-size:1.5rem;letter-spacing:0.3em;text-align:center;width:240px;padding:0.5rem 0;outline:none;text-transform:uppercase}
-#g-code::placeholder{color:var(--dimmer);font-size:0.9rem;letter-spacing:0.15em}
-#g-err{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:#c0392b;height:1rem;text-align:center;margin-bottom:1rem}
-.g-btn{padding:0.8rem 2.5rem;background:transparent;border:1px solid rgba(181,146,42,0.4);color:var(--gold);font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:all 0.2s}
-.g-btn:hover{background:var(--gold);color:var(--bg)}
-.g-hint{font-size:0.72rem;color:var(--dimmer);margin-top:2.5rem;text-align:center;line-height:1.7;font-weight:300}
-
 /* ── SITE ── */
-#site{opacity:0;transition:opacity 0.8s ease 0.2s;pointer-events:none}
+#site{opacity:1;pointer-events:all}
 #site.visible{opacity:1;pointer-events:all}
 
 /* ── NAV ── */
@@ -143,21 +126,8 @@ footer{border-top:1px solid var(--rule);padding:1.8rem 3rem;display:flex;justify
 </head>
 <body>
 
-<!-- GATE -->
-<div id="gate">
-  <div class="g-logo">Evol<span>Sphere</span></div>
-  <div class="g-sub">Cercle Membres · Accès privé</div>
-  <div class="g-label">Code d'accès</div>
-  <div class="g-input-wrap">
-    <input id="g-code" type="text" maxlength="10" placeholder="· · · · · · · ·" autocomplete="off" spellcheck="false">
-  </div>
-  <div id="g-err">&nbsp;</div>
-  <button class="g-btn" onclick="checkCode()">Entrer</button>
-  <p class="g-hint">Accès réservé aux membres du cercle.<br>Code communiqué lors de votre invitation.</p>
-</div>
-
 <!-- SITE -->
-<div id="site">
+<div id="site" class="visible">
   <div class="wordmark">Evol<span>Sphere</span></div>
   <div class="nav-right">
     <span class="nav-link" onclick="document.getElementById('membres').scrollIntoView({behavior:'smooth'})">Espace membres</span>
@@ -282,22 +252,7 @@ footer{border-top:1px solid var(--rule);padding:1.8rem 3rem;display:flex;justify
 </div>
 
 <script>
-const CODES = ['ELITE2026','VIP2026','SPHERE1','DIRIGEANT','EXEC2026'];
 
-function checkCode(){
-  const v = document.getElementById('g-code').value.trim().toUpperCase();
-  const err = document.getElementById('g-err');
-  if(CODES.includes(v)){
-    document.getElementById('gate').classList.add('open');
-    document.getElementById('site').classList.add('visible');
-    setTimeout(()=>document.getElementById('gate').style.display='none', 900);
-  } else {
-    err.textContent = 'Code invalide.';
-    document.getElementById('g-code').value = '';
-    setTimeout(()=>err.textContent='', 2000);
-  }
-}
-document.getElementById('g-code').addEventListener('keydown', e=>{ if(e.key==='Enter') checkCode(); });
 
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)} });
