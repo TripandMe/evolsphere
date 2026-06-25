@@ -4,461 +4,271 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>EvolSphere — Risk Radar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#08090c;--surface:#0f1117;--card:#13171f;--border:#1c2332;
-  --cyan:#00e5ff;--cdim:rgba(0,229,255,.07);--cglow:rgba(0,229,255,.22);
-  --red:#ff4455;--amber:#ffb020;--green:#22d474;
-  --text:#d8dde8;--muted:#52607a;--r:10px;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#08090b;--s:#0f1013;--card:#13141a;--b:#1e2028;--c:#00e5ff;--r:#ff4455;--a:#ffb020;--g:#22d474;--t:#c8cdd8;--m:#52576a}
+body{background:var(--bg);color:var(--t);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
 
 /* NAV */
-nav{position:fixed;top:0;inset-inline:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 56px;background:rgba(8,9,12,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.logo{font-weight:800;font-size:1.15rem;color:#fff;letter-spacing:-.02em}
-.logo span{color:var(--cyan)}
-.nav-links{display:flex;gap:36px;align-items:center}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.84rem;font-weight:500;transition:color .18s}
-.nav-links a:hover{color:var(--text)}
-.nav-cta{background:var(--cyan)!important;color:#000!important;font-weight:700;padding:8px 22px;border-radius:8px}
+nav{position:fixed;top:0;inset-inline:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(8,9,11,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+.logo{font-weight:800;font-size:1.05rem;color:#fff;letter-spacing:-.02em}.logo span{color:var(--c)}
+.nav-r{display:flex;gap:24px;align-items:center}
+nav a{color:var(--m);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .15s}
+nav a:hover{color:var(--t)}
+.ncta{background:var(--c)!important;color:#000!important;font-weight:700;padding:7px 18px;border-radius:7px}
 
-/* HERO — two columns */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;padding:100px 0 60px;position:relative;overflow:hidden}
-.hero-left{padding:0 56px 0 56px;position:relative;z-index:1}
-.hero-right{display:flex;align-items:center;justify-content:center;position:relative;padding:0 40px}
-.hero-glow{position:absolute;top:-160px;right:-120px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.055),transparent 68%);pointer-events:none}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 32px 80px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.055) 0%,transparent 65%);pointer-events:none}
+.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);color:var(--c);font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:28px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--c);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+h1{font-weight:800;font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.04;letter-spacing:-.035em;color:#fff;margin-bottom:20px}
+h1 em{font-style:normal;color:var(--c)}
+.hsub{font-size:1.05rem;color:var(--m);max-width:420px;margin:0 auto 40px;line-height:1.7}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.bp{background:var(--c);color:#000;font-weight:700;font-size:.88rem;padding:13px 30px;border-radius:8px;text-decoration:none;transition:opacity .15s,transform .15s;box-shadow:0 0 24px rgba(0,229,255,.2)}
+.bp:hover{opacity:.85;transform:translateY(-1px)}
+.bg{color:var(--t);border:1px solid var(--b);font-size:.88rem;font-weight:500;padding:13px 24px;border-radius:8px;text-decoration:none;transition:border-color .15s,color .15s}
+.bg:hover{border-color:var(--c);color:var(--c)}
 
-.chip{display:inline-flex;align-items:center;gap:7px;background:var(--cdim);border:1px solid rgba(0,229,255,.18);color:var(--cyan);font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin-bottom:24px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-
-h1{font-weight:800;font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.06;letter-spacing:-.03em;color:#fff;margin-bottom:18px}
-h1 em{font-style:normal;color:var(--cyan)}
-.sub{font-size:.97rem;font-weight:400;color:var(--muted);max-width:420px;line-height:1.75;margin-bottom:36px}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-p{background:var(--cyan);color:#000;font-weight:700;font-size:.88rem;padding:13px 30px;border-radius:var(--r);text-decoration:none;box-shadow:0 0 28px var(--cglow);transition:transform .18s,box-shadow .18s;display:inline-block}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(0,229,255,.4)}
-.btn-g{color:var(--text);border:1px solid var(--border);font-size:.88rem;font-weight:500;padding:13px 26px;border-radius:var(--r);text-decoration:none;transition:border-color .18s,color .18s;display:inline-block}
-.btn-g:hover{border-color:var(--cyan);color:var(--cyan)}
-
-/* Radar */
-.radar-wrap{position:relative}
+/* RADAR */
+.radar-wrap{margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:16px}
 #rc{border-radius:50%}
-.r-legend{margin-top:20px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-.r-leg{display:flex;align-items:center;gap:6px;font-size:.7rem;font-weight:500;color:var(--muted)}
-.r-dot{width:7px;height:7px;border-radius:50%}
-#radar-tip{text-align:center;margin-top:10px;font-size:.75rem;color:var(--cyan);min-height:16px;font-weight:500}
+.rleg{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.rl{display:flex;align-items:center;gap:5px;font-size:.68rem;font-weight:500;color:var(--m)}
+.rd{width:6px;height:6px;border-radius:50%}
+#rtip{font-size:.72rem;color:var(--c);font-weight:600;min-height:14px}
 
-/* SECTION */
-section{padding:72px 56px}
-.wrap{max-width:1120px;margin:0 auto}
-.sec-chip{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
-h2{font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);letter-spacing:-.025em;color:#fff;line-height:1.15;margin-bottom:10px}
-.sec-sub{color:var(--muted);font-size:.92rem;line-height:1.72;max-width:500px;margin-bottom:44px}
-.div{border:none;border-top:1px solid var(--border);margin:0 56px}
+/* SECTIONS */
+section{padding:80px 48px}
+.w{max-width:1060px;margin:0 auto}
+.sl{font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
+h2{font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.025em;color:#fff;margin-bottom:36px}
+hr{border:none;border-top:1px solid var(--b);margin:0 48px}
 
-/* SCORE CARDS */
-.s-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-.sc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px 18px;cursor:pointer;transition:border-color .25s,transform .2s}
-.sc:hover{border-color:rgba(0,229,255,.28);transform:translateY(-2px)}
-.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.sc-cat{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.badge{font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:.05em}
-.br{background:rgba(255,68,85,.15);color:var(--red)}
-.ba{background:rgba(255,176,32,.15);color:var(--amber)}
-.bg{background:rgba(34,212,116,.15);color:var(--green)}
-.sc-val{font-weight:800;font-size:2.2rem;color:#fff;letter-spacing:-.03em;line-height:1}
-.sc-bar-w{margin-top:12px;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
-.sc-bar{height:100%;border-radius:2px;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
-.sc-trend{font-size:.69rem;color:var(--muted);margin-top:9px;font-weight:500}
-#alert-box{display:none;margin-top:16px;border-radius:var(--r);padding:14px 18px;font-size:.84rem;font-weight:500;align-items:center;gap:10px}
+/* SCORES */
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sc{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:20px 16px;cursor:pointer;transition:border-color .2s,transform .18s}
+.sc:hover{border-color:rgba(0,229,255,.3);transform:translateY(-2px)}
+.sct{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.scl{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m)}
+.badge{font-size:.59rem;font-weight:700;padding:2px 7px;border-radius:100px}
+.br{background:rgba(255,68,85,.15);color:var(--r)}
+.ba{background:rgba(255,176,32,.15);color:var(--a)}
+.bg2{background:rgba(34,212,116,.15);color:var(--g)}
+.sv{font-weight:800;font-size:2rem;color:#fff;letter-spacing:-.03em;line-height:1}
+.sbw{margin-top:10px;height:3px;background:var(--b);border-radius:2px;overflow:hidden}
+.sb{height:100%;border-radius:2px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.str{font-size:.65rem;color:var(--m);margin-top:8px;font-weight:500}
+#abox{display:none;margin-top:14px;border-radius:9px;padding:12px 16px;font-size:.82rem;font-weight:500}
 
-/* MODULES TABS */
-.mod-sec{background:var(--surface)}
-.tabs{display:flex;gap:3px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:4px;width:fit-content;margin-bottom:36px;flex-wrap:wrap}
-.tab{padding:9px 20px;border-radius:7px;font-size:.82rem;font-weight:600;color:var(--muted);cursor:pointer;transition:background .18s,color .18s;border:none;background:transparent;font-family:'Inter',sans-serif}
-.tab.active{background:var(--cyan);color:#000}
+/* MODULES */
+.ms{background:var(--s)}
+.tabs{display:flex;gap:2px;background:var(--card);border:1px solid var(--b);border-radius:8px;padding:3px;width:fit-content;margin-bottom:28px}
+.tab{padding:8px 18px;border-radius:6px;font-size:.79rem;font-weight:600;color:var(--m);cursor:pointer;border:none;background:transparent;font-family:'Inter',sans-serif;transition:background .15s,color .15s}
+.tab.active{background:var(--c);color:#000}
 .tp{display:none}
-.tp.active{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-.pi h3{font-weight:800;font-size:1.4rem;color:#fff;margin-bottom:12px;letter-spacing:-.02em}
-.pi p{color:var(--muted);font-size:.9rem;line-height:1.74;margin-bottom:20px}
-.feat{list-style:none;display:flex;flex-direction:column;gap:10px}
-.feat li{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:var(--text);font-weight:400}
-.feat li::before{content:'→';color:var(--cyan);flex-shrink:0;margin-top:2px;font-weight:700}
-.pv{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;min-height:260px;display:flex;flex-direction:column;gap:10px}
-.pv-lbl{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.tp.active{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.pi h3{font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:10px;letter-spacing:-.015em}
+.pi p{color:var(--m);font-size:.87rem;line-height:1.72;margin-bottom:16px}
+.fl{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fl li{display:flex;gap:8px;font-size:.82rem;color:var(--t);font-weight:400}
+.fl li::before{content:'→';color:var(--c);flex-shrink:0;font-weight:700}
+.pv{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.pvl{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m);margin-bottom:4px}
 
 /* mini bars */
-.mbars{display:flex;align-items:flex-end;gap:5px;height:72px}
-.mbar-w{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
-.mbar{width:100%;border-radius:3px 3px 0 0;transition:height .55s,opacity .2s}
-.mbar-w:hover .mbar{opacity:.75}
-.mbar-lbl{font-size:.58rem;color:var(--muted);font-weight:500}
-#scan-det{display:none;background:var(--surface);border-radius:8px;padding:11px 14px;font-size:.78rem;color:var(--text);line-height:1.6;margin-top:4px}
+.mbars{display:flex;align-items:flex-end;gap:4px;height:60px}
+.mbw{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
+.mb{width:100%;border-radius:2px 2px 0 0;transition:height .5s}
+.mbw:hover .mb{opacity:.65}
+.mbl{font-size:.55rem;color:var(--m);font-weight:500}
+#sdet{display:none;background:rgba(0,0,0,.3);border-radius:7px;padding:10px 12px;font-size:.75rem;color:var(--t);line-height:1.55}
 
-/* signal list */
-.sig-list{display:flex;flex-direction:column;gap:7px}
-.sig-row{display:flex;align-items:center;justify-content:space-between;padding:9px 13px;background:var(--surface);border-radius:8px;border:1px solid var(--border)}
-.sig-l{display:flex;align-items:center;gap:9px;font-size:.8rem;font-weight:400}
-.sig-d{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.sig-s{font-weight:800;font-size:.88rem}
-.ref-btn{margin-top:12px;background:var(--cdim);border:1px solid rgba(0,229,255,.18);color:var(--cyan);border-radius:8px;padding:8px 16px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .18s}
-.ref-btn:hover{background:rgba(0,229,255,.14)}
+/* signals */
+.slist{display:flex;flex-direction:column;gap:6px}
+.srow{display:flex;align-items:center;justify-content:space-between;padding:8px 11px;background:var(--s);border-radius:7px;border:1px solid var(--b)}
+.sleft{display:flex;align-items:center;gap:8px;font-size:.77rem}
+.sdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.sscore{font-weight:800;font-size:.83rem}
+.rbtn{margin-top:10px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);color:var(--c);border-radius:7px;padding:6px 14px;font-size:.74rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
+.rbtn:hover{background:rgba(0,229,255,.13)}
 
 /* matrix */
-#mc{cursor:crosshair;border-radius:8px}
-#mt{font-size:.76rem;color:var(--muted);font-weight:500;margin-top:6px}
+#mc{cursor:crosshair;border-radius:7px}
+#mt{font-size:.71rem;color:var(--m);font-weight:500;margin-top:5px}
 
-/* mit grid */
-.mit-g{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.mc2{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:13px}
-.mc2 h4{font-size:.78rem;font-weight:700;color:#fff;margin-bottom:5px}
-.mc2 p{font-size:.73rem;color:var(--muted);line-height:1.5;font-weight:400}
-.mt2{display:inline-block;font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:100px;margin-bottom:7px}
-
-/* SOLUTIONS grid */
-.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.sol-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;transition:border-color .22s,transform .2s;position:relative;overflow:hidden}
-.sol-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),transparent);opacity:0;transition:opacity .25s}
-.sol-card:hover{border-color:rgba(0,229,255,.25);transform:translateY(-3px)}
-.sol-card:hover::before{opacity:1}
-.sol-ico{font-size:1.6rem;margin-bottom:14px}
-.sol-card h3{font-weight:700;font-size:.97rem;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
-.sol-card p{color:var(--muted);font-size:.83rem;line-height:1.65;font-weight:400}
+/* mit */
+.mitg{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.mc2{background:var(--s);border:1px solid var(--b);border-radius:7px;padding:11px}
+.mc2 h4{font-size:.74rem;font-weight:700;color:#fff;margin-bottom:3px}
+.mc2 p{font-size:.69rem;color:var(--m);line-height:1.45}
+.mt2{display:inline-block;font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:100px;margin-bottom:5px}
 
 /* CONTACT */
-.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
-.form-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px}
-.fr{margin-bottom:17px}
-.fr label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-.fr input,.fr textarea,.fr select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:'Inter',sans-serif;font-size:.87rem;font-weight:400;outline:none;transition:border-color .18s}
-.fr input:focus,.fr textarea:focus,.fr select:focus{border-color:var(--cyan)}
-.fr textarea{resize:vertical;min-height:100px}
-.fr select option{background:var(--card)}
-.fr-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.sub-btn{width:100%;padding:14px;background:var(--cyan);color:#000;font-family:'Inter',sans-serif;font-weight:700;font-size:.93rem;border:none;border-radius:var(--r);cursor:pointer;transition:opacity .18s,transform .18s}
-.sub-btn:hover{opacity:.87;transform:translateY(-1px)}
-#f-err{display:none;color:var(--red);font-size:.77rem;margin-top:9px;text-align:center;font-weight:500}
-#f-ok{display:none;text-align:center;padding:28px}
-#f-ok svg{display:block;margin:0 auto 14px}
-#f-ok h3{font-weight:800;color:#fff;margin-bottom:7px;letter-spacing:-.02em}
-#f-ok p{color:var(--muted);font-size:.85rem}
-
-.con-info{display:flex;flex-direction:column;gap:20px}
-.ci{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px}
-.ci h3{font-weight:700;font-size:1rem;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
-.ci p{color:var(--muted);font-size:.84rem;line-height:1.65;font-weight:400}
-.ci a{color:var(--cyan);text-decoration:none;font-weight:500}
-.ci a:hover{text-decoration:underline}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.fc{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:28px}
+.fr{margin-bottom:13px}
+.fr label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--m);margin-bottom:6px}
+.fr input,.fr textarea{width:100%;background:var(--s);border:1px solid var(--b);border-radius:7px;padding:10px 12px;color:var(--t);font-family:'Inter',sans-serif;font-size:.84rem;outline:none;transition:border-color .15s}
+.fr input:focus,.fr textarea:focus{border-color:var(--c)}
+.fr textarea{resize:vertical;min-height:90px}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sbtn{width:100%;padding:13px;background:var(--c);color:#000;font-family:'Inter',sans-serif;font-weight:700;font-size:.88rem;border:none;border-radius:8px;cursor:pointer;transition:opacity .15s}
+.sbtn:hover{opacity:.85}
+#ferr{display:none;color:var(--r);font-size:.73rem;margin-top:8px;text-align:center;font-weight:500}
+#fok{display:none;text-align:center;padding:28px}
+#fok svg{display:block;margin:0 auto 12px}
+#fok h3{font-weight:800;color:#fff;margin-bottom:6px;font-size:1.05rem}
+#fok p{color:var(--m);font-size:.82rem}
+.ci{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:22px;margin-bottom:12px}
+.ci h3{font-weight:700;font-size:.93rem;color:#fff;margin-bottom:10px}
+.ci p,.ci a{color:var(--m);font-size:.82rem;line-height:1.65}
+.ci a{color:var(--c);text-decoration:none;font-weight:500}.ci a:hover{text-decoration:underline}
 .tl{display:flex;flex-direction:column}
-.tli{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
+.tli{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--b)}
 .tli:last-child{border-bottom:none}
-.tl-d{font-size:.68rem;color:var(--cyan);font-weight:700;padding-top:2px}
-.tl-t{font-size:.8rem;color:var(--text);line-height:1.5;font-weight:400}
-.tl-t strong{font-weight:700;color:#fff}
+.tld{font-size:.64rem;color:var(--c);font-weight:700}
+.tlt{font-size:.77rem;color:var(--t)}.tlt strong{font-weight:700;color:#fff}
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:28px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.fl{font-weight:800;font-size:1rem;color:#fff;letter-spacing:-.02em}
-.fl span{color:var(--cyan)}
-footer p,footer a{color:var(--muted);font-size:.77rem;text-decoration:none;font-weight:400;transition:color .18s}
-footer a:hover{color:var(--cyan)}
+footer{border-top:1px solid var(--b);padding:22px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.fl2{font-weight:800;font-size:.95rem;color:#fff}.fl2 span{color:var(--c)}
+footer p,footer a{color:var(--m);font-size:.74rem;text-decoration:none;transition:color .15s}
+footer a:hover{color:var(--c)}
 
-/* RESPONSIVE */
-@media(max-width:920px){
-  nav{padding:14px 24px}
-  .nav-links{display:none}
-  .hero{grid-template-columns:1fr;padding:90px 24px 48px;text-align:center}
-  .sub,.btns{margin-inline:auto;justify-content:center}
-  section{padding:56px 24px}
-  .div{margin:0 24px}
-  .s-grid{grid-template-columns:1fr 1fr}
-  .tp.active,.con-grid,.sol-grid{grid-template-columns:1fr}
-  .tabs{width:100%}
-  .mit-g{grid-template-columns:1fr}
-  .fr-2{grid-template-columns:1fr}
-  footer{padding:22px 24px;flex-direction:column;text-align:center}
+@media(max-width:860px){
+  nav{padding:14px 20px}.nav-r{gap:16px}
+  section{padding:56px 20px}hr{margin:0 20px}
+  .sg,.tp.active,.cg{grid-template-columns:1fr}
+  .tabs{width:100%}.mitg,.fr2{grid-template-columns:1fr}
+  footer{padding:18px 20px;flex-direction:column;text-align:center}
 }
-@media(max-width:480px){
-  .s-grid{grid-template-columns:1fr}
-  h1{font-size:2rem}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">Evol<span>Sphere</span></div>
-  <div class="nav-links">
-    <a href="#radar">Risk Radar</a>
+  <div class="nav-r">
     <a href="#modules">Modules</a>
-    <a href="#solutions">Solutions</a>
-    <a href="#contact" class="nav-cta">Prendre contact</a>
+    <a href="#contact" class="ncta">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="top">
+<section class="hero">
   <div class="hero-glow"></div>
-  <div class="hero-left">
-    <div class="chip"><span class="dot"></span>Anticipation stratégique des risques</div>
-    <h1>Voyez les risques<br/>avant qu'ils<br/><em>vous voient.</em></h1>
-    <p class="sub">EvolSphere cartographie, score et pilote vos risques stratégiques en temps réel — avant qu'ils deviennent des crises.</p>
-    <div class="btns">
-      <a href="#contact" class="btn-p">Prendre contact</a>
-      <a href="#radar" class="btn-g">Voir le radar</a>
-    </div>
+  <div class="chip"><span class="dot"></span>Risk Intelligence</div>
+  <h1>Anticipez.<br/>Décidez.<br/><em>Agissez.</em></h1>
+  <p class="hsub">EvolSphere détecte et priorise vos risques stratégiques avant qu'ils impactent votre organisation.</p>
+  <div class="btns">
+    <a href="#contact" class="bp">Prendre contact</a>
+    <a href="#modules" class="bg">Voir les modules</a>
   </div>
-  <div class="hero-right">
-    <div class="radar-wrap">
-      <canvas id="rc" width="400" height="400"></canvas>
-      <div id="radar-tip">Survolez un signal pour l'identifier</div>
-      <div class="r-legend">
-        <div class="r-leg"><div class="r-dot" style="background:var(--red)"></div>Critique</div>
-        <div class="r-leg"><div class="r-dot" style="background:var(--amber)"></div>Vigilance</div>
-        <div class="r-leg"><div class="r-dot" style="background:var(--green)"></div>Maîtrisé</div>
-        <div class="r-leg"><div class="r-dot" style="background:var(--cyan)"></div>Opportunité</div>
-      </div>
+  <div class="radar-wrap">
+    <canvas id="rc" width="340" height="340"></canvas>
+    <div id="rtip">Survolez un signal</div>
+    <div class="rleg">
+      <div class="rl"><div class="rd" style="background:var(--r)"></div>Critique</div>
+      <div class="rl"><div class="rd" style="background:var(--a)"></div>Vigilance</div>
+      <div class="rl"><div class="rd" style="background:var(--g)"></div>Maîtrisé</div>
+      <div class="rl"><div class="rd" style="background:var(--c)"></div>Opportunité</div>
     </div>
   </div>
 </section>
 
-<hr class="div"/>
+<hr/>
 
-<!-- RISK RADAR LIVE -->
-<section id="radar">
-  <div class="wrap">
-    <div class="sec-chip">Risk Radar · Live</div>
-    <h2>Scores de risque en direct</h2>
-    <p class="sec-sub">Cliquez sur une dimension pour simuler une alerte et voir comment Risk Radar réagit.</p>
-    <div class="s-grid">
-      <div class="sc" onclick="alert_card('Marché','red',78)">
-        <div class="sc-top"><span class="sc-cat">Marché</span><span class="badge br">CRITIQUE</span></div>
-        <div class="sc-val" id="sv0">0</div>
-        <div class="sc-bar-w"><div class="sc-bar" id="sb0" style="width:0%;background:var(--red)"></div></div>
-        <div class="sc-trend">↑ +12 pts cette semaine</div>
-      </div>
-      <div class="sc" onclick="alert_card('Réglementaire','amber',54)">
-        <div class="sc-top"><span class="sc-cat">Réglementaire</span><span class="badge ba">VIGILANCE</span></div>
-        <div class="sc-val" id="sv1">0</div>
-        <div class="sc-bar-w"><div class="sc-bar" id="sb1" style="width:0%;background:var(--amber)"></div></div>
-        <div class="sc-trend">→ Stable depuis 3 semaines</div>
-      </div>
-      <div class="sc" onclick="alert_card('Opérationnel','green',31)">
-        <div class="sc-top"><span class="sc-cat">Opérationnel</span><span class="badge bg">MAÎTRISÉ</span></div>
-        <div class="sc-val" id="sv2">0</div>
-        <div class="sc-bar-w"><div class="sc-bar" id="sb2" style="width:0%;background:var(--green)"></div></div>
-        <div class="sc-trend">↓ −8 pts après audit interne</div>
-      </div>
-      <div class="sc" onclick="alert_card('Concurrence','amber',62)">
-        <div class="sc-top"><span class="sc-cat">Concurrence</span><span class="badge ba">VIGILANCE</span></div>
-        <div class="sc-val" id="sv3">0</div>
-        <div class="sc-bar-w"><div class="sc-bar" id="sb3" style="width:0%;background:var(--amber)"></div></div>
-        <div class="sc-trend">↑ Nouvel entrant détecté</div>
-      </div>
+<!-- SCORES -->
+<section>
+  <div class="w">
+    <div class="sl">Risk Radar · Live</div>
+    <h2>Scores en temps réel</h2>
+    <div class="sg">
+      <div class="sc" onclick="ac('Marché','r',78)"><div class="sct"><span class="scl">Marché</span><span class="badge br">CRITIQUE</span></div><div class="sv" id="sv0">0</div><div class="sbw"><div class="sb" id="sb0" style="width:0%;background:var(--r)"></div></div><div class="str">↑ +12 pts cette semaine</div></div>
+      <div class="sc" onclick="ac('Réglementaire','a',54)"><div class="sct"><span class="scl">Réglementaire</span><span class="badge ba">VIGILANCE</span></div><div class="sv" id="sv1">0</div><div class="sbw"><div class="sb" id="sb1" style="width:0%;background:var(--a)"></div></div><div class="str">→ Stable depuis 3 semaines</div></div>
+      <div class="sc" onclick="ac('Opérationnel','g',31)"><div class="sct"><span class="scl">Opérationnel</span><span class="badge bg2">MAÎTRISÉ</span></div><div class="sv" id="sv2">0</div><div class="sbw"><div class="sb" id="sb2" style="width:0%;background:var(--g)"></div></div><div class="str">↓ −8 pts après audit</div></div>
+      <div class="sc" onclick="ac('Concurrence','a',62)"><div class="sct"><span class="scl">Concurrence</span><span class="badge ba">VIGILANCE</span></div><div class="sv" id="sv3">0</div><div class="sbw"><div class="sb" id="sb3" style="width:0%;background:var(--a)"></div></div><div class="str">↑ Nouvel entrant détecté</div></div>
     </div>
-    <div id="alert-box"></div>
+    <div id="abox"></div>
   </div>
 </section>
 
-<hr class="div"/>
+<hr/>
 
 <!-- MODULES -->
-<section class="mod-sec" id="modules">
-  <div class="wrap">
-    <div class="sec-chip">Modules</div>
-    <h2>Ce que Risk Radar fait pour vous</h2>
-    <div class="tabs" role="tablist">
+<section class="ms" id="modules">
+  <div class="w">
+    <div class="sl">Modules</div>
+    <h2>Risk Radar en action</h2>
+    <div class="tabs">
       <button class="tab active" onclick="tab(0)">Scan 360°</button>
       <button class="tab" onclick="tab(1)">Scoring</button>
-      <button class="tab" onclick="tab(2)">Veille & alertes</button>
+      <button class="tab" onclick="tab(2)">Alertes</button>
       <button class="tab" onclick="tab(3)">Mitigation</button>
     </div>
 
-    <!-- 0 Scan -->
     <div class="tp active" id="tp0">
-      <div class="pi">
-        <h3>Scan stratégique 360°</h3>
-        <p>Analyse de votre environnement sous toutes ses dimensions : marchés, concurrence, macro, réglementation. Traduit en risques classés et actionnables.</p>
-        <ul class="feat">
-          <li>Analyse PESTEL augmentée en continu</li>
-          <li>Cartographie des parties prenantes et influences</li>
-          <li>Identification des angles morts non visibles</li>
-          <li>Rapport synthèse livrable en CODIR en 10 min</li>
-        </ul>
-      </div>
-      <div class="pv">
-        <div class="pv-lbl">Exposition par dimension</div>
-        <div class="mbars" id="scan-bars"></div>
-        <div style="display:flex;gap:4px" id="scan-labs"></div>
-        <div id="scan-det"></div>
-      </div>
+      <div class="pi"><h3>Scan 360°</h3><p>Analyse continue de votre environnement — marché, concurrence, réglementation — traduite en risques actionnables.</p><ul class="fl"><li>PESTEL augmenté en continu</li><li>Angles morts identifiés</li><li>Rapport CODIR en 10 min</li></ul></div>
+      <div class="pv"><div class="pvl">Exposition par dimension</div><div class="mbars" id="sbars"></div><div style="display:flex;gap:4px" id="slabs"></div><div id="sdet"></div></div>
     </div>
 
-    <!-- 1 Scoring -->
     <div class="tp" id="tp1">
-      <div class="pi">
-        <h3>Scoring des risques</h3>
-        <p>Chaque risque est évalué sur deux axes — probabilité et impact — positionné dans votre matrice de criticité. Fini la subjectivité.</p>
-        <ul class="feat">
-          <li>Matrice probabilité × impact interactive</li>
-          <li>Score composite pondéré par secteur</li>
-          <li>Seuils d'alerte configurables par catégorie</li>
-          <li>Historique et tendances sur 6 mois</li>
-        </ul>
-      </div>
-      <div class="pv">
-        <div class="pv-lbl">Matrice des risques · Survolez un point</div>
-        <canvas id="mc" width="310" height="210"></canvas>
-        <div id="mt">Survolez un point pour voir le risque</div>
-      </div>
+      <div class="pi"><h3>Scoring</h3><p>Chaque risque positionné sur une matrice probabilité × impact. Score composite, seuils configurables.</p><ul class="fl"><li>Matrice interactive</li><li>Score pondéré par secteur</li><li>Historique 6 mois</li></ul></div>
+      <div class="pv"><div class="pvl">Matrice des risques</div><canvas id="mc" width="280" height="190"></canvas><div id="mt">Survolez un point</div></div>
     </div>
 
-    <!-- 2 Veille -->
     <div class="tp" id="tp2">
-      <div class="pi">
-        <h3>Veille & alertes continues</h3>
-        <p>Vous recevez uniquement ce qui mérite votre attention. Risk Radar filtre le bruit et remonte les signaux faibles avant médiatisation.</p>
-        <ul class="feat">
-          <li>Alertes classées par urgence et secteur</li>
-          <li>Synthèse hebdomadaire exécutive automatisée</li>
-          <li>Détection de signaux faibles avant rupture</li>
-          <li>Intégration à vos outils de reporting</li>
-        </ul>
-      </div>
-      <div class="pv">
-        <div class="pv-lbl">Signaux détectés · Score de criticité</div>
-        <div class="sig-list" id="sig-list"></div>
-        <button class="ref-btn" onclick="fill_signals()">↻ Actualiser</button>
-      </div>
+      <div class="pi"><h3>Alertes</h3><p>Seuls les signaux qui méritent votre attention. Risk Radar filtre et remonte les signaux faibles avant qu'ils deviennent des crises.</p><ul class="fl"><li>Alertes classées par urgence</li><li>Synthèse hebdomadaire auto</li><li>Détection avant médiatisation</li></ul></div>
+      <div class="pv"><div class="pvl">Signaux actifs</div><div class="slist" id="slist"></div><button class="rbtn" onclick="fsigs()">↻ Actualiser</button></div>
     </div>
 
-    <!-- 3 Mitigation -->
     <div class="tp" id="tp3">
-      <div class="pi">
-        <h3>Plans de mitigation</h3>
-        <p>Pour chaque risque critique, un plan d'action documenté prêt à activer : scénario de réponse, ressources, jalons.</p>
-        <ul class="feat">
-          <li>Plan A / Plan B par risque prioritaire</li>
-          <li>Responsable désigné et délais définis</li>
-          <li>Simulation de scénarios de crise en amont</li>
-          <li>Livrables exportables pour la gouvernance</li>
-        </ul>
-      </div>
-      <div class="pv">
-        <div class="pv-lbl">Plans actifs</div>
-        <div class="mit-g">
-          <div class="mc2"><div class="mt2 br">Critique</div><h4>Pression tarifaire marché</h4><p>Plan A activé · Revue pricing en cours · J+14</p></div>
-          <div class="mc2"><div class="mt2 ba">Vigilance</div><h4>Concurrent low-cost entrant</h4><p>Scénarios documentés · Veille active · Stand-by</p></div>
-          <div class="mc2"><div class="mt2 ba">Vigilance</div><h4>Évolution réglementaire UE</h4><p>Conseil juridique mandaté · Dossier ouvert</p></div>
-          <div class="mc2"><div class="mt2 bg">Maîtrisé</div><h4>Dépendance fournisseur</h4><p>Backup qualifié · Contrat alternatif signé</p></div>
-        </div>
-      </div>
+      <div class="pi"><h3>Mitigation</h3><p>Pour chaque risque critique : plan A, plan B, ressources, jalons. Prêt à activer immédiatement.</p><ul class="fl"><li>Plans documentés et exportables</li><li>Responsables et délais définis</li><li>Simulation de scénarios de crise</li></ul></div>
+      <div class="pv"><div class="pvl">Plans actifs</div><div class="mitg"><div class="mc2"><div class="mt2 br">Critique</div><h4>Pression tarifaire</h4><p>Plan A activé · J+14</p></div><div class="mc2"><div class="mt2 ba">Vigilance</div><h4>Concurrent entrant</h4><p>Scénarios prêts · Veille active</p></div><div class="mc2"><div class="mt2 ba">Vigilance</div><h4>Réglementation UE</h4><p>Conseil mandaté · Dossier ouvert</p></div><div class="mc2"><div class="mt2 bg2">Maîtrisé</div><h4>Fournisseur critique</h4><p>Backup qualifié · Contrat signé</p></div></div></div>
     </div>
   </div>
 </section>
 
-<hr class="div"/>
-
-<!-- SOLUTIONS -->
-<section id="solutions">
-  <div class="wrap">
-    <div class="sec-chip">Solutions</div>
-    <h2>Ce que vous gagnez concrètement</h2>
-    <p class="sec-sub">Des livrables actionnables, pas des rapports de plus.</p>
-    <div class="sol-grid">
-      <div class="sol-card">
-        <div class="sol-ico">🎯</div>
-        <h3>Décisions plus rapides</h3>
-        <p>Un tableau de bord unique, lisible en moins de 5 minutes. Vos prochaines décisions s'appuient sur des données, pas des intuitions.</p>
-      </div>
-      <div class="sol-card">
-        <div class="sol-ico">🛡️</div>
-        <h3>Zéro mauvaise surprise</h3>
-        <p>Les risques critiques sont détectés 4 à 8 semaines avant d'impacter votre organisation. Vous agissez, vous ne subissez plus.</p>
-      </div>
-      <div class="sol-card">
-        <div class="sol-ico">📊</div>
-        <h3>Gouvernance renforcée</h3>
-        <p>Livrables prêts pour vos CODIR, CA et instances de pilotage. La gestion des risques devient un actif stratégique visible.</p>
-      </div>
-      <div class="sol-card">
-        <div class="sol-ico">⚡</div>
-        <h3>Opérationnel en 30 jours</h3>
-        <p>Diagnostic initial, configuration sur mesure, premier tableau de bord livré — sans perturber votre fonctionnement actuel.</p>
-      </div>
-      <div class="sol-card">
-        <div class="sol-ico">🔭</div>
-        <h3>Vision long terme</h3>
-        <p>Au-delà des risques immédiats, Risk Radar identifie les transformations sectorielles qui remodèleront votre marché dans 12 à 36 mois.</p>
-      </div>
-      <div class="sol-card">
-        <div class="sol-ico">🤝</div>
-        <h3>Accès direct à l'expert</h3>
-        <p>Pas de junior, pas de prestataire intermédiaire. Raphaël de Bruijn travaille directement avec votre équipe dirigeante.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="div"/>
+<hr/>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="wrap">
-    <div class="sec-chip">Contact</div>
-    <h2>Un premier échange, sans engagement</h2>
-    <p class="sec-sub">30 minutes pour évaluer ensemble si Risk Radar répond à vos enjeux actuels.</p>
-    <div class="con-grid">
-      <div class="form-card">
-        <div id="f-content">
-          <div class="fr-2">
-            <div class="fr"><label>Prénom *</label><input type="text" id="fp" placeholder="Marie"/></div>
-            <div class="fr"><label>Nom</label><input type="text" id="fn" placeholder="Dupont"/></div>
+  <div class="w">
+    <div class="sl">Contact</div>
+    <h2>Parlons-en</h2>
+    <div class="cg">
+      <div class="fc">
+        <div id="fcont">
+          <div class="fr2">
+            <div class="fr"><label>Prénom *</label><input id="fp" placeholder="Marie"/></div>
+            <div class="fr"><label>Nom</label><input id="fn" placeholder="Dupont"/></div>
           </div>
-          <div class="fr"><label>Email professionnel *</label><input type="email" id="fe" placeholder="marie@entreprise.com"/></div>
-          <div class="fr"><label>Entreprise</label><input type="text" id="fco" placeholder="Votre société"/></div>
-          <div class="fr">
-            <label>Enjeu principal</label>
-            <select id="fs">
-              <option value="">Sélectionnez...</option>
-              <option>Identifier des risques inconnus</option>
-              <option>Structurer ma gestion des risques</option>
-              <option>Préparer un CODIR ou CA</option>
-              <option>Anticiper une transformation stratégique</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="fr"><label>Message</label><textarea id="fm" placeholder="Décrivez votre situation..."></textarea></div>
-          <button class="sub-btn" onclick="send()">Envoyer ma demande →</button>
-          <p id="f-err"></p>
+          <div class="fr"><label>Email *</label><input type="email" id="fe" placeholder="marie@entreprise.com"/></div>
+          <div class="fr"><label>Message</label><textarea id="fm" placeholder="Votre enjeu en quelques mots..."></textarea></div>
+          <button class="sbtn" onclick="send()">Envoyer →</button>
+          <p id="ferr"></p>
         </div>
-        <div id="f-ok">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#22d474" stroke-width="1.5"/><path d="M13 22l7 7 11-13" stroke="#22d474" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Message envoyé !</h3>
-          <p>Raphaël vous répondra sous 24h pour convenir d'un premier échange.</p>
+        <div id="fok">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#22d474" stroke-width="1.5"/><path d="M12 20l6 6 10-12" stroke="#22d474" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Message envoyé !</h3><p>Réponse sous 24h.</p>
         </div>
       </div>
-      <div class="con-info">
+      <div>
         <div class="ci">
           <h3>Contact direct</h3>
-          <p>Pour toute demande urgente :</p>
-          <p style="margin-top:8px"><a href="mailto:raphael@de-bruijn.com">raphael@de-bruijn.com</a></p>
+          <p><a href="mailto:raphael@de-bruijn.com">raphael@de-bruijn.com</a></p>
           <p style="margin-top:4px"><a href="https://evolsphere.com" target="_blank">evolsphere.com</a></p>
         </div>
         <div class="ci">
           <h3>Ce qui se passe ensuite</h3>
           <div class="tl">
-            <div class="tli"><div class="tl-d">J+1</div><div class="tl-t"><strong>Appel de qualification</strong> · 30 min pour cerner vos enjeux</div></div>
-            <div class="tli"><div class="tl-d">J+3</div><div class="tl-t"><strong>Proposition personnalisée</strong> · Périmètre, livrables, calendrier</div></div>
-            <div class="tli"><div class="tl-d">J+7</div><div class="tl-t"><strong>Démarrage</strong> · Diagnostic initial et première session</div></div>
-            <div class="tli"><div class="tl-d">J+30</div><div class="tl-t"><strong>Risk Radar opérationnel</strong> · Dashboard livré et présenté</div></div>
+            <div class="tli"><div class="tld">J+1</div><div class="tlt"><strong>Appel</strong> · 30 min, sans engagement</div></div>
+            <div class="tli"><div class="tld">J+3</div><div class="tlt"><strong>Proposition</strong> · Périmètre & calendrier</div></div>
+            <div class="tli"><div class="tld">J+30</div><div class="tlt"><strong>Dashboard</strong> · Risk Radar opérationnel</div></div>
           </div>
         </div>
       </div>
@@ -466,215 +276,58 @@ footer a:hover{color:var(--cyan)}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="fl">Evol<span>Sphere</span></div>
-  <p>© 2025 EvolSphere · <a href="https://evolsphere.com">evolsphere.com</a></p>
+  <div class="fl2">Evol<span>Sphere</span></div>
+  <p>© 2025 EvolSphere</p>
   <a href="mailto:raphael@de-bruijn.com">raphael@de-bruijn.com</a>
 </footer>
 
 <script>
-// ── RADAR ──────────────────────────────
-const c = document.getElementById('rc');
-const x = c.getContext('2d');
-const CX=200,CY=200,R=172;
-let ang=0;
-const blips=[
-  {a:0.7,r:.52,col:'#ff4455',lbl:'Pression marché'},
-  {a:2.0,r:.36,col:'#ffb020',lbl:'Réglementation UE'},
-  {a:3.3,r:.68,col:'#ff4455',lbl:'Concurrent B'},
-  {a:4.7,r:.26,col:'#22d474',lbl:'Opérations'},
-  {a:1.3,r:.80,col:'#ffb020',lbl:'Finances'},
-  {a:5.4,r:.48,col:'#00e5ff',lbl:'Opportunité M&A'},
-];
-let hov=null;
-c.addEventListener('mousemove',e=>{
-  const b=c.getBoundingClientRect();
-  const mx=e.clientX-b.left,my=e.clientY-b.top;
-  hov=null;
-  blips.forEach(p=>{
-    const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;
-    if(Math.hypot(mx-bx,my-by)<14)hov=p;
-  });
-  document.getElementById('radar-tip').textContent=hov?`⬤ ${hov.lbl}`:'Survolez un signal pour l\'identifier';
-  c.style.cursor=hov?'pointer':'crosshair';
-});
-
+// RADAR
+const cv=document.getElementById('rc'),x=cv.getContext('2d');
+const CX=170,CY=170,R=152;let ang=0;
+const bp=[{a:.7,r:.52,c:'#ff4455',l:'Pression marché'},{a:2.0,r:.36,c:'#ffb020',l:'Réglementation'},{a:3.3,r:.68,c:'#ff4455',l:'Concurrent'},{a:4.7,r:.26,c:'#22d474',l:'Opérations'},{a:1.3,r:.80,c:'#ffb020',l:'Finances'},{a:5.4,r:.48,c:'#00e5ff',l:'Opportunité'}];
+let hv=null;
+cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;hv=null;bp.forEach(p=>{const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;if(Math.hypot(mx-bx,my-by)<13)hv=p;});document.getElementById('rtip').textContent=hv?`⬤ ${hv.l}`:'Survolez un signal';cv.style.cursor=hv?'pointer':'crosshair';});
 function draw(){
-  x.clearRect(0,0,400,400);
-  // bg
-  x.beginPath();x.arc(CX,CY,R+6,0,Math.PI*2);x.fillStyle='#0f1117';x.fill();
-  // rings
-  [.25,.5,.75,1].forEach(f=>{
-    x.beginPath();x.arc(CX,CY,R*f,0,Math.PI*2);
-    x.strokeStyle='rgba(0,229,255,.09)';x.lineWidth=1;x.stroke();
-  });
-  // cross
-  x.strokeStyle='rgba(0,229,255,.06)';x.lineWidth=1;
-  [[CX,CY-R,CX,CY+R],[CX-R,CY,CX+R,CY]].forEach(([a,b,c2,d])=>{
-    x.beginPath();x.moveTo(a,b);x.lineTo(c2,d);x.stroke();
-  });
-  // sweep fill
+  x.clearRect(0,0,340,340);
+  x.beginPath();x.arc(CX,CY,R+5,0,Math.PI*2);x.fillStyle='#0f1013';x.fill();
+  [.25,.5,.75,1].forEach(f=>{x.beginPath();x.arc(CX,CY,R*f,0,Math.PI*2);x.strokeStyle='rgba(0,229,255,.08)';x.lineWidth=1;x.stroke();});
+  x.strokeStyle='rgba(0,229,255,.05)';x.lineWidth=1;
+  [[CX,CY-R,CX,CY+R],[CX-R,CY,CX+R,CY]].forEach(([a,b,c,d])=>{x.beginPath();x.moveTo(a,b);x.lineTo(c,d);x.stroke();});
   x.save();x.translate(CX,CY);x.rotate(ang);
-  const g=x.createLinearGradient(0,0,R,0);
-  g.addColorStop(0,'rgba(0,229,255,.28)');g.addColorStop(1,'rgba(0,229,255,0)');
-  x.beginPath();x.moveTo(0,0);x.arc(0,0,R,-.55,.55);x.closePath();
-  x.fillStyle=g;x.fill();x.restore();
-  // sweep line
-  x.beginPath();x.moveTo(CX,CY);
-  x.lineTo(CX+Math.cos(ang)*R,CY+Math.sin(ang)*R);
-  x.strokeStyle='rgba(0,229,255,.65)';x.lineWidth=1.5;x.stroke();
-  // blips
-  blips.forEach(p=>{
-    const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;
-    const diff=((ang-p.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
-    const glow=diff<.45?1:Math.max(0,1-diff/(Math.PI*1.6));
-    x.shadowColor=p.col;x.shadowBlur=glow>0.1?14*glow:0;
-    x.beginPath();x.arc(bx,by,glow>0.1?4+2*glow:3.5,0,Math.PI*2);
-    x.fillStyle=glow>0.05?p.col:p.col+'66';x.fill();
-    x.shadowBlur=0;
-    if(hov===p){
-      x.fillStyle='#fff';x.font='600 11px Inter,sans-serif';
-      x.textAlign='center';x.fillText(p.lbl,bx,by-14);
-    }
-  });
-  // border
-  x.beginPath();x.arc(CX,CY,R,0,Math.PI*2);
-  x.strokeStyle='rgba(0,229,255,.18)';x.lineWidth=1.5;x.stroke();
-  ang+=0.017;if(ang>Math.PI*2)ang-=Math.PI*2;
-  requestAnimationFrame(draw);
+  const g=x.createLinearGradient(0,0,R,0);g.addColorStop(0,'rgba(0,229,255,.22)');g.addColorStop(1,'rgba(0,229,255,0)');
+  x.beginPath();x.moveTo(0,0);x.arc(0,0,R,-.5,.5);x.closePath();x.fillStyle=g;x.fill();x.restore();
+  x.beginPath();x.moveTo(CX,CY);x.lineTo(CX+Math.cos(ang)*R,CY+Math.sin(ang)*R);x.strokeStyle='rgba(0,229,255,.55)';x.lineWidth=1.5;x.stroke();
+  bp.forEach(p=>{const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;const d=((ang-p.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2),gl=d<.45?1:Math.max(0,1-d/(Math.PI*1.6));x.shadowColor=p.c;x.shadowBlur=gl>.1?11*gl:0;x.beginPath();x.arc(bx,by,gl>.1?4+1.5*gl:3,0,Math.PI*2);x.fillStyle=gl>.05?p.c:p.c+'44';x.fill();x.shadowBlur=0;if(hv===p){x.fillStyle='#fff';x.font='600 10px Inter';x.textAlign='center';x.fillText(p.l,bx,by-13);}});
+  x.beginPath();x.arc(CX,CY,R,0,Math.PI*2);x.strokeStyle='rgba(0,229,255,.14)';x.lineWidth=1.5;x.stroke();
+  ang+=0.017;if(ang>Math.PI*2)ang-=Math.PI*2;requestAnimationFrame(draw);
 }
 draw();
 
-// ── SCORE CARDS ─────────────────────────
-const sc=[{v:78,c:'var(--red)'},{v:54,c:'var(--amber)'},{v:31,c:'var(--green)'},{v:62,c:'var(--amber)'}];
-sc.forEach((s,i)=>{
-  let v=0;const el=document.getElementById('sv'+i),bar=document.getElementById('sb'+i);
-  const step=()=>{v=Math.min(v+1.6,s.v);el.textContent=Math.round(v);bar.style.width=v+'%';if(v<s.v)setTimeout(step,14);}
-  setTimeout(step,400+i*180);
-});
-function alert_card(name,lev,score){
-  const box=document.getElementById('alert-box');
-  const msgs={red:`⚠ Score ${score}/100 sur "${name}" — seuil critique dépassé. Plan de mitigation recommandé sous 48h.`,amber:`🔶 Score ${score}/100 sur "${name}" — tendance haussière. Revue de contingence conseillée.`,green:`✅ Score ${score}/100 sur "${name}" — zone maîtrisée. Prochain contrôle dans 7 jours.`};
-  const cols={red:'rgba(255,68,85,.1)',amber:'rgba(255,176,32,.08)',green:'rgba(34,212,116,.08)'};
-  const bords={red:'rgba(255,68,85,.3)',amber:'rgba(255,176,32,.3)',green:'rgba(34,212,116,.3)'};
-  box.style.cssText=`display:flex;margin-top:16px;border-radius:var(--r);padding:13px 18px;font-size:.83rem;font-weight:500;align-items:center;gap:10px;background:${cols[lev]};border:1px solid ${bords[lev]}`;
-  box.textContent=msgs[lev];
-  setTimeout(()=>{box.style.display='none'},6000);
-}
+// SCORES
+[[78,'#ff4455'],[54,'#ffb020'],[31,'#22d474'],[62,'#ffb020']].forEach(([t,c],i)=>{let v=0;const el=document.getElementById('sv'+i),bar=document.getElementById('sb'+i);bar.style.background=c;const s=()=>{v=Math.min(v+1.8,t);el.textContent=Math.round(v);bar.style.width=v+'%';if(v<t)setTimeout(s,14);};setTimeout(s,400+i*160);});
+function ac(n,l,sc){const b=document.getElementById('abox');const m={r:`⚠ Score ${sc}/100 sur "${n}" — critique. Plan de mitigation recommandé sous 48h.`,a:`🔶 Score ${sc}/100 sur "${n}" — vigilance. Revue conseillée.`,g:`✅ Score ${sc}/100 sur "${n}" — maîtrisé. Prochain contrôle dans 7 jours.`};const bg={r:'rgba(255,68,85,.1)',a:'rgba(255,176,32,.08)',g:'rgba(34,212,116,.08)'};const bd={r:'rgba(255,68,85,.28)',a:'rgba(255,176,32,.28)',g:'rgba(34,212,116,.28)'};b.style.cssText=`display:flex;margin-top:12px;border-radius:8px;padding:11px 15px;font-size:.8rem;font-weight:500;align-items:center;gap:8px;background:${bg[l]};border:1px solid ${bd[l]}`;b.textContent=m[l];setTimeout(()=>b.style.display='none',5000);}
 
-// ── TABS ─────────────────────────────────
-function tab(i){
-  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));
-  document.querySelectorAll('.tp').forEach((p,j)=>p.classList.toggle('active',j===i));
-  if(i===1)drawMat();
-}
+// TABS
+function tab(i){document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));document.querySelectorAll('.tp').forEach((p,j)=>p.classList.toggle('active',j===i));if(i===1)dmat();}
 
-// ── SCAN BARS ────────────────────────────
-const sd=[
-  {l:'Marché',v:78,c:'#ff4455',d:'Pression tarifaire forte. 3 nouveaux entrants Q1. Revue pricing recommandée.'},
-  {l:'Réglem.',v:54,c:'#ffb020',d:'Directive UE en cours de transposition. Délai conformité : 6 mois.'},
-  {l:'Concurr.',v:62,c:'#ffb020',d:'Concurrent a levé 18M€ série B. Déploiement accéléré prévu Q3.'},
-  {l:'Opérat.',v:31,c:'#22d474',d:'Post-audit, processus critiques stabilisés. Revue dans 90 jours.'},
-  {l:'Finance',v:45,c:'#ffb020',d:'Tension légère BFR due aux délais clients. Suivi mensuel activé.'},
-  {l:'Talent',v:28,c:'#22d474',d:'Rétention stable. Plan succession sur 3 postes clés en place.'},
-];
-const barsEl=document.getElementById('scan-bars');
-const labsEl=document.getElementById('scan-labs');
-sd.forEach((d,i)=>{
-  const w=document.createElement('div');w.className='mbar-w';
-  const bar=document.createElement('div');bar.className='mbar';
-  bar.style.cssText=`background:${d.c};height:0`;
-  setTimeout(()=>bar.style.height=(d.v*.65)+'px',120+i*90);
-  w.appendChild(bar);barsEl.appendChild(w);
-  const lbl=document.createElement('div');lbl.className='mbar-lbl';lbl.textContent=d.l;
-  lbl.style.flex='1';labsEl.appendChild(lbl);
-  w.addEventListener('click',()=>{
-    const det=document.getElementById('scan-det');
-    det.style.display='block';
-    det.innerHTML=`<strong style="color:${d.c}">${d.l} · ${d.v}/100</strong><br/>${d.d}`;
-  });
-});
+// SCAN BARS
+const sd=[{l:'Marché',v:78,c:'#ff4455',d:'Pression tarifaire forte. 3 nouveaux entrants Q1.'},{l:'Réglem.',v:54,c:'#ffb020',d:'Directive UE en cours. Délai conformité : 6 mois.'},{l:'Concurr.',v:62,c:'#ffb020',d:'Concurrent a levé 18M€. Déploiement prévu Q3.'},{l:'Opérat.',v:31,c:'#22d474',d:'Stabilisé post-audit. Revue dans 90 jours.'},{l:'Finance',v:45,c:'#ffb020',d:'Tension BFR légère. Suivi mensuel activé.'},{l:'Talent',v:28,c:'#22d474',d:'Rétention stable. Plan de succession en place.'}];
+const be=document.getElementById('sbars'),le=document.getElementById('slabs');
+sd.forEach((d,i)=>{const w=document.createElement('div');w.className='mbw';const b=document.createElement('div');b.className='mb';b.style.cssText=`background:${d.c};height:0`;setTimeout(()=>b.style.height=(d.v*.56)+'px',100+i*80);w.appendChild(b);be.appendChild(w);const ll=document.createElement('div');ll.className='mbl';ll.textContent=d.l;ll.style.flex='1';le.appendChild(ll);w.addEventListener('click',()=>{const dt=document.getElementById('sdet');dt.style.display='block';dt.innerHTML=`<strong style="color:${d.c}">${d.l} · ${d.v}/100</strong><br/>${d.d}`;});});
 
-// ── MATRIX ───────────────────────────────
-const risks=[
-  {x:.78,y:.73,l:'Pression tarifaire',c:'#ff4455'},
-  {x:.53,y:.53,l:'Réglementation UE',c:'#ffb020'},
-  {x:.74,y:.39,l:'Concurrent B',c:'#ffb020'},
-  {x:.28,y:.24,l:'Talent retention',c:'#22d474'},
-  {x:.19,y:.63,l:'Cyber',c:'#ffb020'},
-  {x:.84,y:.79,l:'Disruption digitale',c:'#ff4455'},
-  {x:.14,y:.18,l:'Supply chain',c:'#22d474'},
-];
-function drawMat(){
-  const cv=document.getElementById('mc');if(!cv)return;
-  const m=cv.getContext('2d');const W=cv.width,H=cv.height,p=28;
-  m.clearRect(0,0,W,H);
-  [{x:p,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,68,85,.07)'},{x:p+(W-p*2)/2,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,68,85,.12)'},{x:p,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(34,212,116,.07)'},{x:p+(W-p*2)/2,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,176,32,.07)'}]
-  .forEach(z=>{m.fillStyle=z.c;m.fillRect(z.x,z.y,z.w,z.h);});
-  m.strokeStyle='rgba(0,229,255,.18)';m.lineWidth=1;
-  m.beginPath();m.moveTo(p,p);m.lineTo(p,H-p);m.lineTo(W-p,H-p);m.stroke();
-  m.fillStyle='#52607a';m.font='8px Inter';m.textAlign='center';
-  m.fillText('PROBABILITÉ →',W/2,H-6);
-  m.save();m.translate(9,H/2);m.rotate(-Math.PI/2);m.fillText('IMPACT →',0,0);m.restore();
-  risks.forEach(r=>{
-    const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);
-    m.shadowColor=r.c;m.shadowBlur=10;
-    m.beginPath();m.arc(rx,ry,5.5,0,Math.PI*2);m.fillStyle=r.c;m.fill();m.shadowBlur=0;
-  });
-  cv.onmousemove=e=>{
-    const b=cv.getBoundingClientRect();const ex=e.clientX-b.left,ey=e.clientY-b.top;
-    let f=null;risks.forEach(r=>{const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);if(Math.hypot(ex-rx,ey-ry)<13)f=r;});
-    document.getElementById('mt').textContent=f?`${f.l} · Prob. ${Math.round(f.x*100)}% · Impact ${Math.round(f.y*100)}%`:'Survolez un point pour voir le risque';
-    cv.style.cursor=f?'pointer':'crosshair';
-  };
-}
+// MATRIX
+const risks=[{x:.78,y:.73,l:'Pression tarifaire',c:'#ff4455'},{x:.53,y:.53,l:'Réglementation',c:'#ffb020'},{x:.74,y:.39,l:'Concurrent B',c:'#ffb020'},{x:.28,y:.24,l:'Talent',c:'#22d474'},{x:.84,y:.79,l:'Disruption digitale',c:'#ff4455'},{x:.14,y:.18,l:'Supply chain',c:'#22d474'}];
+function dmat(){const cv=document.getElementById('mc');if(!cv)return;const m=cv.getContext('2d'),W=cv.width,H=cv.height,p=22;m.clearRect(0,0,W,H);[{x:p,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,68,85,.07)'},{x:p+(W-p*2)/2,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,68,85,.12)'},{x:p,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(34,212,116,.07)'},{x:p+(W-p*2)/2,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,176,32,.07)'}].forEach(z=>{m.fillStyle=z.c;m.fillRect(z.x,z.y,z.w,z.h);});m.strokeStyle='rgba(0,229,255,.14)';m.lineWidth=1;m.beginPath();m.moveTo(p,p);m.lineTo(p,H-p);m.lineTo(W-p,H-p);m.stroke();m.fillStyle='#52576a';m.font='7px Inter';m.textAlign='center';m.fillText('PROBABILITÉ →',W/2,H-4);m.save();m.translate(8,H/2);m.rotate(-Math.PI/2);m.fillText('IMPACT →',0,0);m.restore();risks.forEach(r=>{const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);m.shadowColor=r.c;m.shadowBlur=8;m.beginPath();m.arc(rx,ry,4.5,0,Math.PI*2);m.fillStyle=r.c;m.fill();m.shadowBlur=0;});cv.onmousemove=e=>{const b=cv.getBoundingClientRect(),ex=e.clientX-b.left,ey=e.clientY-b.top;let f=null;risks.forEach(r=>{const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);if(Math.hypot(ex-rx,ey-ry)<11)f=r;});document.getElementById('mt').textContent=f?`${f.l} — Prob. ${Math.round(f.x*100)}% · Impact ${Math.round(f.y*100)}%`:'Survolez un point';cv.style.cursor=f?'pointer':'crosshair';};}
 
-// ── SIGNALS ──────────────────────────────
-const sigs=[
-  {t:'Concurrent lève 18M€ série B',s:82,c:'#ff4455'},
-  {t:'NIS2 — délai conformité raccourci',s:71,c:'#ff4455'},
-  {t:'Contraction commandes auto −12%',s:68,c:'#ffb020'},
-  {t:'Pénurie semi-conducteurs prévue Q3',s:61,c:'#ffb020'},
-  {t:'Opportunité rachat concurrent fragilisé',s:55,c:'#00e5ff'},
-  {t:'BFR stabilisé après renégociation',s:28,c:'#22d474'},
-  {t:'Recrutement talent normalisé',s:22,c:'#22d474'},
-  {t:'Remontée taux BCE confirmée',s:74,c:'#ffb020'},
-];
-function fill_signals(){
-  const l=document.getElementById('sig-list');l.innerHTML='';
-  [...sigs].sort(()=>Math.random()-.5).slice(0,5).sort((a,b)=>b.s-a.s).forEach(s=>{
-    const r=document.createElement('div');r.className='sig-row';
-    r.innerHTML=`<div class="sig-l"><div class="sig-d" style="background:${s.c}"></div>${s.t}</div><div class="sig-s" style="color:${s.c}">${s.s}</div>`;
-    l.appendChild(r);
-  });
-}
-fill_signals();
+// SIGNALS
+const sigs=[{t:'Concurrent lève 18M€ série B',s:82,c:'#ff4455'},{t:'NIS2 — conformité raccourcie',s:71,c:'#ff4455'},{t:'Commandes auto −12%',s:68,c:'#ffb020'},{t:'Pénurie semi-conducteurs Q3',s:61,c:'#ffb020'},{t:'Rachat concurrent fragilisé',s:55,c:'#00e5ff'},{t:'BFR stabilisé',s:28,c:'#22d474'},{t:'Recrutement normalisé',s:22,c:'#22d474'},{t:'Taux BCE en hausse',s:74,c:'#ffb020'}];
+function fsigs(){const l=document.getElementById('slist');l.innerHTML='';[...sigs].sort(()=>Math.random()-.5).slice(0,5).sort((a,b)=>b.s-a.s).forEach(s=>{const r=document.createElement('div');r.className='srow';r.innerHTML=`<div class="sleft"><div class="sdot" style="background:${s.c}"></div>${s.t}</div><div class="sscore" style="color:${s.c}">${s.s}</div>`;l.appendChild(r);});}
+fsigs();
 
-// ── FORM ─────────────────────────────────
-function send(){
-  const p=document.getElementById('fp').value.trim();
-  const e=document.getElementById('fe').value.trim();
-  const err=document.getElementById('f-err');
-  if(!p||!e){err.style.display='block';err.textContent='Merci de renseigner votre prénom et votre email.';return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.style.display='block';err.textContent='Email invalide.';return;}
-  err.style.display='none';
-  document.getElementById('f-content').style.display='none';
-  document.getElementById('f-ok').style.display='block';
-  const n=document.getElementById('fn').value.trim();
-  const co=document.getElementById('fco').value.trim();
-  const s=document.getElementById('fs').value;
-  const m=document.getElementById('fm').value.trim();
-  setTimeout(()=>{window.location.href=`mailto:raphael@de-bruijn.com?subject=Demande EvolSphere — ${p} ${n}&body=${encodeURIComponent(`Nom: ${p} ${n}\nEmail: ${e}\nEntreprise: ${co}\nEnjeu: ${s}\n\n${m}`)}`},1400);
-}
-
-// ── SCROLL REVEAL ────────────────────────
-new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.08})
-.observe.apply(null,[]);
-document.querySelectorAll('.sc,.sol-card,.ci').forEach(el=>{
-  el.style.cssText+=';opacity:0;transform:translateY(20px);transition:opacity .45s ease,transform .45s ease';
-  new IntersectionObserver(([e])=>{if(e.isIntersecting){el.style.opacity='1';el.style.transform='translateY(0)'}},{threshold:.08}).observe(el);
-});
+// FORM
+function send(){const p=document.getElementById('fp').value.trim(),e=document.getElementById('fe').value.trim(),err=document.getElementById('ferr');if(!p||!e){err.style.display='block';err.textContent='Prénom et email requis.';return;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.style.display='block';err.textContent='Email invalide.';return;}err.style.display='none';document.getElementById('fcont').style.display='none';document.getElementById('fok').style.display='block';const n=document.getElementById('fn').value.trim(),m=document.getElementById('fm').value.trim();setTimeout(()=>{window.location.href=`mailto:raphael@de-bruijn.com?subject=Demande EvolSphere — ${p} ${n}&body=${encodeURIComponent(`Nom: ${p} ${n}\nEmail: ${e}\n\n${m}`)}`},1200);}
 </script>
 </body>
 </html>
