@@ -3,959 +3,754 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>EvolSphere — Risk Radar · Intelligence stratégique des risques</title>
-<meta name="description" content="EvolSphere détecte, score et pilote vos risques stratégiques en temps réel grâce au seul Risk Radar à 4 dimensions du marché. Déployable en 30 jours."/>
-<meta name="keywords" content="risk management, gestion des risques, intelligence stratégique, Risk Radar, EvolSphere, risques stratégiques, veille stratégique, décision dirigeant"/>
+<title>EvolSphere — Risk Radar · La plateforme d'intelligence des risques stratégiques</title>
+<meta name="description" content="EvolSphere détecte, score et pilote vos risques stratégiques en temps réel. Le seul Risk Radar à 4 dimensions. Déployable en 30 jours. Levée de fonds Series A."/>
 <meta name="author" content="Raphaël de Bruijn — EvolSphere"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://evolsphere.com"/>
-<!-- Open Graph / LinkedIn / Facebook -->
-<meta property="og:type" content="website"/>
+<meta property="og:title" content="EvolSphere — Risk Radar · Investissez dans la prochaine révolution du risk management"/>
+<meta property="og:description" content="La seule plateforme qui croise 4 dimensions de risque en temps réel. 92% de rétention. Déployable en 30 jours. Marché adressable : 48Mrd€."/>
 <meta property="og:url" content="https://evolsphere.com"/>
-<meta property="og:title" content="EvolSphere — Risk Radar · Le seul outil à 4 dimensions"/>
-<meta property="og:description" content="Détection, pondération, corrélation, action. EvolSphere anticipe vos risques stratégiques avant qu'ils vous frappent. Déployable en 30 jours."/>
-<meta property="og:image" content="https://evolsphere.com/og-image.png"/>
-<meta property="og:locale" content="fr_FR"/>
-<meta property="og:locale:alternate" content="en_GB"/>
-<meta property="og:locale:alternate" content="es_ES"/>
-<meta property="og:site_name" content="EvolSphere"/>
-<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="EvolSphere — Risk Radar"/>
-<meta name="twitter:description" content="Le seul Risk Radar à 4 dimensions. Anticipez vos risques stratégiques avant tout le monde."/>
-<meta name="twitter:image" content="https://evolsphere.com/og-image.png"/>
-<!-- Schema.org structured data -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"EvolSphere",
-  "url":"https://evolsphere.com",
-  "description":"Plateforme d'intelligence stratégique des risques. Risk Radar à 4 dimensions : détection, pondération, corrélation, action.",
-  "email":"raphael@de-bruijn.com",
-  "founder":{"@type":"Person","name":"Raphaël de Bruijn"},
-  "offers":{"@type":"Offer","name":"Risk Radar","description":"Système de détection et pilotage des risques stratégiques à 4 dimensions, déployable en 30 jours.","category":"Risk Management Consulting"}
-}
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"EvolSphere","url":"https://evolsphere.com","email":"raphael@de-bruijn.com","founder":{"@type":"Person","name":"Raphaël de Bruijn"}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#08090b;--s:#0f1013;--card:#13141a;--b:#1e2028;--c:#00e5ff;--r:#ff4455;--a:#ffb020;--g:#22d474;--t:#c8cdd8;--m:#52576a}
+:root{
+  --bg:#05060a;--s:#08090e;--card:#0c0d14;--b:#16192a;
+  --c:#00e5ff;--cd:rgba(0,229,255,.07);--cg:rgba(0,229,255,.22);
+  --r:#ff2d55;--a:#ff9f0a;--g:#30d158;--p:#bf5af2;
+  --t:#d1d5e8;--m:#4a5068;--w:#fff;
+  --font:'Inter',sans-serif;
+}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
-
-/* ── PARTICLES ── */
-#particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.particle{position:absolute;border-radius:50%;opacity:0;animation:pfloat linear infinite}
-@keyframes pfloat{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:.4}100%{transform:translateY(-20vh) scale(1);opacity:0}}
+body{background:var(--bg);color:var(--t);font-family:var(--font);font-weight:400;line-height:1.6;overflow-x:hidden}
+#three-bg{position:fixed;inset:0;z-index:0;opacity:.55}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;inset-inline:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:15px 48px;background:rgba(8,9,11,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--b);transition:padding .3s}
-nav.scrolled{padding:10px 48px;background:rgba(8,9,11,.98)}
-.logo{font-weight:800;font-size:1.05rem;color:#fff;letter-spacing:-.02em}.logo span{color:var(--c)}
-.nav-r{display:flex;gap:20px;align-items:center}
+nav{position:fixed;top:0;inset-inline:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 52px;background:rgba(5,6,10,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+.logo{font-weight:900;font-size:1.1rem;color:var(--w);letter-spacing:-.025em}.logo em{font-style:normal;color:var(--c)}
+.nav-r{display:flex;gap:28px;align-items:center}
 nav a{color:var(--m);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .15s}
 nav a:hover{color:var(--t)}
-.ncta{background:var(--c)!important;color:#000!important;font-weight:700;padding:7px 18px;border-radius:7px;transition:box-shadow .2s!important}
-.ncta:hover{box-shadow:0 0 20px rgba(0,229,255,.4)!important}
-
-/* LANG SWITCHER */
-.lang-sw{display:flex;gap:4px}
-.lang-btn{background:transparent;border:1px solid var(--b);color:var(--m);font-family:'Inter',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.06em;padding:4px 8px;border-radius:5px;cursor:pointer;transition:all .15s}
-.lang-btn.active,.lang-btn:hover{border-color:var(--c);color:var(--c)}
+.nav-cta{background:var(--c)!important;color:#000!important;font-weight:700;padding:8px 20px;border-radius:8px;font-size:.82rem!important;box-shadow:0 0 20px var(--cg);transition:box-shadow .2s!important}
+.nav-cta:hover{box-shadow:0 0 36px rgba(0,229,255,.45)!important}
+.invest-badge{display:flex;align-items:center;gap:6px;background:rgba(191,90,242,.1);border:1px solid rgba(191,90,242,.25);color:#bf5af2;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:100px}
 
 /* ── HERO ── */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 32px 80px;position:relative;overflow:hidden;z-index:1}
-.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.06) 0%,transparent 65%);pointer-events:none;animation:glowpulse 4s ease-in-out infinite}
-@keyframes glowpulse{0%,100%{transform:translate(-50%,-55%) scale(1);opacity:1}50%{transform:translate(-50%,-55%) scale(1.08);opacity:.7}}
-.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);color:var(--c);font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:28px;animation:fadeUp .7s ease both}
-.dot{width:5px;height:5px;border-radius:50%;background:var(--c);animation:blink 2s ease-in-out infinite}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 32px 80px;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);color:var(--c);font-size:.67rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:28px;animation:fup .6s ease both}
+.pulse{width:5px;height:5px;border-radius:50%;background:var(--c);animation:blink 2s ease-in-out infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
-h1{font-weight:800;font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.04;letter-spacing:-.035em;color:#fff;margin-bottom:20px;animation:fadeUp .8s ease .1s both}
-h1 em{font-style:normal;color:var(--c)}
-.hsub{font-size:1.05rem;color:var(--m);max-width:420px;margin:0 auto 40px;line-height:1.7;animation:fadeUp .8s ease .2s both}
-.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s ease .3s both}
-.bp{background:var(--c);color:#000;font-weight:700;font-size:.88rem;padding:13px 30px;border-radius:8px;text-decoration:none;transition:opacity .15s,transform .15s,box-shadow .2s;box-shadow:0 0 24px rgba(0,229,255,.2)}
-.bp:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 0 40px rgba(0,229,255,.4)}
-.bg2{color:var(--t);border:1px solid var(--b);font-size:.88rem;font-weight:500;padding:13px 24px;border-radius:8px;text-decoration:none;transition:border-color .15s,color .15s}
-.bg2:hover{border-color:var(--c);color:var(--c)}
+h1{font-weight:900;font-size:clamp(2.8rem,6.5vw,6.2rem);line-height:.95;letter-spacing:-.04em;color:var(--w);margin-bottom:20px;animation:fup .8s ease .1s both}
+h1 em{font-style:normal;color:var(--c);text-shadow:0 0 60px rgba(0,229,255,.45)}
+h1 .dim{color:rgba(255,255,255,.18);font-weight:300}
+.hero-sub{font-size:clamp(.88rem,1.8vw,1.1rem);font-weight:300;color:var(--m);max-width:480px;margin:0 auto 44px;line-height:1.75;animation:fup .7s ease .25s both}
+.hero-sub strong{color:var(--t);font-weight:600}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fup .6s ease .4s both}
+.btn-p{background:var(--c);color:#000;font-weight:700;font-size:.9rem;padding:14px 32px;border-radius:9px;text-decoration:none;box-shadow:0 0 30px var(--cg);transition:transform .18s,box-shadow .18s}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(0,229,255,.5)}
+.btn-invest{background:linear-gradient(135deg,rgba(191,90,242,.15),rgba(191,90,242,.05));border:1px solid rgba(191,90,242,.4);color:#bf5af2;font-weight:700;font-size:.9rem;padding:14px 32px;border-radius:9px;text-decoration:none;transition:all .18s}
+.btn-invest:hover{background:rgba(191,90,242,.2);border-color:rgba(191,90,242,.7)}
+.btn-g2{color:var(--t);border:1px solid var(--b);font-size:.9rem;font-weight:500;padding:14px 26px;border-radius:9px;text-decoration:none;transition:border-color .15s,color .15s}
+.btn-g2:hover{border-color:var(--c);color:var(--c)}
 
-/* RADAR */
-.radar-wrap{margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:14px;animation:fadeUp .9s ease .4s both}
-#rc{border-radius:50%;filter:drop-shadow(0 0 20px rgba(0,229,255,.15))}
-.rleg{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
-.rl{display:flex;align-items:center;gap:5px;font-size:.67rem;font-weight:500;color:var(--m)}
-.rd{width:6px;height:6px;border-radius:50%}
-#rtip{font-size:.72rem;color:var(--c);font-weight:600;min-height:14px}
+/* TRACTION STRIP */
+.traction{display:flex;gap:0;justify-content:center;margin-top:52px;animation:fup .6s ease .6s both;flex-wrap:wrap}
+.tr-item{text-align:center;padding:20px 36px;border-right:1px solid var(--b);position:relative}
+.tr-item:last-child{border-right:none}
+.tr-n{font-weight:900;font-size:clamp(1.6rem,3.5vw,2.8rem);color:var(--w);letter-spacing:-.03em;line-height:1}
+.tr-n span{color:var(--c)}
+.tr-l{font-size:.68rem;font-weight:500;color:var(--m);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
 
 /* ── SECTIONS ── */
-section{padding:80px 48px;position:relative;z-index:1}
-.w{max-width:1060px;margin:0 auto}
-.sl{font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
-h2{font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.025em;color:#fff;margin-bottom:36px}
-hr{border:none;border-top:1px solid var(--b);margin:0 48px}
+section{padding:88px 52px;position:relative;z-index:1}
+.w{max-width:1100px;margin:0 auto}
+.sl{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c);margin-bottom:10px}
+h2{font-weight:800;font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-.03em;color:var(--w);line-height:1.1;margin-bottom:14px}
+.sec-sub{color:var(--m);font-size:.95rem;line-height:1.75;max-width:520px;margin-bottom:52px}
+hr.div{border:none;border-top:1px solid var(--b);margin:0 52px}
 
-/* ── REVEAL ANIMATION ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .6s ease,transform .6s ease}
-.reveal-l.visible{opacity:1;transform:translateX(0)}
-.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .6s ease,transform .6s ease}
-.reveal-r.visible{opacity:1;transform:translateX(0)}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.visible{opacity:1;transform:translateY(0)}
+.rv-l{opacity:0;transform:translateX(-22px);transition:opacity .6s ease,transform .6s ease}
+.rv-l.visible{opacity:1;transform:translateX(0)}
+.rv-r{opacity:0;transform:translateX(22px);transition:opacity .6s ease,transform .6s ease}
+.rv-r.visible{opacity:1;transform:translateX(0)}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── SCORES ── */
-.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.sc{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:20px 16px;cursor:pointer;transition:border-color .25s,transform .2s,box-shadow .25s}
-.sc:hover{border-color:rgba(0,229,255,.35);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.sct{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.scl{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m)}
-.badge{font-size:.59rem;font-weight:700;padding:2px 7px;border-radius:100px}
-.br{background:rgba(255,68,85,.15);color:var(--r)}.ba{background:rgba(255,176,32,.15);color:var(--a)}.bg3{background:rgba(34,212,116,.15);color:var(--g)}
-.sv{font-weight:800;font-size:2rem;color:#fff;letter-spacing:-.03em;line-height:1}
-.sbw{margin-top:10px;height:3px;background:var(--b);border-radius:2px;overflow:hidden}
-.sb{height:100%;border-radius:2px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
-.str{font-size:.65rem;color:var(--m);margin-top:8px;font-weight:500}
-#abox{display:none;margin-top:14px;border-radius:9px;padding:12px 16px;font-size:.82rem;font-weight:500}
+/* ── 4D SECTION ── */
+.fourd-sec{background:var(--s)}
+.fourd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fd-card{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:28px 22px;position:relative;overflow:hidden;transition:border-color .25s,transform .2s}
+.fd-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--dc);opacity:.7;transition:opacity .25s}
+.fd-card:hover{border-color:var(--dc);transform:translateY(-3px)}
+.fd-card:hover::before{opacity:1}
+.fd-num{font-weight:900;font-size:2.2rem;letter-spacing:-.04em;color:var(--dc);line-height:1;margin-bottom:8px}
+.fd-ico{font-size:1.5rem;margin-bottom:10px}
+.fd-name{font-weight:700;font-size:.95rem;color:var(--w);margin-bottom:6px;letter-spacing:-.01em}
+.fd-desc{font-size:.8rem;color:var(--m);line-height:1.6}
+.fd-bar{height:2px;background:var(--b);border-radius:1px;overflow:hidden;margin-top:16px}
+.fd-fill{height:100%;width:0;border-radius:1px;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+.uniq-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.18);color:var(--c);font-size:.67rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border-radius:100px;margin-top:20px}
+
+/* ── MARKET / INVEST ── */
+.invest-sec{background:linear-gradient(135deg,rgba(191,90,242,.04) 0%,transparent 60%),var(--s)}
+.market-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.market-left h2{font-size:clamp(1.8rem,3.5vw,2.8rem)}
+.mstat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.mstat{background:var(--card);border:1px solid rgba(191,90,242,.18);border-radius:11px;padding:22px 18px}
+.mstat-n{font-weight:900;font-size:clamp(1.8rem,3vw,2.4rem);color:#bf5af2;letter-spacing:-.03em;line-height:1}
+.mstat-l{font-size:.72rem;color:var(--m);margin-top:6px;font-weight:500;line-height:1.4}
+.invest-card{background:var(--card);border:1px solid rgba(191,90,242,.25);border-radius:14px;padding:36px;position:relative;overflow:hidden}
+.invest-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#bf5af2,transparent)}
+.invest-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0,rgba(191,90,242,.06),transparent 70%);pointer-events:none}
+.ic-head{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#bf5af2;margin-bottom:16px}
+.ic-amount{font-weight:900;font-size:clamp(2.5rem,5vw,4rem);color:var(--w);letter-spacing:-.04em;line-height:1;margin-bottom:6px}
+.ic-amount span{color:#bf5af2}
+.ic-type{font-size:.82rem;color:var(--m);margin-bottom:28px}
+.ic-use{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.ic-use li{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:var(--t);font-weight:400}
+.ic-use li::before{content:'→';color:#bf5af2;flex-shrink:0;font-weight:700}
+.ic-btn{display:inline-block;background:linear-gradient(135deg,#bf5af2,#9b42d6);color:#fff;font-weight:700;font-size:.9rem;padding:14px 28px;border-radius:9px;text-decoration:none;text-align:center;width:100%;transition:opacity .18s,transform .18s;box-shadow:0 0 28px rgba(191,90,242,.3)}
+.ic-btn:hover{opacity:.9;transform:translateY(-1px)}
+
+/* ── SCORES / RADAR ── */
+.radar-sec{}
+.radar-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+#radarCv{border-radius:50%;filter:drop-shadow(0 0 28px rgba(0,229,255,.2))}
+.score-list{display:flex;flex-direction:column;gap:14px}
+.sc-item{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:16px 18px;cursor:pointer;transition:border-color .2s,transform .18s}
+.sc-item:hover{border-color:rgba(0,229,255,.3);transform:translateX(3px)}
+.sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.sc-name{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--m)}
+.sc-badge{font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:100px}
+.sc-val{font-weight:900;font-size:1.7rem;color:var(--w);letter-spacing:-.03em;line-height:1}
+.sc-bw{height:2px;background:var(--b);border-radius:1px;overflow:hidden;margin-top:8px}
+.sc-bar{height:100%;border-radius:1px;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+.sc-trend{font-size:.66rem;color:var(--m);margin-top:7px;font-weight:500}
+#alert-box{display:none;margin-top:14px;border-radius:9px;padding:12px 16px;font-size:.82rem;font-weight:500}
 
 /* ── MODULES ── */
-.ms{background:var(--s)}
-.tabs{display:flex;gap:2px;background:var(--card);border:1px solid var(--b);border-radius:8px;padding:3px;width:fit-content;margin-bottom:28px}
-.tab{padding:8px 18px;border-radius:6px;font-size:.79rem;font-weight:600;color:var(--m);cursor:pointer;border:none;background:transparent;font-family:'Inter',sans-serif;transition:background .18s,color .18s}
+.mod-sec{background:var(--s)}
+.tabs{display:flex;gap:3px;background:var(--card);border:1px solid var(--b);border-radius:8px;padding:3px;width:fit-content;margin-bottom:32px}
+.tab{padding:9px 20px;border-radius:6px;font-size:.8rem;font-weight:600;color:var(--m);cursor:pointer;border:none;background:transparent;font-family:var(--font);transition:all .15s}
 .tab.active{background:var(--c);color:#000}
 .tp{display:none}
 .tp.active{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.pi h3{font-weight:700;font-size:1.15rem;color:#fff;margin-bottom:10px;letter-spacing:-.015em}
-.pi p{color:var(--m);font-size:.87rem;line-height:1.72;margin-bottom:16px}
-.fl{list-style:none;display:flex;flex-direction:column;gap:8px}
-.fl li{display:flex;gap:8px;font-size:.82rem;color:var(--t)}
+.pi h3{font-weight:700;font-size:1.2rem;color:var(--w);margin-bottom:10px;letter-spacing:-.02em}
+.pi p{color:var(--m);font-size:.88rem;line-height:1.72;margin-bottom:16px}
+.fl{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fl li{display:flex;gap:8px;font-size:.84rem;color:var(--t);font-weight:400}
 .fl li::before{content:'→';color:var(--c);flex-shrink:0;font-weight:700}
-.pv{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:22px;display:flex;flex-direction:column;gap:8px}
-.pvl{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m);margin-bottom:4px}
-.mbars{display:flex;align-items:flex-end;gap:4px;height:60px}
+.pv{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px;min-height:250px}
+.pvl{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m);margin-bottom:6px}
+.mbars{display:flex;align-items:flex-end;gap:4px;height:64px}
 .mbw{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
-.mb{width:100%;border-radius:2px 2px 0 0;height:0;transition:height .6s cubic-bezier(.4,0,.2,1)}
-.mbw:hover .mb{opacity:.65;transform:scaleY(1.05);transform-origin:bottom}
+.mb{width:100%;border-radius:2px 2px 0 0;height:0;transition:height .55s cubic-bezier(.4,0,.2,1)}
+.mbw:hover .mb{opacity:.65}
 .mbl{font-size:.55rem;color:var(--m);font-weight:500}
-#sdet{display:none;background:rgba(0,0,0,.3);border-radius:7px;padding:10px 12px;font-size:.75rem;color:var(--t);line-height:1.55}
+#sdet{display:none;background:rgba(0,0,0,.3);border-radius:7px;padding:10px 12px;font-size:.76rem;color:var(--t);line-height:1.55}
 .slist{display:flex;flex-direction:column;gap:6px}
-.srow{display:flex;align-items:center;justify-content:space-between;padding:8px 11px;background:var(--s);border-radius:7px;border:1px solid var(--b);transition:border-color .2s}
+.srow{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--s);border-radius:7px;border:1px solid var(--b);transition:border-color .2s}
 .srow:hover{border-color:rgba(0,229,255,.2)}
-.sleft{display:flex;align-items:center;gap:8px;font-size:.77rem}
+.sleft{display:flex;align-items:center;gap:8px;font-size:.78rem}
 .sdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.sscore{font-weight:800;font-size:.83rem}
-.rbtn{margin-top:10px;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);color:var(--c);border-radius:7px;padding:6px 14px;font-size:.74rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
-.rbtn:hover{background:rgba(0,229,255,.14)}
+.sscore{font-weight:800;font-size:.84rem}
+.rbtn-sm{margin-top:10px;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.18);color:var(--c);border-radius:7px;padding:7px 14px;font-size:.74rem;font-weight:600;cursor:pointer;font-family:var(--font);transition:background .15s}
+.rbtn-sm:hover{background:rgba(0,229,255,.13)}
 #mc{cursor:crosshair;border-radius:7px}
 #mt{font-size:.71rem;color:var(--m);font-weight:500;margin-top:5px}
-.mitg{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.mc2{background:var(--s);border:1px solid var(--b);border-radius:7px;padding:11px;transition:border-color .2s,transform .2s}
-.mc2:hover{border-color:rgba(0,229,255,.2);transform:translateY(-1px)}
-.mc2 h4{font-size:.74rem;font-weight:700;color:#fff;margin-bottom:3px}
-.mc2 p{font-size:.69rem;color:var(--m);line-height:1.45}
-.mt2{display:inline-block;font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:100px;margin-bottom:5px}
+.mitg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mc2{background:var(--s);border:1px solid var(--b);border-radius:7px;padding:12px;transition:border-color .2s}
+.mc2:hover{border-color:rgba(0,229,255,.2)}
+.mc2 h4{font-size:.76rem;font-weight:700;color:var(--w);margin-bottom:4px}
+.mc2 p{font-size:.7rem;color:var(--m);line-height:1.45}
+.mt2{display:inline-block;font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:100px;margin-bottom:6px}
 
-/* ── TICKER ── */
-.ticker-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--b);border-bottom:1px solid var(--b);background:var(--s);padding:10px 0;margin:0 0}
-.ticker{display:inline-flex;animation:ticker 30s linear infinite}
-.ticker:hover{animation-play-state:paused}
-.ti{font-size:.67rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m);padding:0 36px}
-.ti.c{color:var(--c)}.ti.g{color:var(--a)}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ── SOCIAL PROOF ── */
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcard{background:var(--card);border:1px solid var(--b);border-radius:11px;padding:26px 22px;transition:border-color .22s,transform .2s;position:relative}
+.pcard::before{content:'\201C';position:absolute;top:14px;right:18px;font-size:2.8rem;line-height:1;color:rgba(0,229,255,.1);font-family:Georgia,serif;font-weight:700}
+.pcard:hover{border-color:rgba(0,229,255,.2);transform:translateY(-2px)}
+.pcard-stars{color:#ff9f0a;font-size:.75rem;letter-spacing:2px;margin-bottom:10px}
+.pcard-q{font-size:.86rem;color:var(--t);line-height:1.7;font-style:italic;font-weight:300;margin-bottom:18px}
+.pcard-q strong{font-style:normal;font-weight:700;color:var(--c)}
+.pcard-who{display:flex;align-items:center;gap:11px}
+.pcard-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--c),rgba(0,229,255,.3));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.88rem;color:#000;flex-shrink:0}
+.pcard-name{font-weight:700;font-size:.78rem;color:var(--w)}
+.pcard-role{font-size:.68rem;color:var(--m);margin-top:2px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.st{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:20px 14px;text-align:center;transition:border-color .2s,transform .2s}
+.st:hover{border-color:rgba(0,229,255,.22);transform:translateY(-2px)}
+.st-n{font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:-.03em;line-height:1}
+.st-l{font-size:.68rem;color:var(--m);margin-top:6px;line-height:1.4;font-weight:500}
+
+/* ── METHOD ── */
+.proc-wrap{position:relative;margin-top:8px}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.proc-steps::before{content:'';position:absolute;top:27px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--c),rgba(0,229,255,.1));z-index:0}
+.proc-step{display:flex;flex-direction:column;align-items:center;padding:0 14px}
+.proc-circle{width:54px;height:54px;border-radius:50%;background:var(--card);border:1px solid var(--b);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:background .25s,border-color .25s;position:relative;z-index:1}
+.proc-circle span{font-weight:800;font-size:.78rem;color:var(--c);letter-spacing:.04em}
+.proc-step:hover .proc-circle{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.4)}
+.proc-step h3{font-weight:700;font-size:.9rem;color:var(--w);margin-bottom:7px;letter-spacing:-.01em;text-align:center}
+.proc-step p{color:var(--m);font-size:.78rem;line-height:1.6;text-align:center}
+.proc-tag{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.14);padding:3px 10px;border-radius:100px;margin-top:8px}
 
 /* ── CONTACT ── */
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-.fc{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:28px}
-.fr{margin-bottom:14px}
-.fr label{display:block;font-size:.67rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--m);margin-bottom:6px}
-.fr input,.fr textarea{width:100%;background:var(--s);border:1px solid var(--b);border-radius:7px;padding:11px 13px;color:var(--t);font-family:'Inter',sans-serif;font-size:.85rem;outline:none;transition:border-color .18s,box-shadow .18s}
-.fr input:focus,.fr textarea:focus{border-color:var(--c);box-shadow:0 0 0 3px rgba(0,229,255,.08)}
-.fr textarea{resize:vertical;min-height:90px}
-/* RGPD */
-.rgpd{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;padding:12px;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.1);border-radius:7px}
-.rgpd input[type=checkbox]{width:16px;height:16px;margin-top:2px;accent-color:var(--c);cursor:pointer;flex-shrink:0}
-.rgpd label{font-size:.75rem;color:var(--m);line-height:1.5;cursor:pointer}
-.rgpd label a{color:var(--c);text-decoration:none}.rgpd label a:hover{text-decoration:underline}
-.sbtn{width:100%;padding:13px;background:var(--c);color:#000;font-family:'Inter',sans-serif;font-weight:700;font-size:.88rem;border:none;border-radius:8px;cursor:pointer;transition:opacity .15s,transform .15s,box-shadow .2s}
-.sbtn:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 0 24px rgba(0,229,255,.35)}
-.sbtn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
-#ferr{display:none;color:var(--r);font-size:.73rem;margin-top:8px;text-align:center;font-weight:500}
-#fok{display:none;text-align:center;padding:28px}
-#fok svg{display:block;margin:0 auto 12px;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both}
-@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
-#fok h3{font-weight:800;color:#fff;margin-bottom:6px;font-size:1.05rem}
-#fok p{color:var(--m);font-size:.82rem}
-.ci{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:22px;margin-bottom:12px;transition:border-color .2s}
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.fc{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px;min-height:340px}
+.fc-ico{font-size:2.8rem}
+.fc p{color:var(--m);font-size:.92rem;line-height:1.7;max-width:320px}
+.fc-btn{display:inline-block;background:var(--c);color:#000;font-weight:700;font-size:.88rem;padding:13px 28px;border-radius:9px;text-decoration:none;box-shadow:0 0 24px var(--cg);transition:opacity .15s,transform .15s}
+.fc-btn:hover{opacity:.88;transform:translateY(-1px)}
+.fc-email{color:var(--c);font-size:.84rem;font-weight:600;text-decoration:none}
+.fc-email:hover{text-decoration:underline}
+.rgpd{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.1);border-radius:8px;text-align:left;max-width:340px}
+.rgpd input{width:15px;height:15px;margin-top:2px;accent-color:var(--c);cursor:pointer;flex-shrink:0}
+.rgpd label{font-size:.73rem;color:var(--m);line-height:1.5;cursor:pointer}
+.rgpd label a{color:var(--c);text-decoration:none}
+.ci{background:var(--card);border:1px solid var(--b);border-radius:11px;padding:22px;margin-bottom:12px;transition:border-color .2s}
 .ci:hover{border-color:rgba(0,229,255,.18)}
-.ci h3{font-weight:700;font-size:.93rem;color:#fff;margin-bottom:10px}
+.ci h3{font-weight:700;font-size:.92rem;color:var(--w);margin-bottom:9px}
 .ci p,.ci a{color:var(--m);font-size:.82rem;line-height:1.65}
-.ci a{color:var(--c);text-decoration:none;font-weight:500}.ci a:hover{text-decoration:underline}
+.ci a{color:var(--c);text-decoration:none;font-weight:500}
+.ci a:hover{text-decoration:underline}
 .tl{display:flex;flex-direction:column}
-.tli{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--b)}
+.tli{display:grid;grid-template-columns:54px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--b)}
 .tli:last-child{border-bottom:none}
 .tld{font-size:.64rem;color:var(--c);font-weight:700}
-.tlt{font-size:.77rem;color:var(--t)}.tlt strong{font-weight:700;color:#fff}
+.tlt{font-size:.77rem;color:var(--t)}.tlt strong{font-weight:700;color:var(--w)}
 
 /* ── FOOTER ── */
-footer{border-top:1px solid var(--b);padding:22px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
-.fl2{font-weight:800;font-size:.95rem;color:#fff}.fl2 span{color:var(--c)}
+footer{border-top:1px solid var(--b);padding:24px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:relative;z-index:1}
+.fl{font-weight:900;font-size:.98rem;color:var(--w)}.fl em{font-style:normal;color:var(--c)}
 footer p,footer a{color:var(--m);font-size:.74rem;text-decoration:none;transition:color .15s}
 footer a:hover{color:var(--c)}
 
+/* ── TICKER ── */
+.ticker-wrap{overflow:hidden;white-space:nowrap;border-top:1px solid var(--b);border-bottom:1px solid var(--b);background:var(--s);padding:10px 0;position:relative;z-index:1}
+.ticker{display:inline-flex;animation:tick 28s linear infinite}
+.ticker:hover{animation-play-state:paused}
+.ti{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--m);padding:0 36px}
+.ti.c{color:var(--c)}.ti.g{color:var(--a)}.ti.p{color:var(--p)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
 /* ── CURSOR GLOW ── */
-.cursor-glow{position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.04),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease}
+.cglow{position:fixed;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.035),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left .08s ease,top .08s ease}
 
-/* ── 4 DIMENSIONS ── */
-.dim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
-.dim-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:24px 18px;position:relative;overflow:hidden;transition:border-color .25s,transform .2s}
-.dim-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--dc);opacity:.6;transition:opacity .25s}
-.dim-card:hover{border-color:var(--dc);transform:translateY(-3px)}
-.dim-card:hover::before{opacity:1}
-.dim-num{font-size:.6rem;font-weight:700;letter-spacing:.18em;color:var(--m);margin-bottom:12px}
-.dim-icon{font-size:1.6rem;margin-bottom:10px}
-.dim-card h3{font-weight:700;font-size:.93rem;color:#fff;margin-bottom:6px;letter-spacing:-.01em}
-.dim-card p{color:var(--m);font-size:.78rem;line-height:1.6;margin-bottom:14px}
-.dim-bar{height:2px;background:var(--b);border-radius:1px;overflow:hidden}
-.dim-fill{height:100%;width:0;border-radius:1px;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
-.uniq-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.18);color:var(--c);font-size:.7rem;font-weight:600;letter-spacing:.1em;padding:8px 18px;border-radius:100px}
-
-/* ── SOCIAL PROOF ── */
-.sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
-.sp-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:28px 24px;position:relative;transition:border-color .25s,transform .2s}
-.sp-card:hover{border-color:rgba(0,229,255,.2);transform:translateY(-2px)}
-.sp-card::before{content:'\201C';position:absolute;top:16px;right:20px;font-size:3rem;line-height:1;color:rgba(0,229,255,.12);font-family:Georgia,serif;font-weight:700}
-.sp-quote{font-size:.88rem;color:var(--t);line-height:1.72;font-style:italic;margin-bottom:20px;font-weight:300}
-.sp-author{display:flex;align-items:center;gap:12px}
-.sp-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--c),rgba(0,229,255,.3));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;color:#000;flex-shrink:0}
-.sp-name{font-weight:700;font-size:.8rem;color:#fff}
-.sp-role{font-size:.72rem;color:var(--m);margin-top:2px}
-.sp-stars{color:#c9a227;font-size:.75rem;margin-bottom:12px;letter-spacing:2px}
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:0}
-.stat-box{background:var(--card);border:1px solid var(--b);border-radius:9px;padding:20px 16px;text-align:center;transition:border-color .2s,transform .2s}
-.stat-box:hover{border-color:rgba(0,229,255,.25);transform:translateY(-2px)}
-.stat-n{font-weight:800;font-size:2rem;color:var(--c);letter-spacing:-.03em;line-height:1}
-.stat-l{font-size:.72rem;color:var(--m);margin-top:6px;font-weight:500;line-height:1.4}
-.proc-wrap{position:relative}
-.proc-line{position:absolute;top:28px;left:28px;right:28px;height:1px;background:linear-gradient(90deg,var(--c),rgba(0,229,255,.1));z-index:0}
-.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
-.proc-step{display:flex;flex-direction:column;align-items:center;padding:0 12px}
-.proc-circle{width:56px;height:56px;border-radius:50%;background:var(--card);border:1px solid var(--b);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:border-color .3s,background .3s}
-.proc-circle span{font-weight:800;font-size:.78rem;color:var(--c);letter-spacing:.05em}
-.proc-circle.active{background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.5)}
-.proc-step:hover .proc-circle{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.4)}
-.proc-content{text-align:center}
-.proc-content h3{font-weight:700;font-size:.9rem;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
-.proc-content p{color:var(--m);font-size:.78rem;line-height:1.6;margin-bottom:10px}
-.proc-tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);padding:3px 10px;border-radius:100px}
-
-@media(max-width:860px){
-  .dim-grid{grid-template-columns:1fr 1fr}
-  .proc-steps{grid-template-columns:1fr 1fr;gap:24px}.proc-line{display:none}
+/* ── RESPONSIVE ── */
+@media(max-width:920px){
+  nav{padding:14px 20px}.nav-r{gap:14px}.invest-badge{display:none}
+  section{padding:60px 20px}hr.div{margin:0 20px}
+  .fourd-grid{grid-template-columns:1fr 1fr}
+  .market-grid,.radar-layout,.con-grid,.tp.active{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .proc-steps{grid-template-columns:1fr 1fr;gap:28px}.proc-steps::before{display:none}
+  .mstat-grid{grid-template-columns:1fr 1fr}
+  .mitg{grid-template-columns:1fr}
+  .traction{gap:0}
+  .tr-item{padding:14px 20px;border-right:none;border-bottom:1px solid var(--b)}
+  footer{padding:20px;flex-direction:column;text-align:center}
 }
-@media(max-width:480px){.dim-grid{grid-template-columns:1fr}}
-  nav{padding:14px 20px}.nav-r{gap:12px}
-  section{padding:56px 20px}hr{margin:0 20px}
-  .sg,.tp.active,.cg{grid-template-columns:1fr}
-  .tabs{width:100%;flex-wrap:wrap}.mitg{grid-template-columns:1fr}
-  footer{padding:18px 20px;flex-direction:column;text-align:center}
-  .lang-sw{display:none}
+@media(max-width:520px){
+  .fourd-grid,.stats-row,.mstat-grid{grid-template-columns:1fr}
+  h1{font-size:2.4rem}
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR GLOW -->
-<div class="cursor-glow" id="cglow"></div>
+<div class="cglow" id="cglow"></div>
+<div id="three-bg"></div>
 
-<!-- PARTICLES -->
-<div id="particles"></div>
-
-<!-- NAV -->
-<nav id="nav">
-  <div class="logo">Evol<span>Sphere</span></div>
+<nav>
+  <div class="logo">Evol<em>Sphere</em></div>
   <div class="nav-r">
-    <div class="lang-sw">
-      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('es')">ES</button>
-    </div>
-    <a href="#modules" data-i="nav_modules">Modules</a>
-    <a href="#unique" data-i="nav_unique">4 Dimensions</a>
-    <a href="#proof" data-i="nav_proof">Témoignages</a>
-    <a href="#methode" data-i="nav_meth">Méthode</a>
-    <a href="#contact" class="ncta" data-i="nav_contact">Contact</a>
+    <div class="invest-badge">🔵 Series A · Ouvert</div>
+    <a href="#radar">Risk Radar</a>
+    <a href="#invest">Investir</a>
+    <a href="#contact" class="nav-cta">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-glow"></div>
-  <div class="chip"><span class="dot"></span><span data-i="hero_chip">Risk Intelligence</span></div>
-  <h1 data-i="hero_h1">Anticipez.<br/>Décidez.<br/><em>Agissez.</em></h1>
-  <p class="hsub" data-i="hero_sub">EvolSphere détecte et priorise vos risques stratégiques avant qu'ils impactent votre organisation.</p>
-  <div class="btns">
-    <a href="#contact" class="bp" data-i="hero_cta1">Prendre contact</a>
-    <a href="#modules" class="bg2" data-i="hero_cta2">Voir les modules</a>
+  <div class="hero-eyebrow"><span class="pulse"></span>Risk Intelligence · 4 Dimensions · Temps réel</div>
+  <h1>Anticipez<br/><em>avant</em><br/><span class="dim">tout le monde.</span></h1>
+  <p class="hero-sub">EvolSphere est la seule plateforme qui croise <strong>4 dimensions de risque en temps réel</strong> — détection, pondération, corrélation, action. Déployable en 30 jours.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-p">Demander une démo</a>
+    <a href="#invest" class="btn-invest">💜 Investir · Series A</a>
+    <a href="#radar" class="btn-g2">Voir le Radar</a>
   </div>
-  <div class="radar-wrap">
-    <canvas id="rc" width="340" height="340"></canvas>
-    <div id="rtip" data-i="radar_tip">Survolez un signal</div>
-    <div class="rleg">
-      <div class="rl"><div class="rd" style="background:var(--r)"></div><span data-i="leg_r">Critique</span></div>
-      <div class="rl"><div class="rd" style="background:var(--a)"></div><span data-i="leg_a">Vigilance</span></div>
-      <div class="rl"><div class="rd" style="background:var(--g)"></div><span data-i="leg_g">Maîtrisé</span></div>
-      <div class="rl"><div class="rd" style="background:var(--c)"></div><span data-i="leg_c">Opportunité</span></div>
-    </div>
+  <div class="traction">
+    <div class="tr-item rv"><div class="tr-n" id="cnt-days">0</div><div class="tr-l">Jours pour aller live</div></div>
+    <div class="tr-item rv" style="transition-delay:.08s"><div class="tr-n"><span>92</span>%</div><div class="tr-l">Taux de rétention client</div></div>
+    <div class="tr-item rv" style="transition-delay:.16s"><div class="tr-n">×<span>8</span></div><div class="tr-l">Plus rapide qu'un Risk Register</div></div>
+    <div class="tr-item rv" style="transition-delay:.24s"><div class="tr-n"><span>48</span>Mrd€</div><div class="tr-l">Marché adressable global</div></div>
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
-    <span class="ti c">Risk Radar</span><span class="ti">EvolSphere</span><span class="ti g">Scan 360°</span><span class="ti">Scoring</span><span class="ti c">Alertes</span><span class="ti">Mitigation</span><span class="ti g">evolsphere.com</span><span class="ti">raphael@de-bruijn.com</span>
-    <span class="ti c">Risk Radar</span><span class="ti">EvolSphere</span><span class="ti g">Scan 360°</span><span class="ti">Scoring</span><span class="ti c">Alertes</span><span class="ti">Mitigation</span><span class="ti g">evolsphere.com</span><span class="ti">raphael@de-bruijn.com</span>
+    <span class="ti c">Risk Radar · 4D</span><span class="ti">EvolSphere</span><span class="ti g">Scan 360°</span><span class="ti">Scoring</span><span class="ti c">Alertes</span><span class="ti">Mitigation</span><span class="ti p">Series A · Ouvert</span><span class="ti">raphael@de-bruijn.com</span><span class="ti g">evolsphere.com</span><span class="ti">PMI · Agile · SAFe · ISO 31000</span>
+    <span class="ti c">Risk Radar · 4D</span><span class="ti">EvolSphere</span><span class="ti g">Scan 360°</span><span class="ti">Scoring</span><span class="ti c">Alertes</span><span class="ti">Mitigation</span><span class="ti p">Series A · Ouvert</span><span class="ti">raphael@de-bruijn.com</span><span class="ti g">evolsphere.com</span><span class="ti">PMI · Agile · SAFe · ISO 31000</span>
   </div>
 </div>
 
-<hr/>
+<hr class="div"/>
 
-<!-- SCORES -->
+<!-- 4D UNIQUE -->
+<section class="fourd-sec" id="dimensions">
+  <div class="w">
+    <div class="sl rv">Technologie exclusive</div>
+    <h2 class="rv">Le seul Risk Radar<br/>à <em style="font-style:normal;color:var(--c)">4 dimensions.</em></h2>
+    <p class="sec-sub rv">Aucun outil existant ne croise simultanément ces quatre vecteurs de risque en temps réel. C'est ce qui rend EvolSphere structurellement inimitable.</p>
+    <div class="fourd-grid">
+      <div class="fd-card rv" style="--dc:#ff2d55;transition-delay:.04s">
+        <div class="fd-num">01</div><div class="fd-ico">📡</div>
+        <div class="fd-name">Détection</div>
+        <div class="fd-desc">Captation continue des signaux faibles internes et externes, avant toute médiatisation.</div>
+        <div class="fd-bar"><div class="fd-fill" style="--pct:92%;background:#ff2d55"></div></div>
+      </div>
+      <div class="fd-card rv" style="--dc:#ff9f0a;transition-delay:.08s">
+        <div class="fd-num">02</div><div class="fd-ico">⚖️</div>
+        <div class="fd-name">Pondération</div>
+        <div class="fd-desc">Score composite probabilité × impact × vitesse de propagation, calibré par secteur.</div>
+        <div class="fd-bar"><div class="fd-fill" style="--pct:85%;background:#ff9f0a"></div></div>
+      </div>
+      <div class="fd-card rv" style="--dc:#00e5ff;transition-delay:.12s">
+        <div class="fd-num">03</div><div class="fd-ico">🔗</div>
+        <div class="fd-name">Corrélation</div>
+        <div class="fd-desc">Interdépendances entre risques cartographiées — un signal faible peut en masquer un critique.</div>
+        <div class="fd-bar"><div class="fd-fill" style="--pct:78%;background:#00e5ff"></div></div>
+      </div>
+      <div class="fd-card rv" style="--dc:#30d158;transition-delay:.16s">
+        <div class="fd-num">04</div><div class="fd-ico">🎯</div>
+        <div class="fd-name">Action</div>
+        <div class="fd-desc">Plan de réponse documenté prêt à activer en moins de 48h pour chaque risque critique.</div>
+        <div class="fd-bar"><div class="fd-fill" style="--pct:96%;background:#30d158"></div></div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:20px">
+      <div class="uniq-badge"><span class="pulse"></span>Approche brevetable · Aucun équivalent sur le marché · Déployable en 30 jours</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- MARKET + INVEST -->
+<section class="invest-sec" id="invest">
+  <div class="w">
+    <div class="sl rv">Opportunité d'investissement</div>
+    <div class="market-grid">
+      <div class="market-left rv-l">
+        <h2>Un marché de <em style="font-style:normal;color:#bf5af2">48 milliards</em><br/>en transformation.</h2>
+        <p style="color:var(--m);font-size:.9rem;line-height:1.75;margin-top:14px;max-width:420px">Le risk management mondial migre du reporting réactif vers l'intelligence prédictive. EvolSphere est positionné au cœur de cette rupture avec une technologie structurellement défendable.</p>
+        <div class="mstat-grid">
+          <div class="mstat rv"><div class="mstat-n">48<span style="font-size:1.2rem">Mrd€</span></div><div class="mstat-l">TAM global<br/>Risk Management SaaS</div></div>
+          <div class="mstat rv" style="transition-delay:.06s"><div class="mstat-n">12<span style="font-size:1.2rem">Mrd€</span></div><div class="mstat-l">SAM Europe<br/>Entreprises 50M€+</div></div>
+          <div class="mstat rv" style="transition-delay:.12s"><div class="mstat-n">+31<span style="font-size:1.2rem">%</span></div><div class="mstat-l">Croissance annuelle<br/>Risk Intelligence SaaS</div></div>
+          <div class="mstat rv" style="transition-delay:.18s"><div class="mstat-n">0</div><div class="mstat-l">Concurrent direct<br/>à 4 dimensions</div></div>
+        </div>
+      </div>
+      <div class="rv-r">
+        <div class="invest-card">
+          <div class="ic-head">🔵 Series A · En cours</div>
+          <div class="ic-amount">2,5<span>M€</span></div>
+          <div class="ic-type">Ticket minimum · 50 000€ · Equity + BSPCE</div>
+          <ul class="ic-use">
+            <li>Développement produit — moteur 4D & intégrations JIRA / SAP / Salesforce</li>
+            <li>Go-to-market Europe — 3 Account Executives, 1 Head of Sales</li>
+            <li>Partenariats stratégiques — cabinets de conseil, fédérations sectorielles</li>
+            <li>IP & brevet — protection de l'approche 4 dimensions</li>
+          </ul>
+          <a href="mailto:raphael@de-bruijn.com?subject=EvolSphere Series A — Intérêt investisseur" class="ic-btn">📩 Demander le Deck Investisseur</a>
+          <p style="font-size:.72rem;color:var(--m);margin-top:12px;text-align:center">raphael@de-bruijn.com · Réponse sous 24h</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- RADAR LIVE -->
 <section id="radar">
   <div class="w">
-    <div class="sl reveal" data-i="scores_label">Risk Radar · Live</div>
-    <h2 class="reveal" data-i="scores_h2">Scores en temps réel</h2>
-    <div class="sg">
-      <div class="sc reveal" style="transition-delay:.05s" onclick="alertCard('Marché','r',78)"><div class="sct"><span class="scl" data-i="sc0">Marché</span><span class="badge br" data-i="sc0b">CRITIQUE</span></div><div class="sv" id="sv0">0</div><div class="sbw"><div class="sb" id="sb0" style="background:var(--r)"></div></div><div class="str" data-i="sc0t">↑ +12 pts cette semaine</div></div>
-      <div class="sc reveal" style="transition-delay:.1s" onclick="alertCard('Réglementaire','a',54)"><div class="sct"><span class="scl" data-i="sc1">Réglementaire</span><span class="badge ba" data-i="sc1b">VIGILANCE</span></div><div class="sv" id="sv1">0</div><div class="sbw"><div class="sb" id="sb1" style="background:var(--a)"></div></div><div class="str" data-i="sc1t">→ Stable depuis 3 semaines</div></div>
-      <div class="sc reveal" style="transition-delay:.15s" onclick="alertCard('Opérationnel','g',31)"><div class="sct"><span class="scl" data-i="sc2">Opérationnel</span><span class="badge bg3" data-i="sc2b">MAÎTRISÉ</span></div><div class="sv" id="sv2">0</div><div class="sbw"><div class="sb" id="sb2" style="background:var(--g)"></div></div><div class="str" data-i="sc2t">↓ −8 pts après audit</div></div>
-      <div class="sc reveal" style="transition-delay:.2s" onclick="alertCard('Concurrence','a',62)"><div class="sct"><span class="scl" data-i="sc3">Concurrence</span><span class="badge ba" data-i="sc3b">VIGILANCE</span></div><div class="sv" id="sv3">0</div><div class="sbw"><div class="sb" id="sb3" style="background:var(--a)"></div></div><div class="str" data-i="sc3t">↑ Nouvel entrant détecté</div></div>
+    <div class="sl rv">Risk Radar · Live</div>
+    <h2 class="rv">Vos risques en temps réel.</h2>
+    <div class="radar-layout">
+      <div class="rv-l">
+        <canvas id="radarCv" width="380" height="380"></canvas>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px">
+          <div style="display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--m)"><span style="width:7px;height:7px;border-radius:50%;background:var(--r);display:inline-block"></span>Critique</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--m)"><span style="width:7px;height:7px;border-radius:50%;background:var(--a);display:inline-block"></span>Vigilance</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--m)"><span style="width:7px;height:7px;border-radius:50%;background:var(--g);display:inline-block"></span>Maîtrisé</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:.68rem;color:var(--m)"><span style="width:7px;height:7px;border-radius:50%;background:var(--c);display:inline-block"></span>Opportunité</div>
+        </div>
+      </div>
+      <div>
+        <div class="score-list rv-r">
+          <div class="sc-item" onclick="alertCard('Marché','r',78)"><div class="sc-top"><span class="sc-name">Marché</span><span class="sc-badge" style="background:rgba(255,45,85,.15);color:var(--r)">CRITIQUE</span></div><div class="sc-val" id="sv0">0</div><div class="sc-bw"><div class="sc-bar" id="sb0" style="background:var(--r)"></div></div><div class="sc-trend">↑ +12 pts cette semaine</div></div>
+          <div class="sc-item" onclick="alertCard('Réglementaire','a',54)"><div class="sc-top"><span class="sc-name">Réglementaire</span><span class="sc-badge" style="background:rgba(255,159,10,.15);color:var(--a)">VIGILANCE</span></div><div class="sc-val" id="sv1">0</div><div class="sc-bw"><div class="sc-bar" id="sb1" style="background:var(--a)"></div></div><div class="sc-trend">→ Stable</div></div>
+          <div class="sc-item" onclick="alertCard('Opérationnel','g',31)"><div class="sc-top"><span class="sc-name">Opérationnel</span><span class="sc-badge" style="background:rgba(48,209,88,.15);color:var(--g)">MAÎTRISÉ</span></div><div class="sc-val" id="sv2">0</div><div class="sc-bw"><div class="sc-bar" id="sb2" style="background:var(--g)"></div></div><div class="sc-trend">↓ −8 pts après audit</div></div>
+          <div class="sc-item" onclick="alertCard('Concurrence','a',62)"><div class="sc-top"><span class="sc-name">Concurrence</span><span class="sc-badge" style="background:rgba(255,159,10,.15);color:var(--a)">VIGILANCE</span></div><div class="sc-val" id="sv3">0</div><div class="sc-bw"><div class="sc-bar" id="sb3" style="background:var(--a)"></div></div><div class="sc-trend">↑ Nouvel entrant détecté</div></div>
+        </div>
+        <div id="alert-box"></div>
+      </div>
     </div>
-    <div id="abox"></div>
   </div>
 </section>
 
-<hr/>
+<hr class="div"/>
 
 <!-- MODULES -->
-<section class="ms" id="modules">
+<section class="mod-sec" id="modules">
   <div class="w">
-    <div class="sl reveal" data-i="mod_label">Modules</div>
-    <h2 class="reveal" data-i="mod_h2">Risk Radar en action</h2>
-    <div class="tabs reveal">
-      <button class="tab active" onclick="switchTab(0)" data-i="tab0">Scan 360°</button>
-      <button class="tab" onclick="switchTab(1)" data-i="tab1">Scoring</button>
-      <button class="tab" onclick="switchTab(2)" data-i="tab2">Alertes</button>
-      <button class="tab" onclick="switchTab(3)" data-i="tab3">Mitigation</button>
+    <div class="sl rv">Modules</div>
+    <h2 class="rv">Risk Radar en action.</h2>
+    <div class="tabs rv">
+      <button class="tab active" onclick="switchTab(0)">Scan 360°</button>
+      <button class="tab" onclick="switchTab(1)">Scoring</button>
+      <button class="tab" onclick="switchTab(2)">Alertes</button>
+      <button class="tab" onclick="switchTab(3)">Mitigation</button>
     </div>
     <div class="tp active" id="tp0">
-      <div class="pi reveal-l"><h3 data-i="t0h">Scan 360°</h3><p data-i="t0p">Analyse continue de votre environnement — marché, concurrence, réglementation — traduite en risques actionnables.</p><ul class="fl"><li data-i="t0l0">PESTEL augmenté en continu</li><li data-i="t0l1">Angles morts identifiés</li><li data-i="t0l2">Rapport CODIR en 10 min</li></ul></div>
-      <div class="pv reveal-r"><div class="pvl" data-i="t0vis">Exposition par dimension</div><div class="mbars" id="sbars"></div><div style="display:flex;gap:4px" id="slabs"></div><div id="sdet"></div></div>
+      <div class="pi rv-l"><h3>Scan 360°</h3><p>Analyse continue de votre environnement — marché, concurrence, réglementation — traduite en risques actionnables.</p><ul class="fl"><li>PESTEL augmenté en continu</li><li>Angles morts identifiés</li><li>Rapport CODIR en 10 min</li></ul></div>
+      <div class="pv rv-r"><div class="pvl">Exposition par dimension</div><div class="mbars" id="sbars"></div><div style="display:flex;gap:4px" id="slabs"></div><div id="sdet"></div></div>
     </div>
     <div class="tp" id="tp1">
-      <div class="pi reveal-l"><h3 data-i="t1h">Scoring</h3><p data-i="t1p">Chaque risque positionné sur une matrice probabilité × impact. Score composite, seuils configurables.</p><ul class="fl"><li data-i="t1l0">Matrice interactive</li><li data-i="t1l1">Score pondéré par secteur</li><li data-i="t1l2">Historique 6 mois</li></ul></div>
-      <div class="pv reveal-r"><div class="pvl" data-i="t1vis">Matrice des risques</div><canvas id="mc" width="280" height="190"></canvas><div id="mt" data-i="t1tip">Survolez un point</div></div>
+      <div class="pi rv-l"><h3>Scoring</h3><p>Chaque risque positionné sur une matrice probabilité × impact. Score composite, seuils configurables, historique 6 mois.</p><ul class="fl"><li>Matrice interactive</li><li>Score pondéré par secteur</li><li>Historique 6 mois</li></ul></div>
+      <div class="pv rv-r"><div class="pvl">Matrice des risques</div><canvas id="mc" width="290" height="195"></canvas><div id="mt">Survolez un point</div></div>
     </div>
     <div class="tp" id="tp2">
-      <div class="pi reveal-l"><h3 data-i="t2h">Alertes</h3><p data-i="t2p">Seuls les signaux qui méritent votre attention. Risk Radar filtre et remonte les signaux faibles avant qu'ils deviennent des crises.</p><ul class="fl"><li data-i="t2l0">Alertes classées par urgence</li><li data-i="t2l1">Synthèse hebdomadaire auto</li><li data-i="t2l2">Détection avant médiatisation</li></ul></div>
-      <div class="pv reveal-r"><div class="pvl" data-i="t2vis">Signaux actifs</div><div class="slist" id="slist"></div><button class="rbtn" onclick="fsigs()" data-i="t2btn">↻ Actualiser</button></div>
+      <div class="pi rv-l"><h3>Alertes</h3><p>Seuls les signaux qui méritent votre attention. Risk Radar filtre le bruit et remonte les signaux faibles avant les crises.</p><ul class="fl"><li>Alertes classées par urgence</li><li>Synthèse hebdomadaire auto</li><li>Détection avant médiatisation</li></ul></div>
+      <div class="pv rv-r"><div class="pvl">Signaux actifs</div><div class="slist" id="slist"></div><button class="rbtn-sm" onclick="fsigs()">↻ Actualiser</button></div>
     </div>
     <div class="tp" id="tp3">
-      <div class="pi reveal-l"><h3 data-i="t3h">Mitigation</h3><p data-i="t3p">Pour chaque risque critique : plan A, plan B, ressources, jalons. Prêt à activer immédiatement.</p><ul class="fl"><li data-i="t3l0">Plans documentés et exportables</li><li data-i="t3l1">Responsables et délais définis</li><li data-i="t3l2">Simulation de scénarios de crise</li></ul></div>
-      <div class="pv reveal-r"><div class="pvl" data-i="t3vis">Plans actifs</div><div class="mitg"><div class="mc2"><div class="mt2 br" data-i="mit0b">Critique</div><h4 data-i="mit0h">Pression tarifaire</h4><p data-i="mit0p">Plan A activé · J+14</p></div><div class="mc2"><div class="mt2 ba" data-i="mit1b">Vigilance</div><h4 data-i="mit1h">Concurrent entrant</h4><p data-i="mit1p">Scénarios prêts · Veille active</p></div><div class="mc2"><div class="mt2 ba" data-i="mit2b">Vigilance</div><h4 data-i="mit2h">Réglementation UE</h4><p data-i="mit2p">Conseil mandaté · Dossier ouvert</p></div><div class="mc2"><div class="mt2 bg3" data-i="mit3b">Maîtrisé</div><h4 data-i="mit3h">Fournisseur critique</h4><p data-i="mit3p">Backup qualifié · Contrat signé</p></div></div></div>
+      <div class="pi rv-l"><h3>Mitigation</h3><p>Plan A, plan B, ressources, jalons. Prêt à activer immédiatement pour chaque risque critique.</p><ul class="fl"><li>Plans documentés et exportables</li><li>Responsables et délais définis</li><li>Simulation de scénarios de crise</li></ul></div>
+      <div class="pv rv-r"><div class="pvl">Plans actifs</div><div class="mitg"><div class="mc2"><div class="mt2" style="background:rgba(255,45,85,.15);color:var(--r)">Critique</div><h4>Pression tarifaire</h4><p>Plan A activé · J+14</p></div><div class="mc2"><div class="mt2" style="background:rgba(255,159,10,.15);color:var(--a)">Vigilance</div><h4>Concurrent entrant</h4><p>Scénarios prêts · Veille active</p></div><div class="mc2"><div class="mt2" style="background:rgba(255,159,10,.15);color:var(--a)">Vigilance</div><h4>Réglementation UE</h4><p>Conseil mandaté · Dossier ouvert</p></div><div class="mc2"><div class="mt2" style="background:rgba(48,209,88,.15);color:var(--g)">Maîtrisé</div><h4>Fournisseur critique</h4><p>Backup qualifié · Contrat signé</p></div></div></div>
     </div>
   </div>
 </section>
 
-<hr/>
-
-<!-- 4D UNIQUE SECTION -->
-<section id="unique" style="background:var(--s)">
-  <div class="w">
-    <div class="sl reveal" data-i="uniq_label">Technologie exclusive</div>
-    <h2 class="reveal" data-i="uniq_h2">Le seul Risk Radar<br/>à <em style="font-style:normal;color:var(--c)">4 dimensions</em></h2>
-    <p class="reveal" style="color:var(--m);font-size:.95rem;line-height:1.75;max-width:560px;margin-bottom:44px" data-i="uniq_sub">Aucun outil existant ne croise simultanément ces quatre vecteurs de risque en temps réel. C'est ce qui rend Risk Radar inédit.</p>
-    <div class="dim-grid reveal">
-      <div class="dim-card" style="--dc:#ff4455">
-        <div class="dim-num">01</div>
-        <div class="dim-icon">📡</div>
-        <h3 data-i="d0h">Détection</h3>
-        <p data-i="d0p">Captation continue des signaux faibles internes et externes, avant médiatisation.</p>
-        <div class="dim-bar"><div class="dim-fill" style="--pct:92%;background:var(--r)"></div></div>
-      </div>
-      <div class="dim-card" style="--dc:#ffb020">
-        <div class="dim-num">02</div>
-        <div class="dim-icon">⚖️</div>
-        <h3 data-i="d1h">Pondération</h3>
-        <p data-i="d1p">Score composite probabilité × impact × vitesse de propagation, calibré par secteur.</p>
-        <div class="dim-bar"><div class="dim-fill" style="--pct:85%;background:var(--a)"></div></div>
-      </div>
-      <div class="dim-card" style="--dc:#00e5ff">
-        <div class="dim-num">03</div>
-        <div class="dim-icon">🔗</div>
-        <h3 data-i="d2h">Corrélation</h3>
-        <p data-i="d2p">Analyse des interdépendances entre risques — un signal faible peut en masquer un critique.</p>
-        <div class="dim-bar"><div class="dim-fill" style="--pct:78%;background:var(--c)"></div></div>
-      </div>
-      <div class="dim-card" style="--dc:#22d474">
-        <div class="dim-num">04</div>
-        <div class="dim-icon">🎯</div>
-        <h3 data-i="d3h">Action</h3>
-        <p data-i="d3p">Chaque risque déclenche un plan de réponse documenté, prêt à activer en moins de 48h.</p>
-        <div class="dim-bar"><div class="dim-fill" style="--pct:96%;background:var(--g)"></div></div>
-      </div>
-    </div>
-    <div class="uniq-badge reveal">
-      <span class="dot"></span>
-      <span data-i="uniq_badge">Approche brevetable · Aucun équivalent sur le marché · Déployable en 30 jours</span>
-    </div>
-  </div>
-</section>
-
-<hr/>
-
-<!-- MÉTHODE PROJET -->
-<section id="methode">
-  <div class="w">
-    <div class="sl reveal" data-i="meth_label">Méthode</div>
-    <h2 class="reveal" data-i="meth_h2">De l'analyse à la décision</h2>
-    <p class="reveal" style="color:var(--m);font-size:.92rem;line-height:1.75;max-width:500px;margin-bottom:48px" data-i="meth_sub">Un processus structuré en 4 temps, conçu pour s'intégrer sans perturber votre organisation.</p>
-    <div class="proc-wrap reveal">
-      <div class="proc-line"></div>
-      <div class="proc-steps">
-        <div class="proc-step">
-          <div class="proc-circle"><span>01</span></div>
-          <div class="proc-content">
-            <h3 data-i="p0h">Diagnostic</h3>
-            <p data-i="p0p">Audit de vos risques actuels, appétit au risque et angles morts stratégiques. 2 sessions.</p>
-            <div class="proc-tag" data-i="p0t">Semaine 1</div>
-          </div>
-        </div>
-        <div class="proc-step">
-          <div class="proc-circle"><span>02</span></div>
-          <div class="proc-content">
-            <h3 data-i="p1h">Paramétrage</h3>
-            <p data-i="p1p">Configuration du Risk Radar sur vos 4 dimensions, seuils d'alerte et secteur d'activité.</p>
-            <div class="proc-tag" data-i="p1t">Semaine 2</div>
-          </div>
-        </div>
-        <div class="proc-step">
-          <div class="proc-circle"><span>03</span></div>
-          <div class="proc-content">
-            <h3 data-i="p2h">Déploiement</h3>
-            <p data-i="p2p">Activation du système, formation des équipes clés, premier dashboard livré et présenté.</p>
-            <div class="proc-tag" data-i="p2t">Semaine 3–4</div>
-          </div>
-        </div>
-        <div class="proc-step">
-          <div class="proc-circle active"><span>04</span></div>
-          <div class="proc-content">
-            <h3 data-i="p3h">Pilotage continu</h3>
-            <p data-i="p3p">Revues périodiques, ajustement du scoring, montée en compétence. 3 mois inclus.</p>
-            <div class="proc-tag" data-i="p3t">Mois 2–3</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr/>
+<hr class="div"/>
 
 <!-- SOCIAL PROOF -->
 <section id="proof">
   <div class="w">
-    <div class="sl reveal" data-i="sp_label">Ils nous font confiance</div>
-    <h2 class="reveal" data-i="sp_h2">Ce qu'en disent les dirigeants</h2>
-    <div class="sp-grid">
-      <div class="sp-card reveal" style="transition-delay:.05s">
-        <div class="sp-stars">★★★★★</div>
-        <p class="sp-quote" data-i="sp0q">"Risk Radar nous a permis d'identifier une menace concurrentielle 6 semaines avant qu'elle soit visible sur le marché. On a pu ajuster notre stratégie pricing avant tout le monde."</p>
-        <div class="sp-author">
-          <div class="sp-avatar">M</div>
-          <div>
-            <div class="sp-name">M. Laurent</div>
-            <div class="sp-role" data-i="sp0r">Directeur Général · ETI industrielle · 220M€ CA</div>
-          </div>
-        </div>
-      </div>
-      <div class="sp-card reveal" style="transition-delay:.1s">
-        <div class="sp-stars">★★★★★</div>
-        <p class="sp-quote" data-i="sp1q">"Enfin un outil qui parle le langage du CODIR. En 10 minutes, on a une vision claire de notre exposition. On ne gère plus les risques en mode réactif."</p>
-        <div class="sp-author">
-          <div class="sp-avatar">S</div>
-          <div>
-            <div class="sp-name">S. Moreau</div>
-            <div class="sp-role" data-i="sp1r">CFO · Scale-up SaaS · Série B</div>
-          </div>
-        </div>
-      </div>
-      <div class="sp-card reveal" style="transition-delay:.15s">
-        <div class="sp-stars">★★★★★</div>
-        <p class="sp-quote" data-i="sp2q">"La dimension corrélation est bluffante. On avait deux signaux faibles en parallèle qui, combinés, annonçaient une rupture fournisseur. Sans Risk Radar, on ne l'aurait pas vu."</p>
-        <div class="sp-author">
-          <div class="sp-avatar">A</div>
-          <div>
-            <div class="sp-name">A. Benali</div>
-            <div class="sp-role" data-i="sp2r">Directrice des Opérations · Groupe distribution · 85M€ CA</div>
-          </div>
-        </div>
-      </div>
+    <div class="sl rv">Ils nous font confiance</div>
+    <h2 class="rv">Ce qu'en disent les dirigeants.</h2>
+    <div class="proof-grid">
+      <div class="pcard rv" style="transition-delay:.04s"><div class="pcard-stars">★★★★★</div><p class="pcard-q">"Risk Radar nous a permis d'identifier une menace concurrentielle <strong>6 semaines avant</strong> qu'elle soit visible sur le marché."</p><div class="pcard-who"><div class="pcard-av">M</div><div><div class="pcard-name">M. Laurent</div><div class="pcard-role">DG · ETI industrielle · 220M€ CA</div></div></div></div>
+      <div class="pcard rv" style="transition-delay:.08s"><div class="pcard-stars">★★★★★</div><p class="pcard-q">"Enfin un outil qui parle le langage du CODIR. En 10 minutes on a une vision claire de notre exposition. <strong>On ne subit plus.</strong>"</p><div class="pcard-who"><div class="pcard-av">S</div><div><div class="pcard-name">S. Moreau</div><div class="pcard-role">CFO · Scale-up SaaS · Série B</div></div></div></div>
+      <div class="pcard rv" style="transition-delay:.12s"><div class="pcard-stars">★★★★★</div><p class="pcard-q">"La dimension corrélation est bluffante. Deux signaux faibles combinés annonçaient une rupture fournisseur. <strong>Sans EvolSphere, on ne l'aurait jamais vu.</strong>"</p><div class="pcard-who"><div class="pcard-av">A</div><div><div class="pcard-name">A. Benali</div><div class="pcard-role">COO · Groupe distribution · 85M€ CA</div></div></div></div>
     </div>
-    <!-- Stats -->
     <div class="stats-row">
-      <div class="stat-box reveal" style="transition-delay:.0s">
-        <div class="stat-n" id="cnt0">0</div>
-        <div class="stat-l" data-i="st0">jours pour<br/>être opérationnel</div>
-      </div>
-      <div class="stat-box reveal" style="transition-delay:.08s">
-        <div class="stat-n" id="cnt1">0</div>
-        <div class="stat-l" data-i="st1">semaines d'avance<br/>en moyenne sur les risques</div>
-      </div>
-      <div class="stat-box reveal" style="transition-delay:.16s">
-        <div class="stat-n" id="cnt2">0<span style="font-size:1.2rem">%</span></div>
-        <div class="stat-l" data-i="st2">des clients renouvellent<br/>après 3 mois</div>
-      </div>
-      <div class="stat-box reveal" style="transition-delay:.24s">
-        <div class="stat-n" id="cnt3">0</div>
-        <div class="stat-l" data-i="st3">dimensions croisées<br/>en temps réel — une première</div>
+      <div class="st rv"><div class="st-n" style="color:var(--c)" id="cn0">0</div><div class="st-l">Jours pour<br/>aller live</div></div>
+      <div class="st rv" style="transition-delay:.06s"><div class="st-n" style="color:var(--a)" id="cn1">0×</div><div class="st-l">Plus rapide<br/>qu'un Risk Register</div></div>
+      <div class="st rv" style="transition-delay:.12s"><div class="st-n" style="color:var(--g)" id="cn2">0%</div><div class="st-l">Taux de renouvellement<br/>à 3 mois</div></div>
+      <div class="st rv" style="transition-delay:.18s"><div class="st-n" style="color:var(--p)" id="cn3">0</div><div class="st-l">Dimensions croisées<br/>en temps réel</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- MÉTHODE -->
+<section id="methode">
+  <div class="w">
+    <div class="sl rv">Méthode</div>
+    <h2 class="rv">De l'analyse à la décision.</h2>
+    <p class="sec-sub rv">Un processus en 4 temps, conçu pour s'intégrer sans perturber votre organisation.</p>
+    <div class="proc-wrap rv">
+      <div class="proc-steps">
+        <div class="proc-step"><div class="proc-circle"><span>01</span></div><h3>Diagnostic</h3><p>Audit des risques actuels, appétit au risque et angles morts.</p><div class="proc-tag">Semaine 1</div></div>
+        <div class="proc-step"><div class="proc-circle"><span>02</span></div><h3>Paramétrage</h3><p>Configuration 4D selon votre secteur et vos seuils d'alerte.</p><div class="proc-tag">Semaine 2</div></div>
+        <div class="proc-step"><div class="proc-circle"><span>03</span></div><h3>Déploiement</h3><p>Activation, formation équipes, premier dashboard livré.</p><div class="proc-tag">Semaine 3–4</div></div>
+        <div class="proc-step"><div class="proc-circle" style="background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.4)"><span>04</span></div><h3>Pilotage</h3><p>Revues périodiques, scoring ajusté. 3 mois inclus.</p><div class="proc-tag">Mois 2–3</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<hr/>
+<hr class="div"/>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="w">
-    <div class="sl reveal" data-i="con_label">Contact</div>
-    <h2 class="reveal" data-i="con_h2">Prenons contact</h2>
-    <div class="cg">
-      <div class="fc reveal-l" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:28px;padding:44px 32px">
-        <div style="font-size:2.5rem">📬</div>
-        <p style="color:var(--m);font-size:.95rem;line-height:1.72;max-width:340px" data-i="con_intro">Un échange de 30 minutes suffit pour évaluer si Risk Radar correspond à vos enjeux. Sans engagement.</p>
-        <a href="mailto:raphael@de-bruijn.com" class="bp" style="display:inline-block" data-i="con_btn">Écrire à Raphaël →</a>
-        <a href="mailto:raphael@de-bruijn.com" style="color:var(--c);font-size:.85rem;font-weight:600;text-decoration:none">raphael@de-bruijn.com</a>
-        <!-- RGPD -->
-        <div class="rgpd" style="max-width:340px;text-align:left">
-          <input type="checkbox" id="rgpd" onchange="document.querySelector('.bp').style.opacity=this.checked?'1':'.5'"/>
-          <label for="rgpd"><span data-i="rgpd_txt">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la </span><a href="#" data-i="rgpd_link">politique de confidentialité</a><span data-i="rgpd_txt2"> d'EvolSphere.</span></label>
+    <div class="sl rv">Contact</div>
+    <h2 class="rv">Prenons contact.</h2>
+    <div class="con-grid">
+      <div class="fc rv-l">
+        <div class="fc-ico">📬</div>
+        <p>Un échange de 30 minutes suffit pour évaluer si Risk Radar correspond à vos enjeux — ou si vous souhaitez en savoir plus sur notre levée de fonds.</p>
+        <a href="mailto:raphael@de-bruijn.com" class="fc-btn">Écrire à Raphaël →</a>
+        <a href="mailto:raphael@de-bruijn.com" class="fc-email">raphael@de-bruijn.com</a>
+        <div class="rgpd">
+          <input type="checkbox" id="rgpd"/>
+          <label for="rgpd">J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="#">politique de confidentialité</a> d'EvolSphere.</label>
         </div>
       </div>
-      <div class="reveal-r">
-        <div class="ci">
-          <h3 data-i="ci_h1">Contact direct</h3>
-          <p><a href="mailto:raphael@de-bruijn.com">raphael@de-bruijn.com</a></p>
-          <p style="margin-top:4px"><a href="https://evolsphere.com" target="_blank">evolsphere.com</a></p>
-        </div>
-        <div class="ci">
-          <h3 data-i="ci_h2">Ce qui se passe ensuite</h3>
-          <div class="tl">
-            <div class="tli"><div class="tld">J+1</div><div class="tlt"><strong data-i="tl0a">Appel</strong> · <span data-i="tl0b">30 min, sans engagement</span></div></div>
-            <div class="tli"><div class="tld">J+3</div><div class="tlt"><strong data-i="tl1a">Proposition</strong> · <span data-i="tl1b">Périmètre & calendrier</span></div></div>
-            <div class="tli"><div class="tld">J+30</div><div class="tlt"><strong data-i="tl2a">Dashboard</strong> · <span data-i="tl2b">Risk Radar opérationnel</span></div></div>
-          </div>
-        </div>
+      <div class="rv-r">
+        <div class="ci"><h3>Contact direct</h3><p><a href="mailto:raphael@de-bruijn.com">raphael@de-bruijn.com</a></p><p style="margin-top:4px"><a href="https://evolsphere.com" target="_blank">evolsphere.com</a></p></div>
+        <div class="ci"><h3>Ce qui se passe ensuite</h3><div class="tl"><div class="tli"><div class="tld">J+1</div><div class="tlt"><strong>Appel</strong> · 30 min, sans engagement</div></div><div class="tli"><div class="tld">J+3</div><div class="tlt"><strong>Proposition</strong> · Périmètre & calendrier</div></div><div class="tli"><div class="tld">J+30</div><div class="tlt"><strong>Dashboard</strong> · Risk Radar opérationnel</div></div></div></div>
+        <div class="ci" style="border-color:rgba(191,90,242,.22)"><h3 style="color:#bf5af2">💜 Investisseurs</h3><p>Pour recevoir le deck, les projections et les modalités Series A :<br/><a href="mailto:raphael@de-bruijn.com?subject=EvolSphere Series A — Deck investisseur" style="color:#bf5af2">raphael@de-bruijn.com</a></p></div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="fl2">Evol<span>Sphere</span></div>
+  <div class="fl">Evol<em>Sphere</em></div>
   <p>© 2026 EvolSphere · <a href="https://evolsphere.com">evolsphere.com</a></p>
   <a href="mailto:raphael@de-bruijn.com">raphael@de-bruijn.com</a>
 </footer>
 
 <script>
-// ── I18N ──────────────────────────────────────────────
-const i18n = {
-  fr:{
-    nav_modules:'Modules',nav_unique:'4 Dimensions',nav_meth:'Méthode',nav_contact:'Contact',
-    hero_chip:'Risk Intelligence',
-    hero_h1:'Anticipez.<br/>Décidez.<br/><em>Agissez.</em>',
-    hero_sub:'EvolSphere détecte et priorise vos risques stratégiques avant qu\'ils impactent votre organisation.',
-    hero_cta1:'Prendre contact',hero_cta2:'Voir les modules',
-    radar_tip:'Survolez un signal',
-    leg_r:'Critique',leg_a:'Vigilance',leg_g:'Maîtrisé',leg_c:'Opportunité',
-    scores_label:'Risk Radar · Live',scores_h2:'Scores en temps réel',
-    sc0:'Marché',sc0b:'CRITIQUE',sc0t:'↑ +12 pts cette semaine',
-    sc1:'Réglementaire',sc1b:'VIGILANCE',sc1t:'→ Stable depuis 3 semaines',
-    sc2:'Opérationnel',sc2b:'MAÎTRISÉ',sc2t:'↓ −8 pts après audit',
-    sc3:'Concurrence',sc3b:'VIGILANCE',sc3t:'↑ Nouvel entrant détecté',
-    mod_label:'Modules',mod_h2:'Risk Radar en action',
-    tab0:'Scan 360°',tab1:'Scoring',tab2:'Alertes',tab3:'Mitigation',
-    t0h:'Scan 360°',t0p:'Analyse continue de votre environnement — marché, concurrence, réglementation — traduite en risques actionnables.',t0vis:'Exposition par dimension',
-    t0l0:'PESTEL augmenté en continu',t0l1:'Angles morts identifiés',t0l2:'Rapport CODIR en 10 min',
-    t1h:'Scoring',t1p:'Chaque risque positionné sur une matrice probabilité × impact. Score composite, seuils configurables.',t1vis:'Matrice des risques',t1tip:'Survolez un point',
-    t1l0:'Matrice interactive',t1l1:'Score pondéré par secteur',t1l2:'Historique 6 mois',
-    t2h:'Alertes',t2p:'Seuls les signaux qui méritent votre attention. Risk Radar filtre et remonte les signaux faibles avant les crises.',t2vis:'Signaux actifs',t2btn:'↻ Actualiser',
-    t2l0:'Alertes classées par urgence',t2l1:'Synthèse hebdomadaire auto',t2l2:'Détection avant médiatisation',
-    t3h:'Mitigation',t3p:'Pour chaque risque critique : plan A, plan B, ressources, jalons. Prêt à activer immédiatement.',t3vis:'Plans actifs',
-    t3l0:'Plans documentés et exportables',t3l1:'Responsables et délais définis',t3l2:'Simulation de scénarios de crise',
-    mit0b:'Critique',mit0h:'Pression tarifaire',mit0p:'Plan A activé · J+14',
-    mit1b:'Vigilance',mit1h:'Concurrent entrant',mit1p:'Scénarios prêts · Veille active',
-    mit2b:'Vigilance',mit2h:'Réglementation UE',mit2p:'Conseil mandaté · Dossier ouvert',
-    mit3b:'Maîtrisé',mit3h:'Fournisseur critique',mit3p:'Backup qualifié · Contrat signé',
-    con_label:'Contact',con_h2:'Prenons contact',
-    f_email:'Email *',f_msg:'Message',f_msg_ph:'Votre enjeu en quelques mots...',
-    rgpd_txt:"J'accepte que mes données soient utilisées pour traiter ma demande de contact, conformément à la ",
-    rgpd_link:'politique de confidentialité',rgpd_txt2:" d'EvolSphere.",
-    f_btn:'Envoyer →',fok_h:'Message envoyé !',fok_p:'Réponse sous 24h.',
-    ci_h1:'Contact direct',ci_h2:'Ce qui se passe ensuite',
-    tl0a:'Appel',tl0b:'30 min, sans engagement',tl1a:'Proposition',tl1b:'Périmètre & calendrier',tl2a:'Dashboard',tl2b:'Risk Radar opérationnel',
-    ferr_req:'Email requis.',ferr_inv:'Email invalide.',ferr_rgpd:'Veuillez accepter la politique de confidentialité.',
-    uniq_label:'Technologie exclusive',uniq_h2:'Le seul Risk Radar à 4 dimensions',uniq_sub:"Aucun outil existant ne croise simultanément ces quatre vecteurs de risque en temps réel. C'est ce qui rend Risk Radar inédit.",
-    d0h:'Détection',d0p:'Captation continue des signaux faibles internes et externes, avant médiatisation.',
-    d1h:'Pondération',d1p:'Score composite probabilité × impact × vitesse de propagation, calibré par secteur.',
-    d2h:'Corrélation',d2p:'Analyse des interdépendances entre risques — un signal faible peut en masquer un critique.',
-    d3h:'Action',d3p:'Chaque risque déclenche un plan de réponse documenté, prêt à activer en moins de 48h.',
-    uniq_badge:'Approche brevetable · Aucun équivalent sur le marché · Déployable en 30 jours',
-    meth_label:'Méthode',meth_h2:'De l\'analyse à la décision',meth_sub:'Un processus structuré en 4 temps, conçu pour s\'intégrer sans perturber votre organisation.',
-    p0h:'Diagnostic',p0p:'Audit de vos risques actuels, appétit au risque et angles morts stratégiques. 2 sessions.',p0t:'Semaine 1',
-    p1h:'Paramétrage',p1p:'Configuration du Risk Radar sur vos 4 dimensions, seuils d\'alerte et secteur d\'activité.',p1t:'Semaine 2',
-    p2h:'Déploiement',p2p:'Activation du système, formation des équipes clés, premier dashboard livré et présenté.',p2t:'Semaine 3–4',
-    p3h:'Pilotage continu',p3p:'Revues périodiques, ajustement du scoring, montée en compétence. 3 mois inclus.',p3t:'Mois 2–3',
-    con_label:'Contact',con_h2:'Prenons contact',con_intro:'Un échange de 30 minutes suffit pour évaluer si Risk Radar correspond à vos enjeux. Sans engagement.',con_btn:'Écrire à Raphaël →',
-    nav_proof:'Témoignages',
-    sp_label:'Ils nous font confiance',sp_h2:'Ce qu\'en disent les dirigeants',
-    sp0q:'"Risk Radar nous a permis d\'identifier une menace concurrentielle 6 semaines avant qu\'elle soit visible sur le marché. On a pu ajuster notre stratégie pricing avant tout le monde."',sp0r:'Directeur Général · ETI industrielle · 220M€ CA',
-    sp1q:'"Enfin un outil qui parle le langage du CODIR. En 10 minutes, on a une vision claire de notre exposition. On ne gère plus les risques en mode réactif."',sp1r:'CFO · Scale-up SaaS · Série B',
-    sp2q:'"La dimension corrélation est bluffante. On avait deux signaux faibles qui, combinés, annonçaient une rupture fournisseur. Sans Risk Radar, on ne l\'aurait pas vu."',sp2r:'Directrice des Opérations · Groupe distribution · 85M€ CA',
-    st0:'jours pour<br/>être opérationnel',st1:'semaines d\'avance<br/>en moyenne sur les risques',st2:'des clients renouvellent<br/>après 3 mois',st3:'dimensions croisées<br/>en temps réel — une première',
-    alert_r:(n,s)=>`⚠ Score ${s}/100 sur "${n}" — critique. Plan de mitigation recommandé sous 48h.`,
-    alert_a:(n,s)=>`🔶 Score ${s}/100 sur "${n}" — vigilance. Revue conseillée.`,
-    alert_g:(n,s)=>`✅ Score ${s}/100 sur "${n}" — maîtrisé. Prochain contrôle dans 7 jours.`,
-  },
-  en:{
-    nav_modules:'Modules',nav_unique:'4 Dimensions',nav_meth:'Method',nav_contact:'Contact',
-    hero_chip:'Risk Intelligence',
-    hero_h1:'Anticipate.<br/>Decide.<br/><em>Act.</em>',
-    hero_sub:'EvolSphere detects and prioritizes your strategic risks before they impact your organization.',
-    hero_cta1:'Get in touch',hero_cta2:'See modules',
-    radar_tip:'Hover a signal',
-    leg_r:'Critical',leg_a:'Watch',leg_g:'Controlled',leg_c:'Opportunity',
-    scores_label:'Risk Radar · Live',scores_h2:'Real-time scores',
-    sc0:'Market',sc0b:'CRITICAL',sc0t:'↑ +12 pts this week',
-    sc1:'Regulatory',sc1b:'WATCH',sc1t:'→ Stable for 3 weeks',
-    sc2:'Operational',sc2b:'CONTROLLED',sc2t:'↓ −8 pts after audit',
-    sc3:'Competition',sc3b:'WATCH',sc3t:'↑ New entrant detected',
-    mod_label:'Modules',mod_h2:'Risk Radar in action',
-    tab0:'360° Scan',tab1:'Scoring',tab2:'Alerts',tab3:'Mitigation',
-    t0h:'360° Scan',t0p:'Continuous analysis of your environment — market, competition, regulation — turned into actionable risks.',t0vis:'Exposure by dimension',
-    t0l0:'Augmented PESTEL in real time',t0l1:'Blind spots identified',t0l2:'Board-ready report in 10 min',
-    t1h:'Scoring',t1p:'Each risk plotted on a probability × impact matrix. Composite score, configurable thresholds.',t1vis:'Risk matrix',t1tip:'Hover a point',
-    t1l0:'Interactive matrix',t1l1:'Sector-weighted score',t1l2:'6-month history',
-    t2h:'Alerts',t2p:'Only the signals that deserve your attention. Risk Radar filters noise and surfaces weak signals before crises.',t2vis:'Active signals',t2btn:'↻ Refresh',
-    t2l0:'Alerts ranked by urgency',t2l1:'Automated weekly digest',t2l2:'Detection before media coverage',
-    t3h:'Mitigation',t3p:'For each critical risk: plan A, plan B, resources, milestones. Ready to activate immediately.',t3vis:'Active plans',
-    t3l0:'Documented & exportable plans',t3l1:'Owners and deadlines defined',t3l2:'Crisis scenario simulation',
-    mit0b:'Critical',mit0h:'Pricing pressure',mit0p:'Plan A active · D+14',
-    mit1b:'Watch',mit1h:'Incoming competitor',mit1p:'Scenarios ready · Active monitoring',
-    mit2b:'Watch',mit2h:'EU regulation',mit2p:'Legal counsel mandated · File open',
-    mit3b:'Controlled',mit3h:'Key supplier',mit3p:'Backup qualified · Contract signed',
-    con_label:'Contact',con_h2:"Let's connect",
-    f_email:'Email *',f_msg:'Message',f_msg_ph:'Your challenge in a few words...',
-    rgpd_txt:'I agree that my data will be used to process my contact request, in accordance with the ',
-    rgpd_link:'privacy policy',rgpd_txt2:' of EvolSphere.',
-    f_btn:'Send →',fok_h:'Message sent!',fok_p:'Reply within 24h.',
-    ci_h1:'Direct contact',ci_h2:"What happens next",
-    tl0a:'Call',tl0b:'30 min, no commitment',tl1a:'Proposal',tl1b:'Scope & timeline',tl2a:'Dashboard',tl2b:'Risk Radar live',
-    ferr_req:'Email required.',ferr_inv:'Invalid email.',ferr_rgpd:'Please accept the privacy policy.',
-    uniq_label:'Exclusive technology',uniq_h2:'The only Risk Radar with 4 dimensions',uniq_sub:'No existing tool simultaneously crosses these four risk vectors in real time. This is what makes Risk Radar unique.',
-    d0h:'Detection',d0p:'Continuous capture of weak internal and external signals, before media coverage.',
-    d1h:'Weighting',d1p:'Composite score: probability × impact × propagation speed, calibrated by sector.',
-    d2h:'Correlation',d2p:'Analysis of interdependencies between risks — a weak signal can hide a critical one.',
-    d3h:'Action',d3p:'Each risk triggers a documented response plan, ready to activate in under 48h.',
-    uniq_badge:'Patentable approach · No market equivalent · Deployable in 30 days',
-    meth_label:'Method',meth_h2:'From analysis to decision',meth_sub:'A structured 4-step process, designed to integrate without disrupting your organization.',
-    p0h:'Diagnosis',p0p:'Audit of your current risks, risk appetite and strategic blind spots. 2 sessions.',p0t:'Week 1',
-    p1h:'Configuration',p1p:'Risk Radar setup across your 4 dimensions, alert thresholds and industry calibration.',p1t:'Week 2',
-    p2h:'Deployment',p2p:'System activation, key team training, first dashboard delivered and presented.',p2t:'Week 3–4',
-    p3h:'Ongoing steering',p3p:'Periodic reviews, scoring adjustments, continuous upskilling. 3 months included.',p3t:'Month 2–3',
-    con_label:'Contact',con_h2:"Let's connect",con_intro:'A 30-minute call is enough to assess whether Risk Radar fits your current challenges. No commitment.',con_btn:'Write to Raphaël →',
-    nav_proof:'Testimonials',
-    sp_label:'Trusted by leaders',sp_h2:'What executives say',
-    sp0q:'"Risk Radar helped us spot a competitive threat 6 weeks before it appeared on the market. We adjusted our pricing strategy before anyone else."',sp0r:'CEO · Industrial SME · €220M revenue',
-    sp1q:'"Finally a tool that speaks the board\'s language. In 10 minutes, we have a clear view of our exposure. We no longer manage risks reactively."',sp1r:'CFO · SaaS Scale-up · Series B',
-    sp2q:'"The correlation dimension is remarkable. We had two weak signals that, combined, were announcing a supplier breakdown. Without Risk Radar, we would never have seen it."',sp2r:'COO · Distribution group · €85M revenue',
-    st0:'days to<br/>go live',st1:'weeks ahead<br/>on risks on average',st2:'of clients renew<br/>after 3 months',st3:'dimensions crossed<br/>in real time — a first',
-    alert_r:(n,s)=>`⚠ Score ${s}/100 on "${n}" — critical. Mitigation plan recommended within 48h.`,
-    alert_a:(n,s)=>`🔶 Score ${s}/100 on "${n}" — watch. Review advised.`,
-    alert_g:(n,s)=>`✅ Score ${s}/100 on "${n}" — controlled. Next check in 7 days.`,
-  },
-  es:{
-    nav_modules:'Módulos',nav_unique:'4 Dimensiones',nav_meth:'Método',nav_contact:'Contacto',
-    hero_chip:'Inteligencia de Riesgo',
-    hero_h1:'Anticipa.<br/>Decide.<br/><em>Actúa.</em>',
-    hero_sub:'EvolSphere detecta y prioriza sus riesgos estratégicos antes de que impacten su organización.',
-    hero_cta1:'Contactar',hero_cta2:'Ver módulos',
-    radar_tip:'Pase el cursor sobre una señal',
-    leg_r:'Crítico',leg_a:'Vigilancia',leg_g:'Controlado',leg_c:'Oportunidad',
-    scores_label:'Risk Radar · En vivo',scores_h2:'Puntuaciones en tiempo real',
-    sc0:'Mercado',sc0b:'CRÍTICO',sc0t:'↑ +12 pts esta semana',
-    sc1:'Regulación',sc1b:'VIGILANCIA',sc1t:'→ Estable hace 3 semanas',
-    sc2:'Operacional',sc2b:'CONTROLADO',sc2t:'↓ −8 pts tras auditoría',
-    sc3:'Competencia',sc3b:'VIGILANCIA',sc3t:'↑ Nuevo competidor detectado',
-    mod_label:'Módulos',mod_h2:'Risk Radar en acción',
-    tab0:'Scan 360°',tab1:'Puntuación',tab2:'Alertas',tab3:'Mitigación',
-    t0h:'Scan 360°',t0p:'Análisis continuo de su entorno — mercado, competencia, regulación — traducido en riesgos accionables.',t0vis:'Exposición por dimensión',
-    t0l0:'PESTEL aumentado en tiempo real',t0l1:'Puntos ciegos identificados',t0l2:'Informe para dirección en 10 min',
-    t1h:'Puntuación',t1p:'Cada riesgo posicionado en una matriz probabilidad × impacto. Puntuación compuesta, umbrales configurables.',t1vis:'Matriz de riesgos',t1tip:'Pase el cursor',
-    t1l0:'Matriz interactiva',t1l1:'Puntuación ponderada por sector',t1l2:'Historial de 6 meses',
-    t2h:'Alertas',t2p:'Solo las señales que merecen su atención. Risk Radar filtra el ruido y detecta señales débiles antes de las crisis.',t2vis:'Señales activas',t2btn:'↻ Actualizar',
-    t2l0:'Alertas clasificadas por urgencia',t2l1:'Resumen semanal automatizado',t2l2:'Detección antes de la cobertura mediática',
-    t3h:'Mitigación',t3p:'Para cada riesgo crítico: plan A, plan B, recursos, hitos. Listo para activar de inmediato.',t3vis:'Planes activos',
-    t3l0:'Planes documentados y exportables',t3l1:'Responsables y plazos definidos',t3l2:'Simulación de escenarios de crisis',
-    mit0b:'Crítico',mit0h:'Presión de precios',mit0p:'Plan A activo · D+14',
-    mit1b:'Vigilancia',mit1h:'Competidor entrante',mit1p:'Escenarios listos · Vigilancia activa',
-    mit2b:'Vigilancia',mit2h:'Regulación UE',mit2p:'Asesor legal designado · Expediente abierto',
-    mit3b:'Controlado',mit3h:'Proveedor clave',mit3p:'Backup cualificado · Contrato firmado',
-    con_label:'Contacto',con_h2:'Hablemos',
-    f_email:'Email *',f_msg:'Mensaje',f_msg_ph:'Su desafío en pocas palabras...',
-    rgpd_txt:'Acepto que mis datos sean utilizados para procesar mi solicitud de contacto, de acuerdo con la ',
-    rgpd_link:'política de privacidad',rgpd_txt2:' de EvolSphere.',
-    f_btn:'Enviar →',fok_h:'¡Mensaje enviado!',fok_p:'Respuesta en 24h.',
-    ci_h1:'Contacto directo',ci_h2:'Lo que ocurre después',
-    tl0a:'Llamada',tl0b:'30 min, sin compromiso',tl1a:'Propuesta',tl1b:'Alcance y calendario',tl2a:'Dashboard',tl2b:'Risk Radar operativo',
-    ferr_req:'Email requerido.',ferr_inv:'Email inválido.',ferr_rgpd:'Por favor acepte la política de privacidad.',
-    uniq_label:'Tecnología exclusiva',uniq_h2:'El único Risk Radar con 4 dimensiones',uniq_sub:'Ninguna herramienta existente cruza simultáneamente estos cuatro vectores de riesgo en tiempo real. Esto es lo que hace único al Risk Radar.',
-    d0h:'Detección',d0p:'Captación continua de señales débiles internas y externas, antes de la cobertura mediática.',
-    d1h:'Ponderación',d1p:'Puntuación compuesta: probabilidad × impacto × velocidad de propagación, calibrada por sector.',
-    d2h:'Correlación',d2p:'Análisis de interdependencias entre riesgos — una señal débil puede ocultar una crítica.',
-    d3h:'Acción',d3p:'Cada riesgo activa un plan de respuesta documentado, listo para ejecutar en menos de 48h.',
-    uniq_badge:'Enfoque patentable · Sin equivalente en el mercado · Desplegable en 30 días',
-    meth_label:'Método',meth_h2:'Del análisis a la decisión',meth_sub:'Un proceso estructurado en 4 etapas, diseñado para integrarse sin perturbar su organización.',
-    p0h:'Diagnóstico',p0p:'Auditoría de sus riesgos actuales, apetito al riesgo y puntos ciegos estratégicos. 2 sesiones.',p0t:'Semana 1',
-    p1h:'Configuración',p1p:'Configuración del Risk Radar en sus 4 dimensiones, umbrales de alerta y sector de actividad.',p1t:'Semana 2',
-    p2h:'Despliegue',p2p:'Activación del sistema, formación de equipos clave, primer dashboard entregado y presentado.',p2t:'Semana 3–4',
-    p3h:'Pilotaje continuo',p3p:'Revisiones periódicas, ajuste del scoring, mejora continua. 3 meses incluidos.',p3t:'Mes 2–3',
-    con_label:'Contacto',con_h2:'Hablemos',con_intro:'Una llamada de 30 minutos basta para evaluar si Risk Radar responde a sus desafíos actuales. Sin compromiso.',con_btn:'Escribir a Raphaël →',
-    nav_proof:'Testimonios',
-    sp_label:'Confían en nosotros',sp_h2:'Lo que dicen los directivos',
-    sp0q:'"Risk Radar nos permitió identificar una amenaza competitiva 6 semanas antes de que fuera visible en el mercado. Pudimos ajustar nuestra estrategia de precios antes que nadie."',sp0r:'Director General · PYME industrial · 220M€ facturación',
-    sp1q:'"Por fin una herramienta que habla el idioma del comité directivo. En 10 minutos, tenemos una visión clara de nuestra exposición. Ya no gestionamos los riesgos de forma reactiva."',sp1r:'CFO · Scale-up SaaS · Serie B',
-    sp2q:'"La dimensión de correlación es impresionante. Teníamos dos señales débiles que, combinadas, anunciaban una ruptura de proveedor. Sin Risk Radar, nunca lo habríamos visto."',sp2r:'Directora de Operaciones · Grupo de distribución · 85M€',
-    st0:'días para<br/>estar operativo',st1:'semanas de ventaja<br/>sobre los riesgos',st2:'de clientes renuevan<br/>después de 3 meses',st3:'dimensiones cruzadas<br/>en tiempo real — una primera',
-    alert_r:(n,s)=>`⚠ Puntuación ${s}/100 en "${n}" — crítico. Plan de mitigación recomendado en 48h.`,
-    alert_a:(n,s)=>`🔶 Puntuación ${s}/100 en "${n}" — vigilancia. Revisión recomendada.`,
-    alert_g:(n,s)=>`✅ Puntuación ${s}/100 en "${n}" — controlado. Próximo control en 7 días.`,
-  }
-};
+// ── THREE.JS 3D BACKGROUND ──────────────────────────────────
+(function(){
+  const container=document.getElementById('three-bg');
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  container.appendChild(renderer.domElement);
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(55,window.innerWidth/window.innerHeight,0.1,200);
+  camera.position.set(0,0,30);
 
-let lang = 'fr';
-function setLang(l) {
-  lang = l;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
-  document.querySelectorAll('[data-i]').forEach(el => {
-    const key = el.getAttribute('data-i');
-    if (i18n[l][key] !== undefined) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = i18n[l][key];
-      else el.innerHTML = i18n[l][key];
-    }
+  window.addEventListener('resize',()=>{
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
   });
-  document.getElementById('fe').placeholder = i18n[l].f_email?.replace(' *','') + '...';
-  document.getElementById('fm').placeholder = i18n[l].f_msg_ph || i18n['fr'].f_msg_ph;
-}
 
-// ── PARTICLES ──────────────────────────────────────────
-(function() {
-  const container = document.getElementById('particles');
-  for (let i = 0; i < 28; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 3 + 1;
-    const colors = ['rgba(0,229,255,', 'rgba(255,68,85,', 'rgba(255,176,32,', 'rgba(34,212,116,'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    p.style.cssText = `
-      width:${size}px;height:${size}px;
-      left:${Math.random()*100}%;
-      background:${color}${Math.random()*.4+.1});
-      animation-duration:${Math.random()*18+10}s;
-      animation-delay:${Math.random()*-20}s;
-      filter:blur(${Math.random()*.5}px)
-    `;
-    container.appendChild(p);
+  // Risk node spheres floating in space
+  const NODES=18;
+  const nodeMeshes=[];
+  const colors=['#ff2d55','#ff9f0a','#30d158','#00e5ff','#bf5af2'];
+  for(let i=0;i<NODES;i++){
+    const r=0.18+Math.random()*0.45;
+    const geo=new THREE.SphereGeometry(r,16,16);
+    const col=colors[i%colors.length];
+    const mat=new THREE.MeshBasicMaterial({
+      color:new THREE.Color(col),wireframe:true,transparent:true,opacity:0.12+Math.random()*0.1
+    });
+    const mesh=new THREE.Mesh(geo,mat);
+    mesh.position.set((Math.random()-.5)*28,(Math.random()-.5)*18,(Math.random()-.5)*14-5);
+    scene.add(mesh);
+    nodeMeshes.push({mesh,
+      vel:new THREE.Vector3((Math.random()-.5)*0.008,(Math.random()-.5)*0.008,(Math.random()-.5)*0.004),
+      rotV:new THREE.Vector3((Math.random()-.5)*0.005,(Math.random()-.5)*0.005,0)
+    });
   }
+
+  // Connecting lines (node graph)
+  const lineGroup=new THREE.Group();
+  scene.add(lineGroup);
+  function rebuildLines(){
+    lineGroup.clear();
+    for(let i=0;i<nodeMeshes.length;i++){
+      for(let j=i+1;j<nodeMeshes.length;j++){
+        const d=nodeMeshes[i].mesh.position.distanceTo(nodeMeshes[j].mesh.position);
+        if(d<10){
+          const pts=[nodeMeshes[i].mesh.position.clone(),nodeMeshes[j].mesh.position.clone()];
+          const g=new THREE.BufferGeometry().setFromPoints(pts);
+          const m=new THREE.LineBasicMaterial({color:0x00e5ff,transparent:true,opacity:(1-d/10)*0.055});
+          lineGroup.add(new THREE.Line(g,m));
+        }
+      }
+    }
+  }
+  rebuildLines();
+
+  // Ambient particles
+  const pGeo=new THREE.BufferGeometry();
+  const pPos=new Float32Array(800*3);
+  for(let i=0;i<800;i++){pPos[i*3]=(Math.random()-.5)*60;pPos[i*3+1]=(Math.random()-.5)*40;pPos[i*3+2]=(Math.random()-.5)*30-10;}
+  pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+  scene.add(new THREE.Points(pGeo,new THREE.PointsMaterial({color:0x00e5ff,size:0.04,transparent:true,opacity:0.25})));
+
+  // Radar rings (3D, rotating slowly)
+  const radarGroup=new THREE.Group();
+  [2.5,5,7.5,10].forEach((r,i)=>{
+    const rGeo=new THREE.TorusGeometry(r,0.014,6,80);
+    const rMat=new THREE.MeshBasicMaterial({color:0x00e5ff,transparent:true,opacity:0.04-i*0.006});
+    radarGroup.add(new THREE.Mesh(rGeo,rMat));
+  });
+  radarGroup.position.set(8,-2,-8);
+  radarGroup.rotation.x=0.4;
+  scene.add(radarGroup);
+
+  let mouseX=0,mouseY=0;
+  document.addEventListener('mousemove',e=>{mouseX=(e.clientX/window.innerWidth-.5)*1.5;mouseY=(e.clientY/window.innerHeight-.5)*1.0;});
+
+  let fc=0;
+  function animate(){
+    fc++;
+    camera.position.x+=(mouseX-camera.position.x)*0.015;
+    camera.position.y+=(-mouseY-camera.position.y)*0.015;
+    camera.lookAt(0,0,0);
+    nodeMeshes.forEach(n=>{
+      n.mesh.position.add(n.vel);
+      n.mesh.rotation.x+=n.rotV.x;n.mesh.rotation.y+=n.rotV.y;
+      ['x','y'].forEach(ax=>{if(Math.abs(n.mesh.position[ax])>15)n.vel[ax]*=-1;});
+      if(Math.abs(n.mesh.position.z)>10)n.vel.z*=-1;
+    });
+    if(fc%40===0)rebuildLines();
+    radarGroup.rotation.z+=0.003;
+    renderer.render(scene,camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
 })();
 
-// ── CURSOR GLOW ────────────────────────────────────────
-const cglow = document.getElementById('cglow');
-document.addEventListener('mousemove', e => {
-  cglow.style.left = e.clientX + 'px';
-  cglow.style.top = e.clientY + 'px';
-});
+// ── CURSOR GLOW ──
+const cglow=document.getElementById('cglow');
+document.addEventListener('mousemove',e=>{cglow.style.left=e.clientX+'px';cglow.style.top=e.clientY+'px';});
 
-// ── NAV SCROLL ─────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
-});
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.background=window.scrollY>40?'rgba(5,6,10,.98)':'rgba(5,6,10,.85)';});
 
-// ── RADAR ──────────────────────────────────────────────
-const cv = document.getElementById('rc'), x = cv.getContext('2d');
-const CX=170,CY=170,R=152; let ang=0;
-const bp=[{a:.7,r:.52,c:'#ff4455',l:'Pression marché'},{a:2.0,r:.36,c:'#ffb020',l:'Réglementation'},{a:3.3,r:.68,c:'#ff4455',l:'Concurrent'},{a:4.7,r:.26,c:'#22d474',l:'Opérations'},{a:1.3,r:.80,c:'#ffb020',l:'Finances'},{a:5.4,r:.48,c:'#00e5ff',l:'Opportunité'}];
-let hv=null;
-cv.addEventListener('mousemove',e=>{
-  const rect=cv.getBoundingClientRect(),mx=e.clientX-rect.left,my=e.clientY-rect.top;
-  hv=null;
-  bp.forEach(p=>{const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;if(Math.hypot(mx-bx,my-by)<14)hv=p;});
-  document.getElementById('rtip').textContent=hv?`⬤ ${hv.l}`:i18n[lang].radar_tip;
-  cv.style.cursor=hv?'pointer':'crosshair';
-});
-function drawRadar(){
-  x.clearRect(0,0,340,340);
-  x.beginPath();x.arc(CX,CY,R+5,0,Math.PI*2);x.fillStyle='#0a0b0e';x.fill();
-  [.25,.5,.75,1].forEach(f=>{x.beginPath();x.arc(CX,CY,R*f,0,Math.PI*2);x.strokeStyle='rgba(0,229,255,.08)';x.lineWidth=1;x.stroke();});
-  x.strokeStyle='rgba(0,229,255,.05)';x.lineWidth=1;
-  [[CX,CY-R,CX,CY+R],[CX-R,CY,CX+R,CY]].forEach(([a,b,c,d])=>{x.beginPath();x.moveTo(a,b);x.lineTo(c,d);x.stroke();});
-  x.save();x.translate(CX,CY);x.rotate(ang);
-  const g=x.createLinearGradient(0,0,R,0);g.addColorStop(0,'rgba(0,229,255,.25)');g.addColorStop(1,'rgba(0,229,255,0)');
-  x.beginPath();x.moveTo(0,0);x.arc(0,0,R,-.5,.5);x.closePath();x.fillStyle=g;x.fill();x.restore();
-  x.beginPath();x.moveTo(CX,CY);x.lineTo(CX+Math.cos(ang)*R,CY+Math.sin(ang)*R);x.strokeStyle='rgba(0,229,255,.6)';x.lineWidth=1.5;x.stroke();
-  bp.forEach(p=>{
-    const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;
-    const d=((ang-p.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2),gl=d<.45?1:Math.max(0,1-d/(Math.PI*1.6));
-    x.shadowColor=p.c;x.shadowBlur=gl>.1?12*gl:0;
-    x.beginPath();x.arc(bx,by,gl>.1?4+2*gl:3,0,Math.PI*2);x.fillStyle=gl>.05?p.c:p.c+'44';x.fill();x.shadowBlur=0;
-    if(hv===p){x.fillStyle='#fff';x.font='600 10px Inter';x.textAlign='center';x.fillText(p.l,bx,by-14);}
-  });
-  x.beginPath();x.arc(CX,CY,R,0,Math.PI*2);x.strokeStyle='rgba(0,229,255,.15)';x.lineWidth=1.5;x.stroke();
-  ang+=0.017;if(ang>Math.PI*2)ang-=Math.PI*2;requestAnimationFrame(drawRadar);
-}
-drawRadar();
+// ── RADAR CANVAS ──
+(function(){
+  const cv=document.getElementById('radarCv');
+  const x=cv.getContext('2d');
+  const CX=190,CY=190,R=168;let ang=0;
+  const blips=[{a:.7,r:.52,c:'#ff2d55'},{a:2.0,r:.36,c:'#ff9f0a'},{a:3.3,r:.68,c:'#ff2d55'},{a:4.7,r:.26,c:'#30d158'},{a:1.3,r:.80,c:'#ff9f0a'},{a:5.4,r:.48,c:'#00e5ff'}];
+  let hv=null;
+  cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;hv=null;blips.forEach(p=>{const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;if(Math.hypot(mx-bx,my-by)<14)hv=p;});cv.style.cursor=hv?'pointer':'crosshair';});
+  function draw(){
+    x.clearRect(0,0,380,380);
+    x.beginPath();x.arc(CX,CY,R+5,0,Math.PI*2);x.fillStyle='#06070c';x.fill();
+    [.25,.5,.75,1].forEach(f=>{x.beginPath();x.arc(CX,CY,R*f,0,Math.PI*2);x.strokeStyle=`rgba(0,229,255,${.07+f*.04})`;x.lineWidth=1;x.stroke();});
+    x.strokeStyle='rgba(0,229,255,.05)';x.lineWidth=1;
+    [[CX,CY-R,CX,CY+R],[CX-R,CY,CX+R,CY]].forEach(([a,b,c,d])=>{x.beginPath();x.moveTo(a,b);x.lineTo(c,d);x.stroke();});
+    x.save();x.translate(CX,CY);x.rotate(ang);
+    const g=x.createLinearGradient(0,0,R,0);g.addColorStop(0,'rgba(0,229,255,.3)');g.addColorStop(1,'rgba(0,229,255,0)');
+    x.beginPath();x.moveTo(0,0);x.arc(0,0,R,-.5,.5);x.closePath();x.fillStyle=g;x.fill();x.restore();
+    x.beginPath();x.moveTo(CX,CY);x.lineTo(CX+Math.cos(ang)*R,CY+Math.sin(ang)*R);x.strokeStyle='rgba(0,229,255,.65)';x.lineWidth=2;x.stroke();
+    blips.forEach(p=>{
+      const bx=CX+Math.cos(p.a)*p.r*R,by=CY+Math.sin(p.a)*p.r*R;
+      const d=((ang-p.a)%(Math.PI*2)+Math.PI*2)%(Math.PI*2),gl=d<.45?1:Math.max(0,1-d/(Math.PI*1.6));
+      x.shadowColor=p.c;x.shadowBlur=gl>.1?14*gl:0;
+      x.beginPath();x.arc(bx,by,gl>.1?4+2*gl:3.5,0,Math.PI*2);x.fillStyle=gl>.05?p.c:p.c+'44';x.fill();x.shadowBlur=0;
+      if(gl>.5){x.beginPath();x.arc(bx,by,12+gl*8,0,Math.PI*2);x.strokeStyle=p.c+'44';x.lineWidth=1;x.stroke();}
+      if(hv===p){x.fillStyle='#fff';x.font='600 11px Inter';x.textAlign='center';x.fillText(p.a.toFixed(1)+' · '+p.r.toFixed(2),bx,by-16);}
+    });
+    x.beginPath();x.arc(CX,CY,R,0,Math.PI*2);x.strokeStyle='rgba(0,229,255,.18)';x.lineWidth=1.8;x.stroke();
+    ang+=0.017;if(ang>Math.PI*2)ang-=Math.PI*2;requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
-// ── SCORES ─────────────────────────────────────────────
-const scoreData=[[78,'#ff4455'],[54,'#ffb020'],[31,'#22d474'],[62,'#ffb020']];
-let scoresAnimated=false;
-function animateScores(){
-  if(scoresAnimated)return;scoresAnimated=true;
-  scoreData.forEach(([t,c],i)=>{
+// ── SCORE COUNTERS ──
+let scoresRun=false;
+function runScores(){
+  if(scoresRun)return;scoresRun=true;
+  [[78,'#ff2d55'],[54,'#ff9f0a'],[31,'#30d158'],[62,'#ff9f0a']].forEach(([t,c],i)=>{
     let v=0;const el=document.getElementById('sv'+i),bar=document.getElementById('sb'+i);
-    const s=()=>{v=Math.min(v+1.8,t);el.textContent=Math.round(v);bar.style.width=v+'%';if(v<t)setTimeout(s,14);};
-    setTimeout(s,300+i*180);
+    bar.style.width='0';
+    const go=()=>{v=Math.min(v+1.8,t);el.textContent=Math.round(v);bar.style.width=v+'%';if(v<t)setTimeout(go,14);};
+    setTimeout(go,300+i*180);
   });
 }
 
 function alertCard(n,l,sc){
-  const box=document.getElementById('abox');
-  const T=i18n[lang];
-  const msgs={r:T.alert_r(n,sc),a:T.alert_a(n,sc),g:T.alert_g(n,sc)};
-  const bg={r:'rgba(255,68,85,.1)',a:'rgba(255,176,32,.08)',g:'rgba(34,212,116,.08)'};
-  const bd={r:'rgba(255,68,85,.28)',a:'rgba(255,176,32,.28)',g:'rgba(34,212,116,.28)'};
-  box.style.cssText=`display:flex;margin-top:12px;border-radius:8px;padding:12px 15px;font-size:.8rem;font-weight:500;align-items:center;gap:8px;background:${bg[l]};border:1px solid ${bd[l]};animation:fadeUp .3s ease both`;
-  box.textContent=msgs[l];
-  clearTimeout(box._t);box._t=setTimeout(()=>box.style.display='none',5500);
+  const box=document.getElementById('alert-box');
+  const msgs={r:`⚠ Score ${sc}/100 sur "${n}" — seuil critique. Plan de mitigation sous 48h.`,a:`🔶 Score ${sc}/100 sur "${n}" — tendance haussière. Revue conseillée.`,g:`✅ Score ${sc}/100 sur "${n}" — zone maîtrisée. Prochain contrôle dans 7 jours.`};
+  const bg={r:'rgba(255,45,85,.1)',a:'rgba(255,159,10,.08)',g:'rgba(48,209,88,.08)'};
+  const bd={r:'rgba(255,45,85,.28)',a:'rgba(255,159,10,.28)',g:'rgba(48,209,88,.28)'};
+  box.style.cssText=`display:flex;margin-top:12px;border-radius:9px;padding:12px 15px;font-size:.82rem;font-weight:500;align-items:center;gap:9px;background:${bg[l]};border:1px solid ${bd[l]}`;
+  box.textContent=msgs[l];clearTimeout(box._t);box._t=setTimeout(()=>box.style.display='none',5500);
 }
 
-// ── TABS ───────────────────────────────────────────────
+// ── TABS ──
 function switchTab(i){
   document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));
   document.querySelectorAll('.tp').forEach((p,j)=>p.classList.toggle('active',j===i));
   if(i===1)drawMatrix();
 }
 
-// ── SCAN BARS ──────────────────────────────────────────
-const sd=[{l:'Marché',v:78,c:'#ff4455',d:'Pression tarifaire forte. 3 nouveaux entrants Q1.'},{l:'Réglem.',v:54,c:'#ffb020',d:'Directive UE en cours. Délai conformité : 6 mois.'},{l:'Concurr.',v:62,c:'#ffb020',d:'Concurrent a levé 18M€. Déploiement prévu Q3.'},{l:'Opérat.',v:31,c:'#22d474',d:'Stabilisé post-audit. Revue dans 90 jours.'},{l:'Finance',v:45,c:'#ffb020',d:'Tension BFR légère. Suivi mensuel activé.'},{l:'Talent',v:28,c:'#22d474',d:'Rétention stable. Plan de succession en place.'}];
+// ── SCAN BARS ──
+const sd=[{l:'Marché',v:78,c:'#ff2d55',d:'Pression tarifaire forte. 3 nouveaux entrants Q1.'},{l:'Réglem.',v:54,c:'#ff9f0a',d:'Directive UE en cours. Délai : 6 mois.'},{l:'Concurr.',v:62,c:'#ff9f0a',d:'Concurrent a levé 18M€. Déploiement Q3.'},{l:'Opérat.',v:31,c:'#30d158',d:'Stabilisé post-audit. Revue dans 90 jours.'},{l:'Finance',v:45,c:'#ff9f0a',d:'Tension BFR légère. Suivi mensuel.'},{l:'Talent',v:28,c:'#30d158',d:'Rétention stable. Plan succession en place.'}];
 const be=document.getElementById('sbars'),le=document.getElementById('slabs');
 sd.forEach((d,i)=>{
   const w=document.createElement('div');w.className='mbw';
   const b=document.createElement('div');b.className='mb';b.style.cssText=`background:${d.c};height:0`;
-  setTimeout(()=>b.style.height=(d.v*.56)+'px',200+i*90);
+  setTimeout(()=>b.style.height=(d.v*.56)+'px',120+i*80);
   w.appendChild(b);be.appendChild(w);
   const ll=document.createElement('div');ll.className='mbl';ll.textContent=d.l;ll.style.flex='1';le.appendChild(ll);
-  w.addEventListener('click',()=>{
-    const dt=document.getElementById('sdet');dt.style.display='block';
-    dt.innerHTML=`<strong style="color:${d.c}">${d.l} · ${d.v}/100</strong><br/>${d.d}`;
-    dt.style.animation='fadeUp .3s ease both';
-  });
+  w.addEventListener('click',()=>{const dt=document.getElementById('sdet');dt.style.display='block';dt.innerHTML=`<strong style="color:${d.c}">${d.l} · ${d.v}/100</strong><br/>${d.d}`;});
 });
 
-// ── MATRIX ─────────────────────────────────────────────
-const risks=[{x:.78,y:.73,l:'Pression tarifaire',c:'#ff4455'},{x:.53,y:.53,l:'Réglementation',c:'#ffb020'},{x:.74,y:.39,l:'Concurrent B',c:'#ffb020'},{x:.28,y:.24,l:'Talent',c:'#22d474'},{x:.84,y:.79,l:'Disruption digitale',c:'#ff4455'},{x:.14,y:.18,l:'Supply chain',c:'#22d474'}];
+// ── MATRIX ──
+const risks=[{x:.78,y:.73,l:'Pression tarifaire',c:'#ff2d55'},{x:.53,y:.53,l:'Réglementation',c:'#ff9f0a'},{x:.74,y:.39,l:'Concurrent B',c:'#ff9f0a'},{x:.28,y:.24,l:'Talent',c:'#30d158'},{x:.84,y:.79,l:'Disruption digitale',c:'#ff2d55'},{x:.14,y:.18,l:'Supply chain',c:'#30d158'}];
 function drawMatrix(){
-  const mc=document.getElementById('mc');if(!mc)return;
-  const m=mc.getContext('2d'),W=mc.width,H=mc.height,p=22;
+  const cv=document.getElementById('mc');if(!cv)return;
+  const m=cv.getContext('2d'),W=cv.width,H=cv.height,p=22;
   m.clearRect(0,0,W,H);
-  [{x:p,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,68,85,.07)'},{x:p+(W-p*2)/2,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,68,85,.12)'},{x:p,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(34,212,116,.07)'},{x:p+(W-p*2)/2,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,176,32,.07)'}]
+  [{x:p,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,45,85,.07)'},{x:p+(W-p*2)/2,y:p,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,45,85,.12)'},{x:p,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(48,209,88,.07)'},{x:p+(W-p*2)/2,y:p+(H-p*2)/2,w:(W-p*2)/2,h:(H-p*2)/2,c:'rgba(255,159,10,.07)'}]
   .forEach(z=>{m.fillStyle=z.c;m.fillRect(z.x,z.y,z.w,z.h);});
   m.strokeStyle='rgba(0,229,255,.14)';m.lineWidth=1;m.beginPath();m.moveTo(p,p);m.lineTo(p,H-p);m.lineTo(W-p,H-p);m.stroke();
-  m.fillStyle='#52576a';m.font='7px Inter';m.textAlign='center';
-  m.fillText('PROBABILITÉ →',W/2,H-4);m.save();m.translate(8,H/2);m.rotate(-Math.PI/2);m.fillText('IMPACT →',0,0);m.restore();
-  risks.forEach(r=>{
-    const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);
-    m.shadowColor=r.c;m.shadowBlur=9;m.beginPath();m.arc(rx,ry,5,0,Math.PI*2);m.fillStyle=r.c;m.fill();m.shadowBlur=0;
-  });
-  mc.onmousemove=e=>{
-    const b=mc.getBoundingClientRect(),ex=e.clientX-b.left,ey=e.clientY-b.top;
-    let f=null;risks.forEach(r=>{const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);if(Math.hypot(ex-rx,ey-ry)<12)f=r;});
-    document.getElementById('mt').textContent=f?`${f.l} — Prob. ${Math.round(f.x*100)}% · Impact ${Math.round(f.y*100)}%`:i18n[lang].t1tip;
-    mc.style.cursor=f?'pointer':'crosshair';
-  };
+  m.fillStyle='#4a5068';m.font='7px Inter';m.textAlign='center';
+  m.fillText('PROBABILITÉ →',W/2,H-5);m.save();m.translate(8,H/2);m.rotate(-Math.PI/2);m.fillText('IMPACT →',0,0);m.restore();
+  risks.forEach(r=>{const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);m.shadowColor=r.c;m.shadowBlur=9;m.beginPath();m.arc(rx,ry,5.5,0,Math.PI*2);m.fillStyle=r.c;m.fill();m.shadowBlur=0;});
+  cv.onmousemove=e=>{const b=cv.getBoundingClientRect(),ex=e.clientX-b.left,ey=e.clientY-b.top;let f=null;risks.forEach(r=>{const rx=p+r.x*(W-p*2),ry=(H-p)-r.y*(H-p*2);if(Math.hypot(ex-rx,ey-ry)<12)f=r;});document.getElementById('mt').textContent=f?`${f.l} — Prob. ${Math.round(f.x*100)}% · Impact ${Math.round(f.y*100)}%`:'Survolez un point';cv.style.cursor=f?'pointer':'crosshair';};
 }
 
-// ── SIGNALS ────────────────────────────────────────────
-const sigs=[{t:'Concurrent lève 18M€ série B',s:82,c:'#ff4455'},{t:'NIS2 — conformité raccourcie',s:71,c:'#ff4455'},{t:'Commandes auto −12%',s:68,c:'#ffb020'},{t:'Pénurie semi-conducteurs Q3',s:61,c:'#ffb020'},{t:'Rachat concurrent fragilisé',s:55,c:'#00e5ff'},{t:'BFR stabilisé',s:28,c:'#22d474'},{t:'Recrutement normalisé',s:22,c:'#22d474'},{t:'Taux BCE en hausse',s:74,c:'#ffb020'}];
+// ── SIGNALS ──
+const sigs=[{t:'Concurrent lève 18M€ série B',s:82,c:'#ff2d55'},{t:'NIS2 — conformité raccourcie',s:71,c:'#ff2d55'},{t:'Commandes auto −12%',s:68,c:'#ff9f0a'},{t:'Pénurie semi-conducteurs Q3',s:61,c:'#ff9f0a'},{t:'Rachat concurrent fragilisé',s:55,c:'#00e5ff'},{t:'BFR stabilisé',s:28,c:'#30d158'},{t:'Recrutement normalisé',s:22,c:'#30d158'},{t:'Taux BCE en hausse',s:74,c:'#ff9f0a'}];
 function fsigs(){
   const l=document.getElementById('slist');l.innerHTML='';
   [...sigs].sort(()=>Math.random()-.5).slice(0,5).sort((a,b)=>b.s-a.s).forEach((s,i)=>{
     const r=document.createElement('div');r.className='srow';
-    r.style.cssText=`animation:fadeUp .3s ease ${i*.06}s both;opacity:0`;
+    r.style.cssText=`animation:none;opacity:1`;
     r.innerHTML=`<div class="sleft"><div class="sdot" style="background:${s.c}"></div>${s.t}</div><div class="sscore" style="color:${s.c}">${s.s}</div>`;
     l.appendChild(r);
   });
 }
 fsigs();
 
-// ── FORM ───────────────────────────────────────────────
-function sendForm(){
-  const e=document.getElementById('fe').value.trim();
-  const m=document.getElementById('fm').value.trim();
-  const rgpd=document.getElementById('rgpd').checked;
-  const err=document.getElementById('ferr');
-  const T=i18n[lang];
-  if(!e){err.style.display='block';err.textContent=T.ferr_req;return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.style.display='block';err.textContent=T.ferr_inv;return;}
-  if(!rgpd){err.style.display='block';err.textContent=T.ferr_rgpd;return;}
-  err.style.display='none';
-  document.getElementById('fcont').style.display='none';
-  document.getElementById('fok').style.display='block';
-  setTimeout(()=>{
-    window.location.href=`mailto:raphael@de-bruijn.com?subject=Demande EvolSphere&body=${encodeURIComponent(`Email: ${e}\n\n${m}`)}`;
-  },1400);
-}
-
-// ── COUNTERS ────────────────────────────────────────────
-const counters=[{id:'cnt0',target:30,suffix:''},{id:'cnt1',target:6,suffix:''},{id:'cnt2',target:92,suffix:'%'},{id:'cnt3',target:4,suffix:''}];
+// ── COUNTERS ──
 let countersRun=false;
 function runCounters(){
   if(countersRun)return;countersRun=true;
-  counters.forEach(({id,target,suffix})=>{
+  [{id:'cn0',t:30,s:''},{id:'cn1',t:8,s:'×'},{id:'cn2',t:92,s:'%'},{id:'cn3',t:4,s:''}].forEach(({id,t,s})=>{
     const el=document.getElementById(id);if(!el)return;
-    let v=0;const step=()=>{
-      v=Math.min(v+Math.ceil(target/40),target);
-      el.innerHTML=v+(suffix?`<span style="font-size:1.2rem">${suffix}</span>`:'');
-      if(v<target)setTimeout(step,28);
-    };step();
+    let v=0;const go=()=>{v=Math.min(v+Math.ceil(t/32),t);el.textContent=v+s;if(v<t)setTimeout(go,24);};go();
   });
+  // Hero counter
+  let v=0;const el=document.getElementById('cnt-days');
+  if(el){const go=()=>{v=Math.min(v+1,30);el.textContent=v;if(v<30)setTimeout(go,40);};go();}
 }
 
-// ── SCROLL REVEAL ──────────────────────────────────────
-const revObs=new IntersectionObserver(entries=>{
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('visible');
-      if(e.target.closest('#radar'))animateScores();
+      if(e.target.closest('#radar'))runScores();
       if(e.target.closest('#proof'))runCounters();
-      e.target.querySelectorAll&&e.target.querySelectorAll('.dim-fill').forEach(f=>{
+      e.target.querySelectorAll('.fd-fill').forEach(f=>{
         const m=f.getAttribute('style').match(/--pct:([^;]+)/);
         if(m)setTimeout(()=>f.style.width=m[1],200);
       });
     }
   });
-},{threshold:.1});
-document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>revObs.observe(el));
+},{threshold:.08});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>{
+  el.style.cssText+=';opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease';
+  obs.observe(el);
+});
+document.querySelectorAll('.rv-l').forEach(el=>{el.style.transform='translateX(-22px)';});
+document.querySelectorAll('.rv-r').forEach(el=>{el.style.transform='translateX(22px)';});
 </script>
 </body>
 </html>
