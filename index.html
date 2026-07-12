@@ -168,6 +168,7 @@
   .price-includes li{font-size:13px;color:var(--muted);padding-left:18px;position:relative;}
   .price-includes li::before{content:'—';position:absolute;left:0;color:var(--gold);}
   .price-extra{font-family:var(--mono);font-size:11px;color:#7d7666;border-top:1px solid var(--line);padding-top:16px;margin-top:2px;}
+  .price-compare{font-family:var(--display);font-style:italic;font-size:15px;color:var(--gold-bright);margin-bottom:14px;}
 
   form{display:grid;gap:22px;}
   .form-row{display:grid;grid-template-columns:1fr;gap:22px;}
@@ -188,6 +189,10 @@
   .success-msg p{color:var(--muted);font-size:14px;max-width:40ch;}
   .success-msg h3{font-size:26px;margin-bottom:8px;color:var(--gold-bright);}
 
+  /* ---- FINAL CTA ---- */
+  .final-cta{padding:130px 0;text-align:center;background:radial-gradient(ellipse at 50% 0%, rgba(201,162,75,0.12), transparent 60%);}
+  .final-cta h2{font-size:clamp(28px,4vw,44px);max-width:14em;margin:0 auto 36px;font-weight:400;}
+
   footer{padding:70px 0 40px;border-top:1px solid var(--line);}
   footer .wrap{display:flex;flex-direction:column;gap:34px;}
   @media(min-width:760px){footer .wrap{flex-direction:row;justify-content:space-between;align-items:flex-end;}}
@@ -203,6 +208,12 @@
     *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
     html{scroll-behavior:auto;}
   }
+  /* ---- IMPACT BANNER ---- */
+  .impact-banner{padding:110px 0;background:linear-gradient(180deg, var(--bg-panel-2), var(--bg) 85%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;}
+  .impact-quote{font-family:var(--display);font-size:clamp(24px,3.4vw,38px);line-height:1.5;color:var(--ivory);max-width:820px;margin:0 auto;font-weight:400;}
+  .impact-quote span{color:var(--gold-bright);font-family:var(--mono);font-size:0.55em;letter-spacing:0.02em;vertical-align:middle;}
+  .impact-quote em{font-style:italic;color:var(--gold-bright);}
+
   /* ---- SIMULATEUR ---- */
   .simulator{background:var(--bg-panel-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .sim-grid{display:grid;grid-template-columns:1fr;gap:44px;}
@@ -236,7 +247,7 @@
     <div class="nav-links">
       <a href="#risques" class="hide-mobile">Les risques</a>
       <a href="#format" class="hide-mobile">Format</a>
-      <a href="#acces" class="btn nav-cta">Accès exécutif</a>
+      <a href="#acces" class="btn nav-cta">Sécuriser un accès</a>
     </div>
   </nav>
 </header>
@@ -251,7 +262,7 @@
     <p class="sub">MERIDIAN livre à un cercle restreint de dirigeants une lecture consolidée de l'inflation, des tensions géopolitiques et de l'exposition aux données — avant que le marché ne réagisse.</p>
     <p class="sub" style="font-style:italic;color:var(--gold-bright);font-family:var(--display);font-size:clamp(16px,2.2vw,20px);max-width:600px;">Parce qu'un dirigeant qui découvre un risque par son N-1 a déjà perdu la main sur le sujet.</p>
     <p class="fine">Abonnement Comex : 14 990 € HT / mois. Périmètres élargis sur demande.</p>
-    <a href="#acces" class="btn btn-solid">Solliciter un accès</a>
+    <a href="#acces" class="btn btn-solid">Sécuriser mon accès</a>
     <div class="stat-strip">
       <div><b>4,7 %</b><span>Inflation mondiale 2026</span></div>
       <div><b>3,0 %</b><span>Croissance mondiale 2026</span></div>
@@ -339,6 +350,12 @@
       </div>
     </div>
   </article>
+</section>
+
+<section class="impact-banner">
+  <div class="wrap reveal">
+    <p class="impact-quote">Entre la Corée du Sud <span>(+7,5 %)</span> et la zone euro <span>(+0,9 %)</span>, l'écart de croissance 2026 ne se rattrape pas en fin d'année.<br>Les comités qui l'ont vu venir ont ajusté leur allocation dès mars.<br><em>Les autres l'ont découvert en juillet.</em></p>
+  </div>
 </section>
 
 <section class="simulator" id="simulateur">
@@ -494,8 +511,8 @@
   <div class="wrap">
     <div class="access-intro reveal">
       <span class="eyebrow">Accès restreint</span>
-      <h2>Solliciter un accès</h2>
-      <p>MERIDIAN limite le nombre d'organisations accompagnées par secteur. Décrivez votre fonction et votre organisation : un membre de l'équipe revient vers vous sous 48 heures.</p>
+      <h2>Sécurisez votre accès</h2>
+      <p>MERIDIAN limite volontairement le nombre d'organisations accompagnées par secteur, pour que chaque briefing reste pertinent — pas dilué dans une liste de diffusion. Décrivez votre fonction et votre organisation : un membre de l'équipe revient vers vous sous 48 heures.</p>
       <div class="price-note">
         <b>Abonnement Comex</b>
         <div class="price-figure">14 990 € <small>HT / mois</small></div>
@@ -505,6 +522,7 @@
           <li>Briefing mensuel à huis clos</li>
           <li>Ligne directe avec l'équipe d'analyse</li>
         </ul>
+        <p class="price-compare">Moins qu'un poste d'analyste junior. Plus rapide qu'un cabinet de conseil.</p>
         <p class="price-extra">Périmètre multi-entités, groupe ou besoins spécifiques : tarification sur demande.</p>
       </div>
     </div>
@@ -555,6 +573,13 @@
         <p>Un membre de l'équipe MERIDIAN examine votre demande et revient vers vous sous 48 heures à l'adresse indiquée.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap reveal">
+    <h2>Le prochain choc n'attendra pas votre prochain comité.</h2>
+    <a href="#acces" class="btn btn-solid">Sécuriser mon accès</a>
   </div>
 </section>
 
