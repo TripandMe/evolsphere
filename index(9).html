@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang='fr'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>EvolSphere Executive Concept</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial;background:#050816;color:#eef}
+nav{position:fixed;top:0;width:100%;padding:18px 40px;background:rgba(5,8,22,.7);backdrop-filter:blur(10px)}
+.hero{height:100vh;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at center,#1b4b8f,#050816)}
+h1{font-size:72px;margin:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;padding:80px}
+.card{padding:24px;border:1px solid #2ea3ff55;border-radius:18px;background:#0b1430;transform:perspective(900px) rotateX(8deg);transition:.4s}
+.card:hover{transform:perspective(900px) rotateX(0) scale(1.03)}
+.kpi{font-size:42px;color:#6cf}
+footer{padding:60px;text-align:center}
+canvas{position:fixed;inset:0;z-index:-1}
+</style></head><body><canvas id='bg'></canvas><nav>EvolSphere • Executive Intelligence</nav>
+<section class='hero'><div><h1>EvolSphere</h1><p>Transform Strategy into Measurable Value</p></div></section>
+<section class='grid'>
+<div class='card'><div class='kpi'>ROI</div><p>Executive dashboards with KPI simulation.</p></div>
+<div class='card'><div class='kpi'>4D</div><p>Risk Matrix & transformation scoring.</p></div>
+<div class='card'><div class='kpi'>AI</div><p>Decision support for CIO / COO / COMEX.</p></div>
+<div class='card'><div class='kpi'>14990€</div><p>Premium annual subscription positioning.</p></div>
+</section>
+<footer>Contact : raphael@de-bruijn.com</footer>
+<script>
+const c=bg,x=c.getContext('2d');function rs(){c.width=innerWidth;c.height=innerHeight}onresize=rs;rs();
+let pts=[...Array(220)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,v:(Math.random()-.5)*1.2}));
+(function f(){x.clearRect(0,0,c.width,c.height);for(const p of pts){p.y+=p.v;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;x.beginPath();x.arc(p.x,p.y,1.5,0,6.3);x.fillStyle="#4cf";x.fill()}requestAnimationFrame(f)})();
+</script></body></html>
