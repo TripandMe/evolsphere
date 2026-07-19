@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EvolSphere Executive Experience</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#050b16;color:#eef;font-family:Segoe UI,Arial}
+.hero{min-height:100vh;display:grid;place-items:center;background:
+radial-gradient(circle at 20% 20%,#1b4cff55,transparent 30%),
+radial-gradient(circle at 80% 30%,#00d4ff55,transparent 25%),
+linear-gradient(#07111f,#050b16)}
+h1{font-size:clamp(3rem,8vw,6rem);margin:.2em}
+p{max-width:900px;line-height:1.6}
+.btn{padding:16px 28px;background:#1d8fff;border-radius:10px;color:#fff;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;padding:60px}
+.card{background:#ffffff10;border:1px solid #ffffff20;border-radius:18px;padding:22px;backdrop-filter:blur(10px);transition:.3s}
+.card:hover{transform:translateY(-8px) scale(1.02)}
+.kpis{display:flex;justify-content:space-around;flex-wrap:wrap;padding:40px}
+.kpi{font-size:3rem}
+footer{padding:50px;text-align:center;color:#9ab}
+</style></head>
+<body>
+<section class="hero">
+<div style="text-align:center;padding:40px">
+<h1>EVOLSPHERE</h1>
+<h2>Executive Transformation Platform</h2>
+<p>Une expérience premium destinée aux CIO, COO, COMEX et investisseurs. Positionnement haut de gamme avec démonstrations, indicateurs, stratégie, IA, gouvernance, Risk Radar et portefeuille de transformation.</p>
+<a class="btn" href="#exec">Découvrir</a>
+</div></section>
+<section id="exec">
+<div class="kpis">
+<div><div class="kpi" data-v=20>0</div><small>Ans d'expérience</small></div>
+<div><div class="kpi" data-v=150>0</div><small>Programmes</small></div>
+<div><div class="kpi" data-v=95>0</div><small>% Satisfaction</small></div>
+</div>
+<div class="grid"><div class='card'><h3>Executive Capability 1</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 2</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 3</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 4</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 5</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 6</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 7</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 8</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 9</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 10</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 11</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div>
+<div class='card'><h3>Executive Capability 12</h3><p>Transformation, gouvernance, KPI, IA, cybersécurité, portefeuille projets, création de valeur.</p></div></div>
+</section>
+<footer>© EvolSphere Executive Prototype Premium</footer>
+<script>
+document.querySelectorAll('.kpi').forEach(e=>{let t=+e.dataset.v,v=0;let i=setInterval(()=>{v++;e.textContent=v;if(v>=t)clearInterval(i)},20)})
+</script>
+</body></html>
