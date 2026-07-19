@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolsphere — Consulting freelance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1F2A;
+    --bg-alt: #0E2733;
+    --panel: #123141;
+    --mint: #8FE3CF;
+    --mint-dim: #5FB6A3;
+    --amber: #E8A33D;
+    --text: #F2F5F3;
+    --text-dim: #7C93A6;
+    --line: rgba(143, 227, 207, 0.14);
+    --radius: 14px;
+    --display: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--display);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  a{ color: inherit; text-decoration:none; }
+
+  ::selection{ background: var(--mint); color: var(--bg); }
+
+  .noise{
+    position: fixed; inset:0; pointer-events:none; opacity:0.035; z-index:1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* background field of drifting orbit lines */
+  .field{
+    position: fixed; inset:0; z-index:0; overflow:hidden;
+  }
+  .field svg{ position:absolute; opacity:0.5; }
+
+  header{
+    position: sticky; top:0; z-index: 20;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 20px 6vw;
+    backdrop-filter: blur(10px);
+    background: rgba(11,31,42,0.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-weight:700; font-size:1.05rem; letter-spacing:0.02em;
+  }
+  .logo .dot{
+    width:10px; height:10px; border-radius:50%;
+    background: var(--mint);
+    box-shadow: 0 0 12px 2px var(--mint);
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ transform: scale(1); opacity:1; }
+    50%{ transform: scale(1.5); opacity:0.6; }
+  }
+  nav{ display:flex; gap:2.2rem; font-size:0.92rem; color: var(--text-dim); }
+  nav a{ position:relative; transition: color 0.25s; }
+  nav a:hover{ color: var(--mint); }
+  nav a::after{
+    content:''; position:absolute; left:0; bottom:-6px; height:1px; width:0;
+    background: var(--mint); transition: width 0.3s;
+  }
+  nav a:hover::after{ width:100%; }
+  .nav-toggle{ display:none; }
+
+  main{ position:relative; z-index:2; }
+
+  /* HERO */
+  .hero{
+    min-height: 92vh;
+    display:flex; align-items:center;
+    padding: 6vw;
+    gap: 4vw;
+    position: relative;
+  }
+  .hero-copy{ flex: 1.1; max-width: 620px; }
+  .eyebrow{
+    font-family: var(--mono); font-size:0.78rem; letter-spacing: 0.18em;
+    color: var(--mint); text-transform: uppercase;
+    display:flex; align-items:center; gap:10px; margin-bottom: 1.6rem;
+    opacity:0; animation: rise 0.8s 0.1s forwards;
+  }
+  .eyebrow::before{ content:''; width: 28px; height:1px; background: var(--mint); }
+
+  h1{
+    font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.03;
+    opacity:0; animation: rise 0.9s 0.25s forwards;
+  }
+  h1 em{
+    font-style: normal; color: var(--mint);
+    background: linear-gradient(120deg, var(--mint), var(--amber));
+    -webkit-background-clip: text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    margin-top: 1.6rem; font-size: 1.08rem; color: var(--text-dim); max-width: 480px;
+    opacity:0; animation: rise 0.9s 0.4s forwards;
+  }
+  .hero-cta{
+    margin-top: 2.4rem; display:flex; gap:1rem; flex-wrap:wrap;
+    opacity:0; animation: rise 0.9s 0.55s forwards;
+  }
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(18px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 0.85rem 1.5rem; border-radius: 999px;
+    font-size: 0.92rem; font-weight:600; letter-spacing:0.01em;
+    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+    cursor:pointer; border: 1px solid transparent;
+  }
+  .btn-primary{
+    background: var(--amber); color: #1a1305;
+    box-shadow: 0 0 0 0 rgba(232,163,61,0.5);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px -6px rgba(232,163,61,0.5); }
+  .btn-ghost{
+    border-color: var(--line); color: var(--text);
+  }
+  .btn-ghost:hover{ border-color: var(--mint); color: var(--mint); transform: translateY(-2px); }
+
+  /* Orbit visual */
+  .orbit-wrap{
+    flex: 1; min-width: 280px; max-width: 520px;
+    aspect-ratio: 1/1;
+    position: relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .orbit-wrap svg{ width:100%; height:100%; overflow: visible; }
+  .ring{ fill:none; stroke: var(--line); stroke-width:1; }
+  .ring-active{ stroke: var(--mint-dim); stroke-dasharray: 4 7; }
+  .core{ fill: url(#coreGrad); }
+  .satellite{ fill: var(--mint); }
+  .satellite.amber{ fill: var(--amber); }
+
+  section{ padding: 9vw 6vw; position: relative; }
+  .section-head{ margin-bottom: 3.2rem; }
+  .section-head .eyebrow{ animation:none; opacity:1; }
+  .section-head h2{
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight:700; letter-spacing:-0.01em;
+    max-width: 640px;
+  }
+  .section-head p{ color: var(--text-dim); margin-top: 0.9rem; max-width: 560px; }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* ABOUT */
+  .about{ display:flex; gap:5vw; flex-wrap:wrap; }
+  .about-text{ flex:1.3; min-width:280px; font-size:1.06rem; color:var(--text-dim); }
+  .about-text p + p{ margin-top:1rem; }
+  .about-text strong{ color: var(--text); font-weight:600; }
+  .stat-grid{ flex:1; min-width:240px; display:grid; grid-template-columns: 1fr 1fr; gap:1px; background: var(--line); border-radius: var(--radius); overflow:hidden; height:fit-content; }
+  .stat{ background: var(--panel); padding: 1.6rem 1.4rem; }
+  .stat .num{ font-family: var(--mono); font-size:1.9rem; color: var(--mint); font-weight:500; }
+  .stat .label{ margin-top:0.35rem; font-size:0.82rem; color: var(--text-dim); }
+
+  /* EXPERIENCE — orbit timeline */
+  .timeline{ position:relative; }
+  .timeline::before{
+    content:''; position:absolute; left: 14px; top:8px; bottom:8px; width:1px;
+    background: linear-gradient(to bottom, var(--mint) 0%, var(--line) 100%);
+  }
+  .t-item{ position:relative; padding-left: 3.6rem; padding-bottom: 3rem; }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-dot{
+    position:absolute; left: 6px; top: 4px; width:16px; height:16px; border-radius:50%;
+    background: var(--bg); border: 2px solid var(--mint-dim);
+    transition: all 0.4s;
+  }
+  .t-item.in .t-dot{ border-color: var(--mint); box-shadow: 0 0 14px 2px rgba(143,227,207,0.5); }
+  .t-period{ font-family: var(--mono); font-size:0.78rem; color: var(--amber); letter-spacing:0.05em; }
+  .t-role{ font-size:1.3rem; font-weight:600; margin-top:0.3rem; }
+  .t-org{ color: var(--text-dim); font-size:0.95rem; margin-top:0.15rem; }
+  .t-desc{ margin-top:0.7rem; color: var(--text-dim); max-width: 560px; font-size:0.98rem; }
+  .t-tags{ display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem; }
+  .tag{ font-family: var(--mono); font-size:0.72rem; padding:0.3rem 0.65rem; border:1px solid var(--line); border-radius:999px; color: var(--text-dim); }
+
+  /* SERVICES / monetization */
+  .services{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.4rem; }
+  .service-card{
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 2.2rem; position:relative; overflow:hidden;
+    transition: transform 0.35s, border-color 0.35s;
+  }
+  .service-card:hover{ transform: translateY(-6px); border-color: var(--mint-dim); }
+  .service-card::before{
+    content:''; position:absolute; top:-40%; right:-40%; width:70%; height:70%;
+    background: radial-gradient(circle, rgba(143,227,207,0.15), transparent 70%);
+    transition: opacity 0.4s; opacity:0;
+  }
+  .service-card:hover::before{ opacity:1; }
+  .service-index{ font-family: var(--mono); color: var(--text-dim); font-size:0.8rem; }
+  .service-card h3{ font-size:1.35rem; margin-top:0.8rem; font-weight:600; }
+  .service-card p{ color: var(--text-dim); margin-top:0.7rem; font-size:0.95rem; }
+  .service-price{ margin-top:1.4rem; font-family: var(--mono); color: var(--amber); font-size:1.05rem; }
+  .service-link{
+    margin-top:1.4rem; display:inline-flex; align-items:center; gap:6px;
+    color: var(--mint); font-size:0.9rem; font-weight:600;
+  }
+  .service-link svg{ transition: transform 0.25s; }
+  .service-card:hover .service-link svg{ transform: translate(3px,-3px); }
+
+  /* CONTACT / footer CTA */
+  .cta-section{
+    text-align:center; padding: 10vw 6vw;
+    background: radial-gradient(ellipse at 50% 30%, rgba(143,227,207,0.08), transparent 60%);
+  }
+  .cta-section h2{ font-size: clamp(2rem, 4.4vw, 3.3rem); font-weight:700; max-width:760px; margin:0 auto; letter-spacing:-0.01em; }
+  .cta-section p{ color: var(--text-dim); margin-top:1.2rem; max-width:520px; margin-left:auto; margin-right:auto; }
+  .cta-buttons{ margin-top:2.2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+  footer{
+    border-top:1px solid var(--line); padding: 2.4rem 6vw; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    color: var(--text-dim); font-size:0.85rem;
+  }
+
+  @media (max-width: 780px){
+    nav{ display:none; }
+    .hero{ flex-direction:column; padding-top: 10vw; }
+    .orbit-wrap{ max-width: 320px; }
+    .about{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="field" id="field"></div>
+
+<header>
+  <div class="logo"><span class="dot"></span> EVOLSPHERE</div>
+  <nav>
+    <a href="#about">À propos</a>
+    <a href="#experience">Expérience</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#contact" class="btn btn-ghost" style="padding:0.55rem 1.2rem; font-size:0.85rem;">Réserver un appel</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Consulting freelance · Disponible pour missions</div>
+      <h1>Chaque mission fait <em>évoluer</em> la suivante.</h1>
+      <p class="hero-sub">
+        J'accompagne les entreprises dans leurs projets stratégiques et opérationnels — d'un diagnostic ponctuel à un accompagnement long terme. Une expertise qui s'élargit à chaque orbite.
+      </p>
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-primary">Voir les offres</a>
+        <a href="#experience" class="btn btn-ghost">Mon parcours</a>
+      </div>
+    </div>
+
+    <div class="orbit-wrap">
+      <svg viewBox="0 0 400 400">
+        <defs>
+          <radialGradient id="coreGrad" cx="35%" cy="35%" r="70%">
+            <stop offset="0%" stop-color="#DFFBF3"/>
+            <stop offset="55%" stop-color="#8FE3CF"/>
+            <stop offset="100%" stop-color="#3E8C7A"/>
+          </radialGradient>
+        </defs>
+        <circle class="ring" cx="200" cy="200" r="180"/>
+        <circle class="ring ring-active" cx="200" cy="200" r="140"/>
+        <circle class="ring" cx="200" cy="200" r="100"/>
+        <circle class="core" cx="200" cy="200" r="34"/>
+
+        <g id="orb1"><circle class="satellite" cx="380" cy="200" r="7"/></g>
+        <g id="orb2"><circle class="satellite amber" cx="60" cy="200" r="5.5"/></g>
+        <g id="orb3"><circle class="satellite" cx="200" cy="20" r="4.5"/></g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">À propos</div>
+      <h2>Un profil pensé comme une trajectoire, pas une liste de missions.</h2>
+    </div>
+    <div class="about">
+      <div class="about-text">
+        <p>Je suis consultant indépendant, spécialisé dans l'accompagnement d'entreprises en phase de croissance ou de transformation. Mon rôle : <strong>clarifier, structurer, exécuter</strong> — sans jargon superflu.</p>
+        <p>Chaque projet nourrit le suivant : les cadres construits pour un client deviennent souvent le point de départ d'une mission ailleurs. C'est cette logique d'évolution continue qui donne son nom à ce profil.</p>
+        <p>Basé en France, j'interviens en présentiel ou à distance, sur des formats courts (audit, sprint) comme sur des accompagnements de plusieurs mois.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><div class="num">8+</div><div class="label">années d'expérience</div></div>
+        <div class="stat"><div class="num">40+</div><div class="label">missions menées</div></div>
+        <div class="stat"><div class="num">12</div><div class="label">secteurs couverts</div></div>
+        <div class="stat"><div class="num">98%</div><div class="label">clients satisfaits</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Expérience</div>
+      <h2>Le parcours, orbite par orbite.</h2>
+      <p>Un aperçu chronologique des missions et rôles qui ont façonné mon expertise actuelle.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="t-item reveal-item">
+        <div class="t-dot"></div>
+        <div class="t-period">2023 — Aujourd'hui</div>
+        <div class="t-role">Consultant indépendant</div>
+        <div class="t-org">Evolsphere · Missions multi-clients</div>
+        <div class="t-desc">Accompagnement stratégique et opérationnel de PME et startups : structuration d'offre, pilotage de projets, mise en place d'outils de gestion.</div>
+        <div class="t-tags"><span class="tag">Stratégie</span><span class="tag">Pilotage</span><span class="tag">Process</span></div>
+      </div>
+
+      <div class="t-item reveal-item">
+        <div class="t-dot"></div>
+        <div class="t-period">2020 — 2023</div>
+        <div class="t-role">Chef de projet senior</div>
+        <div class="t-org">Cabinet de conseil</div>
+        <div class="t-desc">Direction de projets de transformation pour des grands comptes, coordination d'équipes pluridisciplinaires, reporting direction générale.</div>
+        <div class="t-tags"><span class="tag">Transformation</span><span class="tag">Management</span></div>
+      </div>
+
+      <div class="t-item reveal-item">
+        <div class="t-dot"></div>
+        <div class="t-period">2017 — 2020</div>
+        <div class="t-role">Chargé de projet</div>
+        <div class="t-org">Entreprise du secteur</div>
+        <div class="t-desc">Premiers pas dans le conseil : analyse de données, préparation de recommandations, appui aux missions terrain.</div>
+        <div class="t-tags"><span class="tag">Analyse</span><span class="tag">Terrain</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2>Des offres claires, pensées pour avancer vite.</h2>
+      <p>Trois formats pour s'adapter à votre besoin — du diagnostic ponctuel à l'accompagnement continu.</p>
+    </div>
+
+    <div class="services">
+      <div class="service-card">
+        <div class="service-index">01</div>
+        <h3>Audit &amp; diagnostic</h3>
+        <p>Un état des lieux complet de votre situation, avec recommandations priorisées et actionnables sous 10 jours.</p>
+        <div class="service-price">à partir de 900 €</div>
+        <a class="service-link" href="#contact">Réserver
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-index">02</div>
+        <h3>Sprint stratégique</h3>
+        <p>Un accompagnement intensif de 2 à 4 semaines pour structurer un projet précis et poser les bases d'exécution.</p>
+        <div class="service-price">à partir de 2 400 €</div>
+        <a class="service-link" href="#contact">Réserver
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-index">03</div>
+        <h3>Accompagnement continu</h3>
+        <p>Un suivi mensuel sur la durée : disponibilité prioritaire, points réguliers, ajustements au fil de l'eau.</p>
+        <div class="service-price">à partir de 1 200 €/mois</div>
+        <a class="service-link" href="#contact">Réserver
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="contact" class="cta-section reveal">
+    <div class="eyebrow" style="justify-content:center;">Contact</div>
+    <h2>Une idée à faire évoluer ?</h2>
+    <p>Décrivez votre besoin en quelques lignes — réponse sous 48h ouvrées.</p>
+    <div class="cta-buttons">
+      <a href="mailto:contact@evolsphere.fr" class="btn btn-primary">Écrire un email</a>
+      <a href="#" class="btn btn-ghost">Prendre rendez-vous</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 Evolsphere — Consulting indépendant</div>
+  <div>Fait avec soin, quelque part entre deux missions.</div>
+</footer>
+
+<script>
+  // Ambient orbit lines drifting in the background
+  (function(){
+    const field = document.getElementById('field');
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    field.appendChild(svg);
+    const w = window.innerWidth, h = window.innerHeight;
+    for(let i=0;i<5;i++){
+      const cx = Math.random()*w, cy = Math.random()*h;
+      const r = 60 + Math.random()*140;
+      const c = document.createElementNS(svgNS,"circle");
+      c.setAttribute("cx", cx); c.setAttribute("cy", cy); c.setAttribute("r", r);
+      c.setAttribute("fill","none");
+      c.setAttribute("stroke", i%2===0 ? "#8FE3CF" : "#E8A33D");
+      c.setAttribute("stroke-opacity", 0.06);
+      c.setAttribute("stroke-width","1");
+      svg.appendChild(c);
+    }
+  })();
+
+  // Rotate orbiting satellites around the hero core
+  (function(){
+    const orbits = [
+      {el: document.getElementById('orb1'), r: 180, speed: 0.006, angle: 0},
+      {el: document.getElementById('orb2'), r: 100, speed: -0.011, angle: 2},
+      {el: document.getElementById('orb3'), r: 140, speed: 0.014, angle: 4},
+    ];
+    function animate(){
+      orbits.forEach(o=>{
+        o.angle += o.speed;
+        const x = 200 + o.r * Math.cos(o.angle);
+        const y = 200 + o.r * Math.sin(o.angle);
+        o.el.setAttribute('transform', `translate(${x-200},${y-200})`);
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  // Scroll reveal
+  (function(){
+    const items = document.querySelectorAll('.reveal, .t-item');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          obs.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.15});
+    items.forEach(i=>obs.observe(i));
+  })();
+</script>
+
+</body>
+</html>
