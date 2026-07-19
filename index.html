@@ -355,7 +355,7 @@
     <div class="nav-links">
       <a href="#risques" class="hide-mobile">Les risques</a>
       <a href="#format" class="hide-mobile">Format</a>
-      <a href="#acces" class="btn nav-cta">Sécuriser un accès</a>
+      <a href="#acces" class="btn nav-cta">Je sécurise mon accès</a>
     </div>
   </nav>
 </header>
@@ -371,7 +371,7 @@
     <p class="sub">MERIDIAN livre à un cercle restreint de dirigeants une lecture consolidée de l'inflation, des tensions géopolitiques et de l'exposition aux données — avant que le marché ne réagisse.</p>
     <p class="sub" style="font-weight:700;color:#FFF6E8;background:#1B1F3B;display:inline-block;padding:8px 16px;font-family:var(--body);font-size:clamp(15px,2vw,18px);max-width:600px;">Parce qu'un dirigeant qui découvre un risque par son N-1 a déjà perdu la main sur le sujet.</p>
     <p class="fine">Abonnement Comex : 14 990 € HT / mois. Périmètres élargis sur demande.</p>
-    <a href="#acces" class="btn btn-solid">Sécuriser mon accès</a>
+    <a href="#acces" class="btn btn-solid">Je sécurise mon accès</a>
     <div class="stat-strip">
       <div><b>4,7 %</b><span>Inflation mondiale 2026</span></div>
       <div><b>3,0 %</b><span>Croissance mondiale 2026</span></div>
@@ -597,7 +597,7 @@
         </ul>
         <form id="newsletter-form" novalidate>
           <input type="email" id="newsletter-email" placeholder="vous@entreprise.com" required>
-          <button type="submit" class="btn" style="width:100%;justify-content:center;">Recevoir le prochain signal</button>
+          <button type="submit" class="btn" style="width:100%;justify-content:center;">Je m'abonne gratuitement</button>
           <span class="field-error" id="newsletter-error"></span>
         </form>
         <div class="ptier-success" id="newsletter-success">Inscrit. Rendez-vous vendredi.</div>
@@ -613,7 +613,7 @@
           <li>Ligne directe avec l'analyse</li>
           <li>Accès pour un comité exécutif</li>
         </ul>
-        <a href="#access-form" class="btn btn-solid" style="width:100%;justify-content:center;">Sécuriser mon accès</a>
+        <a href="#access-form" class="btn btn-solid" style="width:100%;justify-content:center;">Je sécurise mon accès</a>
       </div>
 
       <div class="ptier">
@@ -624,13 +624,23 @@
           <li>Périmètre multi-entités</li>
           <li>Scénarios personnalisés</li>
         </ul>
-        <a href="#access-form" class="btn" style="width:100%;justify-content:center;">Solliciter un devis</a>
+        <a href="#access-form" class="btn" style="width:100%;justify-content:center;">Je demande un devis</a>
       </div>
     </div>
 
     <div class="access-form-wrap reveal" id="access-form-wrap">
       <p class="form-lead">Comex ou Entreprise — un même formulaire, 48h de réponse.</p>
       <form id="access-form" novalidate>
+        <div>
+          <label for="role">Votre profil</label>
+          <select id="role" name="role">
+            <option value="Direction générale">Direction générale</option>
+            <option value="Direction financière">Direction financière</option>
+            <option value="Comité des risques">Comité des risques</option>
+            <option value="Conseil d'administration">Conseil d'administration</option>
+            <option value="Autre dirigeant">Autre dirigeant</option>
+          </select>
+        </div>
         <div class="form-row form-row-2">
           <div>
             <label for="name">Nom complet</label>
@@ -643,21 +653,9 @@
             <span class="field-error" id="email-error"></span>
           </div>
         </div>
-        <div class="form-row form-row-2">
-          <div>
-            <label for="company">Entreprise</label>
-            <input type="text" id="company" name="company" placeholder="Nom de l'organisation">
-          </div>
-          <div>
-            <label for="role">Fonction</label>
-            <select id="role" name="role">
-              <option value="Direction générale">Direction générale</option>
-              <option value="Direction financière">Direction financière</option>
-              <option value="Comité des risques">Comité des risques</option>
-              <option value="Conseil d'administration">Conseil d'administration</option>
-              <option value="Autre dirigeant">Autre dirigeant</option>
-            </select>
-          </div>
+        <div>
+          <label for="company">Entreprise</label>
+          <input type="text" id="company" name="company" placeholder="Nom de l'organisation">
         </div>
         <div>
           <label for="message">Message (facultatif)</label>
@@ -682,7 +680,7 @@
 <section class="final-cta">
   <div class="wrap reveal">
     <h2>Le prochain choc n'attendra pas votre prochain comité.</h2>
-    <a href="#acces" class="btn btn-solid">Sécuriser mon accès</a>
+    <a href="#acces" class="btn btn-solid">Je sécurise mon accès</a>
   </div>
 </section>
 
@@ -781,6 +779,24 @@
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  var aura = document.querySelector('.hero-aura');
+  var heroEl = document.querySelector('.hero');
+  if(aura && heroEl){
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY;
+        var h = heroEl.offsetHeight;
+        if(y < h){
+          aura.style.transform = 'translateY(' + (y * 0.25) + 'px) scale(' + (1 + y/h*0.15) + ')';
+        }
+        ticking = false;
+      });
+    }, {passive:true});
   }
 })();
 </script>
