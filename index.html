@@ -117,7 +117,7 @@
   .field{
     position: fixed; inset:0; z-index:0; overflow:hidden;
   }
-  .field svg{ position:absolute; opacity:0.5; }
+  .field canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 
   header{
     position: sticky; top:0; z-index: 20;
@@ -375,12 +375,22 @@
     .orbit-wrap{ max-width: 320px; }
     .about{ flex-direction:column; }
   }
+
+  .sound-toggle{
+    position: fixed; right: 24px; bottom: 24px; z-index: 30;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--panel); border: 1px solid var(--line);
+    color: var(--text-dim); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition: all 0.25s;
+  }
+  .sound-toggle:hover{ border-color: var(--mint); color: var(--mint); transform: scale(1.06); }
+  .sound-toggle[aria-pressed="true"]{ border-color: var(--mint); color: var(--mint); box-shadow: 0 0 0 4px rgba(143,227,207,0.12); }
 </style>
 </head>
 <body>
 
 <div class="noise"></div>
-<div class="field" id="field"></div>
+<div class="field" id="field"><canvas id="fieldCanvas"></canvas></div>
 
 <a class="skip-link" href="#main-content">Aller au contenu</a>
 <header>
@@ -606,27 +616,68 @@
   <div>Fait avec soin, quelque part entre deux missions.</div>
 </footer>
 
+<button id="soundToggle" class="sound-toggle" aria-pressed="false" aria-label="Activer le son">
+  <svg id="soundIconOn" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/></svg>
+  <svg id="soundIconOff" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
+</button>
+
+
 <script>
-  // Ambient orbit lines drifting in the background
+  // 3D particle field background (depth + mouse parallax)
   (function(){
-    const field = document.getElementById('field');
-    const svgNS = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("width", "100%");
-    svg.setAttribute("height", "100%");
-    field.appendChild(svg);
-    const w = window.innerWidth, h = window.innerHeight;
-    for(let i=0;i<5;i++){
-      const cx = Math.random()*w, cy = Math.random()*h;
-      const r = 60 + Math.random()*140;
-      const c = document.createElementNS(svgNS,"circle");
-      c.setAttribute("cx", cx); c.setAttribute("cy", cy); c.setAttribute("r", r);
-      c.setAttribute("fill","none");
-      c.setAttribute("stroke", i%2===0 ? "#8FE3CF" : "#E8A33D");
-      c.setAttribute("stroke-opacity", 0.06);
-      c.setAttribute("stroke-width","1");
-      svg.appendChild(c);
+    const canvas = document.getElementById('fieldCanvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, cx, cy;
+    let mx = 0, my = 0, tmx = 0, tmy = 0;
+
+    function resize(){
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = document.documentElement.scrollHeight;
+      cx = w/2; cy = window.innerHeight/2;
     }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const N = 90;
+    const particles = [];
+    const colors = ['143,227,207', '232,163,61'];
+    for(let i=0;i<N;i++){
+      particles.push({
+        x: (Math.random()-0.5) * w * 1.4,
+        y: (Math.random()-0.5) * h * 0.9,
+        z: Math.random() * 1400 + 50,
+        c: colors[i % 2 === 0 ? 0 : 1],
+        s: Math.random() * 0.4 + 0.15
+      });
+    }
+
+    window.addEventListener('mousemove', (e)=>{
+      tmx = (e.clientX / window.innerWidth - 0.5);
+      tmy = (e.clientY / window.innerHeight - 0.5);
+    });
+
+    function draw(){
+      mx += (tmx - mx) * 0.04;
+      my += (tmy - my) * 0.04;
+      ctx.clearRect(0,0,w,h);
+      const scrollY = window.scrollY;
+
+      particles.forEach(p=>{
+        p.z -= p.s;
+        if(p.z < 1) p.z = 1400;
+        const f = 500 / p.z;
+        const px = cx + (p.x + mx * 220) * f;
+        const py = (cy + scrollY * 0.15) + (p.y + my * 140) * f;
+        const r = Math.max(0.4, f * 1.6);
+        const alpha = Math.min(0.9, f * 0.55);
+        ctx.beginPath();
+        ctx.arc(px, py, r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(${p.c},${alpha})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
   })();
 
   // Rotate orbiting satellites around the hero core
@@ -646,6 +697,95 @@
       requestAnimationFrame(animate);
     }
     animate();
+  })();
+
+  // Sound engine: ambient pad + interaction blips (synthesized, no external files)
+  (function(){
+    let actx = null;
+    let ambientNodes = null;
+    let enabled = false;
+
+    function getCtx(){
+      if(!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      return actx;
+    }
+
+    function startAmbient(){
+      const ctx = getCtx();
+      const master = ctx.createGain();
+      master.gain.value = 0;
+      master.connect(ctx.destination);
+      master.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 1.2);
+
+      const freqs = [110, 164.81, 220];
+      const oscs = freqs.map((f, i)=>{
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = f;
+        const g = ctx.createGain();
+        g.gain.value = 0.6 / (i+1);
+        const lfo = ctx.createOscillator();
+        lfo.frequency.value = 0.05 + i*0.02;
+        const lfoGain = ctx.createGain();
+        lfoGain.gain.value = 3;
+        lfo.connect(lfoGain);
+        lfoGain.connect(osc.frequency);
+        osc.connect(g);
+        g.connect(master);
+        osc.start(); lfo.start();
+        return {osc, lfo};
+      });
+
+      ambientNodes = {master, oscs};
+    }
+
+    function stopAmbient(){
+      if(!ambientNodes) return;
+      const ctx = getCtx();
+      const {master, oscs} = ambientNodes;
+      master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6);
+      setTimeout(()=>{
+        oscs.forEach(o=>{ o.osc.stop(); o.lfo.stop(); });
+      }, 700);
+      ambientNodes = null;
+    }
+
+    function blip(freq){
+      if(!enabled) return;
+      const ctx = getCtx();
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      g.gain.value = 0.05;
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+      osc.connect(g); g.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.2);
+    }
+
+    const btn = document.getElementById('soundToggle');
+    const iconOn = document.getElementById('soundIconOn');
+    const iconOff = document.getElementById('soundIconOff');
+
+    btn.addEventListener('click', ()=>{
+      enabled = !enabled;
+      btn.setAttribute('aria-pressed', enabled);
+      btn.setAttribute('aria-label', enabled ? 'Couper le son' : 'Activer le son');
+      iconOn.style.display = enabled ? 'block' : 'none';
+      iconOff.style.display = enabled ? 'none' : 'block';
+      if(enabled){
+        if(getCtx().state === 'suspended') getCtx().resume();
+        startAmbient();
+        blip(440);
+      } else {
+        stopAmbient();
+      }
+    });
+
+    document.querySelectorAll('a, .btn, .service-card').forEach(el=>{
+      el.addEventListener('mouseenter', ()=> blip(660));
+    });
   })();
 
   // Scroll reveal
