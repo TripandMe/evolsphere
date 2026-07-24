@@ -1,807 +1,528 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evolsphere — Consultant freelance en gestion de projet (PMP, Agile, Hybride)</title>
-<meta name="description" content="Consultant freelance indépendant spécialisé en pilotage de projet PMP, Agile et hybride. Audit, sprint stratégique et accompagnement continu pour PME et startups en croissance. Places limitées chaque trimestre.">
-<meta name="keywords" content="consultant freelance, gestion de projet, PMP, méthode agile, méthode hybride, consulting indépendant, chef de projet freelance, accompagnement stratégique PME">
-<meta name="author" content="Evolsphere">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.evolsphere.com/">
-
-<!-- Open Graph / Facebook / LinkedIn -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.evolsphere.com/">
-<meta property="og:title" content="Evolsphere — Consultant freelance en gestion de projet (PMP, Agile, Hybride)">
-<meta property="og:description" content="Accompagnement stratégique et opérationnel des entreprises : audit, sprint stratégique, suivi continu. Pilotage PMP, Agile ou hybride selon votre besoin. Places limitées.">
-<meta property="og:image" content="https://www.evolsphere.com/og-image.jpg">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Evolsphere">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Evolsphere — Consultant freelance en gestion de projet">
-<meta name="twitter:description" content="Pilotage PMP, Agile et hybride pour PME et startups. Audit, sprint stratégique, accompagnement continu — places limitées chaque trimestre.">
-<meta name="twitter:image" content="https://www.evolsphere.com/og-image.jpg">
-
-<meta name="theme-color" content="#0B1F2A">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230B1F2A'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%238FE3CF'/%3E%3C/svg%3E">
-
-<!-- Structured data: professional service -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Evolsphere",
-  "url": "https://www.evolsphere.com/",
-  "description": "Consultant freelance indépendant en gestion de projet, spécialisé dans les méthodologies PMP, Agile et hybride, au service des PME et startups en croissance.",
-  "areaServed": "FR",
-  "priceRange": "900€ - 2400€+",
-  "founder": {
-    "@type": "Person",
-    "jobTitle": "Consultant indépendant en gestion de projet"
-  },
-  "makesOffer": [
-    {
-      "@type": "Offer",
-      "name": "Audit & diagnostic",
-      "description": "État des lieux complet avec recommandations priorisées sous 10 jours.",
-      "price": "900",
-      "priceCurrency": "EUR"
-    },
-    {
-      "@type": "Offer",
-      "name": "Sprint stratégique",
-      "description": "Accompagnement intensif de 2 à 4 semaines combinant cadrage PMP et exécution agile.",
-      "price": "2400",
-      "priceCurrency": "EUR"
-    },
-    {
-      "@type": "Offer",
-      "name": "Accompagnement continu",
-      "description": "Suivi mensuel avec disponibilité prioritaire et points réguliers.",
-      "price": "1200",
-      "priceCurrency": "EUR"
-    }
-  ]
-}
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evolsphere — La sphère qui évolue</title>
 <style>
   :root{
-    --bg: #0B1F2A;
-    --bg-alt: #0E2733;
-    --panel: #123141;
-    --mint: #8FE3CF;
-    --mint-dim: #5FB6A3;
-    --amber: #E8A33D;
-    --text: #F2F5F3;
-    --text-dim: #7C93A6;
-    --line: rgba(143, 227, 207, 0.14);
-    --radius: 14px;
-    --display: 'Space Grotesk', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
+    --bg-deep: #07040D;
+    --bg-mid: #140A22;
+    --teal: #29F0D0;
+    --violet: #A56BFF;
+    --amber: #FF9B4A;
+    --hot: #FF3E9A;
+    --ink: #F7F4FF;
+    --ink-dim: #B8AECC;
+    --display-font: 'Syne', sans-serif;
+    --body-font: 'Inter', sans-serif;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{
+    width:100%; height:100%;
+    background: radial-gradient(130% 110% at 50% 0%, var(--bg-mid) 0%, var(--bg-deep) 65%);
+    overflow:hidden;
+    font-family: var(--body-font);
+    color: var(--ink);
+  }
+  #canvas-holder{ position:fixed; inset:0; z-index:1; }
+  canvas{ display:block; }
+
+  .flash{
+    position:fixed; inset:0; z-index:3; pointer-events:none;
+    background: radial-gradient(45% 40% at 50% 45%, rgba(255,255,255,0.9) 0%, rgba(41,240,208,0.25) 35%, transparent 70%);
+    opacity:0;
+    animation: flashPulse 1.3s 0.05s ease-out forwards;
+  }
+  @keyframes flashPulse{
+    0%{ opacity:1; transform: scale(0.6); }
+    100%{ opacity:0; transform: scale(1.6); }
   }
 
-  *{ box-sizing: border-box; margin:0; padding:0; }
-  html{ scroll-behavior: smooth; }
-  body{
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--display);
-    line-height: 1.5;
-    overflow-x: hidden;
+  .veil{
+    position:fixed; inset:0; z-index:2; pointer-events:none;
+    background: radial-gradient(55% 46% at 50% 45%, transparent 0%, rgba(7,4,13,0.6) 100%);
   }
-
-  a{ color: inherit; text-decoration:none; }
-
-  ::selection{ background: var(--mint); color: var(--bg); }
-
-  .skip-link{
-    position:absolute; left:-999px; top:0; z-index:100;
-    background: var(--mint); color: var(--bg); padding:0.8rem 1.2rem;
-    font-weight:600; border-radius: 0 0 8px 0;
-  }
-  .skip-link:focus{ left:0; }
-
-  .noise{
-    position: fixed; inset:0; pointer-events:none; opacity:0.035; z-index:1;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  /* background field of drifting orbit lines */
-  .field{
-    position: fixed; inset:0; z-index:0; overflow:hidden;
-  }
-  .field canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 
   header{
-    position: sticky; top:0; z-index: 20;
+    position:fixed; top:0; left:0; right:0; z-index:5;
     display:flex; align-items:center; justify-content:space-between;
-    padding: 20px 6vw;
-    backdrop-filter: blur(10px);
-    background: rgba(11,31,42,0.72);
-    border-bottom: 1px solid var(--line);
+    padding: 30px 40px;
+    opacity:0;
+    animation: dropIn 0.7s 0.15s cubic-bezier(.16,1.4,.4,1) forwards;
   }
   .logo{
-    display:flex; align-items:center; gap:10px;
-    font-weight:700; font-size:1.05rem; letter-spacing:0.02em;
+    font-family: var(--display-font);
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:0.01em;
   }
-  .logo .dot{
-    width:10px; height:10px; border-radius:50%;
-    background: var(--mint);
-    box-shadow: 0 0 12px 2px var(--mint);
-    animation: pulse 2.6s ease-in-out infinite;
+  .logo span{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  @keyframes pulse{
-    0%,100%{ transform: scale(1); opacity:1; }
-    50%{ transform: scale(1.5); opacity:0.6; }
-  }
-  nav{ display:flex; gap:2.2rem; font-size:0.92rem; color: var(--text-dim); }
-  nav a{ position:relative; transition: color 0.25s; }
-  nav a:hover{ color: var(--mint); }
-  nav a::after{
-    content:''; position:absolute; left:0; bottom:-6px; height:1px; width:0;
-    background: var(--mint); transition: width 0.3s;
-  }
-  nav a:hover::after{ width:100%; }
-  .nav-toggle{ display:none; }
 
-  main{ position:relative; z-index:2; }
-
-  /* HERO */
-  .hero{
-    min-height: 92vh;
-    display:flex; align-items:center;
-    padding: 6vw;
-    gap: 4vw;
-    position: relative;
+  .badge{
+    font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color: var(--ink-dim);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:999px; padding:8px 14px;
+    display:flex; align-items:center; gap:8px;
   }
-  .hero-copy{ flex: 1.1; max-width: 620px; }
+  .badge::before{
+    content:''; width:6px; height:6px; border-radius:50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+    animation: dot 1.4s ease-in-out infinite;
+  }
+  @keyframes dot{ 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
+
+  main{
+    position:fixed; inset:0; z-index:4;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding: 0 24px; pointer-events:none;
+  }
+
   .eyebrow{
-    font-family: var(--mono); font-size:0.78rem; letter-spacing: 0.18em;
-    color: var(--mint); text-transform: uppercase;
-    display:flex; align-items:center; gap:10px; margin-bottom: 1.6rem;
-    opacity:0; animation: rise 0.8s 0.1s forwards;
+    font-size:12px; letter-spacing:0.35em; text-transform:uppercase;
+    color: var(--teal);
+    margin-bottom:20px;
+    opacity:0;
+    animation: dropIn 0.6s 0.35s cubic-bezier(.16,1.4,.4,1) forwards;
   }
-  .eyebrow::before{ content:''; width: 28px; height:1px; background: var(--mint); }
 
   h1{
-    font-size: clamp(2.6rem, 5.2vw, 4.6rem);
-    font-weight: 700; letter-spacing: -0.02em;
-    line-height: 1.03;
-    opacity:0; animation: rise 0.9s 0.25s forwards;
+    font-family: var(--display-font);
+    font-weight:800;
+    font-size: clamp(46px, 9.5vw, 112px);
+    line-height:0.94;
+    letter-spacing:-0.015em;
+    max-width: 15ch;
   }
-  h1 em{
-    font-style: normal; color: var(--mint);
-    background: linear-gradient(120deg, var(--mint), var(--amber));
-    -webkit-background-clip: text; background-clip:text; color:transparent;
+  h1 .line{
+    display:block;
+    overflow:hidden;
   }
-  .hero-sub{
-    margin-top: 1.6rem; font-size: 1.08rem; color: var(--text-dim); max-width: 480px;
-    opacity:0; animation: rise 0.9s 0.4s forwards;
+  h1 .line span{
+    display:inline-block;
+    background: linear-gradient(120deg, var(--ink) 20%, var(--teal) 45%, var(--hot) 75%, var(--amber) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    transform: translateY(115%) rotate(3deg);
+    animation: lineUp 0.85s cubic-bezier(.16,1,.3,1) forwards;
   }
-  .hero-tags{
-    margin-top: 1.8rem; display:flex; gap:0.6rem; flex-wrap:wrap;
-    opacity:0; animation: rise 0.9s 0.48s forwards;
+  h1 .line:nth-child(1) span{ animation-delay: 0.45s; }
+  h1 .line:nth-child(2) span{ animation-delay: 0.58s; }
+
+  @keyframes lineUp{
+    to{ transform: translateY(0) rotate(0deg); }
   }
-  .hero-tags .tag{ font-size:0.75rem; }
-  .hero-cta{
-    margin-top: 1.8rem; display:flex; gap:1rem; flex-wrap:wrap;
-    opacity:0; animation: rise 0.9s 0.55s forwards;
+
+  p.sub{
+    margin-top: 24px;
+    max-width: 44ch;
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height:1.6;
+    color: var(--ink-dim);
+    opacity:0;
+    animation: dropIn 0.7s 0.95s cubic-bezier(.16,1.4,.4,1) forwards;
   }
-  @keyframes rise{
-    from{ opacity:0; transform: translateY(18px); }
-    to{ opacity:1; transform: translateY(0); }
+
+  .cta-row{
+    margin-top: 38px;
+    display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+    pointer-events:auto;
+    opacity:0;
+    animation: dropIn 0.7s 1.15s cubic-bezier(.16,1.4,.4,1) forwards;
   }
 
   .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding: 0.85rem 1.5rem; border-radius: 999px;
-    font-size: 0.92rem; font-weight:600; letter-spacing:0.01em;
-    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
-    cursor:pointer; border: 1px solid transparent;
-  }
-  .btn-primary{
-    background: var(--amber); color: #1a1305;
-    box-shadow: 0 0 0 0 rgba(232,163,61,0.5);
-  }
-  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px -6px rgba(232,163,61,0.5); }
-  .btn-ghost{
-    border-color: var(--line); color: var(--text);
-  }
-  .btn-ghost:hover{ border-color: var(--mint); color: var(--mint); transform: translateY(-2px); }
-
-  /* Orbit visual */
-  .orbit-wrap{
-    flex: 1; min-width: 280px; max-width: 520px;
-    aspect-ratio: 1/1;
-    position: relative;
-    display:flex; align-items:center; justify-content:center;
-    perspective: 900px;
-  }
-  .orbit-wrap svg{ width:100%; height:100%; overflow: visible; }
-  .orbit-rig{
-    transform-style: preserve-3d;
-    animation: tilt 9s ease-in-out infinite;
-  }
-  @keyframes tilt{
-    0%,100%{ transform: rotateX(14deg) rotateY(-10deg); }
-    50%{ transform: rotateX(6deg) rotateY(10deg); }
-  }
-  .ring{ fill:none; stroke: var(--line); stroke-width:1; }
-  .ring-active{ stroke: var(--mint-dim); stroke-dasharray: 4 7; }
-  .core{ fill: url(#coreGrad); filter: drop-shadow(0 18px 34px rgba(143,227,207,0.35)); }
-  .satellite{ fill: var(--mint); filter: drop-shadow(0 0 8px rgba(143,227,207,0.7)); }
-  .satellite.amber{ fill: var(--amber); filter: drop-shadow(0 0 8px rgba(232,163,61,0.7)); }
-
-  section{ padding: 9vw 6vw; position: relative; }
-  .section-head{ margin-bottom: 3.2rem; }
-  .section-head .eyebrow{ animation:none; opacity:1; }
-  .section-head h2{
-    font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight:700; letter-spacing:-0.01em;
-    max-width: 640px;
-  }
-  .section-head p{ color: var(--text-dim); margin-top: 0.9rem; max-width: 560px; }
-
-  /* reveal on scroll */
-  .reveal{ opacity:0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.in{ opacity:1; transform: translateY(0); }
-
-  /* ABOUT */
-  .about{ display:flex; gap:5vw; flex-wrap:wrap; }
-  .about-text{ flex:1.3; min-width:280px; font-size:1.06rem; color:var(--text-dim); }
-  .about-text p + p{ margin-top:1rem; }
-  .about-text strong{ color: var(--text); font-weight:600; }
-  .stat-grid{ flex:1; min-width:240px; display:grid; grid-template-columns: 1fr 1fr; gap:1px; background: var(--line); border-radius: var(--radius); overflow:hidden; height:fit-content; }
-  .stat{ background: var(--panel); padding: 1.6rem 1.4rem; }
-  .stat .num{ font-family: var(--mono); font-size:1.9rem; color: var(--mint); font-weight:500; }
-  .stat .label{ margin-top:0.35rem; font-size:0.82rem; color: var(--text-dim); }
-
-  /* EXPERIENCE — orbit timeline */
-  .timeline{ position:relative; }
-  .timeline::before{
-    content:''; position:absolute; left: 14px; top:8px; bottom:8px; width:1px;
-    background: linear-gradient(to bottom, var(--mint) 0%, var(--line) 100%);
-  }
-  .t-item{ position:relative; padding-left: 3.6rem; padding-bottom: 3rem; }
-  .t-item:last-child{ padding-bottom:0; }
-  .t-dot{
-    position:absolute; left: 6px; top: 4px; width:16px; height:16px; border-radius:50%;
-    background: var(--bg); border: 2px solid var(--mint-dim);
-    transition: all 0.4s;
-  }
-  .t-item.in .t-dot{ border-color: var(--mint); box-shadow: 0 0 14px 2px rgba(143,227,207,0.5); }
-  .t-period{ font-family: var(--mono); font-size:0.78rem; color: var(--amber); letter-spacing:0.05em; }
-  .t-role{ font-size:1.3rem; font-weight:600; margin-top:0.3rem; }
-  .t-org{ color: var(--text-dim); font-size:0.95rem; margin-top:0.15rem; }
-  .t-desc{ margin-top:0.7rem; color: var(--text-dim); max-width: 560px; font-size:0.98rem; }
-  .t-tags{ display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem; }
-  .tag{ font-family: var(--mono); font-size:0.72rem; padding:0.3rem 0.65rem; border:1px solid var(--line); border-radius:999px; color: var(--text-dim); }
-
-  /* SERVICES / monetization */
-  .services{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.4rem; }
-  .service-card{
-    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
-    padding: 2.2rem; position:relative; overflow:hidden;
-    transition: transform 0.35s, border-color 0.35s;
-  }
-  .service-card:hover{ transform: translateY(-6px); border-color: var(--mint-dim); }
-  .service-card::before{
-    content:''; position:absolute; top:-40%; right:-40%; width:70%; height:70%;
-    background: radial-gradient(circle, rgba(143,227,207,0.15), transparent 70%);
-    transition: opacity 0.4s; opacity:0;
-  }
-  .service-card:hover::before{ opacity:1; }
-  .service-index{ font-family: var(--mono); color: var(--text-dim); font-size:0.8rem; }
-  .service-card h3{ font-size:1.35rem; margin-top:0.8rem; font-weight:600; }
-  .service-card p{ color: var(--text-dim); margin-top:0.7rem; font-size:0.95rem; }
-  .service-price{ margin-top:1.4rem; font-family: var(--mono); color: var(--amber); font-size:1.05rem; }
-  .service-link{
-    margin-top:1.4rem; display:inline-flex; align-items:center; gap:6px;
-    color: var(--mint); font-size:0.9rem; font-weight:600;
-  }
-  .service-link svg{ transition: transform 0.25s; }
-  .service-card:hover .service-link svg{ transform: translate(3px,-3px); }
-
-  /* METHODS */
-  .methods{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1.4rem; }
-  .method-card{
-    background: var(--bg-alt); border:1px solid var(--line); border-radius: var(--radius);
-    padding: 2rem; position:relative;
-  }
-  .method-mark{
-    font-family: var(--mono); font-size:0.75rem; letter-spacing:0.12em;
-    color: var(--mint); border:1px solid var(--mint-dim); border-radius:999px;
-    padding: 0.3rem 0.75rem; display:inline-block;
-  }
-  .method-card h3{ font-size:1.25rem; font-weight:600; margin-top:1.1rem; }
-  .method-card p{ color: var(--text-dim); margin-top:0.7rem; font-size:0.93rem; }
-  .method-list{ margin-top:1.1rem; display:flex; flex-direction:column; gap:0.5rem; }
-  .method-list li{ list-style:none; font-size:0.85rem; color: var(--text-dim); display:flex; gap:0.55rem; align-items:flex-start; }
-  .method-list li::before{ content:'—'; color: var(--mint-dim); flex-shrink:0; }
-  .method-card.hybrid{ border-color: rgba(232,163,61,0.35); background: linear-gradient(160deg, var(--bg-alt), rgba(232,163,61,0.05)); }
-  .method-card.hybrid .method-mark{ color: var(--amber); border-color: var(--amber); }
-
-  /* EXCLUSIVE OFFER */
-  .exclusive-banner{
-    display:flex; align-items:center; gap:0.7rem; flex-wrap:wrap;
-    font-family: var(--mono); font-size:0.78rem; letter-spacing:0.08em;
-    color: var(--amber); border:1px solid rgba(232,163,61,0.4);
-    background: rgba(232,163,61,0.06);
-    padding: 0.7rem 1.1rem; border-radius: 999px; width:fit-content;
-    margin-bottom: 1.6rem;
-  }
-  .exclusive-banner .live-dot{
-    width:7px; height:7px; border-radius:50%; background: var(--amber);
-    box-shadow: 0 0 8px 1px var(--amber); animation: pulse 1.8s ease-in-out infinite;
-  }
-  .service-card.featured{
-    border: 1px solid var(--amber);
-    background: linear-gradient(160deg, var(--panel), rgba(232,163,61,0.07));
+    font-family: var(--body-font); font-weight:700; font-size:14px;
+    padding: 15px 28px; border-radius:999px; cursor:pointer; border:none;
+    transition: transform 0.25s cubic-bezier(.16,1,.3,1), box-shadow 0.25s ease, filter 0.25s ease;
     position:relative;
   }
-  .service-card.featured::after{
-    content:'PLACES LIMITÉES'; position:absolute; top:1.6rem; right:-2.6rem;
-    transform: rotate(38deg); background: var(--amber); color:#1a1305;
-    font-family: var(--mono); font-size:0.65rem; font-weight:700; letter-spacing:0.06em;
-    padding: 0.3rem 3rem;
+  .btn-primary{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color: #07040D;
+    box-shadow: 0 8px 26px rgba(165,107,255,0.28);
   }
-  .service-card.featured .service-price{ color: var(--amber); }
-  .exclusive-note{ margin-top:2.4rem; display:flex; gap:0.8rem; align-items:flex-start; color: var(--text-dim); font-size:0.88rem; max-width:640px; }
-  .exclusive-note svg{ flex-shrink:0; margin-top:0.15rem; color: var(--amber); }
-
-  /* CONTACT / footer CTA */
-  .cta-section{
-    text-align:center; padding: 10vw 6vw;
-    background: radial-gradient(ellipse at 50% 30%, rgba(143,227,207,0.08), transparent 60%);
+  .btn-primary:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 34px rgba(255,62,154,0.4); }
+  .btn-ghost{
+    background: rgba(255,255,255,0.04);
+    color: var(--ink);
+    border: 1px solid rgba(255,255,255,0.22);
+    backdrop-filter: blur(6px);
   }
-  .cta-section h2{ font-size: clamp(2rem, 4.4vw, 3.3rem); font-weight:700; max-width:760px; margin:0 auto; letter-spacing:-0.01em; }
-  .cta-section p{ color: var(--text-dim); margin-top:1.2rem; max-width:520px; margin-left:auto; margin-right:auto; }
-  .cta-buttons{ margin-top:2.2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  .btn-ghost:hover{ transform: translateY(-3px) scale(1.03); border-color: rgba(255,255,255,0.55); }
 
   footer{
-    border-top:1px solid var(--line); padding: 2.4rem 6vw; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;
-    color: var(--text-dim); font-size:0.85rem;
+    position:fixed; bottom:0; left:0; right:0; z-index:5;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 28px 40px;
+    opacity:0;
+    animation: dropIn 0.7s 1.3s cubic-bezier(.16,1.4,.4,1) forwards;
   }
-
-  @media (max-width: 780px){
-    nav{ display:none; }
-    .hero{ flex-direction:column; padding-top: 10vw; }
-    .orbit-wrap{ max-width: 320px; }
-    .about{ flex-direction:column; }
-  }
+  .tagline{ font-size:12px; color: var(--ink-dim); letter-spacing:0.04em; }
+  .tagline b{ color: var(--ink); font-weight:700; }
 
   .sound-toggle{
-    position: fixed; right: 24px; bottom: 24px; z-index: 30;
-    width: 48px; height: 48px; border-radius: 50%;
-    background: var(--panel); border: 1px solid var(--line);
-    color: var(--text-dim); display:flex; align-items:center; justify-content:center;
-    cursor:pointer; transition: all 0.25s;
+    pointer-events:auto;
+    display:flex; align-items:center; gap:10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius:999px; padding: 11px 20px 11px 15px; cursor:pointer;
+    color: var(--ink); font-size:13px; font-weight:600;
+    backdrop-filter: blur(6px);
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
   }
-  .sound-toggle:hover{ border-color: var(--mint); color: var(--mint); transform: scale(1.06); }
-  .sound-toggle[aria-pressed="true"]{ border-color: var(--mint); color: var(--mint); box-shadow: 0 0 0 4px rgba(143,227,207,0.12); }
+  .sound-toggle:hover{ border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.09); transform: scale(1.04); }
+
+  .bars{ display:flex; align-items:flex-end; gap:2.5px; height:15px; width:18px; }
+  .bars i{ display:block; width:3px; border-radius:2px; background: var(--teal); height:4px; transform-origin: bottom; }
+  .sound-on .bars i{ animation: bounce 0.7s ease-in-out infinite; background: linear-gradient(180deg, var(--teal), var(--hot)); }
+  .bars i:nth-child(1){ animation-delay: 0s; }
+  .bars i:nth-child(2){ animation-delay: 0.12s; }
+  .bars i:nth-child(3){ animation-delay: 0.24s; }
+  @keyframes bounce{ 0%,100%{ height:4px; } 50%{ height:15px; } }
+
+  @keyframes dropIn{
+    from{ opacity:0; transform: translateY(-14px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px){
+    header, footer{ padding: 22px 20px; }
+    .tagline{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .bars i{ animation: none !important; }
+    h1 .line span{ animation: none !important; transform:none !important; opacity:1 !important; }
+    header, .eyebrow, p.sub, .cta-row, footer{ animation: none !important; opacity:1 !important; transform:none !important; }
+    .flash{ display:none; }
+  }
 </style>
 </head>
 <body>
 
-<div class="noise"></div>
-<div class="field" id="field"><canvas id="fieldCanvas"></canvas></div>
+<div id="canvas-holder"></div>
+<div class="flash"></div>
+<div class="veil"></div>
 
-<a class="skip-link" href="#main-content">Aller au contenu</a>
 <header>
-  <div class="logo"><span class="dot"></span> EVOLSPHERE</div>
-  <nav aria-label="Navigation principale">
-    <a href="#about">À propos</a>
-    <a href="#methods">Méthodes</a>
-    <a href="#experience">Expérience</a>
-    <a href="#services">Offre exclusive</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <a href="#contact" class="btn btn-ghost" style="padding:0.55rem 1.2rem; font-size:0.85rem;">Réserver un appel</a>
+  <div class="logo">Evol<span>sphere</span></div>
+  <div class="badge">En mouvement</div>
 </header>
 
-<main id="main-content">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-copy">
-      <div class="eyebrow">Consulting freelance · Disponible pour missions</div>
-      <h1>Chaque mission fait <em>évoluer</em> la suivante.</h1>
-      <p class="hero-sub">
-        Pilotage de projet PMP, Agile et hybride. Diagnostic, exécution, résultats.
-      </p>
-      <div class="hero-tags">
-        <span class="tag">PMP</span>
-        <span class="tag">Agile</span>
-        <span class="tag">Hybride</span>
-      </div>
-      <div class="hero-cta">
-        <a href="#services" class="btn btn-primary">Voir l'offre exclusive</a>
-        <a href="#experience" class="btn btn-ghost">Mon parcours</a>
-      </div>
-    </div>
-
-    <div class="orbit-wrap">
-      <svg viewBox="0 0 400 400" role="img" aria-label="Illustration animée d'une sphère orbitale 3D symbolisant l'évolution du profil">
-        <defs>
-          <radialGradient id="coreGrad" cx="32%" cy="28%" r="75%">
-            <stop offset="0%" stop-color="#FFFFFF"/>
-            <stop offset="30%" stop-color="#DFFBF3"/>
-            <stop offset="62%" stop-color="#8FE3CF"/>
-            <stop offset="100%" stop-color="#20544A"/>
-          </radialGradient>
-        </defs>
-        <g class="orbit-rig">
-          <ellipse class="ring" cx="200" cy="200" rx="180" ry="70"/>
-          <ellipse class="ring ring-active" cx="200" cy="200" rx="140" ry="140"/>
-          <ellipse class="ring" cx="200" cy="200" rx="70" ry="180"/>
-          <circle class="core" cx="200" cy="200" r="46"/>
-          <g id="orb1"><circle class="satellite" cx="380" cy="200" r="8"/></g>
-          <g id="orb2"><circle class="satellite amber" cx="60" cy="200" r="6.5"/></g>
-          <g id="orb3"><circle class="satellite" cx="200" cy="20" r="5.5"/></g>
-        </g>
-      </svg>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="reveal">
-    <div class="section-head">
-      <div class="eyebrow">À propos</div>
-      <h2>Un profil pensé comme une trajectoire, pas une liste de missions.</h2>
-    </div>
-    <div class="about">
-      <div class="about-text">
-        <p>Consultant indépendant. Mon rôle : <strong>clarifier, structurer, exécuter</strong> — sans jargon superflu.</p>
-        <p>Chaque mission nourrit la suivante. C'est cette logique d'évolution continue qui donne son nom à ce profil.</p>
-      </div>
-      <div class="stat-grid">
-        <div class="stat"><div class="num">8+</div><div class="label">années d'expérience</div></div>
-        <div class="stat"><div class="num">40+</div><div class="label">missions menées</div></div>
-        <div class="stat"><div class="num">12</div><div class="label">secteurs couverts</div></div>
-        <div class="stat"><div class="num">98%</div><div class="label">clients satisfaits</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MÉTHODES -->
-  <section id="methods" class="reveal">
-    <div class="section-head">
-      <div class="eyebrow">Méthodes</div>
-      <h2>Le bon cadre de pilotage, pas un cadre unique.</h2>
-      <p>Le bon cadre dépend du projet. Je m'adapte, jamais l'inverse.</p>
-    </div>
-
-    <div class="methods">
-      <div class="method-card">
-        <span class="method-mark">PMP</span>
-        <h3>Pilotage traditionnel</h3>
-        <p>Périmètre fixe, budget engagé, prévisibilité maximale.</p>
-        <ul class="method-list">
-          <li>Cadrage détaillé et jalons contractuels</li>
-          <li>Gestion des risques et des ressources formalisée</li>
-          <li>Reporting structuré pour comités de pilotage</li>
-        </ul>
-      </div>
-
-      <div class="method-card">
-        <span class="method-mark">AGILE</span>
-        <h3>Itératif &amp; adaptatif</h3>
-        <p>Besoin qui s'affine en marche. Feedback rapide.</p>
-        <ul class="method-list">
-          <li>Sprints courts, backlog priorisé en continu</li>
-          <li>Cérémonies légères : daily, revue, rétro</li>
-          <li>Livraisons incrémentales et mesurables</li>
-        </ul>
-      </div>
-
-      <div class="method-card hybrid">
-        <span class="method-mark">HYBRIDE</span>
-        <h3>Sur-mesure</h3>
-        <p>Le combo le plus fréquent : gouvernance PMP, exécution agile.</p>
-        <ul class="method-list">
-          <li>Macro-planning jalonné, micro-exécution en sprints</li>
-          <li>Gouvernance rassurante pour la direction</li>
-          <li>Souplesse opérationnelle pour les équipes terrain</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="reveal">
-    <div class="section-head">
-      <div class="eyebrow">Expérience</div>
-      <h2>Le parcours, orbite par orbite.</h2>
-      <p>Les étapes clés qui ont construit l'expertise.</p>
-    </div>
-
-    <div class="timeline">
-      <div class="t-item reveal-item">
-        <div class="t-dot"></div>
-        <div class="t-period">2023 — Aujourd'hui</div>
-        <div class="t-role">Consultant indépendant</div>
-        <div class="t-org">Evolsphere · Missions multi-clients</div>
-        <div class="t-desc">Accompagnement stratégique et opérationnel de PME et startups : structuration d'offre, pilotage de projets, mise en place d'outils de gestion.</div>
-        <div class="t-tags"><span class="tag">Stratégie</span><span class="tag">Pilotage</span><span class="tag">Process</span></div>
-      </div>
-
-      <div class="t-item reveal-item">
-        <div class="t-dot"></div>
-        <div class="t-period">2020 — 2023</div>
-        <div class="t-role">Chef de projet senior</div>
-        <div class="t-org">Cabinet de conseil</div>
-        <div class="t-desc">Direction de projets de transformation pour des grands comptes, coordination d'équipes pluridisciplinaires, reporting direction générale.</div>
-        <div class="t-tags"><span class="tag">Transformation</span><span class="tag">Management</span></div>
-      </div>
-
-      <div class="t-item reveal-item">
-        <div class="t-dot"></div>
-        <div class="t-period">2017 — 2020</div>
-        <div class="t-role">Chargé de projet</div>
-        <div class="t-org">Entreprise du secteur</div>
-        <div class="t-desc">Premiers pas dans le conseil : analyse de données, préparation de recommandations, appui aux missions terrain.</div>
-        <div class="t-tags"><span class="tag">Analyse</span><span class="tag">Terrain</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="reveal">
-    <div class="section-head">
-      <div class="exclusive-banner"><span class="live-dot"></span> Offre exclusive · 3 places disponibles ce trimestre</div>
-      <div class="eyebrow">Offre exclusive</div>
-      <h2>Un accompagnement réservé à un nombre restreint de clients.</h2>
-      <p>Missions volontairement limitées. Disponibilité réelle, pas partagée entre vingt clients.</p>
-    </div>
-
-    <div class="services">
-      <div class="service-card">
-        <div class="service-index">01</div>
-        <h3>Audit &amp; diagnostic</h3>
-        <p>État des lieux complet, recommandations actionnables sous 10 jours.</p>
-        <div class="service-price">à partir de 900 €</div>
-        <a class="service-link" href="#contact">Réserver
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>
-      </div>
-
-      <div class="service-card featured">
-        <div class="service-index">02</div>
-        <h3>Sprint stratégique</h3>
-        <p>2 à 4 semaines intenses pour structurer et lancer l'exécution.</p>
-        <div class="service-price">à partir de 2 400 €</div>
-        <a class="service-link" href="#contact">Réserver ma place
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-index">03</div>
-        <h3>Accompagnement continu</h3>
-        <p>Suivi mensuel, disponibilité prioritaire, accès direct.</p>
-        <div class="service-price">à partir de 1 200 €/mois</div>
-        <a class="service-link" href="#contact">Réserver
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="exclusive-note">
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.18 14.14A2 2 0 004 21h16a2 2 0 001.89-2.99L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-      <span>Attribution par ordre de contact qualifié. Quota atteint → liste d'attente prioritaire.</span>
-    </div>
-  </section>
-
-  <!-- CTA / CONTACT -->
-  <section id="contact" class="cta-section reveal">
-    <div class="eyebrow" style="justify-content:center;">Contact</div>
-    <h2>Une idée à faire évoluer ?</h2>
-    <p>Décrivez votre besoin en quelques lignes — réponse sous 48h ouvrées.</p>
-    <div class="cta-buttons">
-      <a href="mailto:contact@evolsphere.com" class="btn btn-primary">Écrire un email</a>
-      <a href="#" class="btn btn-ghost">Prendre rendez-vous</a>
-    </div>
-  </section>
-
+<main>
+  <div class="eyebrow">Conseil en gestion de projet</div>
+  <h1>
+    <span class="line"><span>Chaque projet</span></span>
+    <span class="line"><span>fait évoluer la forme.</span></span>
+  </h1>
+  <p class="sub">
+    Une sphère qui pulse au rythme de la musique — comme une méthode
+    qui s'adapte à chaque mission. PMP, Agile, hybride : la forme suit le contexte.
+  </p>
+  <div class="cta-row">
+    <button class="btn btn-primary" onclick="sendPrompt('Je veux en savoir plus sur les missions Evolsphere')">Discuter d'un projet</button>
+    <button class="btn btn-ghost" onclick="sendPrompt('Montre-moi le Sprint stratégique Evolsphere')">Voir le Sprint stratégique</button>
+  </div>
 </main>
 
 <footer>
-  <div>© 2026 Evolsphere — Consulting indépendant</div>
-  <div>Fait avec soin, quelque part entre deux missions.</div>
+  <div class="tagline">Evolsphere — <b>structurer</b>, <b>exécuter</b>, <b>évoluer</b>.</div>
+  <div class="sound-toggle" id="soundToggle">
+    <div class="bars"><i></i><i></i><i></i></div>
+    <span id="soundLabel">Activer le son</span>
+  </div>
 </footer>
 
-<button id="soundToggle" class="sound-toggle" aria-pressed="false" aria-label="Activer le son">
-  <svg id="soundIconOn" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/></svg>
-  <svg id="soundIconOff" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
-</button>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 <script>
-  // 3D particle field background (depth + mouse parallax)
-  (function(){
-    const canvas = document.getElementById('fieldCanvas');
-    const ctx = canvas.getContext('2d');
-    let w, h, cx, cy;
-    let mx = 0, my = 0, tmx = 0, tmy = 0;
+(function(){
+  // ---------- 3D SCENE ----------
+  const holder = document.getElementById('canvas-holder');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+  camera.position.set(0, 0, 9.5);
 
-    function resize(){
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = document.documentElement.scrollHeight;
-      cx = w/2; cy = window.innerHeight/2;
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  holder.appendChild(renderer.domElement);
+
+  const key = new THREE.PointLight(0x29f0d0, 4.2, 24);
+  key.position.set(4, 3, 5);
+  scene.add(key);
+  const rim = new THREE.PointLight(0xa56bff, 4.0, 24);
+  rim.position.set(-4.5, -2, -3);
+  scene.add(rim);
+  const hotLight = new THREE.PointLight(0xff3e9a, 2.2, 22);
+  hotLight.position.set(0, -3.5, 4);
+  scene.add(hotLight);
+  scene.add(new THREE.AmbientLight(0x1a1226, 1.0));
+
+  const geo = new THREE.IcosahedronGeometry(2.1, 5);
+  const colors = [];
+  const c1 = new THREE.Color(0x29f0d0);
+  const c2 = new THREE.Color(0xa56bff);
+  const c3 = new THREE.Color(0xff3e9a);
+  const c4 = new THREE.Color(0xff9b4a);
+  const pos = geo.attributes.position;
+  for(let i=0; i<pos.count; i++){
+    const y = (pos.getY(i) / 2.1 + 1) / 2;
+    let col;
+    if(y < 0.33) col = c1.clone().lerp(c2, y/0.33);
+    else if(y < 0.66) col = c2.clone().lerp(c3, (y-0.33)/0.33);
+    else col = c3.clone().lerp(c4, (y-0.66)/0.34);
+    colors.push(col.r, col.g, col.b);
+  }
+  geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+  const mat = new THREE.MeshStandardMaterial({
+    vertexColors: true, roughness: 0.3, metalness: 0.2,
+    emissive: 0x180d26, emissiveIntensity: 0.55
+  });
+  const sphere = new THREE.Mesh(geo, mat);
+  scene.add(sphere);
+
+  const wireGeo = new THREE.IcosahedronGeometry(2.16, 2);
+  const wireMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe:true, transparent:true, opacity:0.08 });
+  const wireSphere = new THREE.Mesh(wireGeo, wireMat);
+  scene.add(wireSphere);
+
+  // orbiting particle ring for extra energy
+  const particleCount = 260;
+  const pGeo = new THREE.BufferGeometry();
+  const pPos = new Float32Array(particleCount*3);
+  const pColor = new Float32Array(particleCount*3);
+  const orbitRadius = [];
+  const orbitAngle = [];
+  const orbitTilt = [];
+  const palette = [c1, c2, c3, c4];
+  for(let i=0;i<particleCount;i++){
+    const r = 3.0 + Math.random()*2.2;
+    const a = Math.random()*Math.PI*2;
+    const tlt = (Math.random()-0.5)*1.4;
+    orbitRadius.push(r); orbitAngle.push(a); orbitTilt.push(tlt);
+    const col = palette[Math.floor(Math.random()*palette.length)];
+    pColor[i*3]=col.r; pColor[i*3+1]=col.g; pColor[i*3+2]=col.b;
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  pGeo.setAttribute('color', new THREE.BufferAttribute(pColor, 3));
+  const pMat = new THREE.PointsMaterial({ size:0.05, vertexColors:true, transparent:true, opacity:0.85, sizeAttenuation:true });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  const basePositions = Float32Array.from(pos.array);
+
+  function fade(t){ return t*t*t*(t*(t*6-15)+10); }
+  function lerp(t,a,b){ return a+t*(b-a); }
+  function grad(hash,x,y,z){
+    const h = hash & 15;
+    const u = h<8 ? x : y;
+    const v = h<4 ? y : (h===12||h===14 ? x : z);
+    return ((h&1)===0 ? u : -u) + ((h&2)===0 ? v : -v);
+  }
+  const permBase = [];
+  for(let i=0;i<256;i++) permBase[i]=i;
+  for(let i=255;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [permBase[i],permBase[j]]=[permBase[j],permBase[i]]; }
+  const perm = new Array(512);
+  for(let i=0;i<512;i++) perm[i]=permBase[i&255];
+
+  function noise3(x,y,z){
+    const X=Math.floor(x)&255, Y=Math.floor(y)&255, Z=Math.floor(z)&255;
+    x-=Math.floor(x); y-=Math.floor(y); z-=Math.floor(z);
+    const u=fade(x), v=fade(y), w=fade(z);
+    const A=perm[X]+Y, AA=perm[A]+Z, AB=perm[A+1]+Z;
+    const B=perm[X+1]+Y, BA=perm[B]+Z, BB=perm[B+1]+Z;
+    return lerp(w,
+      lerp(v, lerp(u, grad(perm[AA],x,y,z), grad(perm[BA],x-1,y,z)),
+              lerp(u, grad(perm[AB],x,y-1,z), grad(perm[BB],x-1,y-1,z))),
+      lerp(v, lerp(u, grad(perm[AA+1],x,y,z-1), grad(perm[BA+1],x-1,y,z-1)),
+              lerp(u, grad(perm[AB+1],x,y-1,z-1), grad(perm[BB+1],x-1,y-1,z-1)))
+    );
+  }
+
+  let audioLevel = 0;
+  let beatPulse = 0; // short decaying pulse triggered on each pluck hit
+  const clock = { start: performance.now() };
+
+  function animate(t){
+    requestAnimationFrame(animate);
+    const elapsed = (t - clock.start) * 0.001;
+    const time = t * 0.00032;
+    const amp = 0.22 + audioLevel * 0.85 + beatPulse * 0.35;
+
+    const p = geo.attributes.position;
+    for(let i=0;i<p.count;i++){
+      const ix = i*3;
+      const bx = basePositions[ix], by = basePositions[ix+1], bz = basePositions[ix+2];
+      const len = Math.sqrt(bx*bx+by*by+bz*bz);
+      const nx = bx/len, ny = by/len, nz = bz/len;
+      const n = noise3(nx*1.7 + time*4.2, ny*1.7 + time*4.2, nz*1.7 + time*4.2);
+      const displaced = len + n * amp;
+      p.setXYZ(i, nx*displaced, ny*displaced, nz*displaced);
     }
-    resize();
-    window.addEventListener('resize', resize);
+    p.needsUpdate = true;
+    geo.computeVertexNormals();
 
-    const N = 90;
-    const particles = [];
-    const colors = ['143,227,207', '232,163,61'];
-    for(let i=0;i<N;i++){
-      particles.push({
-        x: (Math.random()-0.5) * w * 1.4,
-        y: (Math.random()-0.5) * h * 0.9,
-        z: Math.random() * 1400 + 50,
-        c: colors[i % 2 === 0 ? 0 : 1],
-        s: Math.random() * 0.4 + 0.15
-      });
+    const scalePulse = 1 + beatPulse * 0.09 + Math.sin(time*2.2)*0.02;
+    sphere.scale.setScalar(scalePulse);
+
+    sphere.rotation.y += 0.0032 + audioLevel*0.01;
+    sphere.rotation.x = Math.sin(time*0.8)*0.2;
+    wireSphere.rotation.y -= 0.0022;
+    wireSphere.rotation.x = sphere.rotation.x;
+    wireSphere.scale.setScalar(1 + beatPulse*0.06);
+
+    // particles orbit + drift
+    const pp = pGeo.attributes.position;
+    for(let i=0;i<particleCount;i++){
+      orbitAngle[i] += 0.0025 + audioLevel*0.01 + beatPulse*0.006;
+      const r = orbitRadius[i] + Math.sin(elapsed*0.6+i)*0.15 + beatPulse*0.3;
+      const a = orbitAngle[i];
+      const tlt = orbitTilt[i];
+      pp.array[i*3]   = Math.cos(a) * r;
+      pp.array[i*3+1] = Math.sin(a) * r * 0.4 + tlt*1.5;
+      pp.array[i*3+2] = Math.sin(a) * r * 0.6;
     }
+    pp.needsUpdate = true;
+    particles.rotation.y += 0.0016;
 
-    window.addEventListener('mousemove', (e)=>{
-      tmx = (e.clientX / window.innerWidth - 0.5);
-      tmy = (e.clientY / window.innerHeight - 0.5);
-    });
+    // camera micro dolly + shake tied to beat
+    camera.position.z = 9.5 - beatPulse*0.4 - audioLevel*0.5;
+    camera.position.x = Math.sin(elapsed*0.35) * 0.18;
+    camera.position.y = Math.cos(elapsed*0.28) * 0.12;
+    camera.lookAt(0,0,0);
 
-    function draw(){
-      mx += (tmx - mx) * 0.04;
-      my += (tmy - my) * 0.04;
-      ctx.clearRect(0,0,w,h);
-      const scrollY = window.scrollY;
+    key.intensity = 3.2 + audioLevel*3.5 + beatPulse*2.5;
+    rim.intensity = 3.0 + audioLevel*2.8;
+    hotLight.intensity = 1.6 + beatPulse*3.5;
 
-      particles.forEach(p=>{
-        p.z -= p.s;
-        if(p.z < 1) p.z = 1400;
-        const f = 500 / p.z;
-        const px = cx + (p.x + mx * 220) * f;
-        const py = (cy + scrollY * 0.15) + (p.y + my * 140) * f;
-        const r = Math.max(0.4, f * 1.6);
-        const alpha = Math.min(0.9, f * 0.55);
-        ctx.beginPath();
-        ctx.arc(px, py, r, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(${p.c},${alpha})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-  })();
+    beatPulse *= 0.90; // decay
 
-  // Rotate orbiting satellites around the hero core
-  (function(){
-    const orbits = [
-      {el: document.getElementById('orb1'), r: 180, speed: 0.006, angle: 0},
-      {el: document.getElementById('orb2'), r: 100, speed: -0.011, angle: 2},
-      {el: document.getElementById('orb3'), r: 140, speed: 0.014, angle: 4},
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(animate);
+
+  window.addEventListener('resize', ()=>{
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // ---------- AMBIENT GENERATIVE MUSIC (Tone.js) — punchier, faster ----------
+  let started = false;
+  let analyser, pad, pluck, bass, reverb, filter, delay;
+
+  window.__triggerBeatPulse = function(){ beatPulse = 1; };
+
+  async function startAudio(){
+    if(started) return;
+    started = true;
+    await Tone.start();
+
+    reverb = new Tone.Reverb({ decay: 5, wet: 0.4 }).toDestination();
+    delay = new Tone.FeedbackDelay('8n', 0.28).connect(reverb);
+    filter = new Tone.Filter(2000, 'lowpass').connect(delay);
+    analyser = new Tone.Analyser('waveform', 256);
+    filter.connect(analyser);
+
+    pad = new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'sawtooth' },
+      envelope: { attack: 0.8, decay: 0.6, sustain: 0.5, release: 2.2 }
+    }).connect(filter);
+    pad.volume.value = -16;
+
+    pluck = new Tone.Synth({
+      oscillator: { type: 'triangle' },
+      envelope: { attack: 0.005, decay: 0.25, sustain: 0, release: 0.5 }
+    }).connect(filter);
+    pluck.volume.value = -10;
+
+    bass = new Tone.MembraneSynth({
+      pitchDecay: 0.02, octaves: 4,
+      envelope: { attack: 0.001, decay: 0.35, sustain: 0 }
+    }).connect(reverb);
+    bass.volume.value = -6;
+
+    const padChords = [
+      ['C3','G3','D4'], ['A2','E3','C4'],
+      ['F2','C3','G3'], ['G2','D3','A3']
     ];
-    function animate(){
-      orbits.forEach(o=>{
-        o.angle += o.speed;
-        const x = 200 + o.r * Math.cos(o.angle);
-        const y = 200 + o.r * Math.sin(o.angle);
-        o.el.setAttribute('transform', `translate(${x-200},${y-200})`);
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-  })();
+    let chordIdx = 0;
+    new Tone.Loop((time)=>{
+      pad.triggerAttackRelease(padChords[chordIdx % padChords.length], '2n', time);
+      chordIdx++;
+    }, '1m').start(0);
 
-  // Sound engine: ambient pad + interaction blips (synthesized, no external files)
-  (function(){
-    let actx = null;
-    let ambientNodes = null;
-    let enabled = false;
-
-    function getCtx(){
-      if(!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
-      return actx;
-    }
-
-    function startAmbient(){
-      const ctx = getCtx();
-      const master = ctx.createGain();
-      master.gain.value = 0;
-      master.connect(ctx.destination);
-      master.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 1.2);
-
-      const freqs = [110, 164.81, 220];
-      const oscs = freqs.map((f, i)=>{
-        const osc = ctx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.value = f;
-        const g = ctx.createGain();
-        g.gain.value = 0.6 / (i+1);
-        const lfo = ctx.createOscillator();
-        lfo.frequency.value = 0.05 + i*0.02;
-        const lfoGain = ctx.createGain();
-        lfoGain.gain.value = 3;
-        lfo.connect(lfoGain);
-        lfoGain.connect(osc.frequency);
-        osc.connect(g);
-        g.connect(master);
-        osc.start(); lfo.start();
-        return {osc, lfo};
-      });
-
-      ambientNodes = {master, oscs};
-    }
-
-    function stopAmbient(){
-      if(!ambientNodes) return;
-      const ctx = getCtx();
-      const {master, oscs} = ambientNodes;
-      master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6);
-      setTimeout(()=>{
-        oscs.forEach(o=>{ o.osc.stop(); o.lfo.stop(); });
-      }, 700);
-      ambientNodes = null;
-    }
-
-    function blip(freq){
-      if(!enabled) return;
-      const ctx = getCtx();
-      const osc = ctx.createOscillator();
-      const g = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      g.gain.value = 0.05;
-      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
-      osc.connect(g); g.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.2);
-    }
-
-    const btn = document.getElementById('soundToggle');
-    const iconOn = document.getElementById('soundIconOn');
-    const iconOff = document.getElementById('soundIconOff');
-
-    btn.addEventListener('click', ()=>{
-      enabled = !enabled;
-      btn.setAttribute('aria-pressed', enabled);
-      btn.setAttribute('aria-label', enabled ? 'Couper le son' : 'Activer le son');
-      iconOn.style.display = enabled ? 'block' : 'none';
-      iconOff.style.display = enabled ? 'none' : 'block';
-      if(enabled){
-        if(getCtx().state === 'suspended') getCtx().resume();
-        startAmbient();
-        blip(440);
-      } else {
-        stopAmbient();
+    const pluckNotes = ['C5','D5','E5','G5','A5','C6'];
+    new Tone.Sequence((time, note)=>{
+      if(note !== null){
+        pluck.triggerAttackRelease(note, '16n', time);
+        Tone.Draw.schedule(()=>{ window.__triggerBeatPulse(); }, time);
       }
-    });
+    }, [
+      pluckNotes[0], null, pluckNotes[2], pluckNotes[1],
+      null, pluckNotes[3], null, pluckNotes[4],
+      pluckNotes[2], null, pluckNotes[5], null,
+      pluckNotes[1], null, pluckNotes[3], null
+    ], '16n').start(0);
 
-    document.querySelectorAll('a, .btn, .service-card').forEach(el=>{
-      el.addEventListener('mouseenter', ()=> blip(660));
-    });
-  })();
+    new Tone.Loop((time)=>{
+      bass.triggerAttackRelease('C1', '8n', time);
+      Tone.Draw.schedule(()=>{ window.__triggerBeatPulse(); }, time);
+    }, '2n').start('0');
 
-  // Scroll reveal
-  (function(){
-    const items = document.querySelectorAll('.reveal, .t-item');
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('in');
-          obs.unobserve(e.target);
-        }
-      });
-    }, {threshold: 0.15});
-    items.forEach(i=>obs.observe(i));
-  })();
+    Tone.Transport.bpm.value = 104;
+    Tone.Transport.start();
+
+    function pollLevel(){
+      if(!started) return;
+      const wave = analyser.getValue();
+      let sum = 0;
+      for(let i=0;i<wave.length;i++) sum += Math.abs(wave[i]);
+      const level = Math.min(1, (sum/wave.length) * 7);
+      audioLevel += (level - audioLevel) * 0.25;
+      requestAnimationFrame(pollLevel);
+    }
+    pollLevel();
+  }
+
+  function stopAudio(){
+    started = false;
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
+    if(pad) pad.releaseAll();
+    audioLevel = 0;
+  }
+
+  const toggle = document.getElementById('soundToggle');
+  const label = document.getElementById('soundLabel');
+  let isOn = false;
+  toggle.addEventListener('click', async ()=>{
+    isOn = !isOn;
+    if(isOn){
+      await startAudio();
+      toggle.classList.add('sound-on');
+      label.textContent = 'Couper le son';
+    } else {
+      stopAudio();
+      toggle.classList.remove('sound-on');
+      label.textContent = 'Activer le son';
+    }
+  });
+
+  if (typeof window.sendPrompt !== 'function') {
+    window.sendPrompt = function(text){ console.log('sendPrompt:', text); };
+  }
+})();
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </body>
 </html>
