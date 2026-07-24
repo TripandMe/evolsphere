@@ -201,6 +201,106 @@
     header, .eyebrow, p.sub, .cta-row, footer{ animation: none !important; opacity:1 !important; transform:none !important; }
     .flash{ display:none; }
   }
+
+  a.btn{ text-decoration:none; display:inline-block; }
+
+  /* ---- Method test modal ---- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:20;
+    background: rgba(7,4,13,0.78);
+    backdrop-filter: blur(8px);
+    display:none;
+    align-items:center; justify-content:center;
+    padding: 24px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-card{
+    width:100%; max-width: 560px;
+    background: linear-gradient(160deg, rgba(20,10,34,0.95), rgba(10,6,18,0.98));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 36px 34px;
+    position:relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    animation: modalIn 0.4s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+  @keyframes modalIn{
+    from{ opacity:0; transform: translateY(24px) scale(0.97); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+  }
+  .modal-close{
+    position:absolute; top:18px; right:18px;
+    width:34px; height:34px; border-radius:50%;
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    color: var(--ink); font-size:16px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .modal-close:hover{ background: rgba(255,255,255,0.14); transform: rotate(90deg); }
+
+  .test-eyebrow{
+    font-size:11px; letter-spacing:0.25em; text-transform:uppercase;
+    color: var(--teal); margin-bottom:10px;
+  }
+  .test-progress{
+    display:flex; gap:6px; margin-bottom:22px;
+  }
+  .test-progress i{
+    flex:1; height:3px; border-radius:3px;
+    background: rgba(255,255,255,0.12);
+    overflow:hidden; position:relative;
+  }
+  .test-progress i.done{ background: linear-gradient(120deg, var(--teal), var(--hot)); }
+
+  .test-question{
+    font-family: var(--display-font);
+    font-weight:700;
+    font-size: clamp(20px, 3vw, 26px);
+    line-height:1.25;
+    margin-bottom:22px;
+  }
+  .test-options{ display:flex; flex-direction:column; gap:12px; }
+  .test-option{
+    text-align:left;
+    background: rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:14px;
+    padding:16px 18px;
+    color: var(--ink);
+    font-family: var(--body-font);
+    font-size:14.5px;
+    line-height:1.5;
+    cursor:pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  }
+  .test-option:hover{ border-color: var(--teal); background: rgba(41,240,208,0.08); transform: translateX(3px); }
+
+  .test-result-tag{
+    display:inline-block;
+    font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    padding:7px 14px; border-radius:999px;
+    background: rgba(255,255,255,0.08);
+    color: var(--teal);
+    margin-bottom:16px;
+  }
+  .test-result-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 34px);
+    margin-bottom:14px;
+    background: linear-gradient(120deg, var(--teal), var(--violet), var(--hot));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .test-result-desc{
+    color: var(--ink-dim); font-size:14.5px; line-height:1.65; margin-bottom:26px;
+  }
+  .test-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .test-restart{
+    background:transparent; border:1px solid rgba(255,255,255,0.2);
+    color: var(--ink-dim); border-radius:999px; padding:12px 20px;
+    font-size:13px; cursor:pointer; transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .test-restart:hover{ border-color: rgba(255,255,255,0.5); color: var(--ink); }
 </style>
 </head>
 <body>
@@ -225,10 +325,17 @@
     qui s'adapte à chaque mission. PMP, Agile, hybride : la forme suit le contexte.
   </p>
   <div class="cta-row">
-    <button class="btn btn-primary" onclick="sendPrompt('Je veux en savoir plus sur les missions Evolsphere')">Discuter d'un projet</button>
-    <button class="btn btn-ghost" onclick="sendPrompt('Montre-moi le Sprint stratégique Evolsphere')">Voir le Sprint stratégique</button>
+    <button class="btn btn-primary" id="openTestBtn">Faire le test de méthode</button>
+    <a class="btn btn-ghost" href="mailto:raphaeldebruijn@gmail.com?subject=Discutons%20d%27un%20projet">Contacter Evolsphere</a>
   </div>
 </main>
+
+<div class="modal-overlay" id="testModal">
+  <div class="modal-card" id="testCard">
+    <button class="modal-close" id="closeTestBtn">✕</button>
+    <!-- content injected by JS -->
+  </div>
+</div>
 
 <footer>
   <div class="tagline">Evolsphere — <b>structurer</b>, <b>exécuter</b>, <b>évoluer</b>.</div>
@@ -519,6 +626,123 @@
   if (typeof window.sendPrompt !== 'function') {
     window.sendPrompt = function(text){ console.log('sendPrompt:', text); };
   }
+
+  // ---------- METHOD TEST (PMP / Agile / Hybride) ----------
+  const questions = [
+    {
+      q: "Le périmètre de votre projet est-il déjà bien défini ?",
+      options: [
+        { label: "Oui, le cahier des charges est stable dès le départ.", score: { pmp: 2, agile: 0, hybride: 1 } },
+        { label: "Non, il va s'affiner au fur et à mesure.", score: { pmp: 0, agile: 2, hybride: 1 } },
+        { label: "En partie — le cadre est posé, les détails évoluent.", score: { pmp: 1, agile: 1, hybride: 2 } }
+      ]
+    },
+    {
+      q: "Quel niveau de reporting attend votre direction ?",
+      options: [
+        { label: "Un suivi formel, jalons et livrables documentés.", score: { pmp: 2, agile: 0, hybride: 1 } },
+        { label: "Des points courts et réguliers, priorité à l'avancement réel.", score: { pmp: 0, agile: 2, hybride: 1 } },
+        { label: "Un cadre rassurant pour la direction, souple pour l'équipe.", score: { pmp: 1, agile: 1, hybride: 2 } }
+      ]
+    },
+    {
+      q: "À quelle vitesse le contexte du projet peut-il changer ?",
+      options: [
+        { label: "Rarement — l'environnement est stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
+        { label: "Souvent — le marché ou les retours utilisateurs bougent vite.", score: { pmp: 0, agile: 2, hybride: 1 } },
+        { label: "Certaines parties bougent, d'autres non.", score: { pmp: 1, agile: 1, hybride: 2 } }
+      ]
+    }
+  ];
+
+  const results = {
+    pmp: {
+      tag: "Méthode recommandée",
+      title: "PMP",
+      desc: "Votre contexte demande de la prévisibilité : périmètre stable, jalons clairs, gouvernance solide. Le cadre PMP structure le projet de bout en bout et sécurise les décisions à chaque étape."
+    },
+    agile: {
+      tag: "Méthode recommandée",
+      title: "Agile",
+      desc: "Votre projet évolue vite et a besoin de s'adapter en continu. L'approche Agile priorise la valeur livrée rapidement, avec des itérations courtes et des ajustements permanents."
+    },
+    hybride: {
+      tag: "Méthode recommandée",
+      title: "Hybride",
+      desc: "Vous avez besoin des deux : une gouvernance qui rassure la direction, et une exécution assez souple pour s'adapter au terrain. Un cadre hybride combine les deux logiques sans sacrifier ni l'un ni l'autre."
+    }
+  };
+
+  let currentQ = 0;
+  const scores = { pmp: 0, agile: 0, hybride: 0 };
+  const testModal = document.getElementById('testModal');
+  const testCard = document.getElementById('testCard');
+  const closeTestBtn = document.getElementById('closeTestBtn');
+  const openTestBtn = document.getElementById('openTestBtn');
+
+  function renderQuestion(){
+    const item = questions[currentQ];
+    const progressDots = questions.map((_, i)=>`<i class="${i < currentQ ? 'done' : (i===currentQ ? 'done' : '')}"></i>`).join('');
+    testCard.innerHTML = `
+      <button class="modal-close" id="closeTestBtn">✕</button>
+      <div class="test-eyebrow">Test de méthode — question ${currentQ+1} / ${questions.length}</div>
+      <div class="test-progress">${progressDots}</div>
+      <div class="test-question">${item.q}</div>
+      <div class="test-options">
+        ${item.options.map((opt, i)=>`<button class="test-option" data-i="${i}">${opt.label}</button>`).join('')}
+      </div>
+    `;
+    testCard.querySelectorAll('.test-option').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const opt = item.options[parseInt(btn.dataset.i,10)];
+        scores.pmp += opt.score.pmp;
+        scores.agile += opt.score.agile;
+        scores.hybride += opt.score.hybride;
+        currentQ++;
+        if(currentQ < questions.length){
+          renderQuestion();
+        } else {
+          renderResult();
+        }
+      });
+    });
+    testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
+  }
+
+  function renderResult(){
+    let winner = 'hybride';
+    if(scores.pmp > scores.agile && scores.pmp > scores.hybride) winner = 'pmp';
+    else if(scores.agile > scores.pmp && scores.agile > scores.hybride) winner = 'agile';
+    const r = results[winner];
+    testCard.innerHTML = `
+      <button class="modal-close" id="closeTestBtn">✕</button>
+      <div class="test-result-tag">${r.tag}</div>
+      <div class="test-result-title">${r.title}</div>
+      <div class="test-result-desc">${r.desc}</div>
+      <div class="test-actions">
+        <a class="btn btn-primary" href="mailto:raphaeldebruijn@gmail.com?subject=Mon%20projet%20-%20profil%20${encodeURIComponent(r.title)}">En discuter avec Evolsphere</a>
+        <button class="btn btn-ghost test-restart" id="restartTestBtn">Refaire le test</button>
+      </div>
+    `;
+    testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
+    testCard.querySelector('#restartTestBtn').addEventListener('click', ()=>{
+      currentQ = 0; scores.pmp = 0; scores.agile = 0; scores.hybride = 0;
+      renderQuestion();
+    });
+  }
+
+  function openTest(){
+    currentQ = 0; scores.pmp = 0; scores.agile = 0; scores.hybride = 0;
+    renderQuestion();
+    testModal.classList.add('open');
+  }
+  function closeTest(){
+    testModal.classList.remove('open');
+  }
+
+  openTestBtn.addEventListener('click', openTest);
+  testModal.addEventListener('click', (e)=>{ if(e.target === testModal) closeTest(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeTest(); });
 })();
 </script>
 
