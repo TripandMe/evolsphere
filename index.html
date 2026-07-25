@@ -19,13 +19,17 @@
   }
   *{ margin:0; padding:0; box-sizing:border-box; }
   html,body{
-    width:100%; height:100%;
+    width:100%; min-height:100%;
     background: radial-gradient(130% 110% at 50% 0%, var(--bg-mid) 0%, var(--bg-deep) 65%);
-    overflow:hidden;
+    overflow-x:hidden;
     font-family: var(--body-font);
     color: var(--ink);
   }
-  #canvas-holder{ position:fixed; inset:0; z-index:1; }
+  body{
+    display:flex; flex-direction:column;
+    min-height:100vh; min-height:100dvh;
+  }
+  #canvas-holder{ position:fixed; inset:0; z-index:1; pointer-events:none; }
   canvas{ display:block; }
 
   .flash{
@@ -45,9 +49,10 @@
   }
 
   header{
-    position:fixed; top:0; left:0; right:0; z-index:5;
+    position:relative; z-index:5;
     display:flex; align-items:center; justify-content:space-between;
     padding: 30px 40px;
+    flex-shrink:0;
     opacity:0;
     animation: dropIn 0.7s 0.15s cubic-bezier(.16,1.4,.4,1) forwards;
   }
@@ -77,10 +82,33 @@
   }
   @keyframes dot{ 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
 
+  .header-right{ display:flex; align-items:center; gap:14px; }
+
+  .lang-switch{
+    display:flex; gap:4px;
+    background: rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:999px;
+    padding:3px;
+  }
+  .lang-btn{
+    font-family: var(--body-font);
+    font-size:11px; font-weight:700; letter-spacing:0.04em;
+    background:transparent; border:none; color: var(--ink-dim);
+    padding:7px 12px; border-radius:999px; cursor:pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .lang-btn.active{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color: #07040D;
+  }
+  .lang-btn:not(.active):hover{ color: var(--ink); }
+
   main{
-    position:fixed; inset:0; z-index:4;
+    position:relative; z-index:4;
+    flex:1;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding: 0 24px; pointer-events:none;
+    text-align:center; padding: 32px 24px; pointer-events:none;
   }
 
   .eyebrow{
@@ -156,9 +184,11 @@
   .btn-ghost:hover{ transform: translateY(-3px) scale(1.03); border-color: rgba(255,255,255,0.55); }
 
   footer{
-    position:fixed; bottom:0; left:0; right:0; z-index:5;
+    position:relative; z-index:5;
     display:flex; align-items:center; justify-content:space-between;
     padding: 28px 40px;
+    flex-shrink:0;
+    flex-wrap:wrap; gap:12px;
     opacity:0;
     animation: dropIn 0.7s 1.3s cubic-bezier(.16,1.4,.4,1) forwards;
   }
@@ -191,8 +221,17 @@
   }
 
   @media (max-width: 640px){
-    header, footer{ padding: 22px 20px; }
+    header, footer{ padding: 20px 20px; }
+    header{ flex-wrap:wrap; gap:10px; }
+    .header-right{ gap:8px; }
+    .badge{ display:none; }
     .tagline{ display:none; }
+    main{ padding: 24px 18px; }
+    h1{ font-size: clamp(34px, 10vw, 60px); }
+    p.sub{ font-size:14px; }
+    .modal-card{ padding: 28px 22px; }
+    .cta-row{ width:100%; }
+    .cta-row .btn{ flex:1 1 auto; text-align:center; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -301,6 +340,107 @@
     font-size:13px; cursor:pointer; transition: border-color 0.2s ease, color 0.2s ease;
   }
   .test-restart:hover{ border-color: rgba(255,255,255,0.5); color: var(--ink); }
+
+  /* ---- Stats / Offers / Final CTA (monetization sections) ---- */
+  .stats-section{
+    position:relative; z-index:4;
+    display:flex; justify-content:center; gap:60px; flex-wrap:wrap;
+    padding: 10px 24px 60px;
+    pointer-events:none;
+  }
+  .stat{ text-align:center; }
+  .stat-num{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(28px, 4vw, 40px);
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .stat-label{ font-size:12px; color: var(--ink-dim); margin-top:4px; letter-spacing:0.03em; }
+
+  .offers-section{
+    position:relative; z-index:4;
+    padding: 40px 24px 80px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  .offers-head{ text-align:center; margin-bottom:42px; }
+  .offers-eyebrow{
+    font-size:12px; letter-spacing:0.3em; text-transform:uppercase;
+    color: var(--teal); margin-bottom:12px;
+  }
+  .offers-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(28px, 4.5vw, 44px);
+    color: var(--ink);
+  }
+  .offers-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:22px;
+  }
+  .offer-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px;
+    padding: 30px 26px;
+    display:flex; flex-direction:column;
+    position:relative;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .offer-card:hover{ transform: translateY(-6px); border-color: rgba(255,255,255,0.32); }
+  .offer-card.featured{
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px rgba(41,240,208,0.25), 0 20px 50px rgba(41,240,208,0.12);
+  }
+  .offer-badge{
+    position:absolute; top:-13px; left:26px;
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color:#07040D; font-size:11px; font-weight:700;
+    padding:5px 12px; border-radius:999px; letter-spacing:0.03em;
+  }
+  .offer-name{
+    font-family: var(--display-font); font-weight:700;
+    font-size:20px; margin-bottom:8px; margin-top:6px;
+  }
+  .offer-price{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(22px, 2.6vw, 28px);
+    color: var(--teal);
+    margin-bottom:14px;
+  }
+  .offer-desc{
+    font-size:13.5px; color: var(--ink-dim); line-height:1.6; margin-bottom:22px; flex:1;
+  }
+  .offer-cta{
+    text-decoration:none; text-align:center;
+    font-family: var(--body-font); font-weight:700; font-size:13.5px;
+    padding:13px 18px; border-radius:999px;
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.2);
+    color: var(--ink);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .offer-card.featured .offer-cta{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color:#07040D; border:none;
+  }
+  .offer-cta:hover{ transform: translateY(-2px); }
+
+  .final-cta{
+    position:relative; z-index:4;
+    text-align:center;
+    padding: 60px 24px 90px;
+  }
+  .final-cta-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4.5vw, 42px);
+    margin-bottom:16px;
+    background: linear-gradient(120deg, var(--ink), var(--violet));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .final-cta-sub{ color: var(--ink-dim); margin-bottom:28px; font-size:14.5px; }
+
+  @media (max-width: 900px){
+    .offers-grid{ grid-template-columns: 1fr; }
+    .stats-section{ gap:34px; }
+  }
 </style>
 </head>
 <body>
@@ -311,24 +451,71 @@
 
 <header>
   <div class="logo">Evol<span>sphere</span></div>
-  <div class="badge">En mouvement</div>
+  <div class="header-right">
+    <div class="badge" data-i18n="badge">En mouvement</div>
+    <div class="lang-switch" id="langSwitch">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </div>
 </header>
 
 <main>
-  <div class="eyebrow">Conseil en gestion de projet</div>
+  <div class="eyebrow" data-i18n="eyebrow">Conseil en gestion de projet</div>
   <h1>
-    <span class="line"><span>Chaque projet</span></span>
-    <span class="line"><span>fait évoluer la forme.</span></span>
+    <span class="line"><span id="h1line1">Chaque projet</span></span>
+    <span class="line"><span id="h1line2">fait évoluer la forme.</span></span>
   </h1>
-  <p class="sub">
+  <p class="sub" data-i18n="sub">
     Une sphère qui pulse au rythme de la musique — comme une méthode
     qui s'adapte à chaque mission. PMP, Agile, hybride : la forme suit le contexte.
   </p>
   <div class="cta-row">
     <button class="btn btn-primary" id="openTestBtn">Faire le test de méthode</button>
-    <a class="btn btn-ghost" href="mailto:raphaeldebruijn@gmail.com?subject=Discutons%20d%27un%20projet">Contacter Evolsphere</a>
+    <a class="btn btn-ghost" id="contactBtnMain" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener">Contacter Evolsphere</a>
   </div>
 </main>
+
+<section class="stats-section">
+  <div class="stat"><div class="stat-num">8+</div><div class="stat-label" data-i18n="stat1">années d'expérience</div></div>
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label" data-i18n="stat2">missions menées</div></div>
+  <div class="stat"><div class="stat-num">98%</div><div class="stat-label" data-i18n="stat3">clients satisfaits</div></div>
+</section>
+
+<section class="offers-section">
+  <div class="offers-head">
+    <div class="offers-eyebrow" data-i18n="offersEyebrow">Nos offres</div>
+    <div class="offers-title" data-i18n="offersTitle">Une formule pour chaque étape</div>
+  </div>
+  <div class="offers-grid">
+    <div class="offer-card">
+      <div class="offer-name" data-i18n="offer1Name">Audit &amp; diagnostic</div>
+      <div class="offer-price" data-i18n="offer1Price">À partir de 890€</div>
+      <div class="offer-desc" data-i18n="offer1Desc">Un état des lieux clair de votre projet, avec des recommandations concrètes et actionnables sous 10 jours.</div>
+      <a class="offer-cta" data-i18n="offer1Cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Audit%20%26%20diagnostic" target="_blank" rel="noopener">Réserver un audit</a>
+    </div>
+    <div class="offer-card featured">
+      <div class="offer-badge" data-i18n="offer2Badge">Le plus demandé</div>
+      <div class="offer-name" data-i18n="offer2Name">Sprint stratégique</div>
+      <div class="offer-price" data-i18n="offer2Price">À partir de 2 400€</div>
+      <div class="offer-desc" data-i18n="offer2Desc">2 à 4 semaines pour structurer votre plan d'action et lancer réellement l'exécution — pas un rapport dans un tiroir.</div>
+      <a class="offer-cta" data-i18n="offer2Cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Sprint%20strat%C3%A9gique" target="_blank" rel="noopener">Réserver un sprint</a>
+    </div>
+    <div class="offer-card">
+      <div class="offer-name" data-i18n="offer3Name">Accompagnement continu</div>
+      <div class="offer-price" data-i18n="offer3Price">À partir de 1 200€/mois</div>
+      <div class="offer-desc" data-i18n="offer3Desc">Suivi mensuel et accès prioritaire pour sécuriser l'exécution dans la durée, avec des ajustements réguliers.</div>
+      <a class="offer-cta" data-i18n="offer3Cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Accompagnement%20continu" target="_blank" rel="noopener">Démarrer l'accompagnement</a>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="final-cta-title" data-i18n="finalTitle">Une idée qui traîne depuis trop longtemps ?</div>
+  <div class="final-cta-sub" data-i18n="finalSub">3 places disponibles ce trimestre — parlons-en avant qu'elles ne soient prises.</div>
+  <a class="btn btn-primary" id="finalCtaBtn" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener">Réserver un appel</a>
+</section>
 
 <div class="modal-overlay" id="testModal">
   <div class="modal-card" id="testCard">
@@ -338,7 +525,7 @@
 </div>
 
 <footer>
-  <div class="tagline">Evolsphere — <b>structurer</b>, <b>exécuter</b>, <b>évoluer</b>.</div>
+  <div class="tagline">Evolsphere — <b id="tagWord1">structurer</b>, <b id="tagWord2">exécuter</b>, <b id="tagWord3">évoluer</b>.</div>
   <div class="sound-toggle" id="soundToggle">
     <div class="bars"><i></i><i></i><i></i></div>
     <span id="soundLabel">Activer le son</span>
@@ -349,6 +536,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
 <script>
 (function(){
+try{
   // ---------- 3D SCENE ----------
   const holder = document.getElementById('canvas-holder');
   const scene = new THREE.Scene();
@@ -607,19 +795,265 @@
     audioLevel = 0;
   }
 
+  window.__evolStartAudio = startAudio;
+  window.__evolStopAudio = stopAudio;
+
+}catch(err){
+  console.error('Scène 3D/audio indisponible, l\'interface reste fonctionnelle:', err);
+}
+})();
+</script>
+
+<!--
+  Ce script est volontairement séparé et placé APRÈS les librairies 3D/audio
+  mais ne dépend d'AUCUNE des deux : le test de méthode, l'ouverture/fermeture
+  de la modale et le bouton son fonctionnent même si Three.js ou Tone.js
+  ne se chargent pas (CDN bloqué, réseau restrictif, etc.).
+-->
+<script>
+(function(){
+  let currentLang = 'fr';
+
+  // ---------- TRANSLATIONS (static UI copy) ----------
+  const translations = {
+    fr: {
+      badge: "En mouvement",
+      eyebrow: "Conseil en gestion de projet",
+      h1: ["Chaque projet", "fait évoluer la forme."],
+      sub: "Une sphère qui pulse au rythme de la musique — comme une méthode qui s'adapte à chaque mission. PMP, Agile, hybride : la forme suit le contexte.",
+      testBtn: "Faire le test de méthode",
+      contactBtn: "Contacter Evolsphere",
+      contactSubject: "Discutons d'un projet",
+      tagWords: ["structurer", "exécuter", "évoluer"],
+      soundOn: "Activer le son",
+      soundOff: "Couper le son",
+      stat1: "années d'expérience",
+      stat2: "missions menées",
+      stat3: "clients satisfaits",
+      offersEyebrow: "Nos offres",
+      offersTitle: "Une formule pour chaque étape",
+      offer1Name: "Audit & diagnostic",
+      offer1Price: "À partir de 890€",
+      offer1Desc: "Un état des lieux clair de votre projet, avec des recommandations concrètes et actionnables sous 10 jours.",
+      offer1Cta: "Réserver un audit",
+      offer2Badge: "Le plus demandé",
+      offer2Name: "Sprint stratégique",
+      offer2Price: "À partir de 2 400€",
+      offer2Desc: "2 à 4 semaines pour structurer votre plan d'action et lancer réellement l'exécution — pas un rapport dans un tiroir.",
+      offer2Cta: "Réserver un sprint",
+      offer3Name: "Accompagnement continu",
+      offer3Price: "À partir de 1 200€/mois",
+      offer3Desc: "Suivi mensuel et accès prioritaire pour sécuriser l'exécution dans la durée, avec des ajustements réguliers.",
+      offer3Cta: "Démarrer l'accompagnement",
+      finalTitle: "Une idée qui traîne depuis trop longtemps ?",
+      finalSub: "3 places disponibles ce trimestre — parlons-en avant qu'elles ne soient prises.",
+      finalCtaBtn: "Réserver un appel",
+      finalSubject: "Discutons d'un projet"
+    },
+    en: {
+      badge: "In motion",
+      eyebrow: "Project management consulting",
+      h1: ["Every project", "reshapes the form."],
+      sub: "A sphere that pulses to the music — like a method that adapts to every mission. PMP, Agile, hybrid: the form follows the context.",
+      testBtn: "Take the method test",
+      contactBtn: "Contact Evolsphere",
+      contactSubject: "Let's talk about a project",
+      tagWords: ["structure", "execute", "evolve"],
+      soundOn: "Turn on sound",
+      soundOff: "Mute sound",
+      stat1: "years of experience",
+      stat2: "projects delivered",
+      stat3: "satisfied clients",
+      offersEyebrow: "Our offers",
+      offersTitle: "A plan for every stage",
+      offer1Name: "Audit & diagnosis",
+      offer1Price: "From €890",
+      offer1Desc: "A clear assessment of your project, with concrete, actionable recommendations within 10 days.",
+      offer1Cta: "Book an audit",
+      offer2Badge: "Most requested",
+      offer2Name: "Strategic sprint",
+      offer2Price: "From €2,400",
+      offer2Desc: "2 to 4 weeks to structure your action plan and actually kick off execution — not a report in a drawer.",
+      offer2Cta: "Book a sprint",
+      offer3Name: "Ongoing support",
+      offer3Price: "From €1,200/month",
+      offer3Desc: "Monthly follow-up and priority access to secure execution over time, with regular adjustments.",
+      offer3Cta: "Start the support plan",
+      finalTitle: "Got an idea that's been sitting around too long?",
+      finalSub: "3 slots available this quarter — let's talk before they're gone.",
+      finalCtaBtn: "Book a call",
+      finalSubject: "Let's talk about a project"
+    },
+    es: {
+      badge: "En movimiento",
+      eyebrow: "Consultoría en gestión de proyectos",
+      h1: ["Cada proyecto", "hace evolucionar la forma."],
+      sub: "Una esfera que late al ritmo de la música — como un método que se adapta a cada misión. PMP, Ágil, híbrido: la forma sigue al contexto.",
+      testBtn: "Hacer el test de método",
+      contactBtn: "Contactar Evolsphere",
+      contactSubject: "Hablemos de un proyecto",
+      tagWords: ["estructurar", "ejecutar", "evolucionar"],
+      soundOn: "Activar sonido",
+      soundOff: "Silenciar sonido",
+      stat1: "años de experiencia",
+      stat2: "proyectos realizados",
+      stat3: "clientes satisfechos",
+      offersEyebrow: "Nuestras ofertas",
+      offersTitle: "Una fórmula para cada etapa",
+      offer1Name: "Auditoría y diagnóstico",
+      offer1Price: "Desde 890€",
+      offer1Desc: "Un diagnóstico claro de su proyecto, con recomendaciones concretas y accionables en 10 días.",
+      offer1Cta: "Reservar una auditoría",
+      offer2Badge: "Lo más solicitado",
+      offer2Name: "Sprint estratégico",
+      offer2Price: "Desde 2.400€",
+      offer2Desc: "2 a 4 semanas para estructurar su plan de acción y lanzar realmente la ejecución — no un informe en un cajón.",
+      offer2Cta: "Reservar un sprint",
+      offer3Name: "Acompañamiento continuo",
+      offer3Price: "Desde 1.200€/mes",
+      offer3Desc: "Seguimiento mensual y acceso prioritario para asegurar la ejecución en el tiempo, con ajustes regulares.",
+      offer3Cta: "Iniciar el acompañamiento",
+      finalTitle: "¿Una idea que lleva demasiado tiempo esperando?",
+      finalSub: "3 plazas disponibles este trimestre — hablemos antes de que se agoten.",
+      finalCtaBtn: "Reservar una llamada",
+      finalSubject: "Hablemos de un proyecto"
+    }
+  };
+
+  // ---------- QUIZ CONTENT PER LANGUAGE ----------
+  const quizData = {
+    fr: {
+      questions: [
+        {
+          q: "Le périmètre de votre projet est-il déjà bien défini ?",
+          options: [
+            { label: "Oui, le cahier des charges est stable dès le départ.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Non, il va s'affiner au fur et à mesure.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "En partie — le cadre est posé, les détails évoluent.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "Quel niveau de reporting attend votre direction ?",
+          options: [
+            { label: "Un suivi formel, jalons et livrables documentés.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Des points courts et réguliers, priorité à l'avancement réel.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Un cadre rassurant pour la direction, souple pour l'équipe.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "À quelle vitesse le contexte du projet peut-il changer ?",
+          options: [
+            { label: "Rarement — l'environnement est stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Souvent — le marché ou les retours utilisateurs bougent vite.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Certaines parties bougent, d'autres non.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        }
+      ],
+      results: {
+        pmp: { tag: "Méthode recommandée", title: "PMP", desc: "Votre contexte demande de la prévisibilité : périmètre stable, jalons clairs, gouvernance solide. Le cadre PMP structure le projet de bout en bout et sécurise les décisions à chaque étape." },
+        agile: { tag: "Méthode recommandée", title: "Agile", desc: "Votre projet évolue vite et a besoin de s'adapter en continu. L'approche Agile priorise la valeur livrée rapidement, avec des itérations courtes et des ajustements permanents." },
+        hybride: { tag: "Méthode recommandée", title: "Hybride", desc: "Vous avez besoin des deux : une gouvernance qui rassure la direction, et une exécution assez souple pour s'adapter au terrain. Un cadre hybride combine les deux logiques sans sacrifier ni l'un ni l'autre." }
+      },
+      questionLabel: (i,n)=>`Test de méthode — question ${i} / ${n}`,
+      resultCta: (title)=>`Mon projet - profil ${title}`,
+      discussBtn: "En discuter avec Evolsphere",
+      restartBtn: "Refaire le test"
+    },
+    en: {
+      questions: [
+        {
+          q: "Is your project's scope already clearly defined?",
+          options: [
+            { label: "Yes, the specifications are stable from the start.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "No, it will get refined along the way.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Partly — the frame is set, details keep evolving.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "What level of reporting does your leadership expect?",
+          options: [
+            { label: "Formal tracking, documented milestones and deliverables.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Short, regular check-ins, focused on real progress.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "A reassuring frame for leadership, flexible for the team.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "How fast can the project's context change?",
+          options: [
+            { label: "Rarely — the environment is stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Often — the market or user feedback moves fast.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Some parts move, others don't.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        }
+      ],
+      results: {
+        pmp: { tag: "Recommended method", title: "PMP", desc: "Your context calls for predictability: stable scope, clear milestones, solid governance. The PMP framework structures the project end to end and secures decisions at every stage." },
+        agile: { tag: "Recommended method", title: "Agile", desc: "Your project moves fast and needs to adapt continuously. Agile prioritizes delivering value quickly, with short iterations and constant adjustments." },
+        hybride: { tag: "Recommended method", title: "Hybrid", desc: "You need both: governance that reassures leadership, and execution flexible enough to adapt on the ground. A hybrid framework combines both logics without sacrificing either." }
+      },
+      questionLabel: (i,n)=>`Method test — question ${i} / ${n}`,
+      resultCta: (title)=>`My project - ${title} profile`,
+      discussBtn: "Discuss it with Evolsphere",
+      restartBtn: "Retake the test"
+    },
+    es: {
+      questions: [
+        {
+          q: "¿El alcance de su proyecto ya está bien definido?",
+          options: [
+            { label: "Sí, el pliego de condiciones es estable desde el inicio.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "No, se irá afinando sobre la marcha.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "En parte — el marco está fijado, los detalles evolucionan.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "¿Qué nivel de reporte espera su dirección?",
+          options: [
+            { label: "Seguimiento formal, hitos y entregables documentados.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Puntos cortos y regulares, prioridad al avance real.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Un marco tranquilizador para la dirección, flexible para el equipo.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "¿Con qué rapidez puede cambiar el contexto del proyecto?",
+          options: [
+            { label: "Raramente — el entorno es estable.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "A menudo — el mercado o los usuarios cambian rápido.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Algunas partes cambian, otras no.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        }
+      ],
+      results: {
+        pmp: { tag: "Método recomendado", title: "PMP", desc: "Su contexto requiere previsibilidad: alcance estable, hitos claros, gobernanza sólida. El marco PMP estructura el proyecto de principio a fin y asegura las decisiones en cada etapa." },
+        agile: { tag: "Método recomendado", title: "Ágil", desc: "Su proyecto evoluciona rápido y necesita adaptarse continuamente. El enfoque Ágil prioriza entregar valor rápidamente, con iteraciones cortas y ajustes constantes." },
+        hybride: { tag: "Método recomendado", title: "Híbrido", desc: "Necesita ambas cosas: una gobernanza que tranquilice a la dirección, y una ejecución lo bastante flexible para adaptarse al terreno. Un marco híbrido combina ambas lógicas sin sacrificar ninguna." }
+      },
+      questionLabel: (i,n)=>`Test de método — pregunta ${i} / ${n}`,
+      resultCta: (title)=>`Mi proyecto - perfil ${title}`,
+      discussBtn: "Hablarlo con Evolsphere",
+      restartBtn: "Repetir el test"
+    }
+  };
+
+  // ---------- SOUND TOGGLE (UI only, dégrade proprement si l'audio n'est pas dispo) ----------
   const toggle = document.getElementById('soundToggle');
   const label = document.getElementById('soundLabel');
   let isOn = false;
   toggle.addEventListener('click', async ()=>{
     isOn = !isOn;
+    const t = translations[currentLang];
     if(isOn){
-      await startAudio();
       toggle.classList.add('sound-on');
-      label.textContent = 'Couper le son';
+      label.textContent = t.soundOff;
+      try{
+        if(typeof window.__evolStartAudio === 'function'){ await window.__evolStartAudio(); }
+      }catch(e){ console.error('Audio indisponible:', e); }
     } else {
-      stopAudio();
       toggle.classList.remove('sound-on');
-      label.textContent = 'Activer le son';
+      label.textContent = t.soundOn;
+      try{
+        if(typeof window.__evolStopAudio === 'function'){ window.__evolStopAudio(); }
+      }catch(e){ console.error(e); }
     }
   });
 
@@ -628,64 +1062,19 @@
   }
 
   // ---------- METHOD TEST (PMP / Agile / Hybride) ----------
-  const questions = [
-    {
-      q: "Le périmètre de votre projet est-il déjà bien défini ?",
-      options: [
-        { label: "Oui, le cahier des charges est stable dès le départ.", score: { pmp: 2, agile: 0, hybride: 1 } },
-        { label: "Non, il va s'affiner au fur et à mesure.", score: { pmp: 0, agile: 2, hybride: 1 } },
-        { label: "En partie — le cadre est posé, les détails évoluent.", score: { pmp: 1, agile: 1, hybride: 2 } }
-      ]
-    },
-    {
-      q: "Quel niveau de reporting attend votre direction ?",
-      options: [
-        { label: "Un suivi formel, jalons et livrables documentés.", score: { pmp: 2, agile: 0, hybride: 1 } },
-        { label: "Des points courts et réguliers, priorité à l'avancement réel.", score: { pmp: 0, agile: 2, hybride: 1 } },
-        { label: "Un cadre rassurant pour la direction, souple pour l'équipe.", score: { pmp: 1, agile: 1, hybride: 2 } }
-      ]
-    },
-    {
-      q: "À quelle vitesse le contexte du projet peut-il changer ?",
-      options: [
-        { label: "Rarement — l'environnement est stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
-        { label: "Souvent — le marché ou les retours utilisateurs bougent vite.", score: { pmp: 0, agile: 2, hybride: 1 } },
-        { label: "Certaines parties bougent, d'autres non.", score: { pmp: 1, agile: 1, hybride: 2 } }
-      ]
-    }
-  ];
-
-  const results = {
-    pmp: {
-      tag: "Méthode recommandée",
-      title: "PMP",
-      desc: "Votre contexte demande de la prévisibilité : périmètre stable, jalons clairs, gouvernance solide. Le cadre PMP structure le projet de bout en bout et sécurise les décisions à chaque étape."
-    },
-    agile: {
-      tag: "Méthode recommandée",
-      title: "Agile",
-      desc: "Votre projet évolue vite et a besoin de s'adapter en continu. L'approche Agile priorise la valeur livrée rapidement, avec des itérations courtes et des ajustements permanents."
-    },
-    hybride: {
-      tag: "Méthode recommandée",
-      title: "Hybride",
-      desc: "Vous avez besoin des deux : une gouvernance qui rassure la direction, et une exécution assez souple pour s'adapter au terrain. Un cadre hybride combine les deux logiques sans sacrifier ni l'un ni l'autre."
-    }
-  };
-
   let currentQ = 0;
   const scores = { pmp: 0, agile: 0, hybride: 0 };
   const testModal = document.getElementById('testModal');
   const testCard = document.getElementById('testCard');
-  const closeTestBtn = document.getElementById('closeTestBtn');
   const openTestBtn = document.getElementById('openTestBtn');
 
   function renderQuestion(){
-    const item = questions[currentQ];
-    const progressDots = questions.map((_, i)=>`<i class="${i < currentQ ? 'done' : (i===currentQ ? 'done' : '')}"></i>`).join('');
+    const qd = quizData[currentLang];
+    const item = qd.questions[currentQ];
+    const progressDots = qd.questions.map((_, i)=>`<i class="${i <= currentQ ? 'done' : ''}"></i>`).join('');
     testCard.innerHTML = `
       <button class="modal-close" id="closeTestBtn">✕</button>
-      <div class="test-eyebrow">Test de méthode — question ${currentQ+1} / ${questions.length}</div>
+      <div class="test-eyebrow">${qd.questionLabel(currentQ+1, qd.questions.length)}</div>
       <div class="test-progress">${progressDots}</div>
       <div class="test-question">${item.q}</div>
       <div class="test-options">
@@ -699,7 +1088,7 @@
         scores.agile += opt.score.agile;
         scores.hybride += opt.score.hybride;
         currentQ++;
-        if(currentQ < questions.length){
+        if(currentQ < qd.questions.length){
           renderQuestion();
         } else {
           renderResult();
@@ -710,18 +1099,19 @@
   }
 
   function renderResult(){
+    const qd = quizData[currentLang];
     let winner = 'hybride';
     if(scores.pmp > scores.agile && scores.pmp > scores.hybride) winner = 'pmp';
     else if(scores.agile > scores.pmp && scores.agile > scores.hybride) winner = 'agile';
-    const r = results[winner];
+    const r = qd.results[winner];
     testCard.innerHTML = `
       <button class="modal-close" id="closeTestBtn">✕</button>
       <div class="test-result-tag">${r.tag}</div>
       <div class="test-result-title">${r.title}</div>
       <div class="test-result-desc">${r.desc}</div>
       <div class="test-actions">
-        <a class="btn btn-primary" href="mailto:raphaeldebruijn@gmail.com?subject=Mon%20projet%20-%20profil%20${encodeURIComponent(r.title)}">En discuter avec Evolsphere</a>
-        <button class="btn btn-ghost test-restart" id="restartTestBtn">Refaire le test</button>
+        <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(qd.resultCta(r.title))}" target="_blank" rel="noopener">${qd.discussBtn}</a>
+        <button class="btn btn-ghost test-restart" id="restartTestBtn">${qd.restartBtn}</button>
       </div>
     `;
     testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
@@ -743,6 +1133,65 @@
   openTestBtn.addEventListener('click', openTest);
   testModal.addEventListener('click', (e)=>{ if(e.target === testModal) closeTest(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeTest(); });
+
+  // ---------- LANGUAGE SWITCH ----------
+  const contactBtnMain = document.getElementById('contactBtnMain');
+
+  function applyLanguage(lang){
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const t = translations[lang];
+
+    document.querySelector('[data-i18n="badge"]').textContent = t.badge;
+    document.querySelector('[data-i18n="eyebrow"]').textContent = t.eyebrow;
+    document.getElementById('h1line1').textContent = t.h1[0];
+    document.getElementById('h1line2').textContent = t.h1[1];
+    document.querySelector('[data-i18n="sub"]').textContent = t.sub;
+    openTestBtn.textContent = t.testBtn;
+    contactBtnMain.textContent = t.contactBtn;
+    contactBtnMain.href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.contactSubject)}`;
+    document.getElementById('tagWord1').textContent = t.tagWords[0];
+    document.getElementById('tagWord2').textContent = t.tagWords[1];
+    document.getElementById('tagWord3').textContent = t.tagWords[2];
+    label.textContent = isOn ? t.soundOff : t.soundOn;
+
+    document.querySelector('[data-i18n="stat1"]').textContent = t.stat1;
+    document.querySelector('[data-i18n="stat2"]').textContent = t.stat2;
+    document.querySelector('[data-i18n="stat3"]').textContent = t.stat3;
+    document.querySelector('[data-i18n="offersEyebrow"]').textContent = t.offersEyebrow;
+    document.querySelector('[data-i18n="offersTitle"]').textContent = t.offersTitle;
+    document.querySelector('[data-i18n="offer1Name"]').textContent = t.offer1Name;
+    document.querySelector('[data-i18n="offer1Price"]').textContent = t.offer1Price;
+    document.querySelector('[data-i18n="offer1Desc"]').textContent = t.offer1Desc;
+    document.querySelector('[data-i18n="offer1Cta"]').textContent = t.offer1Cta;
+    document.querySelector('[data-i18n="offer2Badge"]').textContent = t.offer2Badge;
+    document.querySelector('[data-i18n="offer2Name"]').textContent = t.offer2Name;
+    document.querySelector('[data-i18n="offer2Price"]').textContent = t.offer2Price;
+    document.querySelector('[data-i18n="offer2Desc"]').textContent = t.offer2Desc;
+    document.querySelector('[data-i18n="offer2Cta"]').textContent = t.offer2Cta;
+    document.querySelector('[data-i18n="offer3Name"]').textContent = t.offer3Name;
+    document.querySelector('[data-i18n="offer3Price"]').textContent = t.offer3Price;
+    document.querySelector('[data-i18n="offer3Desc"]').textContent = t.offer3Desc;
+    document.querySelector('[data-i18n="offer3Cta"]').textContent = t.offer3Cta;
+    document.querySelector('[data-i18n="finalTitle"]').textContent = t.finalTitle;
+    document.querySelector('[data-i18n="finalSub"]').textContent = t.finalSub;
+    document.getElementById('finalCtaBtn').textContent = t.finalCtaBtn;
+    document.getElementById('finalCtaBtn').href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.finalSubject)}`;
+
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+
+    // reset quiz state so questions/results don't mix languages mid-flow
+    currentQ = 0; scores.pmp = 0; scores.agile = 0; scores.hybride = 0;
+    if(testModal.classList.contains('open')){
+      renderQuestion();
+    }
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
 })();
 </script>
 
