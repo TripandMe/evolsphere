@@ -3,7 +3,52 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Evolsphere — La sphère qui évolue</title>
+<title>Evolsphere — Conseil en gestion de projet PMP, Agile & SAP pour dirigeants</title>
+<meta name="description" content="Evolsphere accompagne les dirigeants sur leurs projets critiques : SAP FI/CO, WMS, achats, finance, organisation, management. Gouvernance PMP, Agile ou hybride, 8+ ans d'expérience, 100+ projets menés." />
+<meta name="keywords" content="gestion de projet, PMP, Agile, méthode hybride, consultant SAP, WMS, achats, finance, organisation, management, pilotage de projet, transformation, PMO" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Evolsphere" />
+<link rel="canonical" href="https://evolsphere.com/" />
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://evolsphere.com/" />
+<meta property="og:title" content="Evolsphere — Moins de risque. Plus de résultats." />
+<meta property="og:description" content="Conseil en gestion de projet pour dirigeants : SAP FI/CO, WMS, achats, transformation groupe. PMP, Agile ou hybride — 100+ projets menés, 8+ ans d'expérience." />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta property="og:site_name" content="Evolsphere" />
+<meta property="og:image" content="https://evolsphere.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Evolsphere — Moins de risque. Plus de résultats." />
+<meta name="twitter:description" content="Conseil en gestion de projet pour dirigeants : SAP FI/CO, WMS, achats, transformation groupe. PMP, Agile ou hybride." />
+<meta name="twitter:image" content="https://evolsphere.com/og-image.png" />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Evolsphere",
+  "description": "Conseil en gestion de projet pour dirigeants : gouvernance PMP, Agile et hybride, SAP FI/CO, WMS, achats, transformation groupe.",
+  "url": "https://evolsphere.com/",
+  "email": "raphaeldebruijn@gmail.com",
+  "priceRange": "€€",
+  "areaServed": "FR",
+  "knowsAbout": ["Gestion de projet", "PMP", "Agile", "SAP FI/CO", "WMS", "Achats", "Finance", "Organisation", "Management", "Transformation groupe", "PMO"],
+  "makesOffer": [
+    { "@type": "Offer", "name": "Diagnostic stratégique", "price": "890", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "Sprint stratégique", "price": "2400", "priceCurrency": "EUR" },
+    { "@type": "Offer", "name": "Pilotage exécutif continu", "price": "1200", "priceCurrency": "EUR", "priceSpecification": { "@type": "UnitPriceSpecification", "billingIncrement": 1, "unitCode": "MON" } }
+  ]
+}
+</script>
+
 <style>
   :root{
     --bg-deep: #07040D;
@@ -234,6 +279,36 @@
     .cta-row .btn{ flex:1 1 auto; text-align:center; }
   }
 
+  .cta-note{
+    margin-top:16px;
+    font-size:12.5px;
+    color: var(--ink-dim);
+    pointer-events:none;
+    opacity:0;
+    animation: dropIn 0.7s 1.3s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+
+  .expertise-chips{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+    margin-top:22px; max-width:520px;
+    pointer-events:none;
+    opacity:0;
+    animation: dropIn 0.7s 1.05s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+  .chip{
+    font-size:11.5px; font-weight:600; letter-spacing:0.02em;
+    color: var(--ink-dim);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:999px;
+    padding:6px 13px;
+    background: rgba(255,255,255,0.03);
+  }
+  .final-cta-note{
+    margin-top:14px;
+    font-size:12.5px;
+    color: var(--ink-dim);
+  }
+
   @media (prefers-reduced-motion: reduce){
     .bars i{ animation: none !important; }
     h1 .line span{ animation: none !important; transform:none !important; opacity:1 !important; }
@@ -441,6 +516,91 @@
     .offers-grid{ grid-template-columns: 1fr; }
     .stats-section{ gap:34px; }
   }
+
+  /* ---- Process section ---- */
+  .process-section{
+    position:relative; z-index:4;
+    padding: 20px 24px 70px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  .process-head{ text-align:center; margin-bottom:40px; }
+  .process-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .process-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:24px;
+  }
+  .process-step{ position:relative; padding: 6px 8px; }
+  .step-num{
+    font-family: var(--display-font); font-weight:800;
+    font-size:15px; color: var(--teal);
+    border:1px solid rgba(41,240,208,0.35);
+    width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .step-title{ font-family: var(--display-font); font-weight:700; font-size:17px; margin-bottom:8px; }
+  .step-desc{ font-size:13.5px; color: var(--ink-dim); line-height:1.6; }
+
+  /* ---- FAQ section ---- */
+  .faq-section{
+    position:relative; z-index:4;
+    padding: 20px 24px 80px;
+    max-width: 760px; margin: 0 auto;
+  }
+  .faq-head{ text-align:center; margin-bottom:34px; }
+  .faq-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .faq-item{
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .faq-question{
+    width:100%; text-align:left; background:transparent; border:none;
+    color: var(--ink); font-family: var(--body-font); font-weight:600; font-size:15.5px;
+    padding: 20px 4px; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .faq-question .icon{
+    flex-shrink:0; width:22px; height:22px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:1px solid rgba(255,255,255,0.24);
+    font-size:14px; color: var(--teal);
+    transition: transform 0.25s ease;
+  }
+  .faq-item.open .faq-question .icon{ transform: rotate(45deg); }
+  .faq-answer{
+    max-height:0; overflow:hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--ink-dim); font-size:14px; line-height:1.65;
+  }
+  .faq-item.open .faq-answer{ max-height:220px; padding-bottom:20px; }
+
+  /* ---- Sticky CTA bar ---- */
+  .sticky-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:15;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding: 14px 28px;
+    background: rgba(10,6,18,0.92);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.14);
+    transform: translateY(120%);
+    transition: transform 0.35s cubic-bezier(.16,1,.3,1);
+  }
+  .sticky-cta.visible{ transform: translateY(0); }
+  .sticky-cta-text{
+    font-size:14px; font-weight:600; color: var(--ink);
+  }
+  .sticky-cta-text span{ display:block; font-size:12px; font-weight:400; color: var(--ink-dim); margin-top:2px; }
+  .sticky-cta .btn{ flex-shrink:0; padding:12px 22px; font-size:13.5px; }
+
+  @media (max-width: 640px){
+    .process-grid{ grid-template-columns: 1fr; gap:28px; }
+    .sticky-cta{ padding:12px 16px; }
+    .sticky-cta-text span{ display:none; }
+  }
 </style>
 </head>
 <body>
@@ -468,42 +628,52 @@
     <span class="line"><span id="h1line2">Plus de résultats.</span></span>
   </h1>
   <p class="sub" data-i18n="sub">
-    Evolsphere pilote vos projets critiques avec la rigueur d'un comité de direction
-    et l'agilité du terrain. Aucun dérapage. Aucune surprise.
+    Evolsphere pilote vos projets critiques — SAP FI/CO, WMS, achats, finance, organisation, management —
+    avec la rigueur d'un comité de direction et l'agilité du terrain. Aucun dérapage. Aucune surprise.
   </p>
+  <div class="expertise-chips">
+    <span class="chip">SAP FI/CO</span>
+    <span class="chip">WMS</span>
+    <span class="chip" data-i18n="chipAchats">Achats</span>
+    <span class="chip">Finance</span>
+    <span class="chip" data-i18n="chipOrga">Organisation</span>
+    <span class="chip">Management</span>
+    <span class="chip">PMO</span>
+  </div>
   <div class="cta-row">
     <button class="btn btn-primary" id="openTestBtn">Diagnostiquer mon risque projet</button>
     <a class="btn btn-ghost" id="contactBtnMain" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener">Réserver 15 min</a>
   </div>
+  <div class="cta-note" data-i18n="ctaNote">Réponse personnelle sous 24h — pas de standard, pas de formulaire perdu.</div>
 </main>
 
 <section class="stats-section">
   <div class="stat"><div class="stat-num">8+</div><div class="stat-label" data-i18n="stat1">ans à sécuriser des projets critiques</div></div>
-  <div class="stat"><div class="stat-num">40+</div><div class="stat-label" data-i18n="stat2">projets livrés sans dérapage</div></div>
-  <div class="stat"><div class="stat-num">98%</div><div class="stat-label" data-i18n="stat3">satisfaction client</div></div>
+  <div class="stat"><div class="stat-num">100+</div><div class="stat-label" data-i18n="stat2">projets menés : SAP, WMS, achats, pilotage groupe</div></div>
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label" data-i18n="stat3">personnes pilotées en équipe projet</div></div>
 </section>
 
 <section class="offers-section">
   <div class="offers-head">
     <div class="offers-eyebrow" data-i18n="offersEyebrow">Nos engagements</div>
-    <div class="offers-title" data-i18n="offersTitle">Un niveau de gouvernance pour chaque enjeu</div>
+    <h2 class="offers-title" data-i18n="offersTitle">Un niveau de gouvernance pour chaque enjeu</h2>
   </div>
   <div class="offers-grid">
     <div class="offer-card">
-      <div class="offer-name" data-i18n="offer1Name">Diagnostic stratégique</div>
+      <h3 class="offer-name" data-i18n="offer1Name">Diagnostic stratégique</h3>
       <div class="offer-price" data-i18n="offer1Price">À partir de 890€</div>
       <div class="offer-desc" data-i18n="offer1Desc">Vos risques, cartographiés en 10 jours. Net, sans filtre.</div>
       <a class="offer-cta" data-i18n="offer1Cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Diagnostic%20strat%C3%A9gique" target="_blank" rel="noopener">Réserver un diagnostic</a>
     </div>
     <div class="offer-card featured">
       <div class="offer-badge" data-i18n="offer2Badge">Le choix des dirigeants pressés</div>
-      <div class="offer-name" data-i18n="offer2Name">Sprint stratégique</div>
+      <h3 class="offer-name" data-i18n="offer2Name">Sprint stratégique</h3>
       <div class="offer-price" data-i18n="offer2Price">À partir de 2 400€</div>
       <div class="offer-desc" data-i18n="offer2Desc">Votre plan d'action, structuré et lancé en 2 à 4 semaines. Fin des réunions inutiles.</div>
       <a class="offer-cta" data-i18n="offer2Cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Sprint%20strat%C3%A9gique" target="_blank" rel="noopener">Réserver un sprint</a>
     </div>
     <div class="offer-card">
-      <div class="offer-name" data-i18n="offer3Name">Pilotage exécutif continu</div>
+      <h3 class="offer-name" data-i18n="offer3Name">Pilotage exécutif continu</h3>
       <div class="offer-price" data-i18n="offer3Price">À partir de 1 200€/mois</div>
       <div class="offer-desc" data-i18n="offer3Desc">Un pilote à vos côtés chaque mois. Zéro dérive, zéro surprise.</div>
       <a class="offer-cta" data-i18n="offer3Cta" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Pilotage%20ex%C3%A9cutif%20continu" target="_blank" rel="noopener">Démarrer le pilotage</a>
@@ -511,10 +681,56 @@
   </div>
 </section>
 
+<section class="process-section">
+  <div class="process-head">
+    <h2 class="process-title" data-i18n="processTitle">Comment ça se passe, concrètement</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-title" data-i18n="step1Title">Vous écrivez</div>
+      <div class="step-desc" data-i18n="step1Desc">Un mail direct, 2 lignes suffisent. Pas de formulaire à rallonge, pas de standard.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-title" data-i18n="step2Title">On cadre en 15 minutes</div>
+      <div class="step-desc" data-i18n="step2Desc">Un appel court pour comprendre l'enjeu réel et vous dire honnêtement si je peux aider.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-title" data-i18n="step3Title">L'exécution démarre</div>
+      <div class="step-desc" data-i18n="step3Desc">Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher.</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="faq-head">
+    <h2 class="faq-title" data-i18n="faqTitle">Questions fréquentes</h2>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq1Q">C'est cher pour un audit de 10 jours ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq1A">Un audit mal fait coûte plus cher qu'un projet qui dérape sur 6 mois. Le diagnostic sert à décider vite, avec les vrais risques sur la table — pas à occuper du temps.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq2Q">Pourquoi vous plutôt qu'un grand cabinet de conseil ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq2A">Pas d'équipe junior facturée au prix senior, pas de rapport de 80 pages. Vous parlez directement à la personne qui a mené les 100+ projets — du diagnostic à l'exécution.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq3Q">Et si mon projet ne rentre dans aucune des 3 offres ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq3A">On en discute 15 minutes, sans engagement. Si je ne suis pas le bon interlocuteur, je vous le dis directement — et si possible, je vous oriente vers quelqu'un qui l'est.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq4Q">Combien de temps avant de voir des résultats ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq4A">Le diagnostic stratégique livre des recommandations actionnables en 10 jours. Le sprint stratégique lance l'exécution en 2 à 4 semaines. Rien ne traîne.</div>
+  </div>
+</section>
+
 <section class="final-cta">
-  <div class="final-cta-title" data-i18n="finalTitle">Le vrai risque, c'est de ne rien faire.</div>
+  <h2 class="final-cta-title" data-i18n="finalTitle">Le vrai risque, c'est de ne rien faire.</h2>
   <div class="final-cta-sub" data-i18n="finalSub">3 créneaux dirigeants ce trimestre. Après, liste d'attente.</div>
   <a class="btn btn-primary" id="finalCtaBtn" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener">Je réserve mon créneau</a>
+  <div class="final-cta-note" data-i18n="finalCtaNote">Écrivez directement — je réponds personnellement, généralement le jour même.</div>
 </section>
 
 <div class="modal-overlay" id="testModal">
@@ -525,12 +741,20 @@
 </div>
 
 <footer>
-  <div class="tagline">Evolsphere — <b id="tagWord1">structurer</b>, <b id="tagWord2">sécuriser</b>, <b id="tagWord3">livrer</b>.</div>
+  <div class="tagline">Evolsphere — <b id="tagWord1">structurer</b>, <b id="tagWord2">sécuriser</b>, <b id="tagWord3">livrer</b>. <span id="copyrightYear" style="opacity:0.55;">© 2026</span></div>
   <div class="sound-toggle" id="soundToggle">
     <div class="bars"><i></i><i></i><i></i></div>
     <span id="soundLabel">Activer le son</span>
   </div>
 </footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text">
+    <span data-i18n="stickyMain">Moins de risque. Plus de résultats.</span>
+    <span data-i18n="stickySub">Réponse personnelle sous 24h.</span>
+  </div>
+  <a class="btn btn-primary" id="stickyCtaBtn" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener" data-i18n="stickyBtn">Réserver 15 min</a>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
@@ -817,10 +1041,14 @@ try{
   // ---------- TRANSLATIONS (static UI copy) ----------
   const translations = {
     fr: {
+      pageTitle: "Evolsphere — Conseil en gestion de projet PMP, Agile & SAP pour dirigeants",
+      metaDescription: "Evolsphere accompagne les dirigeants sur leurs projets critiques : SAP FI/CO, WMS, achats, transformation groupe. Gouvernance PMP, Agile ou hybride.",
       badge: "Accès dirigeants limité",
       eyebrow: "Gouvernance de projet pour dirigeants",
       h1: ["Moins de risque.", "Plus de résultats."],
-      sub: "Evolsphere pilote vos projets critiques avec la rigueur d'un comité de direction et l'agilité du terrain. Aucun dérapage. Aucune surprise.",
+      sub: "Evolsphere pilote vos projets critiques — SAP FI/CO, WMS, achats, finance, organisation, management — avec la rigueur d'un comité de direction et l'agilité du terrain. Aucun dérapage. Aucune surprise.",
+      chipAchats: "Achats",
+      chipOrga: "Organisation",
       testBtn: "Diagnostiquer mon risque projet",
       contactBtn: "Réserver 15 min",
       contactSubject: "Discutons d'un projet",
@@ -828,8 +1056,8 @@ try{
       soundOn: "Activer le son",
       soundOff: "Couper le son",
       stat1: "ans à sécuriser des projets critiques",
-      stat2: "projets livrés sans dérapage",
-      stat3: "satisfaction client",
+      stat2: "projets menés : SAP, WMS, achats, pilotage groupe",
+      stat3: "personnes pilotées en équipe projet",
       offersEyebrow: "Nos engagements",
       offersTitle: "Un niveau de gouvernance pour chaque enjeu",
       offer1Name: "Diagnostic stratégique",
@@ -848,13 +1076,38 @@ try{
       finalTitle: "Le vrai risque, c'est de ne rien faire.",
       finalSub: "3 créneaux dirigeants ce trimestre. Après, liste d'attente.",
       finalCtaBtn: "Je réserve mon créneau",
-      finalSubject: "Discutons d'un projet"
+      finalSubject: "Discutons d'un projet",
+      ctaNote: "Réponse personnelle sous 24h — pas de standard, pas de formulaire perdu.",
+      finalCtaNote: "Écrivez directement — je réponds personnellement, généralement le jour même.",
+      processTitle: "Comment ça se passe, concrètement",
+      step1Title: "Vous écrivez",
+      step1Desc: "Un mail direct, 2 lignes suffisent. Pas de formulaire à rallonge, pas de standard.",
+      step2Title: "On cadre en 15 minutes",
+      step2Desc: "Un appel court pour comprendre l'enjeu réel et vous dire honnêtement si je peux aider.",
+      step3Title: "L'exécution démarre",
+      step3Desc: "Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher.",
+      faqTitle: "Questions fréquentes",
+      faq1Q: "C'est cher pour un audit de 10 jours ?",
+      faq1A: "Un audit mal fait coûte plus cher qu'un projet qui dérape sur 6 mois. Le diagnostic sert à décider vite, avec les vrais risques sur la table — pas à occuper du temps.",
+      faq2Q: "Pourquoi vous plutôt qu'un grand cabinet de conseil ?",
+      faq2A: "Pas d'équipe junior facturée au prix senior, pas de rapport de 80 pages. Vous parlez directement à la personne qui a mené les 100+ projets — du diagnostic à l'exécution.",
+      faq3Q: "Et si mon projet ne rentre dans aucune des 3 offres ?",
+      faq3A: "On en discute 15 minutes, sans engagement. Si je ne suis pas le bon interlocuteur, je vous le dis directement — et si possible, je vous oriente vers quelqu'un qui l'est.",
+      faq4Q: "Combien de temps avant de voir des résultats ?",
+      faq4A: "Le diagnostic stratégique livre des recommandations actionnables en 10 jours. Le sprint stratégique lance l'exécution en 2 à 4 semaines. Rien ne traîne.",
+      stickyMain: "Moins de risque. Plus de résultats.",
+      stickySub: "Réponse personnelle sous 24h.",
+      stickyBtn: "Réserver 15 min"
     },
     en: {
+      pageTitle: "Evolsphere — Project Management Consulting: PMP, Agile & SAP for Executives",
+      metaDescription: "Evolsphere supports executives on critical projects: SAP FI/CO, WMS, procurement, group-wide transformation. PMP, Agile, or hybrid governance.",
       badge: "Limited executive access",
       eyebrow: "Executive project governance",
       h1: ["Less risk.", "More results."],
-      sub: "Evolsphere steers your critical projects with boardroom rigor and ground-level agility. No slippage. No surprises.",
+      sub: "Evolsphere steers your critical projects — SAP FI/CO, WMS, procurement, finance, organization, management — with boardroom rigor and ground-level agility. No slippage. No surprises.",
+      chipAchats: "Procurement",
+      chipOrga: "Organization",
       testBtn: "Diagnose my project risk",
       contactBtn: "Book 15 minutes",
       contactSubject: "Let's talk about a project",
@@ -862,8 +1115,8 @@ try{
       soundOn: "Turn on sound",
       soundOff: "Mute sound",
       stat1: "years securing critical projects",
-      stat2: "projects delivered on track",
-      stat3: "client satisfaction",
+      stat2: "projects delivered: SAP, WMS, procurement, group governance",
+      stat3: "people led across project teams",
       offersEyebrow: "Our commitments",
       offersTitle: "A governance level for every stake",
       offer1Name: "Strategic diagnosis",
@@ -882,13 +1135,38 @@ try{
       finalTitle: "The real risk is doing nothing.",
       finalSub: "3 executive slots this quarter. Then, the waitlist.",
       finalCtaBtn: "Book my slot",
-      finalSubject: "Let's talk about a project"
+      finalSubject: "Let's talk about a project",
+      ctaNote: "Personal reply within 24h — no call center, no lost form.",
+      finalCtaNote: "Write directly — I reply personally, usually the same day.",
+      processTitle: "How it actually works",
+      step1Title: "You write",
+      step1Desc: "A direct email, 2 lines is enough. No lengthy form, no call center.",
+      step2Title: "We frame it in 15 minutes",
+      step2Desc: "A short call to understand the real issue and tell you honestly if I can help.",
+      step3Title: "Execution starts",
+      step3Desc: "Diagnosis, sprint, or ongoing oversight — whichever fits your stake, not the most expensive one.",
+      faqTitle: "Frequently asked questions",
+      faq1Q: "Isn't that expensive for a 10-day audit?",
+      faq1A: "A badly done audit costs more than a project that slips for 6 months. The diagnosis is there to help you decide fast, with the real risks on the table — not to fill time.",
+      faq2Q: "Why you instead of a large consulting firm?",
+      faq2A: "No junior team billed at senior rates, no 80-page report. You talk directly to the person who has run 100+ projects — from diagnosis to execution.",
+      faq3Q: "What if my project doesn't fit any of the 3 offers?",
+      faq3A: "We talk for 15 minutes, no commitment. If I'm not the right fit, I'll tell you directly — and point you toward someone who is, when I can.",
+      faq4Q: "How long before I see results?",
+      faq4A: "The strategic diagnosis delivers actionable recommendations in 10 days. The strategic sprint kicks off execution in 2 to 4 weeks. Nothing drags on.",
+      stickyMain: "Less risk. More results.",
+      stickySub: "Personal reply within 24h.",
+      stickyBtn: "Book 15 minutes"
     },
     es: {
+      pageTitle: "Evolsphere — Consultoría en gestión de proyectos: PMP, Ágil y SAP para directivos",
+      metaDescription: "Evolsphere acompaña a los directivos en sus proyectos críticos: SAP FI/CO, WMS, compras, transformación de grupo. Gobernanza PMP, Ágil o híbrida.",
       badge: "Acceso directivo limitado",
       eyebrow: "Gobernanza de proyectos para directivos",
       h1: ["Menos riesgo.", "Más resultados."],
-      sub: "Evolsphere dirige sus proyectos críticos con el rigor de un comité de dirección y la agilidad del terreno. Cero desviaciones. Cero sorpresas.",
+      sub: "Evolsphere dirige sus proyectos críticos — SAP FI/CO, WMS, compras, finanzas, organización, management — con el rigor de un comité de dirección y la agilidad del terreno. Cero desviaciones. Cero sorpresas.",
+      chipAchats: "Compras",
+      chipOrga: "Organización",
       testBtn: "Diagnosticar mi riesgo de proyecto",
       contactBtn: "Reservar 15 min",
       contactSubject: "Hablemos de un proyecto",
@@ -896,8 +1174,8 @@ try{
       soundOn: "Activar sonido",
       soundOff: "Silenciar sonido",
       stat1: "años asegurando proyectos críticos",
-      stat2: "proyectos entregados sin desviaciones",
-      stat3: "satisfacción de clientes",
+      stat2: "proyectos: SAP, WMS, compras, gobernanza de grupo",
+      stat3: "personas dirigidas en equipos de proyecto",
       offersEyebrow: "Nuestros compromisos",
       offersTitle: "Un nivel de gobernanza para cada reto",
       offer1Name: "Diagnóstico estratégico",
@@ -916,7 +1194,28 @@ try{
       finalTitle: "El verdadero riesgo es no hacer nada.",
       finalSub: "3 plazas ejecutivas este trimestre. Después, lista de espera.",
       finalCtaBtn: "Reservar mi plaza",
-      finalSubject: "Hablemos de un proyecto"
+      finalSubject: "Hablemos de un proyecto",
+      ctaNote: "Respuesta personal en 24h — sin centralita, sin formulario perdido.",
+      finalCtaNote: "Escriba directamente — respondo personalmente, normalmente el mismo día.",
+      processTitle: "Cómo funciona, en concreto",
+      step1Title: "Usted escribe",
+      step1Desc: "Un correo directo, con 2 líneas basta. Sin formulario interminable, sin centralita.",
+      step2Title: "Encuadramos en 15 minutos",
+      step2Desc: "Una llamada corta para entender el reto real y decirle honestamente si puedo ayudar.",
+      step3Title: "La ejecución arranca",
+      step3Desc: "Diagnóstico, sprint o supervisión continua — el formato más adecuado a su reto, no el más caro.",
+      faqTitle: "Preguntas frecuentes",
+      faq1Q: "¿Es caro para una auditoría de 10 días?",
+      faq1A: "Una auditoría mal hecha cuesta más que un proyecto que se desvía durante 6 meses. El diagnóstico sirve para decidir rápido, con los riesgos reales sobre la mesa — no para ocupar tiempo.",
+      faq2Q: "¿Por qué usted y no una gran consultora?",
+      faq2A: "Sin equipo júnior facturado a precio sénior, sin informe de 80 páginas. Habla directamente con la persona que ha dirigido más de 100 proyectos — del diagnóstico a la ejecución.",
+      faq3Q: "¿Y si mi proyecto no encaja en ninguna de las 3 ofertas?",
+      faq3A: "Hablamos 15 minutos, sin compromiso. Si no soy el interlocutor adecuado, se lo digo directamente — y si es posible, le oriento hacia alguien que lo sea.",
+      faq4Q: "¿Cuánto tiempo hasta ver resultados?",
+      faq4A: "El diagnóstico estratégico entrega recomendaciones accionables en 10 días. El sprint estratégico lanza la ejecución en 2 a 4 semanas. Nada se alarga.",
+      stickyMain: "Menos riesgo. Más resultados.",
+      stickySub: "Respuesta personal en 24h.",
+      stickyBtn: "Reservar 15 min"
     }
   };
 
@@ -1142,11 +1441,17 @@ try{
     document.documentElement.lang = lang;
     const t = translations[lang];
 
+    if(t.pageTitle) document.title = t.pageTitle;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc && t.metaDescription) metaDesc.setAttribute('content', t.metaDescription);
+
     document.querySelector('[data-i18n="badge"]').textContent = t.badge;
     document.querySelector('[data-i18n="eyebrow"]').textContent = t.eyebrow;
     document.getElementById('h1line1').textContent = t.h1[0];
     document.getElementById('h1line2').textContent = t.h1[1];
     document.querySelector('[data-i18n="sub"]').textContent = t.sub;
+    document.querySelector('[data-i18n="chipAchats"]').textContent = t.chipAchats;
+    document.querySelector('[data-i18n="chipOrga"]').textContent = t.chipOrga;
     openTestBtn.textContent = t.testBtn;
     contactBtnMain.textContent = t.contactBtn;
     contactBtnMain.href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.contactSubject)}`;
@@ -1177,6 +1482,31 @@ try{
     document.querySelector('[data-i18n="finalSub"]').textContent = t.finalSub;
     document.getElementById('finalCtaBtn').textContent = t.finalCtaBtn;
     document.getElementById('finalCtaBtn').href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.finalSubject)}`;
+    document.querySelector('[data-i18n="ctaNote"]').textContent = t.ctaNote;
+    document.querySelector('[data-i18n="finalCtaNote"]').textContent = t.finalCtaNote;
+
+    document.querySelector('[data-i18n="processTitle"]').textContent = t.processTitle;
+    document.querySelector('[data-i18n="step1Title"]').textContent = t.step1Title;
+    document.querySelector('[data-i18n="step1Desc"]').textContent = t.step1Desc;
+    document.querySelector('[data-i18n="step2Title"]').textContent = t.step2Title;
+    document.querySelector('[data-i18n="step2Desc"]').textContent = t.step2Desc;
+    document.querySelector('[data-i18n="step3Title"]').textContent = t.step3Title;
+    document.querySelector('[data-i18n="step3Desc"]').textContent = t.step3Desc;
+
+    document.querySelector('[data-i18n="faqTitle"]').textContent = t.faqTitle;
+    document.querySelector('[data-i18n="faq1Q"]').textContent = t.faq1Q;
+    document.querySelector('[data-i18n="faq1A"]').textContent = t.faq1A;
+    document.querySelector('[data-i18n="faq2Q"]').textContent = t.faq2Q;
+    document.querySelector('[data-i18n="faq2A"]').textContent = t.faq2A;
+    document.querySelector('[data-i18n="faq3Q"]').textContent = t.faq3Q;
+    document.querySelector('[data-i18n="faq3A"]').textContent = t.faq3A;
+    document.querySelector('[data-i18n="faq4Q"]').textContent = t.faq4Q;
+    document.querySelector('[data-i18n="faq4A"]').textContent = t.faq4A;
+
+    document.querySelector('[data-i18n="stickyMain"]').textContent = t.stickyMain;
+    document.querySelector('[data-i18n="stickySub"]').textContent = t.stickySub;
+    document.getElementById('stickyCtaBtn').textContent = t.stickyBtn;
+    document.getElementById('stickyCtaBtn').href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.contactSubject)}`;
 
     document.querySelectorAll('.lang-btn').forEach(b=>{
       b.classList.toggle('active', b.dataset.lang === lang);
@@ -1192,6 +1522,34 @@ try{
   document.querySelectorAll('.lang-btn').forEach(btn=>{
     btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
   });
+
+  // ---------- DYNAMIC COPYRIGHT YEAR ----------
+  const copyEl = document.getElementById('copyrightYear');
+  if(copyEl){ copyEl.textContent = `© ${new Date().getFullYear()}`; }
+
+  // ---------- FAQ ACCORDION ----------
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', ()=>{
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=> o.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ---------- STICKY CTA BAR ----------
+  const stickyCta = document.getElementById('stickyCta');
+  const heroMain = document.querySelector('main');
+  if(stickyCta && heroMain){
+    window.addEventListener('scroll', ()=>{
+      const heroBottom = heroMain.getBoundingClientRect().bottom;
+      if(heroBottom < 0){
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }, { passive:true });
+  }
 })();
 </script>
 
