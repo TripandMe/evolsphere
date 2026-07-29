@@ -38,9 +38,17 @@
   "description": "Conseil en gestion de projet pour dirigeants : gouvernance PMP, Agile et hybride, SAP FI/CO, WMS, achats, transformation groupe.",
   "url": "https://evolsphere.com/",
   "email": "raphaeldebruijn@gmail.com",
+  "telephone": "+33673977576",
   "priceRange": "€€",
-  "areaServed": "FR",
-  "knowsAbout": ["Gestion de projet", "PMP", "Agile", "SAP FI/CO", "WMS", "Achats", "Finance", "Organisation", "Management", "Pilotage budgétaire", "Onshore/Offshore", "Transformation groupe", "PMO"],
+  "areaServed": ["FR", "Europe", "North Africa"],
+  "founder": {
+    "@type": "Person",
+    "name": "Raphaël de Bruijn",
+    "jobTitle": "CIO / COO / Projets & Programmes / Transformation IT & Digitale",
+    "hasCredential": { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "PMP - Project Management Professional (PMI)" },
+    "alumniOf": "SKEMA Business School"
+  },
+  "knowsAbout": ["Gestion de projet", "PMP", "Agile", "SAP FI/CO", "WMS", "Achats", "Finance", "Organisation", "Management", "Pilotage budgétaire", "ROI", "OPEX/CAPEX", "Fiscal", "RACI", "Reporting direction", "Onshore/Offshore", "Transformation groupe", "PMO"],
   "makesOffer": [
     { "@type": "Offer", "name": "POC Test & Learn", "price": "450", "priceCurrency": "EUR" },
     { "@type": "Offer", "name": "Diagnostic stratégique", "price": "890", "priceCurrency": "EUR" },
@@ -523,6 +531,86 @@
     .offers-grid{ grid-template-columns: 1fr; }
   }
 
+  /* ---- Clients strip ---- */
+  .clients-strip{
+    position:relative; z-index:4;
+    text-align:center;
+    padding: 6px 24px 50px;
+  }
+  .clients-label{
+    font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
+    color: var(--ink-dim); margin-bottom:18px;
+  }
+  .clients-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px 34px;
+  }
+  .client-name{
+    font-family: var(--display-font); font-weight:700;
+    font-size:16px; color: var(--ink); opacity:0.75;
+  }
+
+  /* ---- About / Parcours section ---- */
+  .about-section{
+    position:relative; z-index:4;
+    max-width: 900px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .about-head{ text-align:center; margin-bottom:36px; }
+  .about-eyebrow{
+    font-size:12px; letter-spacing:0.3em; text-transform:uppercase;
+    color: var(--teal); margin-bottom:12px;
+  }
+  .about-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink); margin-bottom:6px;
+  }
+  .about-role{
+    font-size:14px; color: var(--ink-dim);
+  }
+  .about-badges{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+    margin: 18px 0 40px;
+  }
+  .about-badge{
+    font-size:11.5px; font-weight:700;
+    color: var(--teal);
+    border:1px solid rgba(41,240,208,0.35);
+    border-radius:999px; padding:6px 13px;
+    background: rgba(41,240,208,0.06);
+  }
+  .timeline{
+    border-left: 1px solid rgba(255,255,255,0.16);
+    margin-left: 6px;
+  }
+  .timeline-item{
+    position:relative;
+    padding: 0 0 28px 26px;
+  }
+  .timeline-item:last-child{ padding-bottom:0; }
+  .timeline-item::before{
+    content:'';
+    position:absolute; left:-5px; top:4px;
+    width:9px; height:9px; border-radius:50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(41,240,208,0.15);
+  }
+  .timeline-years{
+    font-size:11.5px; font-weight:700; letter-spacing:0.04em;
+    color: var(--teal); margin-bottom:4px;
+  }
+  .timeline-role{
+    font-family: var(--display-font); font-weight:700;
+    font-size:16px; color: var(--ink); margin-bottom:3px;
+  }
+  .timeline-desc{
+    font-size:13.5px; color: var(--ink-dim); line-height:1.55;
+  }
+
+  @media (max-width: 640px){
+    .clients-row{ gap:10px 22px; }
+    .client-name{ font-size:14px; }
+  }
+
   /* ---- Positioning banner ---- */
   .positioning-banner{
     position:relative; z-index:4;
@@ -642,7 +730,7 @@
 <header>
   <div class="logo">Evol<span>sphere</span></div>
   <div class="header-right">
-    <div class="badge" data-i18n="badge">Méthode 2026. Disponible maintenant.</div>
+    <div class="badge" data-i18n="badge">Méthode 2026. 3 places ce trimestre.</div>
     <div class="lang-switch" id="langSwitch">
       <button class="lang-btn active" data-lang="fr">FR</button>
       <button class="lang-btn" data-lang="en">EN</button>
@@ -654,12 +742,12 @@
 <main>
   <div class="eyebrow" data-i18n="eyebrow">Conseil, stratégie, organisation : le modèle a changé</div>
   <h1>
-    <span class="line"><span id="h1line1">Conseil, stratégie, organisation.</span></span>
-    <span class="line"><span id="h1line2">Les modèles d'hier sont dépassés.</span></span>
+    <span class="line"><span id="h1line1">Restez en 1900.</span></span>
+    <span class="line"><span id="h1line2">Ou passez en 2026.</span></span>
   </h1>
   <p class="sub" data-i18n="sub">
-    Place à la méthode 2026 : disponibilité réelle, capacité à faire — pas juste à recommander.
-    Manager, diriger, exécuter. ROI, OPEX/CAPEX, fiscal, RACI, reporting direction. Sur le terrain, pas dans un rapport.
+    ROI, OPEX/CAPEX, fiscal, RACI, reporting direction — sur le terrain, pas dans un rapport.
+    Disponible maintenant. Pas dans 3 semaines.
   </p>
   <div class="expertise-chips">
     <span class="chip">SAP FI/CO</span>
@@ -679,19 +767,73 @@
     <span class="chip" data-i18n="chipTestLearn">Test &amp; Learn</span>
     <span class="chip" data-i18n="chipLegal">Juridique &amp; contrats</span>
     <span class="chip">PMO</span>
+    <span class="chip" style="border-color: rgba(41,240,208,0.4); color: var(--teal);">PMP® certifié</span>
   </div>
   <div class="cta-row">
     <button class="btn btn-primary" id="openTestBtn">Diagnostic maintenant</button>
     <a class="btn btn-ghost" id="contactBtnMain" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener">On parle. Maintenant.</a>
   </div>
   <div class="cta-note" data-i18n="ctaNote">Réponse sous 24h. Sans exception.</div>
+  <div class="cta-note"><a href="tel:+33673977576" style="color:var(--teal); text-decoration:none;">+33 6 73 97 75 76</a></div>
 </main>
 
 <section class="stats-section">
-  <div class="stat"><div class="stat-num">8+</div><div class="stat-label" data-i18n="stat1">ans à sécuriser des projets critiques</div></div>
-  <div class="stat"><div class="stat-num">100+</div><div class="stat-label" data-i18n="stat2">projets menés : SAP, WMS, achats, pilotage groupe</div></div>
+  <div class="stat"><div class="stat-num">20+</div><div class="stat-label" data-i18n="stat1">ans à sécuriser des projets critiques</div></div>
+  <div class="stat"><div class="stat-num">200+</div><div class="stat-label" data-i18n="stat2">projets pilotés en portefeuille</div></div>
   <div class="stat"><div class="stat-num">40+</div><div class="stat-label" data-i18n="stat3">personnes pilotées en équipe projet</div></div>
   <div class="stat"><div class="stat-num">45M€</div><div class="stat-label" data-i18n="stat4">budget piloté sur le dernier projet</div></div>
+</section>
+
+<section class="clients-strip">
+  <div class="clients-label" data-i18n="clientsLabel">Ils m'ont fait confiance</div>
+  <div class="clients-row">
+    <span class="client-name">Carrefour</span>
+    <span class="client-name">LVMH</span>
+    <span class="client-name">Groupement Les Mousquetaires</span>
+    <span class="client-name">Cora</span>
+    <span class="client-name">McDonald's</span>
+    <span class="client-name">Monoprix</span>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="about-head">
+    <div class="about-eyebrow" data-i18n="aboutEyebrow">Qui pilote</div>
+    <div class="about-title">Raphaël de Bruijn</div>
+    <div class="about-role" data-i18n="aboutRole">CIO / COO / Projets &amp; Programmes / Transformation IT &amp; Digitale</div>
+    <div class="about-badges">
+      <span class="about-badge">PMP® — PMI, 2024</span>
+      <span class="about-badge" data-i18n="badgeMaster">Master Management &amp; Finance — SKEMA</span>
+      <span class="about-badge" data-i18n="badgeIntl">Europe / Afrique du Nord</span>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-years" data-i18n="tl1Years">Depuis 2020</div>
+      <div class="timeline-role" data-i18n="tl1Role">Conseil, Audit &amp; Management de transition — Practice Retail</div>
+      <div class="timeline-desc" data-i18n="tl1Desc">Transformation IT, logistique et organisationnelle pour de grands comptes : Groupement Les Mousquetaires, Cora, McDonald's.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-years" data-i18n="tl2Years">2017 – 2019</div>
+      <div class="timeline-role" data-i18n="tl2Role">COO — Showroomprivé</div>
+      <div class="timeline-desc" data-i18n="tl2Desc">Structuration de l'ensemble des fonctions support, management direct de 40 collaborateurs, pilotage de 200+ projets, entrée au capital du Groupe Carrefour.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-years" data-i18n="tl3Years">2008 – 2016</div>
+      <div class="timeline-role" data-i18n="tl3Role">Directeur de la Transformation — Groupe Monoprix</div>
+      <div class="timeline-desc" data-i18n="tl3Desc">Transformation digitale et harmonisation des SI en France et en Tunisie, refonte e-commerce, intégration post-acquisition de Naturalia.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-years" data-i18n="tl4Years">2004 – 2008</div>
+      <div class="timeline-role" data-i18n="tl4Role">Directeur Excellence Opérationnelle — Sephora (Groupe LVMH)</div>
+      <div class="timeline-desc" data-i18n="tl4Desc">Pilotage des audits internes en Europe, conformité SOA, amélioration continue des processus boutiques.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-years" data-i18n="tl5Years">2000 – 2004</div>
+      <div class="timeline-role" data-i18n="tl5Role">Auditeur Senior — KPMG</div>
+      <div class="timeline-desc" data-i18n="tl5Desc">Commissariat aux comptes pour groupes cotés (CAC 40, ETI), due diligence financière, consolidation de groupes.</div>
+    </div>
+  </div>
 </section>
 
 <section class="positioning-banner">
@@ -1099,12 +1241,32 @@ try{
     fr: {
       pageTitle: "Evolsphere — Conseil en gestion de projet PMP, Agile & SAP pour dirigeants",
       metaDescription: "Evolsphere accompagne les dirigeants sur leurs projets critiques : SAP FI/CO, WMS, achats, transformation groupe. Gouvernance PMP, Agile ou hybride.",
-      badge: "Méthode 2026. Disponible maintenant.",
+      badge: "Méthode 2026. 3 places ce trimestre.",
       eyebrow: "Conseil, stratégie, organisation : le modèle a changé",
-      h1: ["Conseil, stratégie, organisation.", "Les modèles d'hier sont dépassés."],
-      sub: "Place à la méthode 2026 : disponibilité réelle, capacité à faire — pas juste à recommander. Manager, diriger, exécuter. ROI, OPEX/CAPEX, fiscal, RACI, reporting direction. Sur le terrain, pas dans un rapport.",
+      h1: ["Restez en 1900.", "Ou passez en 2026."],
+      sub: "ROI, OPEX/CAPEX, fiscal, RACI, reporting direction — sur le terrain, pas dans un rapport. Disponible maintenant. Pas dans 3 semaines.",
       chipFiscal: "Fiscal",
       chipReporting: "Reporting direction",
+      clientsLabel: "Ils m'ont fait confiance",
+      aboutEyebrow: "Qui pilote",
+      aboutRole: "CIO / COO / Projets & Programmes / Transformation IT & Digitale",
+      badgeMaster: "Master Management & Finance — SKEMA",
+      badgeIntl: "Europe / Afrique du Nord",
+      tl1Years: "Depuis 2020",
+      tl1Role: "Conseil, Audit & Management de transition — Practice Retail",
+      tl1Desc: "Transformation IT, logistique et organisationnelle pour de grands comptes : Groupement Les Mousquetaires, Cora, McDonald's.",
+      tl2Years: "2017 – 2019",
+      tl2Role: "COO — Showroomprivé",
+      tl2Desc: "Structuration de l'ensemble des fonctions support, management direct de 40 collaborateurs, pilotage de 200+ projets, entrée au capital du Groupe Carrefour.",
+      tl3Years: "2008 – 2016",
+      tl3Role: "Directeur de la Transformation — Groupe Monoprix",
+      tl3Desc: "Transformation digitale et harmonisation des SI en France et en Tunisie, refonte e-commerce, intégration post-acquisition de Naturalia.",
+      tl4Years: "2004 – 2008",
+      tl4Role: "Directeur Excellence Opérationnelle — Sephora (Groupe LVMH)",
+      tl4Desc: "Pilotage des audits internes en Europe, conformité SOA, amélioration continue des processus boutiques.",
+      tl5Years: "2000 – 2004",
+      tl5Role: "Auditeur Senior — KPMG",
+      tl5Desc: "Commissariat aux comptes pour groupes cotés (CAC 40, ETI), due diligence financière, consolidation de groupes.",
       chipBudget: "Pilotage budgétaire",
       chipTestLearn: "Test & Learn",
       chipLegal: "Juridique & contrats",
@@ -1117,7 +1279,7 @@ try{
       soundOn: "Activer le son",
       soundOff: "Couper le son",
       stat1: "ans à sécuriser des projets critiques",
-      stat2: "projets menés : SAP, WMS, achats, pilotage groupe",
+      stat2: "projets pilotés en portefeuille",
       stat3: "personnes pilotées en équipe projet",
       stat4: "budget piloté sur le dernier projet",
       offersEyebrow: "Nos engagements",
@@ -1172,12 +1334,32 @@ try{
     en: {
       pageTitle: "Evolsphere — Project Management Consulting: PMP, Agile & SAP for Executives",
       metaDescription: "Evolsphere supports executives on critical projects: SAP FI/CO, WMS, procurement, group-wide transformation. PMP, Agile, or hybrid governance.",
-      badge: "2026 method. Available now.",
+      badge: "2026 method. 3 slots this quarter.",
       eyebrow: "Consulting, strategy, organization: the model changed",
-      h1: ["Consulting, strategy, organization.", "Yesterday's models are outdated."],
-      sub: "Meet the 2026 method: real availability, capacity to execute — not just recommend. Manage, lead, deliver. ROI, OPEX/CAPEX, tax, RACI, board reporting. On the ground, not in a report.",
+      h1: ["Stay stuck in 1900.", "Or move to 2026."],
+      sub: "ROI, OPEX/CAPEX, tax, RACI, board reporting — on the ground, not in a report. Available now. Not in 3 weeks.",
       chipFiscal: "Tax",
       chipReporting: "Board reporting",
+      clientsLabel: "Trusted by",
+      aboutEyebrow: "Who's steering",
+      aboutRole: "CIO / COO / Projects & Programs / IT & Digital Transformation",
+      badgeMaster: "Master in Management & Finance — SKEMA",
+      badgeIntl: "Europe / North Africa",
+      tl1Years: "Since 2020",
+      tl1Role: "Consulting, Audit & Interim Management — Practice Retail",
+      tl1Desc: "IT, logistics and organizational transformation for major accounts: Groupement Les Mousquetaires, Cora, McDonald's.",
+      tl2Years: "2017 – 2019",
+      tl2Role: "COO — Showroomprivé",
+      tl2Desc: "Structured all support functions, direct management of 40 staff, 200+ project portfolio, Carrefour Group capital entry.",
+      tl3Years: "2008 – 2016",
+      tl3Role: "Transformation Director — Groupe Monoprix",
+      tl3Desc: "Digital transformation and IT systems harmonization across France and Tunisia, e-commerce overhaul, Naturalia post-acquisition integration.",
+      tl4Years: "2004 – 2008",
+      tl4Role: "Operational Excellence Director — Sephora (LVMH Group)",
+      tl4Desc: "Led internal audits across Europe, SOA compliance, continuous improvement of store processes.",
+      tl5Years: "2000 – 2004",
+      tl5Role: "Senior Auditor — KPMG",
+      tl5Desc: "Statutory audit for listed groups (CAC 40, mid-caps), financial due diligence, group consolidation.",
       chipBudget: "Budget ownership",
       chipTestLearn: "Test & Learn",
       chipLegal: "Legal & contracts",
@@ -1190,7 +1372,7 @@ try{
       soundOn: "Turn on sound",
       soundOff: "Mute sound",
       stat1: "years securing critical projects",
-      stat2: "projects delivered: SAP, WMS, procurement, group governance",
+      stat2: "projects steered across portfolios",
       stat3: "people led across project teams",
       stat4: "budget owned on the latest project",
       offersEyebrow: "Our commitments",
@@ -1245,12 +1427,32 @@ try{
     es: {
       pageTitle: "Evolsphere — Consultoría en gestión de proyectos: PMP, Ágil y SAP para directivos",
       metaDescription: "Evolsphere acompaña a los directivos en sus proyectos críticos: SAP FI/CO, WMS, compras, transformación de grupo. Gobernanza PMP, Ágil o híbrida.",
-      badge: "Método 2026. Disponible ahora.",
+      badge: "Método 2026. 3 plazas este trimestre.",
       eyebrow: "Consultoría, estrategia, organización: el modelo cambió",
-      h1: ["Consultoría, estrategia, organización.", "Los modelos de ayer están obsoletos."],
-      sub: "Bienvenido al método 2026: disponibilidad real, capacidad de ejecutar — no solo recomendar. Gestionar, dirigir, entregar. ROI, OPEX/CAPEX, fiscal, RACI, reporting a dirección. Sobre el terreno, no en un informe.",
+      h1: ["Quédese en 1900.", "O pase a 2026."],
+      sub: "ROI, OPEX/CAPEX, fiscal, RACI, reporting a dirección — sobre el terreno, no en un informe. Disponible ahora. No en 3 semanas.",
       chipFiscal: "Fiscal",
       chipReporting: "Reporting a dirección",
+      clientsLabel: "Han confiado en mí",
+      aboutEyebrow: "Quién dirige",
+      aboutRole: "CIO / COO / Proyectos y Programas / Transformación IT y Digital",
+      badgeMaster: "Máster en Management y Finanzas — SKEMA",
+      badgeIntl: "Europa / Norte de África",
+      tl1Years: "Desde 2020",
+      tl1Role: "Consultoría, Auditoría y Dirección de Transición — Practice Retail",
+      tl1Desc: "Transformación IT, logística y organizacional para grandes cuentas: Groupement Les Mousquetaires, Cora, McDonald's.",
+      tl2Years: "2017 – 2019",
+      tl2Role: "COO — Showroomprivé",
+      tl2Desc: "Estructuración de todas las funciones de soporte, gestión directa de 40 personas, cartera de 200+ proyectos, entrada del Grupo Carrefour en el capital.",
+      tl3Years: "2008 – 2016",
+      tl3Role: "Director de Transformación — Grupo Monoprix",
+      tl3Desc: "Transformación digital y armonización de sistemas en Francia y Túnez, renovación del e-commerce, integración post-adquisición de Naturalia.",
+      tl4Years: "2004 – 2008",
+      tl4Role: "Director de Excelencia Operacional — Sephora (Grupo LVMH)",
+      tl4Desc: "Dirección de auditorías internas en Europa, cumplimiento SOA, mejora continua de procesos en tienda.",
+      tl5Years: "2000 – 2004",
+      tl5Role: "Auditor Sénior — KPMG",
+      tl5Desc: "Auditoría legal para grupos cotizados (CAC 40, medianas empresas), due diligence financiera, consolidación de grupos.",
       chipBudget: "Gestión presupuestaria",
       chipTestLearn: "Test & Learn",
       chipLegal: "Legal & contratos",
@@ -1263,7 +1465,7 @@ try{
       soundOn: "Activar sonido",
       soundOff: "Silenciar sonido",
       stat1: "años asegurando proyectos críticos",
-      stat2: "proyectos: SAP, WMS, compras, gobernanza de grupo",
+      stat2: "proyectos dirigidos en cartera",
       stat3: "personas dirigidas en equipos de proyecto",
       stat4: "presupuesto gestionado en el último proyecto",
       offersEyebrow: "Nuestros compromisos",
@@ -1553,6 +1755,17 @@ try{
     document.querySelector('[data-i18n="chipBudget"]').textContent = t.chipBudget;
     document.querySelector('[data-i18n="chipFiscal"]').textContent = t.chipFiscal;
     document.querySelector('[data-i18n="chipReporting"]').textContent = t.chipReporting;
+
+    document.querySelector('[data-i18n="clientsLabel"]').textContent = t.clientsLabel;
+    document.querySelector('[data-i18n="aboutEyebrow"]').textContent = t.aboutEyebrow;
+    document.querySelector('[data-i18n="aboutRole"]').textContent = t.aboutRole;
+    document.querySelector('[data-i18n="badgeMaster"]').textContent = t.badgeMaster;
+    document.querySelector('[data-i18n="badgeIntl"]').textContent = t.badgeIntl;
+    ['tl1','tl2','tl3','tl4','tl5'].forEach(k=>{
+      document.querySelector(`[data-i18n="${k}Years"]`).textContent = t[k+'Years'];
+      document.querySelector(`[data-i18n="${k}Role"]`).textContent = t[k+'Role'];
+      document.querySelector(`[data-i18n="${k}Desc"]`).textContent = t[k+'Desc'];
+    });
     document.querySelector('[data-i18n="chipTestLearn"]').textContent = t.chipTestLearn;
     document.querySelector('[data-i18n="chipLegal"]').textContent = t.chipLegal;
     if(t.positioningLine) document.querySelector('[data-i18n-html="positioningLine"]').innerHTML = t.positioningLine;
