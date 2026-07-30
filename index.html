@@ -9,6 +9,7 @@
 <meta name="robots" content="index, follow" />
 <meta name="author" content="Evolsphere" />
 <link rel="canonical" href="https://evolsphere.com/" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25' r='75%25'%3E%3Cstop offset='0%25' stop-color='%235CFBE0'/%3E%3Cstop offset='45%25' stop-color='%2329F0D0'/%3E%3Cstop offset='75%25' stop-color='%23A56BFF'/%3E%3Cstop offset='100%25' stop-color='%23FF3E9A'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2307040D'/%3E%3Ccircle cx='32' cy='32' r='22' fill='url(%23g)'/%3E%3C/svg%3E" />
 
 <!-- Open Graph / Facebook / LinkedIn -->
 <meta property="og:type" content="website" />
@@ -635,6 +636,139 @@
     font-size:14.5px; color: var(--ink-dim); line-height:1.6;
   }
 
+  /* ---- Comparison section ---- */
+  .comparison-section{
+    position:relative; z-index:4;
+    max-width: 980px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .comparison-head{ text-align:center; margin-bottom:36px; }
+  .comparison-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .comparison-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap:0;
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:20px; overflow:hidden;
+  }
+  .comparison-col{ padding: 24px; }
+  .comparison-col.old{ background: rgba(255,62,154,0.04); border-right:1px solid rgba(255,255,255,0.12); }
+  .comparison-col.new{ background: rgba(41,240,208,0.05); }
+  .comparison-col-head{
+    font-family: var(--display-font); font-weight:700; font-size:15px;
+    margin-bottom:18px; padding-bottom:14px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .comparison-col.old .comparison-col-head{ color: var(--hot); }
+  .comparison-col.new .comparison-col-head{ color: var(--teal); }
+  .comparison-row{
+    font-size:13.5px; line-height:1.5; color: var(--ink-dim);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .comparison-row:last-child{ border-bottom:none; }
+  .comparison-col.new .comparison-row{ color: var(--ink); }
+
+  @media (max-width: 640px){
+    .comparison-grid{ grid-template-columns: 1fr; }
+    .comparison-col.old{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.12); }
+  }
+
+  /* ---- ROI Calculator ---- */
+  .roi-section{
+    position:relative; z-index:4;
+    max-width: 820px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .roi-head{ text-align:center; margin-bottom:32px; }
+  .roi-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink); margin-bottom:10px;
+  }
+  .roi-sub{ font-size:13.5px; color: var(--ink-dim); max-width:560px; margin:0 auto; line-height:1.6; }
+  .roi-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px; padding: 30px 28px; margin-top:28px;
+  }
+  .roi-field{ margin-bottom:22px; }
+  .roi-field label{
+    display:flex; justify-content:space-between;
+    font-size:13px; font-weight:600; color: var(--ink); margin-bottom:10px;
+  }
+  .roi-field label .val{ color: var(--teal); font-family: var(--display-font); font-weight:800; }
+  .roi-field input[type="range"]{
+    width:100%; -webkit-appearance:none; height:5px; border-radius:3px;
+    background: rgba(255,255,255,0.14); outline:none;
+  }
+  .roi-field input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+    box-shadow: 0 0 0 4px rgba(41,240,208,0.18);
+  }
+  .roi-field input[type="range"]::-moz-range-thumb{
+    width:18px; height:18px; border-radius:50%; border:none;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+  }
+  .roi-result{
+    margin-top: 26px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    text-align:center;
+  }
+  .roi-result-label{
+    font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color: var(--ink-dim); margin-bottom:8px;
+  }
+  .roi-result-num{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(32px, 5vw, 48px);
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    margin-bottom:8px;
+  }
+  .roi-result-note{ font-size:12px; color: var(--ink-dim); max-width:460px; margin:0 auto 22px; line-height:1.55; }
+  .roi-disclaimer{
+    font-size:10.5px; color: var(--ink-dim); opacity:0.7; margin-top:18px; line-height:1.5;
+  }
+
+  /* ---- Case studies section ---- */
+  .cases-section{
+    position:relative; z-index:4;
+    max-width: 1100px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .cases-head{ text-align:center; margin-bottom:36px; }
+  .cases-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .cases-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:20px;
+  }
+  .case-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.13);
+    border-radius:20px; padding:26px 24px;
+  }
+  .case-client{
+    font-family: var(--display-font); font-weight:800;
+    font-size:18px; color: var(--ink); margin-bottom:2px;
+  }
+  .case-years{ font-size:12px; color: var(--teal); margin-bottom:16px; }
+  .case-block{ margin-bottom:14px; }
+  .case-block:last-child{ margin-bottom:0; }
+  .case-label{
+    font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--ink-dim); margin-bottom:5px;
+  }
+  .case-text{ font-size:13px; line-height:1.55; color: var(--ink-dim); }
+  .case-block.result .case-text{ color: var(--ink); }
+
+  @media (max-width: 900px){
+    .cases-grid{ grid-template-columns: 1fr; }
+  }
+
   /* ---- Process section ---- */
   .process-section{
     position:relative; z-index:4;
@@ -742,7 +876,7 @@
 <main>
   <div class="eyebrow" data-i18n="eyebrow">Pour grands groupes &amp; grands comptes — le modèle a changé</div>
   <h1>
-    <span class="line"><span id="h1line1">Restez en 1900.</span></span>
+    <span class="line"><span id="h1line1">Restez en 1980.</span></span>
     <span class="line"><span id="h1line2">Ou passez en 2026.</span></span>
   </h1>
   <p class="sub" data-i18n="sub">
@@ -773,6 +907,7 @@
   <div class="cta-row">
     <button class="btn btn-primary" id="openTestBtn">Diagnostic maintenant</button>
     <a class="btn btn-ghost" id="contactBtnMain" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener">On parle. Maintenant.</a>
+    <a class="btn btn-ghost" id="whatsappBtn" href="https://wa.me/33673977576?text=Bonjour%2C%20je%20souhaite%20discuter%20d%27un%20projet" target="_blank" rel="noopener">WhatsApp</a>
   </div>
   <div class="cta-note" data-i18n="ctaNote">Réponse sous 24h. Sans exception.</div>
   <div class="cta-note"><a href="tel:+33673977576" style="color:var(--teal); text-decoration:none;">+33 6 73 97 75 76</a></div>
@@ -807,6 +942,7 @@
       <span class="about-badge" data-i18n="badgeMaster">Master Management &amp; Finance — SKEMA</span>
       <span class="about-badge" data-i18n="badgeIntl">Europe / Afrique du Nord</span>
     </div>
+    <a href="evolsphere-one-pager.pdf" download style="display:inline-block; margin-top:6px; font-size:12.5px; color:var(--teal); text-decoration:underline;" data-i18n="downloadCv">Télécharger mon profil (PDF)</a>
   </div>
   <div class="timeline">
     <div class="timeline-item">
@@ -837,9 +973,117 @@
   </div>
 </section>
 
+<section class="cases-section">
+  <div class="cases-head">
+    <div class="cases-title" data-i18n="casesTitle">Sur le terrain, pas sur slides</div>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-client">Showroomprivé</div>
+      <div class="case-years" data-i18n="case1Years">COO — 2017-2019</div>
+      <div class="case-block">
+        <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+        <div class="case-text" data-i18n="case1Context">Forte croissance, entrée au capital du Groupe Carrefour, besoin urgent de structurer des fonctions support en tension.</div>
+      </div>
+      <div class="case-block">
+        <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+        <div class="case-text" data-i18n="case1Actions">Refonte DSI 'Buy', changement de WMS, structuration du PMO sur 200+ projets, mise en place du pilotage OPEX/CAPEX.</div>
+      </div>
+      <div class="case-block result">
+        <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+        <div class="case-text" data-i18n="case1Result">Fonctions support structurées, gouvernance projet en place, équipe de 40 personnes pilotée en direct.</div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">Groupe Monoprix</div>
+      <div class="case-years" data-i18n="case2Years">Directeur de la Transformation — 2008-2016</div>
+      <div class="case-block">
+        <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+        <div class="case-text" data-i18n="case2Context">Mutation du commerce de centre-ville, nécessité de rapprocher siège et magasins, virage omnicanal à négocier.</div>
+      </div>
+      <div class="case-block">
+        <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+        <div class="case-text" data-i18n="case2Actions">Harmonisation des SI France/Tunisie, déploiement ERP Symphony/Gold, refonte e-commerce, intégration post-acquisition de Naturalia.</div>
+      </div>
+      <div class="case-block result">
+        <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+        <div class="case-text" data-i18n="case2Result">Transformation digitale et organisationnelle menée sur 8 ans, à l'échelle d'un groupe international.</div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-client">Sephora (Groupe LVMH)</div>
+      <div class="case-years" data-i18n="case3Years">Directeur Excellence Opérationnelle — 2004-2008</div>
+      <div class="case-block">
+        <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+        <div class="case-text" data-i18n="case3Context">Besoin d'harmoniser les pratiques entre sièges européens et de renforcer la conformité, sous exigence SOA du Groupe LVMH.</div>
+      </div>
+      <div class="case-block">
+        <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+        <div class="case-text" data-i18n="case3Actions">Pilotage des audits internes en Europe (France, Espagne, Italie, Portugal), outil digital d'audit conforme SOA, coordination avec l'Audit Groupe LVMH.</div>
+      </div>
+      <div class="case-block result">
+        <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+        <div class="case-text" data-i18n="case3Result">Conformité SOA atteinte, pratiques alignées à l'échelle européenne, amélioration continue installée en magasin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="positioning-banner">
   <div class="positioning-line" data-i18n-html="positioningLine"><span class="strike">3 juniors facturés au prix senior.</span> Un rapport de 80 pages. Zéro exécution.</div>
   <div class="positioning-sub" data-i18n="positioningSub">Le modèle du grand cabinet ne meurt pas — mais il ne livre plus assez vite pour 2026. Vous parlez directement à la personne qui exécute, pas à celle qui vend. Et à la fin, c'est votre équipe qui pilote — pas moi.</div>
+</section>
+
+<section class="comparison-section">
+  <div class="comparison-head">
+    <div class="comparison-title" data-i18n="comparisonTitle">Pourquoi le modèle classique ne suit plus</div>
+  </div>
+  <div class="comparison-grid">
+    <div class="comparison-col old">
+      <div class="comparison-col-head" data-i18n="oldColHead">Cabinet classique</div>
+      <div class="comparison-row" data-i18n="oldRow1">Junior facturé au prix senior, supervisé à distance par un associé qui ne touche plus le dossier.</div>
+      <div class="comparison-row" data-i18n="oldRow2">Décision par comité : plusieurs allers-retours avant validation.</div>
+      <div class="comparison-row" data-i18n="oldRow3">Livrable : un rapport de 80 pages, sans owner d'exécution derrière.</div>
+      <div class="comparison-row" data-i18n="oldRow4">Reporting trimestriel en slides, déconnecté du quotidien opérationnel.</div>
+      <div class="comparison-row" data-i18n="oldRow5">Équipe tournante — le consultant qui a cadré n'est plus celui qui exécute.</div>
+    </div>
+    <div class="comparison-col new">
+      <div class="comparison-col-head" data-i18n="newColHead">Méthode 2026</div>
+      <div class="comparison-row" data-i18n="newRow1">La personne qui structure a occupé le poste (CIO/COO) — elle sait ce que veut dire livrer.</div>
+      <div class="comparison-row" data-i18n="newRow2">RACI clair dès le premier jour : qui décide quoi, sans ambiguïté.</div>
+      <div class="comparison-row" data-i18n="newRow3">Livrable : un plan d'action exécutable, sous 10 jours.</div>
+      <div class="comparison-row" data-i18n="newRow4">Reporting direction condensé, mensuel, orienté décision.</div>
+      <div class="comparison-row" data-i18n="newRow5">Un seul interlocuteur, du diagnostic à l'exécution, disponible en continu.</div>
+    </div>
+  </div>
+</section>
+
+<section class="roi-section">
+  <div class="roi-head">
+    <div class="roi-title" data-i18n="roiTitle">Combien vous coûte un projet mal piloté ?</div>
+    <div class="roi-sub" data-i18n="roiSub">Ajustez les curseurs selon votre contexte pour une estimation d'ordre de grandeur.</div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-field">
+      <label><span data-i18n="roiBudgetLabel">Budget annuel du projet</span><span class="val" id="roiBudgetVal">2 000 000 €</span></label>
+      <input type="range" id="roiBudget" min="200000" max="50000000" step="100000" value="2000000" />
+    </div>
+    <div class="roi-field">
+      <label><span data-i18n="roiSlipLabel">Dérive de planning estimée</span><span class="val" id="roiSlipVal">20%</span></label>
+      <input type="range" id="roiSlip" min="0" max="60" step="5" value="20" />
+    </div>
+    <div class="roi-field">
+      <label><span data-i18n="roiTeamLabel">Taille de l'équipe projet</span><span class="val" id="roiTeamVal">15 personnes</span></label>
+      <input type="range" id="roiTeam" min="2" max="100" step="1" value="15" />
+    </div>
+    <div class="roi-result">
+      <div class="roi-result-label" data-i18n="roiResultLabel">Coût estimé de la dérive</div>
+      <div class="roi-result-num" id="roiResultNum">400 000 €</div>
+      <div class="roi-result-note" data-i18n="roiResultNote">C'est l'ordre de grandeur de ce qu'un cadrage insuffisant peut coûter — avant même de compter l'impact sur les équipes et la crédibilité interne.</div>
+      <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener" data-i18n="roiCta">Éviter cette facture</a>
+    </div>
+    <div class="roi-disclaimer" data-i18n="roiDisclaimer">Estimation indicative basée sur des ratios de dérive budgétaire couramment observés sur des projets de transformation. Ne remplace pas un diagnostic réel — chaque contexte est différent.</div>
+  </div>
 </section>
 
 <section class="offers-section">
@@ -1244,11 +1488,40 @@ try{
       metaDescription: "Evolsphere accompagne les dirigeants sur leurs projets critiques : SAP FI/CO, WMS, achats, transformation groupe. Gouvernance PMP, Agile ou hybride.",
       badge: "Méthode 2026. 3 places ce trimestre.",
       eyebrow: "Pour grands groupes & grands comptes — le modèle a changé",
-      h1: ["Restez en 1900.", "Ou passez en 2026."],
+      h1: ["Restez en 1980.", "Ou passez en 2026."],
       sub: "ROI, OPEX/CAPEX, fiscal, RACI, reporting direction — sur le terrain, pas dans un rapport. Disponible maintenant. Pas dans 3 semaines.",
       chipFiscal: "Fiscal",
       chipReporting: "Reporting direction",
       chipMultisite: "Multi-sites / Multi-pays",
+      casesTitle: "Sur le terrain, pas sur slides",
+      caseLabelContext: "Contexte",
+      caseLabelActions: "Actions",
+      caseLabelResult: "Résultat",
+      case1Years: "COO — 2017-2019",
+      case1Context: "Forte croissance, entrée au capital du Groupe Carrefour, besoin urgent de structurer des fonctions support en tension.",
+      case1Actions: "Refonte DSI 'Buy', changement de WMS, structuration du PMO sur 200+ projets, mise en place du pilotage OPEX/CAPEX.",
+      case1Result: "Fonctions support structurées, gouvernance projet en place, équipe de 40 personnes pilotée en direct.",
+      case2Years: "Directeur de la Transformation — 2008-2016",
+      case2Context: "Mutation du commerce de centre-ville, nécessité de rapprocher siège et magasins, virage omnicanal à négocier.",
+      case2Actions: "Harmonisation des SI France/Tunisie, déploiement ERP Symphony/Gold, refonte e-commerce, intégration post-acquisition de Naturalia.",
+      case2Result: "Transformation digitale et organisationnelle menée sur 8 ans, à l'échelle d'un groupe international.",
+      case3Years: "Directeur Excellence Opérationnelle — 2004-2008",
+      case3Context: "Besoin d'harmoniser les pratiques entre sièges européens et de renforcer la conformité, sous exigence SOA du Groupe LVMH.",
+      case3Actions: "Pilotage des audits internes en Europe (France, Espagne, Italie, Portugal), outil digital d'audit conforme SOA, coordination avec l'Audit Groupe LVMH.",
+      case3Result: "Conformité SOA atteinte, pratiques alignées à l'échelle européenne, amélioration continue installée en magasin.",
+      comparisonTitle: "Pourquoi le modèle classique ne suit plus",
+      oldColHead: "Cabinet classique",
+      oldRow1: "Junior facturé au prix senior, supervisé à distance par un associé qui ne touche plus le dossier.",
+      oldRow2: "Décision par comité : plusieurs allers-retours avant validation.",
+      oldRow3: "Livrable : un rapport de 80 pages, sans owner d'exécution derrière.",
+      oldRow4: "Reporting trimestriel en slides, déconnecté du quotidien opérationnel.",
+      oldRow5: "Équipe tournante — le consultant qui a cadré n'est plus celui qui exécute.",
+      newColHead: "Méthode 2026",
+      newRow1: "La personne qui structure a occupé le poste (CIO/COO) — elle sait ce que veut dire livrer.",
+      newRow2: "RACI clair dès le premier jour : qui décide quoi, sans ambiguïté.",
+      newRow3: "Livrable : un plan d'action exécutable, sous 10 jours.",
+      newRow4: "Reporting direction condensé, mensuel, orienté décision.",
+      newRow5: "Un seul interlocuteur, du diagnostic à l'exécution, disponible en continu.",
       clientsLabel: "Grands groupes, grandes enseignes, comptes stratégiques",
       aboutEyebrow: "Qui pilote",
       aboutRole: "CIO / COO / Projets & Programmes / Transformation IT & Digitale",
@@ -1330,6 +1603,17 @@ try{
       stickyMain: "Travaillons autrement.",
       stickySub: "24h. Sans excuse.",
       stickyBtn: "Je fonce",
+      downloadCv: "Télécharger mon profil (PDF)",
+      roiTitle: "Combien vous coûte un projet mal piloté ?",
+      roiSub: "Ajustez les curseurs selon votre contexte pour une estimation d'ordre de grandeur.",
+      roiBudgetLabel: "Budget annuel du projet",
+      roiSlipLabel: "Dérive de planning estimée",
+      roiTeamLabel: "Taille de l'équipe projet",
+      roiPeopleSuffix: "personnes",
+      roiResultLabel: "Coût estimé de la dérive",
+      roiResultNote: "C'est l'ordre de grandeur de ce qu'un cadrage insuffisant peut coûter — avant même de compter l'impact sur les équipes et la crédibilité interne.",
+      roiCta: "Éviter cette facture",
+      roiDisclaimer: "Estimation indicative basée sur des ratios de dérive budgétaire couramment observés sur des projets de transformation. Ne remplace pas un diagnostic réel — chaque contexte est différent.",
       positioningLine: '<span class="strike">3 juniors facturés au prix senior.</span> Un rapport de 80 pages. Zéro exécution.',
       positioningSub: "Le modèle du grand cabinet ne meurt pas — mais il ne livre plus assez vite pour 2026. Vous parlez directement à la personne qui exécute, pas à celle qui vend. Et à la fin, c'est votre équipe qui pilote — pas moi."
     },
@@ -1338,11 +1622,40 @@ try{
       metaDescription: "Evolsphere supports executives on critical projects: SAP FI/CO, WMS, procurement, group-wide transformation. PMP, Agile, or hybrid governance.",
       badge: "2026 method. 3 slots this quarter.",
       eyebrow: "For large groups & major accounts — the model changed",
-      h1: ["Stay stuck in 1900.", "Or move to 2026."],
+      h1: ["Stay stuck in 1980.", "Or move to 2026."],
       sub: "ROI, OPEX/CAPEX, tax, RACI, board reporting — on the ground, not in a report. Available now. Not in 3 weeks.",
       chipFiscal: "Tax",
       chipReporting: "Board reporting",
       chipMultisite: "Multi-site / Multi-country",
+      casesTitle: "On the ground, not on slides",
+      caseLabelContext: "Context",
+      caseLabelActions: "Actions",
+      caseLabelResult: "Result",
+      case1Years: "COO — 2017-2019",
+      case1Context: "Fast growth, Carrefour Group capital entry, urgent need to structure support functions under pressure.",
+      case1Actions: "Overhauled the 'Buy' IT function, changed WMS, structured PMO across 200+ projects, set up OPEX/CAPEX oversight.",
+      case1Result: "Support functions structured, project governance in place, 40-person team led directly.",
+      case2Years: "Transformation Director — 2008-2016",
+      case2Context: "City-center retail shifting fast, need to bring HQ and stores closer together, omnichannel pivot to negotiate.",
+      case2Actions: "Harmonized IT systems across France and Tunisia, deployed the Symphony/Gold ERP, overhauled e-commerce, integrated Naturalia post-acquisition.",
+      case2Result: "Digital and organizational transformation led over 8 years, at the scale of an international group.",
+      case3Years: "Operational Excellence Director — 2004-2008",
+      case3Context: "Needed to harmonize practices across European HQs and strengthen compliance under LVMH Group's SOA requirements.",
+      case3Actions: "Led internal audits across Europe (France, Spain, Italy, Portugal), built an SOA-compliant digital audit tool, coordinated with LVMH Group Audit.",
+      case3Result: "SOA compliance achieved, practices aligned across Europe, continuous improvement embedded in stores.",
+      comparisonTitle: "Why the classic model can't keep up",
+      oldColHead: "Classic firm",
+      oldRow1: "A junior billed at senior rates, remotely supervised by a partner who no longer touches the file.",
+      oldRow2: "Committee-based decisions: several rounds before anything gets validated.",
+      oldRow3: "Deliverable: an 80-page report, with no execution owner behind it.",
+      oldRow4: "Quarterly slide-deck reporting, disconnected from day-to-day operations.",
+      oldRow5: "Rotating team — the consultant who scoped it isn't the one executing it.",
+      newColHead: "2026 method",
+      newRow1: "The person structuring it has held the role (CIO/COO) — knows what delivering actually means.",
+      newRow2: "Clear RACI from day one: who decides what, with no ambiguity.",
+      newRow3: "Deliverable: an executable action plan, within 10 days.",
+      newRow4: "Condensed board reporting, monthly, decision-oriented.",
+      newRow5: "One point of contact, from diagnosis to execution, available continuously.",
       clientsLabel: "Large groups, major retail chains, strategic accounts",
       aboutEyebrow: "Who's steering",
       aboutRole: "CIO / COO / Projects & Programs / IT & Digital Transformation",
@@ -1424,6 +1737,17 @@ try{
       stickyMain: "Let's work differently.",
       stickySub: "24h. No excuses.",
       stickyBtn: "I'm in",
+      downloadCv: "Download my profile (PDF)",
+      roiTitle: "What does a poorly run project cost you?",
+      roiSub: "Adjust the sliders to your context for an order-of-magnitude estimate.",
+      roiBudgetLabel: "Annual project budget",
+      roiSlipLabel: "Estimated schedule slippage",
+      roiTeamLabel: "Project team size",
+      roiPeopleSuffix: "people",
+      roiResultLabel: "Estimated cost of slippage",
+      roiResultNote: "This is the order of magnitude of what insufficient framing can cost — before even counting the impact on teams and internal credibility.",
+      roiCta: "Avoid this bill",
+      roiDisclaimer: "Indicative estimate based on commonly observed budget-slippage ratios on transformation projects. Not a substitute for a real diagnosis — every context differs.",
       positioningLine: '<span class="strike">Three juniors billed at senior rates.</span> An 80-page report. Zero execution.',
       positioningSub: "The big-firm model isn't dying — but it no longer delivers fast enough for 2026. You talk directly to the person who executes, not the one who sells. And in the end, your team leads — not me."
     },
@@ -1432,11 +1756,40 @@ try{
       metaDescription: "Evolsphere acompaña a los directivos en sus proyectos críticos: SAP FI/CO, WMS, compras, transformación de grupo. Gobernanza PMP, Ágil o híbrida.",
       badge: "Método 2026. 3 plazas este trimestre.",
       eyebrow: "Para grandes grupos y grandes cuentas — el modelo cambió",
-      h1: ["Quédese en 1900.", "O pase a 2026."],
+      h1: ["Quédese en 1980.", "O pase a 2026."],
       sub: "ROI, OPEX/CAPEX, fiscal, RACI, reporting a dirección — sobre el terreno, no en un informe. Disponible ahora. No en 3 semanas.",
       chipFiscal: "Fiscal",
       chipReporting: "Reporting a dirección",
       chipMultisite: "Multi-sede / Multi-país",
+      casesTitle: "Sobre el terreno, no en diapositivas",
+      caseLabelContext: "Contexto",
+      caseLabelActions: "Acciones",
+      caseLabelResult: "Resultado",
+      case1Years: "COO — 2017-2019",
+      case1Context: "Fuerte crecimiento, entrada del Grupo Carrefour en el capital, necesidad urgente de estructurar funciones de soporte bajo presión.",
+      case1Actions: "Renovación de la DSI 'Buy', cambio de WMS, estructuración del PMO sobre 200+ proyectos, implementación del control OPEX/CAPEX.",
+      case1Result: "Funciones de soporte estructuradas, gobernanza de proyectos implementada, equipo de 40 personas dirigido directamente.",
+      case2Years: "Director de Transformación — 2008-2016",
+      case2Context: "Mutación del comercio de centro urbano, necesidad de acercar sede y tiendas, giro omnicanal por negociar.",
+      case2Actions: "Armonización de sistemas Francia/Túnez, despliegue del ERP Symphony/Gold, renovación del e-commerce, integración post-adquisición de Naturalia.",
+      case2Result: "Transformación digital y organizacional liderada durante 8 años, a escala de un grupo internacional.",
+      case3Years: "Director de Excelencia Operacional — 2004-2008",
+      case3Context: "Necesidad de armonizar prácticas entre sedes europeas y reforzar el cumplimiento, bajo exigencia SOA del Grupo LVMH.",
+      case3Actions: "Dirección de auditorías internas en Europa (Francia, España, Italia, Portugal), herramienta digital de auditoría conforme a SOA, coordinación con la Auditoría del Grupo LVMH.",
+      case3Result: "Cumplimiento SOA logrado, prácticas alineadas a escala europea, mejora continua instalada en tienda.",
+      comparisonTitle: "Por qué el modelo clásico ya no sigue el ritmo",
+      oldColHead: "Consultora clásica",
+      oldRow1: "Júnior facturado a precio sénior, supervisado a distancia por un socio que ya no toca el expediente.",
+      oldRow2: "Decisión por comité: varias idas y vueltas antes de validar.",
+      oldRow3: "Entregable: un informe de 80 páginas, sin responsable de ejecución detrás.",
+      oldRow4: "Reporting trimestral en diapositivas, desconectado del día a día operativo.",
+      oldRow5: "Equipo rotativo — el consultor que definió el marco ya no es quien ejecuta.",
+      newColHead: "Método 2026",
+      newRow1: "Quien estructura ha ocupado el puesto (CIO/COO) — sabe lo que significa entregar de verdad.",
+      newRow2: "RACI claro desde el primer día: quién decide qué, sin ambigüedad.",
+      newRow3: "Entregable: un plan de acción ejecutable, en 10 días.",
+      newRow4: "Reporting a dirección condensado, mensual, orientado a la decisión.",
+      newRow5: "Un único interlocutor, del diagnóstico a la ejecución, disponible de forma continua.",
       clientsLabel: "Grandes grupos, grandes cadenas, cuentas estratégicas",
       aboutEyebrow: "Quién dirige",
       aboutRole: "CIO / COO / Proyectos y Programas / Transformación IT y Digital",
@@ -1518,6 +1871,17 @@ try{
       stickyMain: "Trabajemos de otra forma.",
       stickySub: "24h. Sin excusas.",
       stickyBtn: "Voy",
+      downloadCv: "Descargar mi perfil (PDF)",
+      roiTitle: "¿Cuánto le cuesta un proyecto mal dirigido?",
+      roiSub: "Ajuste los controles según su contexto para una estimación aproximada.",
+      roiBudgetLabel: "Presupuesto anual del proyecto",
+      roiSlipLabel: "Desviación de planificación estimada",
+      roiTeamLabel: "Tamaño del equipo de proyecto",
+      roiPeopleSuffix: "personas",
+      roiResultLabel: "Coste estimado de la desviación",
+      roiResultNote: "Este es el orden de magnitud de lo que un encuadre insuficiente puede costar — antes incluso de contar el impacto en los equipos y la credibilidad interna.",
+      roiCta: "Evitar esta factura",
+      roiDisclaimer: "Estimación indicativa basada en ratios de desviación presupuestaria habitualmente observados en proyectos de transformación. No sustituye un diagnóstico real — cada contexto es distinto.",
       positioningLine: '<span class="strike">Tres júniors facturados a precio sénior.</span> Un informe de 80 páginas. Cero ejecución.',
       positioningSub: "El modelo de la gran consultora no muere — pero ya no entrega lo bastante rápido para 2026. Habla directamente con quien ejecuta, no con quien vende. Y al final, es su equipo quien dirige — no yo."
     }
@@ -1761,6 +2125,25 @@ try{
     document.querySelector('[data-i18n="chipReporting"]').textContent = t.chipReporting;
     document.querySelector('[data-i18n="chipMultisite"]').textContent = t.chipMultisite;
 
+    document.querySelector('[data-i18n="casesTitle"]').textContent = t.casesTitle;
+    document.querySelectorAll('[data-i18n="caseLabelContext"]').forEach(el=> el.textContent = t.caseLabelContext);
+    document.querySelectorAll('[data-i18n="caseLabelActions"]').forEach(el=> el.textContent = t.caseLabelActions);
+    document.querySelectorAll('[data-i18n="caseLabelResult"]').forEach(el=> el.textContent = t.caseLabelResult);
+    ['case1','case2','case3'].forEach(k=>{
+      document.querySelector(`[data-i18n="${k}Years"]`).textContent = t[k+'Years'];
+      document.querySelector(`[data-i18n="${k}Context"]`).textContent = t[k+'Context'];
+      document.querySelector(`[data-i18n="${k}Actions"]`).textContent = t[k+'Actions'];
+      document.querySelector(`[data-i18n="${k}Result"]`).textContent = t[k+'Result'];
+    });
+
+    document.querySelector('[data-i18n="comparisonTitle"]').textContent = t.comparisonTitle;
+    document.querySelector('[data-i18n="oldColHead"]').textContent = t.oldColHead;
+    document.querySelector('[data-i18n="newColHead"]').textContent = t.newColHead;
+    [1,2,3,4,5].forEach(n=>{
+      document.querySelector(`[data-i18n="oldRow${n}"]`).textContent = t['oldRow'+n];
+      document.querySelector(`[data-i18n="newRow${n}"]`).textContent = t['newRow'+n];
+    });
+
     document.querySelector('[data-i18n="clientsLabel"]').textContent = t.clientsLabel;
     document.querySelector('[data-i18n="aboutEyebrow"]').textContent = t.aboutEyebrow;
     document.querySelector('[data-i18n="aboutRole"]').textContent = t.aboutRole;
@@ -1838,6 +2221,16 @@ try{
     document.getElementById('stickyCtaBtn').textContent = t.stickyBtn;
     document.getElementById('stickyCtaBtn').href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.contactSubject)}`;
 
+    const dlCv = document.querySelector('[data-i18n="downloadCv"]');
+    if(dlCv && t.downloadCv) dlCv.textContent = t.downloadCv;
+
+    const roiKeys = ['roiTitle','roiSub','roiBudgetLabel','roiSlipLabel','roiTeamLabel','roiResultLabel','roiResultNote','roiCta','roiDisclaimer'];
+    roiKeys.forEach(k=>{
+      const el = document.querySelector(`[data-i18n="${k}"]`);
+      if(el && t[k]) el.textContent = t[k];
+    });
+    if(typeof updateRoi === 'function') updateRoi();
+
     document.querySelectorAll('.lang-btn').forEach(b=>{
       b.classList.toggle('active', b.dataset.lang === lang);
     });
@@ -1852,6 +2245,49 @@ try{
   document.querySelectorAll('.lang-btn').forEach(btn=>{
     btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
   });
+
+  // ---------- ROI CALCULATOR ----------
+  const roiBudget = document.getElementById('roiBudget');
+  const roiSlip = document.getElementById('roiSlip');
+  const roiTeam = document.getElementById('roiTeam');
+  const roiBudgetVal = document.getElementById('roiBudgetVal');
+  const roiSlipVal = document.getElementById('roiSlipVal');
+  const roiTeamVal = document.getElementById('roiTeamVal');
+  const roiResultNum = document.getElementById('roiResultNum');
+
+  function formatEUR(n){
+    return Math.round(n).toLocaleString('fr-FR') + ' €';
+  }
+
+  function updateRoi(){
+    if(!roiBudget) return;
+    const budget = parseInt(roiBudget.value, 10);
+    const slipPct = parseInt(roiSlip.value, 10);
+    const team = parseInt(roiTeam.value, 10);
+
+    roiBudgetVal.textContent = formatEUR(budget);
+    roiSlipVal.textContent = slipPct + '%';
+    const teamLabel = currentTeamLabel(team);
+    roiTeamVal.textContent = teamLabel;
+
+    // Illustrative estimate: budget slippage + a team-time overhead factor
+    const budgetImpact = budget * (slipPct / 100);
+    const teamOverhead = team * 550 * (slipPct / 20); // ~550€/day fully-loaded cost proxy, scaled by slip severity
+    const total = budgetImpact + teamOverhead;
+
+    roiResultNum.textContent = formatEUR(total);
+  }
+
+  function currentTeamLabel(team){
+    const t = translations[currentLang];
+    const suffix = t && t.roiPeopleSuffix ? t.roiPeopleSuffix : 'personnes';
+    return team + ' ' + suffix;
+  }
+
+  if(roiBudget){
+    [roiBudget, roiSlip, roiTeam].forEach(el=> el.addEventListener('input', updateRoi));
+    updateRoi();
+  }
 
   // ---------- DYNAMIC COPYRIGHT YEAR ----------
   const copyEl = document.getElementById('copyrightYear');
