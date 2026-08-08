@@ -18,7 +18,6 @@
 <meta property="og:description" content="Conseil en gestion de projet pour dirigeants : SAP FI/CO, WMS, achats, transformation groupe. PMP, Agile ou hybride — 100+ projets menés, 8+ ans d'expérience." />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:locale:alternate" content="en_US" />
-<meta property="og:locale:alternate" content="es_ES" />
 <meta property="og:site_name" content="Evolsphere" />
 <meta property="og:image" content="https://evolsphere.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -177,8 +176,8 @@
   h1{
     font-family: var(--display-font);
     font-weight:800;
-    font-size: clamp(46px, 9.5vw, 112px);
-    line-height:0.94;
+    font-size: clamp(32px, 6.5vw, 74px);
+    line-height:0.98;
     letter-spacing:-0.015em;
     max-width: 15ch;
   }
@@ -282,7 +281,7 @@
     .badge{ display:none; }
     .tagline{ display:none; }
     main{ padding: 24px 18px; }
-    h1{ font-size: clamp(34px, 10vw, 60px); }
+    h1{ font-size: clamp(28px, 8vw, 46px); }
     p.sub{ font-size:14px; }
     .modal-card{ padding: 28px 22px; }
     .cta-row{ width:100%; }
@@ -690,6 +689,86 @@
     .comparison-col.old{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.12); }
   }
 
+  /* ---- Risk Radar ---- */
+  .radar-section{
+    position:relative; z-index:4;
+    max-width: 1080px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .radar-head{ text-align:center; margin-bottom:28px; }
+  .radar-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink); margin-bottom:10px;
+  }
+  .radar-sub{ font-size:13.5px; color: var(--ink-dim); max-width:600px; margin:0 auto; line-height:1.6; }
+
+  .radar-layout{
+    display:grid; grid-template-columns: 1.1fr 1fr; gap:24px;
+    margin-top:30px; align-items:start;
+  }
+  @media (max-width: 900px){ .radar-layout{ grid-template-columns: 1fr; } }
+
+  .radar-chart-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:20px; padding:20px;
+  }
+  .radar-legend{
+    display:flex; gap:14px; flex-wrap:wrap; margin-top:14px; justify-content:center;
+  }
+  .radar-legend-item{
+    display:flex; align-items:center; gap:6px;
+    font-size:11px; color: var(--ink-dim);
+  }
+  .radar-legend-dot{ width:9px; height:9px; border-radius:50%; }
+
+  .radar-table{
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .risk-row{
+    background: rgba(255,255,255,0.035);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:14px; padding:14px 16px;
+  }
+  .risk-row-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;
+  }
+  .risk-cat{
+    font-size:10.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    padding:3px 10px; border-radius:999px;
+  }
+  .risk-cat.interne{ background:rgba(41,240,208,0.14); color:var(--teal); }
+  .risk-cat.it{ background:rgba(165,107,255,0.16); color:var(--violet); }
+  .risk-cat.externe{ background:rgba(255,155,74,0.16); color:var(--amber); }
+  .risk-name{ font-size:13px; font-weight:600; color: var(--ink); flex:1; margin-left:10px; }
+  .risk-gross{ font-size:12px; font-weight:700; color: var(--hot); }
+  .risk-controls{ display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+  .risk-control-label{
+    display:flex; justify-content:space-between; font-size:11px; color: var(--ink-dim); margin-bottom:4px;
+  }
+  .risk-control-label .val{ color: var(--teal); font-weight:700; }
+  .risk-row input[type="range"]{
+    width:100%; -webkit-appearance:none; height:4px; border-radius:3px;
+    background: rgba(255,255,255,0.14); outline:none;
+  }
+  .risk-row input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:14px; height:14px; border-radius:50%;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+  }
+  .risk-row input[type="range"]::-moz-range-thumb{
+    width:14px; height:14px; border-radius:50%; border:none;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+  }
+  .risk-action{
+    font-size:11px; color: var(--ink-dim); margin-top:8px;
+    border-top:1px dashed rgba(255,255,255,0.1); padding-top:8px;
+  }
+  .risk-action b{ color: var(--ink); }
+
+  .radar-note{
+    font-size:11px; color: var(--ink-dim); text-align:center; margin-top:20px; opacity:0.75; line-height:1.5;
+  }
+
   /* ---- ROI Calculator ---- */
   .roi-section{
     position:relative; z-index:4;
@@ -883,7 +962,6 @@
     <div class="lang-switch" id="langSwitch">
       <button class="lang-btn active" data-lang="fr">FR</button>
       <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="es">ES</button>
     </div>
   </div>
 </header>
@@ -922,6 +1000,9 @@
     <span class="chip" data-i18n="chipWeekly">Reporting hebdomadaire direction</span>
     <span class="chip" data-i18n="chipChange">Conduite du changement</span>
     <span class="chip">CODIR / COMEX</span>
+    <span class="chip" data-i18n="chipDirGen">Direction Générale</span>
+    <span class="chip" data-i18n="chipOpsSteering">Pilotage opérationnel</span>
+    <span class="chip" style="border-color: rgba(41,240,208,0.4); color: var(--teal);" data-i18n="chipRemote">100% à distance</span>
   </div>
   <div class="cta-row">
     <button class="btn btn-primary" id="openTestBtn">Diagnostic maintenant</button>
@@ -953,10 +1034,11 @@
 
 <section class="about-summary">
   <div class="about-eyebrow" data-i18n="aboutEyebrow">Qui pilote</div>
-  <div class="about-title">Raphaël de Bruijn</div>
-  <div class="about-role" data-i18n="aboutRole">CIO / COO / Projets &amp; Programmes / Transformation IT &amp; Digitale</div>
+  <a href="evolsphere-one-pager.pdf" target="_blank" rel="noopener" style="text-decoration:none;"><div class="about-title" style="cursor:pointer; transition:opacity 0.2s ease;" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">Raphaël de Bruijn</div></a>
+  <div class="about-role" data-i18n="aboutRole">CIO / COO / Direction Générale / Pilotage Opérationnel / Transformation IT &amp; Digitale — PMP®</div>
   <div class="about-badges">
     <span class="about-badge">PMP® — PMI, 2024</span>
+    <span class="about-badge" data-i18n="badgeAgile">Certifié Agile</span>
     <span class="about-badge" data-i18n="badgeMaster">Master Management &amp; Finance — SKEMA</span>
     <span class="about-badge" data-i18n="badgeIntl">Europe / Afrique du Nord</span>
   </div>
@@ -972,8 +1054,8 @@
     <button class="modal-close" id="closeParcoursBtn">✕</button>
     <div class="about-head">
       <div class="about-eyebrow" data-i18n="aboutEyebrow">Qui pilote</div>
-      <div class="about-title">Raphaël de Bruijn</div>
-      <div class="about-role" data-i18n="aboutRole">CIO / COO / Projets &amp; Programmes / Transformation IT &amp; Digitale</div>
+      <a href="evolsphere-one-pager.pdf" target="_blank" rel="noopener" style="text-decoration:none;"><div class="about-title" style="cursor:pointer; transition:opacity 0.2s ease;" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">Raphaël de Bruijn</div></a>
+      <div class="about-role" data-i18n="aboutRole">CIO / COO / Direction Générale / Pilotage Opérationnel / Transformation IT &amp; Digitale — PMP®</div>
     </div>
     <div class="timeline">
       <div class="timeline-item">
@@ -982,7 +1064,7 @@
         <div class="timeline-desc" data-i18n="tl1Desc">Transformation IT, logistique et organisationnelle pour de grands comptes : Groupement Les Mousquetaires, Cora, McDonald's.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-years" data-i18n="tl2Years">2017 – 2019</div>
+        <div class="timeline-years" data-i18n="tl2Years">2017 – 2020</div>
         <div class="timeline-role" data-i18n="tl2Role">COO — Showroomprivé</div>
         <div class="timeline-desc" data-i18n="tl2Desc">Structuration de l'ensemble des fonctions support, management direct de 40 collaborateurs, pilotage de 200+ projets, entrée au capital du Groupe Carrefour.</div>
       </div>
@@ -993,8 +1075,8 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-years" data-i18n="tl4Years">2004 – 2008</div>
-        <div class="timeline-role" data-i18n="tl4Role">Directeur Excellence Opérationnelle — Sephora (Groupe LVMH)</div>
-        <div class="timeline-desc" data-i18n="tl4Desc">Pilotage des audits internes en Europe, conformité SOA, amélioration continue des processus boutiques.</div>
+        <div class="timeline-role" data-i18n="tl4Role">Contrôleur de Gestion Europe &amp; Excellence Opérationnelle — Sephora (Groupe LVMH)</div>
+        <div class="timeline-desc" data-i18n="tl4Desc">Pilotage du contrôle de gestion retail Europe, audits internes multi-pays, conformité SOA, amélioration continue des processus boutiques.</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-years" data-i18n="tl5Years">2000 – 2004</div>
@@ -1009,7 +1091,7 @@
     <div class="cases-grid" style="grid-template-columns:1fr; gap:14px;">
       <div class="case-card">
         <div class="case-client">Showroomprivé</div>
-        <div class="case-years" data-i18n="case1Years">COO — 2017-2019</div>
+        <div class="case-years" data-i18n="case1Years">COO — 2017-2020</div>
         <div class="case-block">
           <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
           <div class="case-text" data-i18n="case1Context">Forte croissance, entrée au capital du Groupe Carrefour, besoin urgent de structurer des fonctions support en tension.</div>
@@ -1041,7 +1123,7 @@
       </div>
       <div class="case-card">
         <div class="case-client">Sephora (Groupe LVMH)</div>
-        <div class="case-years" data-i18n="case3Years">Directeur Excellence Opérationnelle — 2004-2008</div>
+        <div class="case-years" data-i18n="case3Years">Contrôleur de Gestion Europe &amp; Excellence Opérationnelle — 2004-2008</div>
         <div class="case-block">
           <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
           <div class="case-text" data-i18n="case3Context">Besoin d'harmoniser les pratiques entre sièges européens et de renforcer la conformité, sous exigence SOA du Groupe LVMH.</div>
@@ -1053,6 +1135,22 @@
         <div class="case-block result">
           <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
           <div class="case-text" data-i18n="case3Result">Conformité SOA atteinte, pratiques alignées à l'échelle européenne, amélioration continue installée en magasin.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-client">Groupement Les Mousquetaires (ITM LEMI)</div>
+        <div class="case-years" data-i18n="case4Years">Projet ELAN — Practice Retail, depuis 2022</div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+          <div class="case-text" data-i18n="case4Context">WMS INFOLOG en fin de support (2027), obsolescence technique, besoin de moderniser la performance opérationnelle et SI de la Supply Chain LEMI.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+          <div class="case-text" data-i18n="case4Actions">Cadrage et pilotage du changement de WMS vers REFLEX (éditeur HARDIS), structuration de la gouvernance projet (COPIL, comité stratégique), définition des facteurs clés de succès, pilotage en mode Agile.</div>
+        </div>
+        <div class="case-block result">
+          <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+          <div class="case-text" data-i18n="case4Result">Guide lines et gouvernance projet posées, équipe multi-parties prenantes (STIME, HARDIS, métiers) alignée, trajectoire de déploiement sécurisée.</div>
         </div>
       </div>
     </div>
@@ -1116,6 +1214,102 @@
   </div>
 </section>
 
+<section class="radar-section">
+  <div class="radar-head">
+    <div class="radar-title" data-i18n="radarTitle">Risk Radar — démonstration</div>
+    <div class="radar-sub" data-i18n="radarSub">Chaque risque est noté par le manager (niveau brut en €, si le risque survient) et suivi par celui qui l'exécute (niveau de maîtrise, %). Ajustez les curseurs : la cartographie évolue en temps réel, comme en cours de projet.</div>
+  </div>
+
+  <div class="radar-layout">
+    <div class="radar-chart-card">
+      <svg id="radarChart" viewBox="0 0 340 300" style="width:100%; height:auto;">
+        <!-- axes -->
+        <line x1="40" y1="20" x2="40" y2="250" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <line x1="40" y1="250" x2="320" y2="250" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <text x="10" y="18" fill="var(--ink-dim)" font-size="9" font-family="Arial">€ brut</text>
+        <text x="270" y="266" fill="var(--ink-dim)" font-size="9" font-family="Arial" data-i18n="radarAxisX">Maîtrise →</text>
+        <!-- danger zone hint -->
+        <rect x="40" y="20" width="140" height="115" fill="rgba(255,62,154,0.06)"/>
+        <g id="riskDots"></g>
+      </svg>
+      <div class="radar-legend">
+        <div class="radar-legend-item"><span class="radar-legend-dot" style="background:var(--teal);"></span><span data-i18n="radarLegendInterne">Interne</span></div>
+        <div class="radar-legend-item"><span class="radar-legend-dot" style="background:var(--violet);"></span><span data-i18n="radarLegendIT">IT</span></div>
+        <div class="radar-legend-item"><span class="radar-legend-dot" style="background:var(--amber);"></span><span data-i18n="radarLegendExterne">Externe</span></div>
+      </div>
+    </div>
+
+    <div class="radar-table" id="radarTable">
+      <div class="risk-row" data-cat="it" data-gross="180000">
+        <div class="risk-row-head">
+          <span class="risk-cat it" data-i18n="radarLegendIT">IT</span>
+          <span class="risk-name" data-i18n="risk1Name">Migration WMS non stabilisée à date go-live</span>
+          <span class="risk-gross">180 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">40</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="40" />
+        </div>
+        <div class="risk-action" data-i18n="risk1Action"><b>Action :</b> plan de tests de charge renforcé — piloté par l'intégrateur, avant le 15 du mois.</div>
+      </div>
+
+      <div class="risk-row" data-cat="interne" data-gross="90000">
+        <div class="risk-row-head">
+          <span class="risk-cat interne" data-i18n="radarLegendInterne">Interne</span>
+          <span class="risk-name" data-i18n="risk2Name">Disponibilité des équipes métier sur le cadrage</span>
+          <span class="risk-gross">90 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">65</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="65" />
+        </div>
+        <div class="risk-action" data-i18n="risk2Action"><b>Action :</b> créneaux dédiés bloqués en agenda — porté par le sponsor métier, dès la semaine prochaine.</div>
+      </div>
+
+      <div class="risk-row" data-cat="externe" data-gross="250000">
+        <div class="risk-row-head">
+          <span class="risk-cat externe" data-i18n="radarLegendExterne">Externe</span>
+          <span class="risk-name" data-i18n="risk3Name">Délai de livraison d'un fournisseur clé</span>
+          <span class="risk-gross">250 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">25</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="25" />
+        </div>
+        <div class="risk-action" data-i18n="risk3Action"><b>Action :</b> clause de pénalité de retard à activer — piloté par les achats, ce trimestre.</div>
+      </div>
+
+      <div class="risk-row" data-cat="it" data-gross="60000">
+        <div class="risk-row-head">
+          <span class="risk-cat it" data-i18n="radarLegendIT">IT</span>
+          <span class="risk-name" data-i18n="risk4Name">Dette technique sur l'interfaçage SAP</span>
+          <span class="risk-gross">60 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">70</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="70" />
+        </div>
+        <div class="risk-action" data-i18n="risk4Action"><b>Action :</b> revue d'architecture programmée — pilotée par le PMO, sous 3 semaines.</div>
+      </div>
+
+      <div class="risk-row" data-cat="interne" data-gross="130000">
+        <div class="risk-row-head">
+          <span class="risk-cat interne" data-i18n="radarLegendInterne">Interne</span>
+          <span class="risk-name" data-i18n="risk5Name">Résistance au changement en magasin/entrepôt</span>
+          <span class="risk-gross">130 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">50</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="50" />
+        </div>
+        <div class="risk-action" data-i18n="risk5Action"><b>Action :</b> plan de conduite du changement renforcé — porté par les RH/Communication, en continu.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="radar-note" data-i18n="radarNote">Exemple illustratif à visée pédagogique — sur un vrai projet, cette cartographie est mise à jour à chaque comité, avec vos propres risques.</div>
+</section>
+
 <section class="offers-section">
   <div class="offers-head">
     <div class="offers-eyebrow" data-i18n="offersEyebrow">Nos engagements</div>
@@ -1168,7 +1362,7 @@
     <div class="process-step">
       <div class="step-num">3</div>
       <div class="step-title" data-i18n="step3Title">L'exécution démarre</div>
-      <div class="step-desc" data-i18n="step3Desc">Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher.</div>
+      <div class="step-desc" data-i18n="step3Desc">Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher. Tout se fait à distance : gain de temps et de coût pour vous comme pour moi.</div>
     </div>
   </div>
 </section>
@@ -1523,6 +1717,9 @@ try{
       chipStandup: "Stand-up quotidien",
       chipWeekly: "Reporting hebdomadaire direction",
       chipChange: "Conduite du changement",
+      chipDirGen: "Direction Générale",
+      chipOpsSteering: "Pilotage opérationnel",
+      chipRemote: "100% à distance",
       chipFiscal: "Fiscal",
       chipReporting: "Reporting direction",
       chipMultisite: "Multi-sites / Multi-pays",
@@ -1530,7 +1727,7 @@ try{
       caseLabelContext: "Contexte",
       caseLabelActions: "Actions",
       caseLabelResult: "Résultat",
-      case1Years: "COO — 2017-2019",
+      case1Years: "COO — 2017-2020",
       case1Context: "Forte croissance, entrée au capital du Groupe Carrefour, besoin urgent de structurer des fonctions support en tension.",
       case1Actions: "Refonte DSI 'Buy', changement de WMS, structuration du PMO sur 200+ projets, mise en place du pilotage OPEX/CAPEX.",
       case1Result: "Fonctions support structurées, gouvernance projet en place, équipe de 40 personnes pilotée en direct.",
@@ -1538,10 +1735,14 @@ try{
       case2Context: "Mutation du commerce de centre-ville, nécessité de rapprocher siège et magasins, virage omnicanal à négocier.",
       case2Actions: "Harmonisation des SI France/Tunisie, déploiement ERP Symphony/Gold, refonte e-commerce, intégration post-acquisition de Naturalia.",
       case2Result: "Transformation digitale et organisationnelle menée sur 8 ans, à l'échelle d'un groupe international.",
-      case3Years: "Directeur Excellence Opérationnelle — 2004-2008",
+      case3Years: "Contrôleur de Gestion Europe & Excellence Opérationnelle — 2004-2008",
       case3Context: "Besoin d'harmoniser les pratiques entre sièges européens et de renforcer la conformité, sous exigence SOA du Groupe LVMH.",
       case3Actions: "Pilotage des audits internes en Europe (France, Espagne, Italie, Portugal), outil digital d'audit conforme SOA, coordination avec l'Audit Groupe LVMH.",
       case3Result: "Conformité SOA atteinte, pratiques alignées à l'échelle européenne, amélioration continue installée en magasin.",
+      case4Years: "Projet ELAN — Practice Retail, depuis 2022",
+      case4Context: "WMS INFOLOG en fin de support (2027), obsolescence technique, besoin de moderniser la performance opérationnelle et SI de la Supply Chain LEMI.",
+      case4Actions: "Cadrage et pilotage du changement de WMS vers REFLEX (éditeur HARDIS), structuration de la gouvernance projet (COPIL, comité stratégique), définition des facteurs clés de succès, pilotage en mode Agile.",
+      case4Result: "Guide lines et gouvernance projet posées, équipe multi-parties prenantes (STIME, HARDIS, métiers) alignée, trajectoire de déploiement sécurisée.",
       comparisonTitle: "Pourquoi les cabinets de conseil sont morts",
       oldColHead: "Cabinet classique",
       oldRow1: "Junior facturé au prix senior, supervisé à distance par un associé qui ne touche plus le dossier.",
@@ -1557,26 +1758,27 @@ try{
       newRow5: "Un seul interlocuteur, du diagnostic à l'exécution, disponible en continu.",
       clientsLabel: "Grands groupes, ETI et PME — la méthode s'adapte à votre taille",
       aboutEyebrow: "Qui pilote",
-      aboutRole: "CIO / COO / Projets & Programmes / Transformation IT & Digitale",
+      aboutRole: "CIO / COO / Direction Générale / Pilotage Opérationnel / Transformation IT & Digitale — PMP®",
       aboutTeaser: "20 ans, 5 groupes (KPMG, Sephora, Monoprix, Showroomprivé, Practice Retail), 200+ projets pilotés.",
       viewParcoursBtn: "Voir le parcours complet",
       badgeMaster: "Master Management & Finance — SKEMA",
+      badgeAgile: "Certifié Agile",
       badgeIntl: "Europe / Afrique du Nord",
       tl1Years: "Depuis 2020",
       tl1Role: "Conseil, Audit & Management de transition — Practice Retail",
       tl1Desc: "Transformation IT, logistique et organisationnelle pour de grands comptes : Groupement Les Mousquetaires, Cora, McDonald's.",
-      tl2Years: "2017 – 2019",
+      tl2Years: "2017 – 2020",
       tl2Role: "COO — Showroomprivé",
       tl2Desc: "Structuration de l'ensemble des fonctions support, management direct de 40 collaborateurs, pilotage de 200+ projets, entrée au capital du Groupe Carrefour.",
       tl3Years: "2008 – 2016",
       tl3Role: "Directeur de la Transformation — Groupe Monoprix",
       tl3Desc: "Transformation digitale et harmonisation des SI en France et en Tunisie, refonte e-commerce, intégration post-acquisition de Naturalia.",
       tl4Years: "2004 – 2008",
-      tl4Role: "Directeur Excellence Opérationnelle — Sephora (Groupe LVMH)",
-      tl4Desc: "Pilotage des audits internes en Europe, conformité SOA, amélioration continue des processus boutiques.",
+      tl4Role: "Contrôleur de Gestion Europe & Excellence Opérationnelle — Sephora (Groupe LVMH)",
+      tl4Desc: "Pilotage du contrôle de gestion retail Europe, audits internes multi-pays, conformité SOA, amélioration continue des processus boutiques.",
       tl5Years: "2000 – 2004",
       tl5Role: "Auditeur Senior — KPMG",
-      tl5Desc: "Commissariat aux comptes pour groupes cotés (CAC 40, ETI), due diligence financière, consolidation de groupes.",
+      tl5Desc: "Commissariat aux comptes pour groupes cotés (CAC 40, ETI), due diligence financière, consolidation de groupes — spécialisation secteur Information, Communication &amp; Entertainment (ICE).",
       chipBudget: "Pilotage budgétaire",
       chipTestLearn: "Test & Learn",
       chipLegal: "Juridique & contrats",
@@ -1623,7 +1825,7 @@ try{
       step2Title: "On cadre en 15 minutes",
       step2Desc: "Un appel court pour comprendre l'enjeu réel et vous dire honnêtement si je peux aider.",
       step3Title: "L'exécution démarre",
-      step3Desc: "Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher.",
+      step3Desc: "Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher. Tout se fait à distance : gain de temps et de coût pour vous comme pour moi.",
       faqTitle: "Questions fréquentes",
       faq1Q: "C'est cher pour un audit de 10 jours ?",
       faq1A: "Un audit mal fait coûte plus cher qu'un projet qui n'avance pas depuis 6 mois. Le diagnostic sert à décider vite, avec les vrais risques sur la table — pas à occuper du temps.",
@@ -1649,6 +1851,24 @@ try{
       roiResultNote: "C'est l'ordre de grandeur de ce qu'un cadrage insuffisant peut coûter — avant même de compter l'impact sur les équipes et la crédibilité interne.",
       roiCta: "Éviter cette facture",
       roiDisclaimer: "Estimation indicative basée sur des ratios de dérive budgétaire couramment observés sur des projets de transformation. Ne remplace pas un diagnostic réel — chaque contexte est différent.",
+      radarTitle: "Risk Radar — démonstration",
+      radarSub: "Chaque risque est noté par le manager (niveau brut en €, si le risque survient) et suivi par celui qui l'exécute (niveau de maîtrise, %). Ajustez les curseurs : la cartographie évolue en temps réel, comme en cours de projet.",
+      radarAxisX: "Maîtrise →",
+      radarLegendInterne: "Interne",
+      radarLegendIT: "IT",
+      radarLegendExterne: "Externe",
+      radarMasteryLabel: "Niveau de maîtrise",
+      risk1Name: "Migration WMS non stabilisée à date go-live",
+      risk1Action: "Action : plan de tests de charge renforcé — piloté par l'intégrateur, avant le 15 du mois.",
+      risk2Name: "Disponibilité des équipes métier sur le cadrage",
+      risk2Action: "Action : créneaux dédiés bloqués en agenda — porté par le sponsor métier, dès la semaine prochaine.",
+      risk3Name: "Délai de livraison d'un fournisseur clé",
+      risk3Action: "Action : clause de pénalité de retard à activer — piloté par les achats, ce trimestre.",
+      risk4Name: "Dette technique sur l'interfaçage SAP",
+      risk4Action: "Action : revue d'architecture programmée — pilotée par le PMO, sous 3 semaines.",
+      risk5Name: "Résistance au changement en magasin/entrepôt",
+      risk5Action: "Action : plan de conduite du changement renforcé — porté par les RH/Communication, en continu.",
+      radarNote: "Exemple illustratif à visée pédagogique — sur un vrai projet, cette cartographie est mise à jour à chaque comité, avec vos propres risques.",
       positioningLine: '<span class="strike">3 juniors facturés au prix senior.</span> Un rapport de 80 pages. Zéro exécution.',
       positioningSub: "Le modèle du grand cabinet est mort. Vous parlez directement à la personne qui exécute, pas à celle qui vend — et c'est la meilleure alternative sur le marché aujourd'hui. Et à la fin, c'est votre équipe qui pilote — pas moi."
     },
@@ -1662,6 +1882,9 @@ try{
       chipStandup: "Daily stand-up",
       chipWeekly: "Weekly board reporting",
       chipChange: "Change management",
+      chipDirGen: "General Management",
+      chipOpsSteering: "Operational Steering",
+      chipRemote: "100% Remote",
       chipFiscal: "Tax",
       chipReporting: "Board reporting",
       chipMultisite: "Multi-site / Multi-country",
@@ -1669,7 +1892,7 @@ try{
       caseLabelContext: "Context",
       caseLabelActions: "Actions",
       caseLabelResult: "Result",
-      case1Years: "COO — 2017-2019",
+      case1Years: "COO — 2017-2020",
       case1Context: "Fast growth, Carrefour Group capital entry, urgent need to structure support functions under pressure.",
       case1Actions: "Overhauled the 'Buy' IT function, changed WMS, structured PMO across 200+ projects, set up OPEX/CAPEX oversight.",
       case1Result: "Support functions structured, project governance in place, 40-person team led directly.",
@@ -1677,10 +1900,14 @@ try{
       case2Context: "City-center retail shifting fast, need to bring HQ and stores closer together, omnichannel pivot to negotiate.",
       case2Actions: "Harmonized IT systems across France and Tunisia, deployed the Symphony/Gold ERP, overhauled e-commerce, integrated Naturalia post-acquisition.",
       case2Result: "Digital and organizational transformation led over 8 years, at the scale of an international group.",
-      case3Years: "Operational Excellence Director — 2004-2008",
+      case3Years: "Financial Controller Europe & Operational Excellence — 2004-2008",
       case3Context: "Needed to harmonize practices across European HQs and strengthen compliance under LVMH Group's SOA requirements.",
       case3Actions: "Led internal audits across Europe (France, Spain, Italy, Portugal), built an SOA-compliant digital audit tool, coordinated with LVMH Group Audit.",
       case3Result: "SOA compliance achieved, practices aligned across Europe, continuous improvement embedded in stores.",
+      case4Years: "ELAN project — Practice Retail, since 2022",
+      case4Context: "INFOLOG WMS reaching end of support (2027), technical obsolescence, need to modernize operational and IT performance of the LEMI supply chain.",
+      case4Actions: "Scoped and steered the WMS migration to REFLEX (HARDIS), structured project governance (steering committee, strategic committee), defined success factors, agile-based delivery.",
+      case4Result: "Guidelines and project governance established, multi-stakeholder team (STIME, HARDIS, business units) aligned, deployment trajectory secured.",
       comparisonTitle: "Why consulting firms are dead",
       oldColHead: "Classic firm",
       oldRow1: "A junior billed at senior rates, remotely supervised by a partner who no longer touches the file.",
@@ -1696,26 +1923,27 @@ try{
       newRow5: "One point of contact, from diagnosis to execution, available continuously.",
       clientsLabel: "Large groups, mid-caps and SMEs — the method scales to your size",
       aboutEyebrow: "Who's steering",
-      aboutRole: "CIO / COO / Projects & Programs / IT & Digital Transformation",
+      aboutRole: "CIO / COO / General Management / Operational Steering / IT & Digital Transformation — PMP®",
       aboutTeaser: "20 years, 5 groups (KPMG, Sephora, Monoprix, Showroomprivé, Practice Retail), 200+ projects steered.",
       viewParcoursBtn: "View full background",
       badgeMaster: "Master in Management & Finance — SKEMA",
+      badgeAgile: "Agile Certified",
       badgeIntl: "Europe / North Africa",
       tl1Years: "Since 2020",
       tl1Role: "Consulting, Audit & Interim Management — Practice Retail",
       tl1Desc: "IT, logistics and organizational transformation for major accounts: Groupement Les Mousquetaires, Cora, McDonald's.",
-      tl2Years: "2017 – 2019",
+      tl2Years: "2017 – 2020",
       tl2Role: "COO — Showroomprivé",
       tl2Desc: "Structured all support functions, direct management of 40 staff, 200+ project portfolio, Carrefour Group capital entry.",
       tl3Years: "2008 – 2016",
       tl3Role: "Transformation Director — Groupe Monoprix",
       tl3Desc: "Digital transformation and IT systems harmonization across France and Tunisia, e-commerce overhaul, Naturalia post-acquisition integration.",
       tl4Years: "2004 – 2008",
-      tl4Role: "Operational Excellence Director — Sephora (LVMH Group)",
-      tl4Desc: "Led internal audits across Europe, SOA compliance, continuous improvement of store processes.",
+      tl4Role: "Financial Controller Europe & Operational Excellence — Sephora (LVMH Group)",
+      tl4Desc: "Led retail financial control across Europe, multi-country internal audits, SOA compliance, continuous improvement of store processes.",
       tl5Years: "2000 – 2004",
       tl5Role: "Senior Auditor — KPMG",
-      tl5Desc: "Statutory audit for listed groups (CAC 40, mid-caps), financial due diligence, group consolidation.",
+      tl5Desc: "Statutory audit for listed groups (CAC 40, mid-caps), financial due diligence, group consolidation — specialized in the Information, Communication &amp; Entertainment (ICE) sector.",
       chipBudget: "Budget ownership",
       chipTestLearn: "Test & Learn",
       chipLegal: "Legal & contracts",
@@ -1762,7 +1990,7 @@ try{
       step2Title: "We frame it in 15 minutes",
       step2Desc: "A short call to understand the real issue and tell you honestly if I can help.",
       step3Title: "Execution starts",
-      step3Desc: "Diagnosis, sprint, or ongoing oversight — whichever fits your stake, not the most expensive one.",
+      step3Desc: "Diagnosis, sprint, or ongoing oversight — whichever fits your stake, not the most expensive one. Everything runs remotely: less time and cost, for both of us.",
       faqTitle: "Frequently asked questions",
       faq1Q: "Isn't that expensive for a 10-day audit?",
       faq1A: "A badly done audit costs more than a project that hasn't moved in 6 months. The diagnosis is there to help you decide fast, with the real risks on the table — not to fill time.",
@@ -1788,148 +2016,27 @@ try{
       roiResultNote: "This is the order of magnitude of what insufficient framing can cost — before even counting the impact on teams and internal credibility.",
       roiCta: "Avoid this bill",
       roiDisclaimer: "Indicative estimate based on commonly observed budget-slippage ratios on transformation projects. Not a substitute for a real diagnosis — every context differs.",
+      radarTitle: "Risk Radar — demo",
+      radarSub: "Each risk is rated by the manager (gross level in €, if it happens) and tracked by the person executing it (mastery level, %). Adjust the sliders: the map updates live, just like during a real project.",
+      radarAxisX: "Mastery →",
+      radarLegendInterne: "Internal",
+      radarLegendIT: "IT",
+      radarLegendExterne: "External",
+      radarMasteryLabel: "Mastery level",
+      risk1Name: "WMS migration not stabilized by go-live date",
+      risk1Action: "Action: reinforced load-testing plan — led by the integrator, before the 15th.",
+      risk2Name: "Business teams' availability for scoping",
+      risk2Action: "Action: dedicated time slots blocked in calendar — owned by the business sponsor, starting next week.",
+      risk3Name: "Delivery delay from a key supplier",
+      risk3Action: "Action: late-delivery penalty clause to activate — owned by procurement, this quarter.",
+      risk4Name: "Technical debt on the SAP interface",
+      risk4Action: "Action: architecture review scheduled — owned by the PMO, within 3 weeks.",
+      risk5Name: "Change resistance in stores/warehouse",
+      risk5Action: "Action: reinforced change-management plan — owned by HR/Communications, ongoing.",
+      radarNote: "Illustrative example for demonstration purposes — on a real project, this map is updated at every steering committee, with your own risks.",
       positioningLine: '<span class="strike">Three juniors billed at senior rates.</span> An 80-page report. Zero execution.',
       positioningSub: "The big-firm model is dead. You talk directly to the person who executes, not the one who sells — and this is the best alternative on the market today. And in the end, your team leads — not me."
     },
-    es: {
-      pageTitle: "Evolsphere — Consultoría en gestión de proyectos: PMP, Ágil y SAP para directivos",
-      metaDescription: "Evolsphere acompaña a los directivos en sus proyectos críticos: SAP FI/CO, WMS, compras, transformación de grupo. Gobernanza PMP, Ágil o híbrida.",
-      badge: "Las consultoras están muertas.",
-      eyebrow: "Grandes grupos, medianas empresas, pymes — el modelo cambió",
-      h1: ["Quédese en 1980.", "O pase a 2026."],
-      sub: "ROI, OPEX/CAPEX, fiscal, RACI, reporting a dirección, coordinación CODIR/COMEX — sobre el terreno, no en un informe. Disponible ahora. No en 3 semanas.",
-      chipStandup: "Reunión diaria (stand-up)",
-      chipWeekly: "Reporting semanal a dirección",
-      chipChange: "Gestión del cambio",
-      chipFiscal: "Fiscal",
-      chipReporting: "Reporting a dirección",
-      chipMultisite: "Multi-sede / Multi-país",
-      casesTitle: "Sobre el terreno, no en diapositivas",
-      caseLabelContext: "Contexto",
-      caseLabelActions: "Acciones",
-      caseLabelResult: "Resultado",
-      case1Years: "COO — 2017-2019",
-      case1Context: "Fuerte crecimiento, entrada del Grupo Carrefour en el capital, necesidad urgente de estructurar funciones de soporte bajo presión.",
-      case1Actions: "Renovación de la DSI 'Buy', cambio de WMS, estructuración del PMO sobre 200+ proyectos, implementación del control OPEX/CAPEX.",
-      case1Result: "Funciones de soporte estructuradas, gobernanza de proyectos implementada, equipo de 40 personas dirigido directamente.",
-      case2Years: "Director de Transformación — 2008-2016",
-      case2Context: "Mutación del comercio de centro urbano, necesidad de acercar sede y tiendas, giro omnicanal por negociar.",
-      case2Actions: "Armonización de sistemas Francia/Túnez, despliegue del ERP Symphony/Gold, renovación del e-commerce, integración post-adquisición de Naturalia.",
-      case2Result: "Transformación digital y organizacional liderada durante 8 años, a escala de un grupo internacional.",
-      case3Years: "Director de Excelencia Operacional — 2004-2008",
-      case3Context: "Necesidad de armonizar prácticas entre sedes europeas y reforzar el cumplimiento, bajo exigencia SOA del Grupo LVMH.",
-      case3Actions: "Dirección de auditorías internas en Europa (Francia, España, Italia, Portugal), herramienta digital de auditoría conforme a SOA, coordinación con la Auditoría del Grupo LVMH.",
-      case3Result: "Cumplimiento SOA logrado, prácticas alineadas a escala europea, mejora continua instalada en tienda.",
-      comparisonTitle: "Por qué las consultoras están muertas",
-      oldColHead: "Consultora clásica",
-      oldRow1: "Júnior facturado a precio sénior, supervisado a distancia por un socio que ya no toca el expediente.",
-      oldRow2: "Decisión por comité: varias idas y vueltas antes de validar.",
-      oldRow3: "Entregable: un informe de 80 páginas, sin responsable de ejecución detrás.",
-      oldRow4: "Reporting trimestral en diapositivas, desconectado del día a día operativo.",
-      oldRow5: "Equipo rotativo — el consultor que definió el marco ya no es quien ejecuta.",
-      newColHead: "Método 2026",
-      newRow1: "Quien estructura ha ocupado el puesto (CIO/COO) — sabe lo que significa entregar de verdad.",
-      newRow2: "RACI claro desde el primer día: quién decide qué, sin ambigüedad.",
-      newRow3: "Entregable: un plan de acción ejecutable, en 10 días.",
-      newRow4: "Reporting a dirección condensado, mensual, orientado a la decisión.",
-      newRow5: "Un único interlocutor, del diagnóstico a la ejecución, disponible de forma continua.",
-      clientsLabel: "Grandes grupos, medianas empresas y pymes — el método se adapta a su tamaño",
-      aboutEyebrow: "Quién dirige",
-      aboutRole: "CIO / COO / Proyectos y Programas / Transformación IT y Digital",
-      aboutTeaser: "20 años, 5 grupos (KPMG, Sephora, Monoprix, Showroomprivé, Practice Retail), 200+ proyectos dirigidos.",
-      viewParcoursBtn: "Ver la trayectoria completa",
-      badgeMaster: "Máster en Management y Finanzas — SKEMA",
-      badgeIntl: "Europa / Norte de África",
-      tl1Years: "Desde 2020",
-      tl1Role: "Consultoría, Auditoría y Dirección de Transición — Practice Retail",
-      tl1Desc: "Transformación IT, logística y organizacional para grandes cuentas: Groupement Les Mousquetaires, Cora, McDonald's.",
-      tl2Years: "2017 – 2019",
-      tl2Role: "COO — Showroomprivé",
-      tl2Desc: "Estructuración de todas las funciones de soporte, gestión directa de 40 personas, cartera de 200+ proyectos, entrada del Grupo Carrefour en el capital.",
-      tl3Years: "2008 – 2016",
-      tl3Role: "Director de Transformación — Grupo Monoprix",
-      tl3Desc: "Transformación digital y armonización de sistemas en Francia y Túnez, renovación del e-commerce, integración post-adquisición de Naturalia.",
-      tl4Years: "2004 – 2008",
-      tl4Role: "Director de Excelencia Operacional — Sephora (Grupo LVMH)",
-      tl4Desc: "Dirección de auditorías internas en Europa, cumplimiento SOA, mejora continua de procesos en tienda.",
-      tl5Years: "2000 – 2004",
-      tl5Role: "Auditor Sénior — KPMG",
-      tl5Desc: "Auditoría legal para grupos cotizados (CAC 40, medianas empresas), due diligence financiera, consolidación de grupos.",
-      chipBudget: "Gestión presupuestaria",
-      chipTestLearn: "Test & Learn",
-      chipLegal: "Legal & contratos",
-      chipAchats: "Compras",
-      chipOrga: "Organización",
-      testBtn: "Diagnóstico ahora",
-      contactBtn: "Hablemos. Ahora.",
-      contactSubject: "Hablemos de un proyecto",
-      tagWords: ["estructurar", "asegurar", "entregar"],
-      soundOn: "Activar sonido",
-      soundOff: "Silenciar sonido",
-      stat1: "años asegurando proyectos críticos",
-      stat2: "proyectos dirigidos en cartera",
-      stat3: "personas dirigidas en equipos de proyecto",
-      stat4: "presupuesto gestionado en el último proyecto",
-      offersEyebrow: "Nuestros compromisos",
-      offersTitle: "Un nivel de gobernanza para cada reto",
-      offer0Name: "POC Test & Learn",
-      offer0Price: "Desde 450€",
-      offer0Desc: "Un alcance reducido, un resultado concreto en 5 días. La prueba antes del compromiso.",
-      offer0Cta: "Lanzar un test",
-      offer1Name: "Diagnóstico estratégico",
-      offer1Price: "Desde 890€",
-      offer1Desc: "Sus riesgos, sobre la mesa en 10 días. Sin filtros.",
-      offer1Cta: "Reservar un diagnóstico",
-      offer2Badge: "La elección de quien no tiene tiempo que perder",
-      offer2Name: "Sprint estratégico",
-      offer2Price: "Desde 2.400€",
-      offer2Desc: "2 a 4 semanas. Plan lanzado. Sin rodeos, sin comités que dan vueltas.",
-      offer2Cta: "Reservar un sprint",
-      offer3Name: "Supervisión ejecutiva continua",
-      offer3Price: "Desde 1.200€/mes",
-      offer3Desc: "Acceso prioritario cada mes — sigo disponible para acompañar los cambios, mientras su equipo dirige el día a día.",
-      offer3Cta: "Iniciar la supervisión",
-      finalTitle: "No hacer nada ya es elegir perder.",
-      finalSub: "3 plazas este trimestre. Después, no.",
-      finalCtaBtn: "Voy.",
-      finalSubject: "Hablemos de un proyecto",
-      ctaNote: "Respuesta en 24h. Sin excepciones.",
-      finalCtaNote: "Escriba. Respondo. Simple.",
-      processTitle: "Cómo funciona, en concreto",
-      step1Title: "Usted escribe",
-      step1Desc: "Un correo directo, con 2 líneas basta. Sin formulario interminable, sin centralita.",
-      step2Title: "Encuadramos en 15 minutos",
-      step2Desc: "Una llamada corta para entender el reto real y decirle honestamente si puedo ayudar.",
-      step3Title: "La ejecución arranca",
-      step3Desc: "Diagnóstico, sprint o supervisión continua — el formato más adecuado a su reto, no el más caro.",
-      faqTitle: "Preguntas frecuentes",
-      faq1Q: "¿Es caro para una auditoría de 10 días?",
-      faq1A: "Una auditoría mal hecha cuesta más que un proyecto que lleva 6 meses sin avanzar. El diagnóstico sirve para decidir rápido, con los riesgos reales sobre la mesa — no para ocupar tiempo.",
-      faq2Q: "¿Por qué usted y no una gran consultora?",
-      faq2A: "Sin equipo júnior facturado a precio sénior, sin informe de 80 páginas. Habla directamente con la persona que ha dirigido más de 100 proyectos — del diagnóstico a la ejecución.",
-      faq3Q: "¿Y si mi proyecto no encaja en ninguna de las 3 ofertas?",
-      faq3A: "Hablamos 15 minutos, sin compromiso. Si no soy el interlocutor adecuado, se lo digo directamente — y si es posible, le oriento hacia alguien que lo sea.",
-      faq4Q: "¿Cuánto tiempo hasta ver resultados?",
-      faq4A: "El diagnóstico estratégico entrega recomendaciones accionables en 10 días. El sprint estratégico lanza la ejecución en 2 a 4 semanas. Nada se alarga.",
-      faq5Q: "¿Va a dirigir usted en lugar de mi equipo?",
-      faq5A: "No. Estructuro el marco con usted, pero el objetivo no es que yo siga siendo indispensable — es que su equipo interno dirija solo, más rápido y con más confianza, una vez definido el método.",
-      stickyMain: "Trabajemos de otra forma.",
-      stickySub: "24h. Sin excusas.",
-      stickyBtn: "Voy",
-      downloadCv: "Descargar mi perfil (PDF)",
-      roiTitle: "¿Cuánto le cuesta un proyecto mal dirigido?",
-      roiSub: "Ajuste los controles según su contexto para una estimación aproximada.",
-      roiBudgetLabel: "Presupuesto anual del proyecto",
-      roiSlipLabel: "Desviación de planificación estimada",
-      roiTeamLabel: "Tamaño del equipo de proyecto",
-      roiPeopleSuffix: "personas",
-      roiResultLabel: "Coste estimado de la desviación",
-      roiResultNote: "Este es el orden de magnitud de lo que un encuadre insuficiente puede costar — antes incluso de contar el impacto en los equipos y la credibilidad interna.",
-      roiCta: "Evitar esta factura",
-      roiDisclaimer: "Estimación indicativa basada en ratios de desviación presupuestaria habitualmente observados en proyectos de transformación. No sustituye un diagnóstico real — cada contexto es distinto.",
-      positioningLine: '<span class="strike">Tres júniors facturados a precio sénior.</span> Un informe de 80 páginas. Cero ejecución.',
-      positioningSub: "El modelo de la gran consultora está muerto. Habla directamente con quien ejecuta, no con quien vende — y esta es la mejor alternativa del mercado hoy. Y al final, es su equipo quien dirige — no yo."
-    }
   };
 
   // ---------- QUIZ CONTENT PER LANGUAGE ----------
@@ -2008,43 +2115,6 @@ try{
       discussBtn: "Discuss it with Evolsphere",
       restartBtn: "Retake the test"
     },
-    es: {
-      questions: [
-        {
-          q: "¿El alcance de su proyecto ya está bien definido?",
-          options: [
-            { label: "Sí, el pliego de condiciones es estable desde el inicio.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "No, se irá afinando sobre la marcha.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "En parte — el marco está fijado, los detalles evolucionan.", score: { pmp: 1, agile: 1, hybride: 2 } }
-          ]
-        },
-        {
-          q: "¿Qué nivel de reporte espera su dirección?",
-          options: [
-            { label: "Seguimiento formal, hitos y entregables documentados.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "Puntos cortos y regulares, prioridad al avance real.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "Un marco tranquilizador para la dirección, flexible para el equipo.", score: { pmp: 1, agile: 1, hybride: 2 } }
-          ]
-        },
-        {
-          q: "¿Con qué rapidez puede cambiar el contexto del proyecto?",
-          options: [
-            { label: "Raramente — el entorno es estable.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "A menudo — el mercado o los usuarios cambian rápido.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "Algunas partes cambian, otras no.", score: { pmp: 1, agile: 1, hybride: 2 } }
-          ]
-        }
-      ],
-      results: {
-        pmp: { tag: "Método recomendado", title: "PMP", desc: "Su contexto requiere previsibilidad: alcance estable, hitos claros, gobernanza sólida. El marco PMP estructura el proyecto de principio a fin y asegura las decisiones en cada etapa." },
-        agile: { tag: "Método recomendado", title: "Ágil", desc: "Su proyecto evoluciona rápido y necesita adaptarse continuamente. El enfoque Ágil prioriza entregar valor rápidamente, con iteraciones cortas y ajustes constantes." },
-        hybride: { tag: "Método recomendado", title: "Híbrido", desc: "Necesita ambas cosas: una gobernanza que tranquilice a la dirección, y una ejecución lo bastante flexible para adaptarse al terreno. Un marco híbrido combina ambas lógicas sin sacrificar ninguna." }
-      },
-      questionLabel: (i,n)=>`Test de método — pregunta ${i} / ${n}`,
-      resultCta: (title)=>`Mi proyecto - perfil ${title}`,
-      discussBtn: "Hablarlo con Evolsphere",
-      restartBtn: "Repetir el test"
-    }
   };
 
   // ---------- SOUND TOGGLE (UI only, dégrade proprement si l'audio n'est pas dispo) ----------
@@ -2185,12 +2255,15 @@ try{
     document.querySelector('[data-i18n="chipStandup"]').textContent = t.chipStandup;
     document.querySelector('[data-i18n="chipWeekly"]').textContent = t.chipWeekly;
     document.querySelector('[data-i18n="chipChange"]').textContent = t.chipChange;
+    document.querySelector('[data-i18n="chipDirGen"]').textContent = t.chipDirGen;
+    document.querySelector('[data-i18n="chipOpsSteering"]').textContent = t.chipOpsSteering;
+    document.querySelector('[data-i18n="chipRemote"]').textContent = t.chipRemote;
 
     document.querySelector('[data-i18n="casesTitle"]').textContent = t.casesTitle;
     document.querySelectorAll('[data-i18n="caseLabelContext"]').forEach(el=> el.textContent = t.caseLabelContext);
     document.querySelectorAll('[data-i18n="caseLabelActions"]').forEach(el=> el.textContent = t.caseLabelActions);
     document.querySelectorAll('[data-i18n="caseLabelResult"]').forEach(el=> el.textContent = t.caseLabelResult);
-    ['case1','case2','case3'].forEach(k=>{
+    ['case1','case2','case3','case4'].forEach(k=>{
       document.querySelector(`[data-i18n="${k}Years"]`).textContent = t[k+'Years'];
       document.querySelector(`[data-i18n="${k}Context"]`).textContent = t[k+'Context'];
       document.querySelector(`[data-i18n="${k}Actions"]`).textContent = t[k+'Actions'];
@@ -2213,6 +2286,8 @@ try{
     const viewBtnEl = document.getElementById('openParcoursBtn');
     if(viewBtnEl && t.viewParcoursBtn) viewBtnEl.textContent = t.viewParcoursBtn;
     document.querySelector('[data-i18n="badgeMaster"]').textContent = t.badgeMaster;
+    const agileEl = document.querySelector('[data-i18n="badgeAgile"]');
+    if(agileEl && t.badgeAgile) agileEl.textContent = t.badgeAgile;
     document.querySelector('[data-i18n="badgeIntl"]').textContent = t.badgeIntl;
     ['tl1','tl2','tl3','tl4','tl5'].forEach(k=>{
       document.querySelector(`[data-i18n="${k}Years"]`).textContent = t[k+'Years'];
@@ -2296,6 +2371,17 @@ try{
     });
     if(typeof updateRoi === 'function') updateRoi();
 
+    const radarSingleKeys = ['radarTitle','radarSub','radarAxisX','radarNote',
+      'risk1Name','risk1Action','risk2Name','risk2Action','risk3Name','risk3Action',
+      'risk4Name','risk4Action','risk5Name','risk5Action'];
+    radarSingleKeys.forEach(k=>{
+      const el = document.querySelector(`[data-i18n="${k}"]`);
+      if(el && t[k]) el.textContent = t[k];
+    });
+    ['radarLegendInterne','radarLegendIT','radarLegendExterne','radarMasteryLabel'].forEach(k=>{
+      document.querySelectorAll(`[data-i18n="${k}"]`).forEach(el=>{ if(t[k]) el.textContent = t[k]; });
+    });
+
     document.querySelectorAll('.lang-btn').forEach(b=>{
       b.classList.toggle('active', b.dataset.lang === lang);
     });
@@ -2310,6 +2396,46 @@ try{
   document.querySelectorAll('.lang-btn').forEach(btn=>{
     btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
   });
+
+  // ---------- RISK RADAR ----------
+  const CAT_COLORS = { interne: '#29F0D0', it: '#A56BFF', externe: '#FF9B4A' };
+  const riskDotsG = document.getElementById('riskDots');
+  const radarRows = document.querySelectorAll('#radarTable .risk-row');
+
+  function renderRadar(){
+    if(!riskDotsG) return;
+    riskDotsG.innerHTML = '';
+    const maxGross = 300000; // chart scale ceiling
+    radarRows.forEach((row, i)=>{
+      const cat = row.dataset.cat;
+      const gross = parseFloat(row.dataset.gross);
+      const masterySlider = row.querySelector('.risk-mastery');
+      const mastery = parseInt(masterySlider.value, 10);
+      // chart area: x from 40 to 320 (mastery 0-100), y from 250 (0) to 20 (maxGross)
+      const x = 40 + (mastery/100) * 280;
+      const y = 250 - (Math.min(gross, maxGross)/maxGross) * 230;
+      const r = 6 + (gross/maxGross) * 10;
+      const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      circle.setAttribute('cx', x);
+      circle.setAttribute('cy', y);
+      circle.setAttribute('r', r);
+      circle.setAttribute('fill', CAT_COLORS[cat] || '#fff');
+      circle.setAttribute('fill-opacity', '0.85');
+      circle.setAttribute('stroke', '#07040D');
+      circle.setAttribute('stroke-width', '1.5');
+      riskDotsG.appendChild(circle);
+    });
+  }
+
+  radarRows.forEach(row=>{
+    const slider = row.querySelector('.risk-mastery');
+    const valEl = row.querySelector('.risk-mastery-val');
+    slider.addEventListener('input', ()=>{
+      valEl.textContent = slider.value;
+      renderRadar();
+    });
+  });
+  renderRadar();
 
   // ---------- ROI CALCULATOR ----------
   const roiBudget = document.getElementById('roiBudget');
