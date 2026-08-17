@@ -1,215 +1,2800 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>evolspere — Catalogue 5 Tomes</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evolsphere — Conseil en gestion de projet PMP, Agile & SAP pour dirigeants</title>
+<meta name="description" content="Evolsphere accompagne grands groupes, ETI et PME sur leurs projets critiques : ERP, WMS, achats, finance, organisation, management. 20+ ans d'expérience, 200+ projets pilotés, Carrefour, LVMH, Groupement Les Mousquetaires." />
+<meta name="keywords" content="gestion de projet, grands groupes, grands comptes, ETI, PME, PMP, Agile, méthode hybride, consultant SAP, WMS, achats, finance, organisation, management, pilotage budgétaire, onshore offshore, transformation, PMO" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Evolsphere" />
+<link rel="canonical" href="https://evolsphere.com/" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25' r='75%25'%3E%3Cstop offset='0%25' stop-color='%235CFBE0'/%3E%3Cstop offset='45%25' stop-color='%2329F0D0'/%3E%3Cstop offset='75%25' stop-color='%23A56BFF'/%3E%3Cstop offset='100%25' stop-color='%23FF3E9A'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2307040D'/%3E%3Ccircle cx='32' cy='32' r='22' fill='url(%23g)'/%3E%3C/svg%3E" />
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://evolsphere.com/" />
+<meta property="og:title" content="Evolsphere — Moins de risque. Plus de résultats." />
+<meta property="og:description" content="Conseil en gestion de projet pour dirigeants : ERP, WMS, achats, transformation groupe. PMP, Agile ou hybride — 100+ projets menés, 8+ ans d'expérience." />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:site_name" content="Evolsphere" />
+<meta property="og:image" content="https://evolsphere.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Evolsphere — Moins de risque. Plus de résultats." />
+<meta name="twitter:description" content="Conseil en gestion de projet pour dirigeants : ERP, WMS, achats, transformation groupe. PMP, Agile ou hybride." />
+<meta name="twitter:image" content="https://evolsphere.com/og-image.png" />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Evolsphere",
+  "description": "Conseil en gestion de projet pour dirigeants : gouvernance PMP, Agile et hybride, ERP, WMS, achats, transformation digitale.",
+  "url": "https://evolsphere.com/",
+  "email": "raphaeldebruijn@gmail.com",
+  "telephone": "+33673977576",
+  "priceRange": "€€",
+  "areaServed": ["FR", "Europe", "North Africa"],
+  "founder": {
+    "@type": "Person",
+    "name": "Raphaël de Bruijn",
+    "jobTitle": "CIO / COO / Projets & Programmes / Transformation IT & Digitale",
+    "hasCredential": { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "PMP - Project Management Professional (PMI)" },
+    "alumniOf": "SKEMA Business School"
+  },
+  "knowsAbout": ["Gestion de projet", "PMP", "Agile", "ERP", "WMS", "Achats", "Finance", "Organisation", "Management", "Pilotage budgétaire", "ROI", "OPEX/CAPEX", "Fiscal", "RACI", "Reporting direction", "Onshore/Offshore", "Transformation groupe", "PMO"]
+}
+</script>
+
 <style>
   :root{
-    --navy:#10243E;
-    --navy-deep:#0C1B2E;
-    --teal:#3FA796;
-    --teal-soft:#DCEFEC;
-    --gold:#E9B44C;
-    --ink:#10243E;
-    --muted:#5B6B77;
-    --bg:#FAFAF8;
-    --card:#FFFFFF;
+    --bg-deep: #07040D;
+    --bg-mid: #140A22;
+    --teal: #29F0D0;
+    --violet: #A56BFF;
+    --amber: #FF9B4A;
+    --hot: #FF3E9A;
+    --ink: #F7F4FF;
+    --ink-dim: #B8AECC;
+    --display-font: 'Syne', sans-serif;
+    --body-font: 'Inter', sans-serif;
   }
-  *{box-sizing:border-box;}
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{
+    width:100%; min-height:100%;
+    background: radial-gradient(130% 110% at 50% 0%, var(--bg-mid) 0%, var(--bg-deep) 65%);
+    overflow-x:hidden;
+    font-family: var(--body-font);
+    color: var(--ink);
+  }
   body{
-    margin:0;
-    font-family:'Poppins','Futura PT','Century Gothic',Arial,sans-serif;
-    background:var(--bg);
-    color:var(--ink);
+    display:flex; flex-direction:column;
+    min-height:100vh; min-height:100dvh;
   }
+  #canvas-holder{ position:fixed; inset:0; z-index:1; pointer-events:none; }
+  canvas{ display:block; }
+
+  .flash{
+    position:fixed; inset:0; z-index:3; pointer-events:none;
+    background: radial-gradient(45% 40% at 50% 45%, rgba(255,255,255,0.9) 0%, rgba(41,240,208,0.25) 35%, transparent 70%);
+    opacity:0;
+    animation: flashPulse 1.3s 0.05s ease-out forwards;
+  }
+  @keyframes flashPulse{
+    0%{ opacity:1; transform: scale(0.6); }
+    100%{ opacity:0; transform: scale(1.6); }
+  }
+
+  .veil{
+    position:fixed; inset:0; z-index:2; pointer-events:none;
+    background: radial-gradient(55% 46% at 50% 45%, transparent 0%, rgba(7,4,13,0.6) 100%);
+  }
+
   header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:28px 6vw;
+    position:relative; z-index:5;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 30px 40px;
+    flex-shrink:0;
+    opacity:0;
+    animation: dropIn 0.7s 0.15s cubic-bezier(.16,1.4,.4,1) forwards;
   }
-  .logo{ height:44px; }
-  nav a{
-    color:var(--navy);
-    text-decoration:none;
-    font-size:14px;
-    letter-spacing:1px;
-    margin-left:28px;
-    font-weight:500;
+  .logo{
+    font-family: var(--display-font);
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:0.01em;
   }
-  .hero{
-    display:flex;
-    align-items:center;
-    gap:60px;
-    padding:60px 6vw 90px;
-    flex-wrap:wrap;
+  .logo span{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .hero-text{ flex:1; min-width:320px; }
-  .eyebrow{
-    display:inline-block;
-    color:var(--teal);
-    letter-spacing:3px;
-    font-size:13px;
-    font-weight:600;
-    text-transform:uppercase;
-    margin-bottom:18px;
-  }
-  h1{
-    font-size:clamp(34px,5vw,56px);
-    line-height:1.08;
-    margin:0 0 20px;
-    font-weight:600;
-  }
-  h1 span{ color:var(--teal); }
-  .lead{
-    color:var(--muted);
-    font-size:18px;
-    line-height:1.6;
-    max-width:480px;
-    margin-bottom:34px;
-  }
-  .price-row{
-    display:flex;
-    align-items:baseline;
-    gap:10px;
-    margin-bottom:30px;
-  }
-  .price{ font-size:44px; font-weight:700; color:var(--navy); }
-  .price-tag{ color:var(--muted); font-size:15px; }
 
-  .buy-btn{
-    display:inline-block;
-    background:var(--navy);
-    color:#fff;
-    padding:16px 34px;
+  .badge{
+    font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color: var(--ink-dim);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:999px; padding:8px 14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .badge::before{
+    content:''; width:6px; height:6px; border-radius:50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+    animation: dot 1.4s ease-in-out infinite;
+  }
+  @keyframes dot{ 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
+
+  .header-right{ display:flex; align-items:center; gap:14px; }
+
+  .lang-switch{
+    display:flex; gap:4px;
+    background: rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.16);
     border-radius:999px;
-    text-decoration:none;
-    font-weight:600;
-    font-size:16px;
-    letter-spacing:0.3px;
-    transition:transform .15s ease, background .15s ease;
+    padding:3px;
   }
-  .buy-btn:hover{ background:var(--teal); transform:translateY(-2px); }
+  .lang-btn{
+    font-family: var(--body-font);
+    font-size:11px; font-weight:700; letter-spacing:0.04em;
+    background:transparent; border:none; color: var(--ink-dim);
+    padding:7px 12px; border-radius:999px; cursor:pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .lang-btn.active{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color: #07040D;
+  }
+  .lang-btn:not(.active):hover{ color: var(--ink); }
 
-  .hero-card{
+  main{
+    position:relative; z-index:4;
     flex:1;
-    min-width:300px;
-    max-width:420px;
-    background:var(--card);
-    border-radius:20px;
-    padding:34px;
-    box-shadow:0 20px 60px rgba(16,36,62,0.10);
-    border:1px solid rgba(16,36,62,0.06);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding: 32px 24px; pointer-events:none;
   }
-  .hero-card .ring{
-    width:100%;
-    height:180px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:22px;
+
+  .eyebrow{
+    font-size:12px; letter-spacing:0.35em; text-transform:uppercase;
+    color: var(--teal);
+    margin-bottom:20px;
+    opacity:0;
+    animation: dropIn 0.6s 0.35s cubic-bezier(.16,1.4,.4,1) forwards;
   }
-  .tome-list{ list-style:none; margin:0; padding:0; }
-  .tome-list li{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:10px 0;
-    border-bottom:1px solid #EEF1F2;
-    font-size:15px;
-    color:var(--navy);
+
+  h1{
+    font-family: var(--display-font);
+    font-weight:800;
+    font-size: clamp(32px, 6.5vw, 74px);
+    line-height:0.98;
+    letter-spacing:-0.015em;
+    max-width: 15ch;
   }
-  .tome-list li:last-child{ border-bottom:none; }
-  .dot{
-    width:8px;height:8px;border-radius:50%;
-    background:var(--teal); flex-shrink:0;
+  h1 .line{
+    display:block;
+    overflow:hidden;
   }
+  h1 .line span{
+    display:inline-block;
+    background: linear-gradient(120deg, var(--ink) 20%, var(--teal) 45%, var(--hot) 75%, var(--amber) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    transform: translateY(115%) rotate(3deg);
+    animation: lineUp 0.85s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  h1 .line:nth-child(1) span{ animation-delay: 0.45s; }
+  h1 .line:nth-child(2) span{ animation-delay: 0.58s; }
+
+  @keyframes lineUp{
+    to{ transform: translateY(0) rotate(0deg); }
+  }
+
+  p.sub{
+    margin-top: 24px;
+    max-width: 44ch;
+    font-size: clamp(15px, 1.6vw, 18px);
+    line-height:1.6;
+    color: var(--ink-dim);
+    opacity:0;
+    animation: dropIn 0.7s 0.95s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+
+  .cta-row{
+    margin-top: 38px;
+    display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+    pointer-events:auto;
+    opacity:0;
+    animation: dropIn 0.7s 1.15s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+
+  .btn{
+    font-family: var(--body-font); font-weight:700; font-size:14px;
+    padding: 15px 28px; border-radius:999px; cursor:pointer; border:none;
+    transition: transform 0.25s cubic-bezier(.16,1,.3,1), box-shadow 0.25s ease, filter 0.25s ease;
+    position:relative;
+  }
+  .btn-primary{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color: #07040D;
+    box-shadow: 0 8px 26px rgba(165,107,255,0.28);
+  }
+  .btn-primary:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 34px rgba(255,62,154,0.4); }
+  .btn-ghost{
+    background: rgba(255,255,255,0.04);
+    color: var(--ink);
+    border: 1px solid rgba(255,255,255,0.22);
+    backdrop-filter: blur(6px);
+  }
+  .btn-ghost:hover{ transform: translateY(-3px) scale(1.03); border-color: rgba(255,255,255,0.55); }
+  .btn-editions{
+    background: linear-gradient(120deg, var(--violet), var(--amber));
+    color: #07040D;
+    box-shadow: 0 8px 26px rgba(255,155,74,0.28);
+  }
+  .btn-editions:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 34px rgba(165,107,255,0.4); }
 
   footer{
-    text-align:center;
-    padding:40px 6vw;
-    color:var(--muted);
-    font-size:13px;
+    position:relative; z-index:5;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 28px 40px;
+    flex-shrink:0;
+    flex-wrap:wrap; gap:12px;
+    opacity:0;
+    animation: dropIn 0.7s 1.3s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+  .tagline{ font-size:12px; color: var(--ink-dim); letter-spacing:0.04em; }
+  .tagline b{ color: var(--ink); font-weight:700; }
+
+  .sound-toggle{
+    pointer-events:auto;
+    display:flex; align-items:center; gap:10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius:999px; padding: 11px 20px 11px 15px; cursor:pointer;
+    color: var(--ink); font-size:13px; font-weight:600;
+    backdrop-filter: blur(6px);
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+  }
+  .sound-toggle:hover{ border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.09); transform: scale(1.04); }
+
+  .bars{ display:flex; align-items:flex-end; gap:2.5px; height:15px; width:18px; }
+  .bars i{ display:block; width:3px; border-radius:2px; background: var(--teal); height:4px; transform-origin: bottom; }
+  .sound-on .bars i{ animation: bounce 0.7s ease-in-out infinite; background: linear-gradient(180deg, var(--teal), var(--hot)); }
+  .bars i:nth-child(1){ animation-delay: 0s; }
+  .bars i:nth-child(2){ animation-delay: 0.12s; }
+  .bars i:nth-child(3){ animation-delay: 0.24s; }
+  @keyframes bounce{ 0%,100%{ height:4px; } 50%{ height:15px; } }
+
+  @keyframes dropIn{
+    from{ opacity:0; transform: translateY(-14px); }
+    to{ opacity:1; transform: translateY(0); }
   }
 
-  .placeholder-note{
-    max-width:900px;
-    margin:0 auto 40px;
-    background:#FFF7E6;
-    border:1px solid #F1D999;
-    color:#7A5A00;
-    padding:14px 18px;
-    border-radius:10px;
-    font-size:13px;
+  @media (max-width: 640px){
+    header, footer{ padding: 20px 20px; }
+    header{ flex-wrap:wrap; gap:10px; }
+    .header-right{ gap:8px; }
+    .badge{ display:none; }
+    .tagline{ display:none; }
+    main{ padding: 24px 18px; }
+    h1{ font-size: clamp(28px, 8vw, 46px); }
+    p.sub{ font-size:14px; }
+    .modal-card{ padding: 28px 22px; }
+    .cta-row{ width:100%; }
+    .cta-row .btn{ flex:1 1 auto; text-align:center; }
+  }
+
+  .cta-note{
+    margin-top:16px;
+    font-size:12.5px;
+    color: var(--ink-dim);
+    pointer-events:none;
+    opacity:0;
+    animation: dropIn 0.7s 1.3s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+
+  .expertise-chips{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+    margin-top:22px; max-width:520px;
+    pointer-events:none;
+    opacity:0;
+    animation: dropIn 0.7s 1.05s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+  .expertise-chips.compact-chips{
+    margin-top:20px; max-width:640px; gap:6px;
+  }
+  .expertise-chips.compact-chips .chip{
+    font-size:10px; padding:4px 10px;
+  }
+  .positioning-banner.compact-secondary,
+  .comparison-section.compact-secondary{
+    padding-top:20px!important; padding-bottom:20px!important;
+  }
+  .comparison-section.compact-secondary .comparison-row{
+    padding:8px 14px!important; font-size:12.5px!important;
+  }
+  .comparison-section.compact-secondary .comparison-title{
+    font-size:20px!important;
+  }
+  .chip{
+    font-size:11.5px; font-weight:600; letter-spacing:0.02em;
+    color: var(--ink-dim);
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:999px;
+    padding:6px 13px;
+    background: rgba(255,255,255,0.03);
+  }
+  .final-cta-note{
+    margin-top:14px;
+    font-size:12.5px;
+    color: var(--ink-dim);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .bars i{ animation: none !important; }
+    h1 .line span{ animation: none !important; transform:none !important; opacity:1 !important; }
+    header, .eyebrow, p.sub, .cta-row, footer{ animation: none !important; opacity:1 !important; transform:none !important; }
+    .flash{ display:none; }
+  }
+
+  a.btn{ text-decoration:none; display:inline-block; }
+
+  /* ---- Method test modal ---- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:20;
+    background: rgba(7,4,13,0.78);
+    backdrop-filter: blur(8px);
+    display:none;
+    align-items:center; justify-content:center;
+    padding: 24px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-card{
+    width:100%; max-width: 560px;
+    background: linear-gradient(160deg, rgba(20,10,34,0.95), rgba(10,6,18,0.98));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 36px 34px;
+    position:relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    animation: modalIn 0.4s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+  .modal-card.wide{
+    max-width: 720px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  @media (max-width: 640px){
+    .modal-card.wide{ max-height: 88vh; padding: 30px 22px; }
+  }
+  @keyframes modalIn{
+    from{ opacity:0; transform: translateY(24px) scale(0.97); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+  }
+  .modal-close{
+    position:absolute; top:18px; right:18px;
+    width:34px; height:34px; border-radius:50%;
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    color: var(--ink); font-size:16px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .modal-close:hover{ background: rgba(255,255,255,0.14); transform: rotate(90deg); }
+
+  .test-eyebrow{
+    font-size:11px; letter-spacing:0.25em; text-transform:uppercase;
+    color: var(--teal); margin-bottom:10px;
+  }
+  .test-progress{
+    display:flex; gap:6px; margin-bottom:22px;
+  }
+  .test-progress i{
+    flex:1; height:3px; border-radius:3px;
+    background: rgba(255,255,255,0.12);
+    overflow:hidden; position:relative;
+  }
+  .test-progress i.done{ background: linear-gradient(120deg, var(--teal), var(--hot)); }
+
+  .test-question{
+    font-family: var(--display-font);
+    font-weight:700;
+    font-size: clamp(20px, 3vw, 26px);
+    line-height:1.25;
+    margin-bottom:22px;
+  }
+  .test-options{ display:flex; flex-direction:column; gap:12px; }
+  .test-option{
+    text-align:left;
+    background: rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:14px;
+    padding:16px 18px;
+    color: var(--ink);
+    font-family: var(--body-font);
+    font-size:14.5px;
     line-height:1.5;
+    cursor:pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
   }
-  .placeholder-note code{
-    background:#00000010;
-    padding:2px 6px;
-    border-radius:4px;
+  .test-option:hover{ border-color: var(--teal); background: rgba(41,240,208,0.08); transform: translateX(3px); }
+
+  .test-result-tag{
+    display:inline-block;
+    font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    padding:7px 14px; border-radius:999px;
+    background: rgba(255,255,255,0.08);
+    color: var(--teal);
+    margin-bottom:16px;
   }
+  .test-result-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 34px);
+    margin-bottom:14px;
+    background: linear-gradient(120deg, var(--teal), var(--violet), var(--hot));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .test-result-desc{
+    color: var(--ink-dim); font-size:14.5px; line-height:1.65; margin-bottom:26px;
+  }
+  .test-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .test-restart{
+    background:transparent; border:1px solid rgba(255,255,255,0.2);
+    color: var(--ink-dim); border-radius:999px; padding:12px 20px;
+    font-size:13px; cursor:pointer; transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .test-restart:hover{ border-color: rgba(255,255,255,0.5); color: var(--ink); }
+
+  /* ---- Stats / Offers / Final CTA (monetization sections) ---- */
+  .stats-section{
+    position:relative; z-index:4;
+    display:flex; justify-content:center; gap:60px; flex-wrap:wrap;
+    padding: 10px 24px 60px;
+    pointer-events:none;
+  }
+  .stat{ text-align:center; }
+  .stat-num{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(28px, 4vw, 40px);
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .stat-label{ font-size:12px; color: var(--ink-dim); margin-top:4px; letter-spacing:0.03em; }
+
+  .offers-section{
+    position:relative; z-index:4;
+    padding: 40px 24px 80px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .offers-head{ text-align:center; margin-bottom:42px; }
+  .offers-eyebrow{
+    font-size:12px; letter-spacing:0.3em; text-transform:uppercase;
+    color: var(--teal); margin-bottom:12px;
+  }
+  .offers-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(28px, 4.5vw, 44px);
+    color: var(--ink);
+  }
+  .offers-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap:20px;
+  }
+  .offer-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px;
+    padding: 30px 26px;
+    display:flex; flex-direction:column;
+    position:relative;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .offer-card:hover{ transform: translateY(-6px); border-color: rgba(255,255,255,0.32); }
+  .offer-card.featured{
+    border-color: var(--teal);
+    box-shadow: 0 0 0 1px rgba(41,240,208,0.25), 0 20px 50px rgba(41,240,208,0.12);
+  }
+  .offer-badge{
+    position:absolute; top:-13px; left:26px;
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color:#07040D; font-size:11px; font-weight:700;
+    padding:5px 12px; border-radius:999px; letter-spacing:0.03em;
+  }
+  .offer-name{
+    font-family: var(--display-font); font-weight:700;
+    font-size:20px; margin-bottom:8px; margin-top:6px;
+  }
+  .offer-price{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(22px, 2.6vw, 28px);
+    color: var(--teal);
+    margin-bottom:14px;
+  }
+  .offer-desc{
+    font-size:13.5px; color: var(--ink-dim); line-height:1.6; margin-bottom:22px; flex:1;
+  }
+  .offer-cta{
+    text-decoration:none; text-align:center;
+    font-family: var(--body-font); font-weight:700; font-size:13.5px;
+    padding:13px 18px; border-radius:999px;
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.2);
+    color: var(--ink);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .offer-card.featured .offer-cta{
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    color:#07040D; border:none;
+  }
+  .offer-cta:hover{ transform: translateY(-2px); }
+
+  .final-cta{
+    position:relative; z-index:4;
+    text-align:center;
+    padding: 60px 24px 90px;
+  }
+  .final-cta-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4.5vw, 42px);
+    margin-bottom:16px;
+    background: linear-gradient(120deg, var(--ink), var(--violet));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .final-cta-sub{ color: var(--ink-dim); margin-bottom:28px; font-size:14.5px; }
+
+  @media (max-width: 1180px){
+    .offers-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px){
+    .stats-section{ gap:34px; }
+  }
+  @media (max-width: 640px){
+    .offers-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---- Clients strip ---- */
+  .clients-strip{
+    position:relative; z-index:4;
+    text-align:center;
+    padding: 6px 24px 50px;
+  }
+  .clients-label{
+    font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
+    color: var(--ink-dim); margin-bottom:18px;
+  }
+  .clients-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px 34px;
+  }
+  .client-name{
+    font-family: var(--display-font); font-weight:700;
+    font-size:16px; color: var(--ink); opacity:0.75;
+  }
+
+  /* ---- About / Parcours section ---- */
+  .about-summary{
+    position:relative; z-index:4;
+    max-width: 640px; margin: 0 auto;
+    padding: 20px 24px 60px;
+    text-align:center;
+  }
+  .about-head{ text-align:center; margin-bottom:24px; }
+  .about-eyebrow{
+    font-size:12px; letter-spacing:0.3em; text-transform:uppercase;
+    color: var(--teal); margin-bottom:12px;
+  }
+  .about-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink); margin-bottom:6px;
+  }
+  .about-role{
+    font-size:14px; color: var(--ink-dim);
+  }
+  .about-badges{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+    margin: 18px 0 16px;
+  }
+  .about-teaser{
+    font-size:13.5px; color: var(--ink-dim); line-height:1.6; margin-bottom:20px;
+  }
+  .about-summary-actions{
+    display:flex; flex-wrap:wrap; gap:14px; justify-content:center; align-items:center;
+  }
+  .about-badge{
+    font-size:11.5px; font-weight:700;
+    color: var(--teal);
+    border:1px solid rgba(41,240,208,0.35);
+    border-radius:999px; padding:6px 13px;
+    background: rgba(41,240,208,0.06);
+  }
+  .timeline{
+    border-left: 1px solid rgba(255,255,255,0.16);
+    margin-left: 6px;
+  }
+  .timeline-item{
+    position:relative;
+    padding: 0 0 28px 26px;
+  }
+  .timeline-item:last-child{ padding-bottom:0; }
+  .timeline-item::before{
+    content:'';
+    position:absolute; left:-5px; top:4px;
+    width:9px; height:9px; border-radius:50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 4px rgba(41,240,208,0.15);
+  }
+  .timeline-years{
+    font-size:11.5px; font-weight:700; letter-spacing:0.04em;
+    color: var(--teal); margin-bottom:4px;
+  }
+  .timeline-role{
+    font-family: var(--display-font); font-weight:700;
+    font-size:16px; color: var(--ink); margin-bottom:3px;
+  }
+  .timeline-desc{
+    font-size:13.5px; color: var(--ink-dim); line-height:1.55;
+  }
+
+  @media (max-width: 640px){
+    .clients-row{ gap:10px 22px; }
+    .client-name{ font-size:14px; }
+  }
+
+  /* ---- Positioning banner ---- */
+  .positioning-banner{
+    position:relative; z-index:4;
+    max-width: 820px; margin: 0 auto;
+    padding: 10px 24px 60px;
+    text-align:center;
+  }
+  .positioning-line{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(22px, 3.4vw, 32px);
+    line-height:1.3;
+    color: var(--ink);
+    margin-bottom:12px;
+  }
+  .positioning-line .strike{
+    text-decoration: line-through;
+    text-decoration-color: var(--hot);
+    text-decoration-thickness: 2px;
+    color: var(--ink-dim);
+  }
+  .positioning-sub{
+    font-size:14.5px; color: var(--ink-dim); line-height:1.6;
+  }
+
+  /* ---- Comparison section ---- */
+  .comparison-section{
+    position:relative; z-index:4;
+    max-width: 980px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .comparison-head{ text-align:center; margin-bottom:36px; }
+  .comparison-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .comparison-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap:0;
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:20px; overflow:hidden;
+  }
+  .comparison-col{ padding: 24px; }
+  .comparison-col.old{ background: rgba(255,62,154,0.04); border-right:1px solid rgba(255,255,255,0.12); }
+  .comparison-col.new{ background: rgba(41,240,208,0.05); }
+  .comparison-col-head{
+    font-family: var(--display-font); font-weight:700; font-size:15px;
+    margin-bottom:18px; padding-bottom:14px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .comparison-col.old .comparison-col-head{ color: var(--hot); }
+  .comparison-col.new .comparison-col-head{ color: var(--teal); }
+  .comparison-row{
+    font-size:13.5px; line-height:1.5; color: var(--ink-dim);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .comparison-row:last-child{ border-bottom:none; }
+  .comparison-col.new .comparison-row{ color: var(--ink); }
+
+  @media (max-width: 640px){
+    .comparison-grid{ grid-template-columns: 1fr; }
+    .comparison-col.old{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.12); }
+  }
+
+  /* ---- Risk Radar ---- */
+  .radar-section{
+    position:relative; z-index:4;
+    max-width: 1080px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .radar-head{ text-align:center; margin-bottom:28px; }
+  .radar-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink); margin-bottom:10px;
+  }
+  .radar-sub{ font-size:13.5px; color: var(--ink-dim); max-width:600px; margin:0 auto; line-height:1.6; }
+
+  .radar-layout{
+    display:grid; grid-template-columns: 1.1fr 1fr; gap:24px;
+    margin-top:30px; align-items:start;
+  }
+  @media (max-width: 900px){ .radar-layout{ grid-template-columns: 1fr; } }
+
+  .radar-chart-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:20px; padding:20px;
+  }
+  .radar-legend{
+    display:flex; gap:14px; flex-wrap:wrap; margin-top:14px; justify-content:center;
+  }
+  .radar-legend-item{
+    display:flex; align-items:center; gap:6px;
+    font-size:11px; color: var(--ink-dim);
+  }
+  .radar-legend-dot{ width:9px; height:9px; border-radius:50%; }
+
+  .radar-table{
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .risk-row{
+    background: rgba(255,255,255,0.035);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:14px; padding:14px 16px;
+  }
+  .risk-row-head{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px;
+  }
+  .risk-cat{
+    font-size:10.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    padding:3px 10px; border-radius:999px;
+  }
+  .risk-cat.interne{ background:rgba(41,240,208,0.14); color:var(--teal); }
+  .risk-cat.it{ background:rgba(165,107,255,0.16); color:var(--violet); }
+  .risk-cat.externe{ background:rgba(255,155,74,0.16); color:var(--amber); }
+  .risk-name{ font-size:13px; font-weight:600; color: var(--ink); flex:1; margin-left:10px; }
+  .risk-gross{ font-size:12px; font-weight:700; color: var(--hot); }
+  .risk-controls{ display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+  .risk-control-label{
+    display:flex; justify-content:space-between; font-size:11px; color: var(--ink-dim); margin-bottom:4px;
+  }
+  .risk-control-label .val{ color: var(--teal); font-weight:700; }
+  .risk-row input[type="range"]{
+    width:100%; -webkit-appearance:none; height:4px; border-radius:3px;
+    background: rgba(255,255,255,0.14); outline:none;
+  }
+  .risk-row input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:14px; height:14px; border-radius:50%;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+  }
+  .risk-row input[type="range"]::-moz-range-thumb{
+    width:14px; height:14px; border-radius:50%; border:none;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+  }
+  .risk-action{
+    font-size:11px; color: var(--ink-dim); margin-top:8px;
+    border-top:1px dashed rgba(255,255,255,0.1); padding-top:8px;
+  }
+  .risk-action b{ color: var(--ink); }
+
+  .radar-note{
+    font-size:11px; color: var(--ink-dim); text-align:center; margin-top:20px; opacity:0.75; line-height:1.5;
+  }
+
+  /* ---- ROI Calculator ---- */
+  .roi-section{
+    position:relative; z-index:4;
+    max-width: 820px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .roi-head{ text-align:center; margin-bottom:32px; }
+  .roi-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink); margin-bottom:10px;
+  }
+  .roi-sub{ font-size:13.5px; color: var(--ink-dim); max-width:560px; margin:0 auto; line-height:1.6; }
+  .roi-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:22px; padding: 30px 28px; margin-top:28px;
+  }
+  .roi-field{ margin-bottom:22px; }
+  .roi-field label{
+    display:flex; justify-content:space-between;
+    font-size:13px; font-weight:600; color: var(--ink); margin-bottom:10px;
+  }
+  .roi-field label .val{ color: var(--teal); font-family: var(--display-font); font-weight:800; }
+  .roi-field input[type="range"]{
+    width:100%; -webkit-appearance:none; height:5px; border-radius:3px;
+    background: rgba(255,255,255,0.14); outline:none;
+  }
+  .roi-field input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+    box-shadow: 0 0 0 4px rgba(41,240,208,0.18);
+  }
+  .roi-field input[type="range"]::-moz-range-thumb{
+    width:18px; height:18px; border-radius:50%; border:none;
+    background: linear-gradient(120deg, var(--teal), var(--hot)); cursor:pointer;
+  }
+  .roi-result{
+    margin-top: 26px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    text-align:center;
+  }
+  .roi-result-label{
+    font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color: var(--ink-dim); margin-bottom:8px;
+  }
+  .roi-result-num{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(32px, 5vw, 48px);
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    margin-bottom:8px;
+  }
+  .roi-result-note{ font-size:12px; color: var(--ink-dim); max-width:460px; margin:0 auto 22px; line-height:1.55; }
+  .roi-disclaimer{
+    font-size:10.5px; color: var(--ink-dim); opacity:0.7; margin-top:18px; line-height:1.5;
+  }
+
+  /* ---- Case studies section ---- */
+  .cases-section{
+    position:relative; z-index:4;
+    max-width: 1100px; margin: 0 auto;
+    padding: 20px 24px 70px;
+  }
+  .cases-head{ text-align:center; margin-bottom:36px; }
+  .cases-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .cases-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:20px;
+  }
+  .case-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.13);
+    border-radius:20px; padding:26px 24px;
+  }
+  .case-client{
+    font-family: var(--display-font); font-weight:800;
+    font-size:18px; color: var(--ink); margin-bottom:2px;
+  }
+  .case-years{ font-size:12px; color: var(--teal); margin-bottom:16px; }
+  .case-block{ margin-bottom:14px; }
+  .case-block:last-child{ margin-bottom:0; }
+  .case-label{
+    font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--ink-dim); margin-bottom:5px;
+  }
+  .case-text{ font-size:13px; line-height:1.55; color: var(--ink-dim); }
+  .case-block.result .case-text{ color: var(--ink); }
+
+  @media (max-width: 900px){
+    .cases-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* ---- Process section ---- */
+  .process-section{
+    position:relative; z-index:4;
+    padding: 20px 24px 70px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  .process-head{ text-align:center; margin-bottom:40px; }
+  .process-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .process-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:24px;
+  }
+  .process-step{ position:relative; padding: 6px 8px; }
+  .step-num{
+    font-family: var(--display-font); font-weight:800;
+    font-size:15px; color: var(--teal);
+    border:1px solid rgba(41,240,208,0.35);
+    width:34px; height:34px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .step-title{ font-family: var(--display-font); font-weight:700; font-size:17px; margin-bottom:8px; }
+  .step-desc{ font-size:13.5px; color: var(--ink-dim); line-height:1.6; }
+
+  /* ---- FAQ section ---- */
+  .faq-section{
+    position:relative; z-index:4;
+    padding: 20px 24px 80px;
+    max-width: 760px; margin: 0 auto;
+  }
+  .faq-head{ text-align:center; margin-bottom:34px; }
+  .faq-title{
+    font-family: var(--display-font); font-weight:800;
+    font-size: clamp(26px, 4vw, 38px); color: var(--ink);
+  }
+  .faq-item{
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .faq-question{
+    width:100%; text-align:left; background:transparent; border:none;
+    color: var(--ink); font-family: var(--body-font); font-weight:600; font-size:15.5px;
+    padding: 20px 4px; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .faq-question .icon{
+    flex-shrink:0; width:22px; height:22px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:1px solid rgba(255,255,255,0.24);
+    font-size:14px; color: var(--teal);
+    transition: transform 0.25s ease;
+  }
+  .faq-item.open .faq-question .icon{ transform: rotate(45deg); }
+  .faq-answer{
+    max-height:0; overflow:hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: var(--ink-dim); font-size:14px; line-height:1.65;
+  }
+  .faq-item.open .faq-answer{ max-height:220px; padding-bottom:20px; }
+
+  /* ---- Sticky CTA bar ---- */
+  .sticky-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:15;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding: 14px 28px;
+    background: rgba(10,6,18,0.92);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.14);
+    transform: translateY(120%);
+    transition: transform 0.35s cubic-bezier(.16,1,.3,1);
+  }
+  .sticky-cta.visible{ transform: translateY(0); }
+  .sticky-cta-text{
+    font-size:14px; font-weight:600; color: var(--ink);
+  }
+  .sticky-cta-text span{ display:block; font-size:12px; font-weight:400; color: var(--ink-dim); margin-top:2px; }
+  .sticky-cta .btn{ flex-shrink:0; padding:12px 22px; font-size:13.5px; }
+
+  @media (max-width: 640px){
+    .process-grid{ grid-template-columns: 1fr; gap:28px; }
+    .sticky-cta{ padding:12px 16px; }
+    .sticky-cta-text span{ display:none; }
+  }
+
+
+  /* ---- C-level compression / quote & legal ---- */
+  .offer-control-note{
+    margin-top:14px; max-width:720px; color:var(--ink-dim);
+    font-size:13px; line-height:1.55; text-align:center;
+  }
+  .control-section{
+    position:relative; z-index:4; max-width:980px; margin:0 auto;
+    padding:34px 24px 52px;
+  }
+  .control-card{
+    border:1px solid rgba(41,240,208,.24);
+    border-radius:24px; padding:30px;
+    background:linear-gradient(145deg,rgba(41,240,208,.07),rgba(165,107,255,.05),rgba(255,255,255,.02));
+    text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.18);
+  }
+  .control-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+  .control-title{font-family:var(--display-font);font-size:clamp(25px,4vw,38px);line-height:1.12;margin-bottom:22px}
+  .control-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 auto 24px;max-width:850px}
+  .control-grid>div{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid rgba(255,255,255,.09);border-radius:15px;background:rgba(255,255,255,.025)}
+  .control-grid strong{font-family:var(--display-font);font-size:14px;color:var(--ink)}
+  .control-grid span{font-size:12px;line-height:1.45;color:var(--ink-dim)}
+  .quote-form{display:flex;flex-direction:column;gap:16px;margin-top:18px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .quote-form label{display:flex;flex-direction:column;gap:7px;text-align:left;font-size:12px;font-weight:600;color:var(--ink)}
+  .quote-form input,.quote-form textarea{width:100%;font:inherit;color:var(--ink);background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:12px 13px;outline:none}
+  .quote-form input:focus,.quote-form textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(41,240,208,.08)}
+  .consent-line{flex-direction:row!important;align-items:flex-start;gap:10px!important;font-weight:400!important}
+  .consent-line input{width:17px;height:17px;flex:0 0 auto;margin-top:2px}
+  .consent-line a,.legal-nav a{color:var(--teal);text-decoration:underline}
+  .form-info{font-size:10.5px;line-height:1.5;color:var(--ink-dim);text-align:left;opacity:.85}
+  .form-status{font-size:12px;color:var(--teal);min-height:18px}
+  .legal-nav{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:11px}
+  .legal-nav a{text-decoration:none;color:var(--ink-dim)}
+  .legal-nav a:hover{color:var(--ink)}
+  .legal-content{color:var(--ink-dim);font-size:13px;line-height:1.7;text-align:left}
+  .legal-content h3{font-family:var(--display-font);font-size:16px;color:var(--ink);margin:20px 0 8px}
+  .legal-content p{margin:0 0 12px}
+  .legal-content ul{padding-left:20px;margin:0 0 14px}
+  .compact-secondary{ padding-top:14px!important; padding-bottom:24px!important; }
+  .compact-secondary .about-badges{ margin:10px 0 8px!important; }
+  .compact-secondary.roi-section .roi-card,
+  .compact-secondary.radar-section .radar-layout{ margin-top:16px!important; }
+  .cta-main-row{max-width:1000px}
+  .whatsapp-short{padding:10px 16px!important;font-size:12px!important}
+  .cta-main-row .btn{white-space:normal}
+  @media(max-width:700px){.cta-main-row .btn{width:100%}.whatsapp-short{width:auto!important;flex:0 0 auto!important}}
+  @media(max-width:700px){
+    .control-grid,.form-grid{grid-template-columns:1fr}
+    .control-card{padding:24px 18px}
+    .legal-nav{gap:10px}
+  }
+
+</style>
+<style>
+/* C-level CTA layout: two buttons per row */
+.cta-four-grid,
+.hero-cta-grid,
+.primary-cta-grid {
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  align-items:stretch;
+}
+.cta-four-grid > *,
+.hero-cta-grid > *,
+.primary-cta-grid > * {
+  width:100%;
+  margin:0 !important;
+}
+@media (max-width:700px){
+  .cta-four-grid,
+  .hero-cta-grid,
+  .primary-cta-grid {
+    grid-template-columns:1fr;
+  }
+}
+</style>
+<style>
+/* Fallback: any CTA cluster containing the four primary actions */
+.cta-four-grid-fallback{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:700px){.cta-four-grid-fallback{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<div class="placeholder-note">
-  ⚠️ Page de démonstration — l'ID produit <code>prod_V5XWRONGq49q9X</code> est confirmé, mais remplacez toujours
-  <code>PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE</code> par votre vrai lien de paiement Stripe avant mise en ligne
-  (le bouton ne fonctionnera pas sans ce lien). Vérifiez aussi qu'il s'agit bien de votre compte Stripe live,
-  et non d'un compte de démonstration/formation.
-</div>
+<div id="canvas-holder"></div>
+<div class="flash"></div>
+<div class="veil"></div>
 
 <header>
-  <img src="evolspere-logo.svg" alt="evolspere" class="logo">
-  <nav>
-    <a href="#catalogue">Catalogue</a>
-    <a href="#acheter">Acheter</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="logo">Evol<span>sphere</span></div>
+  <div class="header-right">
+    <div class="badge" data-i18n="badge">Pensez autrement. Gardez le contrôle. Les cabinets classiques sont dépassés.</div>
+    <div class="lang-switch" id="langSwitch">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </div>
 </header>
 
-<section class="hero" id="catalogue">
-  <div class="hero-text">
-    <span class="eyebrow">Collection complète</span>
-    <h1>Le catalogue<br><span>5 Tomes</span>, intégral.</h1>
-    <p class="lead">
-      L'ensemble de la collection en un seul achat. Facture professionnelle
-      émise automatiquement après paiement.
-    </p>
-
-    <div class="price-row">
-      <span class="price">199&nbsp;€</span>
-      <span class="price-tag">HT — facturation B2B</span>
-    </div>
-
-    <a
-      href="PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE"
-      class="buy-btn"
-      id="acheter"
-      data-product-id="prod_V5XWRONGq49q9X"
-    >
-      Acheter le catalogue →
-    </a>
+<main>
+  <div class="eyebrow" data-i18n="eyebrow">Grands groupes, ETI, PME — le modèle a changé</div>
+  <h1>
+    <span class="line"><span id="h1line1">Restez en 1980.</span></span>
+    <span class="line"><span id="h1line2">Ou passez en 2026.</span></span>
+  </h1>
+  <p class="sub" data-i18n="sub">Transformation digitale, ERP, WMS, achats, finance, organisation et pilotage de projets critiques.</p>
+  <div class="cta-row cta-main-row">
+    <button class="btn btn-primary" id="openTestBtn" data-i18n="testBtn">Macro Diag — Méthode gratuite</button>
+    <button class="btn btn-ghost" id="contactBtnMain" data-i18n="contactBtn">Echangeons</button>
+    <button class="btn btn-editions" id="openTomesBtn" data-i18n="tomesBtn">Evolsphere Editions</button>
+    <a class="btn btn-ghost whatsapp-short" id="whatsappBtn" href="https://wa.me/33673977576?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet" target="_blank" rel="noopener" data-i18n="whatsappBtn">WhatsApp</a>
   </div>
-
-  <div class="hero-card">
-    <div class="ring">
-      <img src="evolspere-icon.svg" alt="" style="height:140px;">
+  <div class="offer-control-note" data-i18n="controlNote">L’offre qui vous permet de garder le contrôle et le rythme : animation des Daily stand-up, weekly et reporting.</div>
+  <div class="cta-note" data-i18n="ctaNote">Réponse sous 24h. Sans exception.</div>
+  <div class="cta-note"><a href="tel:+33673977576" style="color:var(--teal); text-decoration:none;">+33 6 73 97 75 76</a></div>
+  <div class="expertise-chips compact-chips">
+    <span class="chip">ERP</span>
+    <span class="chip">WMS</span>
+    <span class="chip" data-i18n="chipAchats">Achats</span>
+    <span class="chip">Finance</span>
+    <span class="chip" data-i18n="chipOrga">Organisation</span>
+    <span class="chip">Management</span>
+    <span class="chip" data-i18n="chipBudget">Pilotage budgétaire</span>
+    <span class="chip">On-site / Off-site</span>
+    <span class="chip">Onshore / Offshore</span>
+    <span class="chip" data-i18n="chipMultisite">Multi-sites / Multi-pays</span>
+    <span class="chip" data-i18n="chipTestLearn">Test &amp; Learn</span>
+    <span class="chip" data-i18n="chipLegal">Juridique &amp; contrats</span>
+    <span class="chip">PMO</span>
+    <span class="chip" style="border-color: rgba(41,240,208,0.4); color: var(--teal);">PMP® certifié</span>
+    <span class="chip" data-i18n="chipStandup">Stand-up quotidien</span>
+    <span class="chip" data-i18n="chipWeekly">Reporting hebdomadaire direction</span>
+    <span class="chip" data-i18n="chipChange">Conduite du changement</span>
+    <span class="chip">CODIR / COMEX</span>
+    <span class="chip" data-i18n="chipDirGen">Direction Générale</span>
+    <span class="chip" data-i18n="chipOpsSteering">Pilotage opérationnel</span>
+    <span class="chip" style="border-color: rgba(41,240,208,0.4); color: var(--teal);" data-i18n="chipRemote">100% à distance</span>
+  </div>
+<section class="positioning-banner compact-secondary">
+  <div class="positioning-line" data-i18n-html="positioningLine"><span class="strike">3 juniors facturés au prix senior.</span> Un rapport de 80 pages. Zéro exécution.</div>
+  <div class="positioning-sub" data-i18n="positioningSub">Pas d’équipe de juniors vendus au prix senior. Un interlocuteur expérimenté, une exécution directe et une gouvernance conçue pour que votre équipe garde le contrôle.</div>
+</section>
+<section class="comparison-section compact-secondary">
+  <div class="comparison-head">
+    <div class="comparison-title" data-i18n="comparisonTitle">Cabinet classique / Evolsphere</div>
+  </div>
+  <div class="comparison-grid">
+    <div class="comparison-col old">
+      <div class="comparison-col-head" data-i18n="oldColHead">Cabinet classique</div>
+      <div class="comparison-row" data-i18n="oldRow1">Junior facturé au prix senior, supervisé à distance par un associé qui ne touche plus le dossier.</div>
+      <div class="comparison-row" data-i18n="oldRow2">Décision par comité : plusieurs allers-retours avant validation.</div>
+      <div class="comparison-row" data-i18n="oldRow3">Livrable : un rapport de 80 pages, sans owner d'exécution derrière.</div>
+      <div class="comparison-row" data-i18n="oldRow4">Reporting trimestriel en slides, déconnecté du quotidien opérationnel.</div>
+      <div class="comparison-row" data-i18n="oldRow5">Équipe tournante — le consultant qui a cadré n'est plus celui qui exécute.</div>
     </div>
-    <ul class="tome-list">
-      <li><span class="dot"></span> Tome I — Fondations</li>
-      <li><span class="dot"></span> Tome II — Structures</li>
-      <li><span class="dot"></span> Tome III — Dynamiques</li>
-      <li><span class="dot"></span> Tome IV — Applications</li>
-      <li><span class="dot"></span> Tome V — Perspectives</li>
-    </ul>
+    <div class="comparison-col new">
+      <div class="comparison-col-head" data-i18n="newColHead">Evolsphere — méthode 2026</div>
+      <div class="comparison-row" data-i18n="newRow1">La personne qui structure a occupé le poste (CIO/COO) — elle sait ce que veut dire livrer.</div>
+      <div class="comparison-row" data-i18n="newRow2">RACI clair dès le premier jour : qui décide quoi, sans ambiguïté.</div>
+      <div class="comparison-row" data-i18n="newRow3">Livrable : un plan d'action exécutable, sous 10 jours.</div>
+      <div class="comparison-row" data-i18n="newRow4">Reporting direction condensé, mensuel, orienté décision.</div>
+      <div class="comparison-row" data-i18n="newRow5">Un seul interlocuteur, du diagnostic à l'exécution, disponible en continu.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="stats-section">
+  <div class="stat"><div class="stat-num">20+</div><div class="stat-label" data-i18n="stat1">ans à sécuriser des projets critiques</div></div>
+  <div class="stat"><div class="stat-num">200+</div><div class="stat-label" data-i18n="stat2">projets pilotés en portefeuille</div></div>
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label" data-i18n="stat3">personnes pilotées en équipe projet</div></div>
+  <div class="stat"><div class="stat-num">45M€</div><div class="stat-label" data-i18n="stat4">budget piloté sur le dernier projet</div></div>
+</section>
+
+<section class="clients-strip compact-secondary">
+  <div class="clients-label" data-i18n="clientsLabel">Grands groupes, ETI et PME — la méthode s'adapte à votre taille</div>
+  <div class="clients-row">
+    <span class="client-name">Carrefour</span>
+    <span class="client-name">LVMH</span>
+    <span class="client-name">Groupement Les Mousquetaires</span>
+    <span class="client-name">Cora</span>
+    <span class="client-name">McDonald's</span>
+    <span class="client-name">Monoprix</span>
   </div>
 </section>
 
-<footer id="contact">
-  © 2026 evolspere.com — Facture électronique conforme à la réglementation B2B en vigueur.
+<section class="about-summary compact-secondary">
+  <div class="about-eyebrow" data-i18n="aboutEyebrow">Qui pilote</div>
+  <a href="evolsphere-one-pager.pdf" target="_blank" rel="noopener" style="text-decoration:none;"><div class="about-title" style="cursor:pointer; transition:opacity 0.2s ease;" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">Raphaël de Bruijn</div></a>
+  <div class="about-role" data-i18n="aboutRole">CIO / COO / Direction Générale / Pilotage Opérationnel / Transformation IT &amp; Digitale — PMP®</div>
+  <div class="about-badges">
+    <span class="about-badge">PMP® — PMI, 2024</span>
+    <span class="about-badge" data-i18n="badgeAgile">Certifié Agile</span>
+    <span class="about-badge" data-i18n="badgeMaster">Master Management &amp; Finance — SKEMA</span>
+    <span class="about-badge" data-i18n="badgeIntl">Europe / Afrique du Nord</span>
+  </div>
+  <div class="about-teaser" data-i18n="aboutTeaser">20 ans, 5 groupes (KPMG, Sephora, Monoprix, Showroomprivé, Practice Retail), 200+ projets pilotés.</div>
+  <div class="about-summary-actions">
+    <button class="btn btn-ghost" id="openParcoursBtn" data-i18n="viewParcoursBtn">Voir le parcours complet</button>
+    <a href="evolsphere-one-pager.pdf" download style="font-size:12.5px; color:var(--teal); text-decoration:underline;" data-i18n="downloadCv">Télécharger mon profil (PDF)</a>
+  </div>
+</section>
+
+<div class="modal-overlay" id="parcoursModal">
+  <div class="modal-card wide" id="parcoursCard">
+    <button class="modal-close" id="closeParcoursBtn">✕</button>
+    <div class="about-head">
+      <div class="about-eyebrow" data-i18n="aboutEyebrow">Qui pilote</div>
+      <a href="evolsphere-one-pager.pdf" target="_blank" rel="noopener" style="text-decoration:none;"><div class="about-title" style="cursor:pointer; transition:opacity 0.2s ease;" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">Raphaël de Bruijn</div></a>
+      <div class="about-role" data-i18n="aboutRole">CIO / COO / Direction Générale / Pilotage Opérationnel / Transformation IT &amp; Digitale — PMP®</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-years" data-i18n="tl1Years">Depuis 2020</div>
+        <div class="timeline-role" data-i18n="tl1Role">Conseil, Audit &amp; Management de transition — Practice Retail</div>
+        <div class="timeline-desc" data-i18n="tl1Desc">Transformation IT, logistique et organisationnelle pour de grands comptes : Groupement Les Mousquetaires, Cora, McDonald's.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-years" data-i18n="tl2Years">2017 – 2020</div>
+        <div class="timeline-role" data-i18n="tl2Role">COO — Showroomprivé</div>
+        <div class="timeline-desc" data-i18n="tl2Desc">Structuration de l'ensemble des fonctions support, management direct de 40 collaborateurs, pilotage de 200+ projets, entrée au capital du Groupe Carrefour.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-years" data-i18n="tl3Years">2008 – 2016</div>
+        <div class="timeline-role" data-i18n="tl3Role">Directeur de la Transformation — Groupe Monoprix</div>
+        <div class="timeline-desc" data-i18n="tl3Desc">Transformation digitale et harmonisation des SI en France et en Tunisie, refonte e-commerce, intégration post-acquisition de Naturalia.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-years" data-i18n="tl4Years">2004 – 2008</div>
+        <div class="timeline-role" data-i18n="tl4Role">Contrôleur de Gestion Europe &amp; Excellence Opérationnelle — Sephora (Groupe LVMH)</div>
+        <div class="timeline-desc" data-i18n="tl4Desc">Pilotage du contrôle de gestion retail Europe, audits internes multi-pays, conformité SOA, amélioration continue des processus boutiques.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-years" data-i18n="tl5Years">2000 – 2004</div>
+        <div class="timeline-role" data-i18n="tl5Role">Auditeur Senior — KPMG</div>
+        <div class="timeline-desc" data-i18n="tl5Desc">Commissariat aux comptes pour groupes cotés (CAC 40, ETI), due diligence financière, consolidation de groupes.</div>
+      </div>
+    </div>
+
+    <div class="cases-head" style="margin-top:34px;">
+      <div class="cases-title" data-i18n="casesTitle" style="font-size:20px;">Sur le terrain, pas sur slides</div>
+    </div>
+    <div class="cases-grid" style="grid-template-columns:1fr; gap:14px;">
+      <div class="case-card">
+        <div class="case-client">Showroomprivé</div>
+        <div class="case-years" data-i18n="case1Years">COO — 2017-2020</div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+          <div class="case-text" data-i18n="case1Context">Forte croissance, entrée au capital du Groupe Carrefour, besoin urgent de structurer des fonctions support en tension.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+          <div class="case-text" data-i18n="case1Actions">Refonte DSI 'Buy', changement de WMS, structuration du PMO sur 200+ projets, mise en place du pilotage OPEX/CAPEX.</div>
+        </div>
+        <div class="case-block result">
+          <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+          <div class="case-text" data-i18n="case1Result">Fonctions support structurées, gouvernance projet en place, équipe de 40 personnes pilotée en direct.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-client">Groupe Monoprix</div>
+        <div class="case-years" data-i18n="case2Years">Directeur de la Transformation — 2008-2016</div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+          <div class="case-text" data-i18n="case2Context">Mutation du commerce de centre-ville, nécessité de rapprocher siège et magasins, virage omnicanal à négocier.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+          <div class="case-text" data-i18n="case2Actions">Harmonisation des SI France/Tunisie, déploiement ERP Symphony/Gold, refonte e-commerce, intégration post-acquisition de Naturalia.</div>
+        </div>
+        <div class="case-block result">
+          <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+          <div class="case-text" data-i18n="case2Result">Transformation digitale et organisationnelle menée sur 8 ans, à l'échelle d'un groupe international.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-client">Sephora (Groupe LVMH)</div>
+        <div class="case-years" data-i18n="case3Years">Contrôleur de Gestion Europe &amp; Excellence Opérationnelle — 2004-2008</div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+          <div class="case-text" data-i18n="case3Context">Besoin d'harmoniser les pratiques entre sièges européens et de renforcer la conformité, sous exigence SOA du Groupe LVMH.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+          <div class="case-text" data-i18n="case3Actions">Pilotage des audits internes en Europe (France, Espagne, Italie, Portugal), outil digital d'audit conforme SOA, coordination avec l'Audit Groupe LVMH.</div>
+        </div>
+        <div class="case-block result">
+          <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+          <div class="case-text" data-i18n="case3Result">Conformité SOA atteinte, pratiques alignées à l'échelle européenne, amélioration continue installée en magasin.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-client">Groupement Les Mousquetaires (ITM LEMI)</div>
+        <div class="case-years" data-i18n="case4Years">Projet ELAN — Practice Retail, depuis 2022</div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelContext">Contexte</div>
+          <div class="case-text" data-i18n="case4Context">WMS INFOLOG en fin de support (2027), obsolescence technique, besoin de moderniser la performance opérationnelle et SI de la Supply Chain LEMI.</div>
+        </div>
+        <div class="case-block">
+          <div class="case-label" data-i18n="caseLabelActions">Actions</div>
+          <div class="case-text" data-i18n="case4Actions">Cadrage et pilotage du changement de WMS vers REFLEX (éditeur HARDIS), structuration de la gouvernance projet (COPIL, comité stratégique), définition des facteurs clés de succès, pilotage en mode Agile.</div>
+        </div>
+        <div class="case-block result">
+          <div class="case-label" data-i18n="caseLabelResult">Résultat</div>
+          <div class="case-text" data-i18n="case4Result">Guide lines et gouvernance projet posées, équipe multi-parties prenantes (STIME, HARDIS, métiers) alignée, trajectoire de déploiement sécurisée.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<section class="offers-section compact-secondary" id="legacyOffers">
+  <div class="offers-head">
+    <div class="offers-eyebrow" data-i18n="offersEyebrow">Concrètement, sur le terrain</div>
+    <h2 class="offers-title" data-i18n="offersTitle">Exemples d'accompagnement régulièrement réalisés</h2>
+  </div>
+  <div class="offers-grid">
+    <div class="offer-card">
+      <h3 class="offer-name" data-i18n="offer0Name">Étude d'opportunité</h3>
+      <div class="offer-desc" data-i18n="offer0Desc">Étude d'opportunité, de faisabilité et d'impacts — avant d'engager le moindre budget.</div>
+    </div>
+    <div class="offer-card">
+      <h3 class="offer-name" data-i18n="offer1Name">Structuration du projet</h3>
+      <div class="offer-desc" data-i18n="offer1Desc">Structuration du projet à lancer : Project Management Plan, Stakeholders Engagement Plan, RACI.</div>
+    </div>
+    <div class="offer-card featured">
+      <div class="offer-badge" data-i18n="offer2Badge">Le plus demandé</div>
+      <h3 class="offer-name" data-i18n="offer2Name">Animation de projet</h3>
+      <div class="offer-desc" data-i18n="offer2Desc">Animation adaptée au projet — daily stand-up, weekly review, weekly reports, préparation des supports de COPIL.</div>
+    </div>
+    <div class="offer-card">
+      <h3 class="offer-name" data-i18n="offer3Name">Suivi planning &amp; reporting</h3>
+      <div class="offer-desc" data-i18n="offer3Desc">Suivi planning et reporting — notamment sur les projets long cycle en V, pour éviter l'effet tunnel — et communication interne (rythme, contenu, destinataires) pour garder l'implication de tous.</div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:24px;">
+    <div class="offers-more-note" data-i18n="offersMoreNote">Et bien d'autres formats, selon votre contexte.</div>
+    <a class="btn btn-primary" style="display:inline-block; margin-top:14px;" data-i18n="offersContactBtn" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener">Pour en savoir plus, contactez-moi</a>
+  </div>
+</section>
+
+<section class="process-section compact-secondary">
+  <div class="process-head">
+    <h2 class="process-title" data-i18n="processTitle">Comment ça se passe, concrètement</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-title" data-i18n="step1Title">Vous écrivez</div>
+      <div class="step-desc" data-i18n="step1Desc">Un mail direct, 2 lignes suffisent. Pas de formulaire à rallonge, pas de standard.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-title" data-i18n="step2Title">On cadre en 15 minutes</div>
+      <div class="step-desc" data-i18n="step2Desc">Un appel court pour comprendre l'enjeu réel et vous dire honnêtement si je peux aider.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-title" data-i18n="step3Title">L'exécution démarre</div>
+      <div class="step-desc" data-i18n="step3Desc">Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher. Tout se fait à distance : gain de temps et de coût pour vous comme pour moi.</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section compact-secondary">
+  <div class="faq-head">
+    <h2 class="faq-title" data-i18n="faqTitle">Questions fréquentes</h2>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq1Q">C'est cher pour un audit de 10 jours ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq1A">Un audit mal fait coûte plus cher qu'un projet qui n'avance pas depuis 6 mois. Le diagnostic sert à décider vite, avec les vrais risques sur la table — pas à occuper du temps.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq2Q">Pourquoi vous plutôt qu'un grand cabinet de conseil ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq2A">Pas d'équipe junior facturée au prix senior, pas de rapport de 80 pages. Vous parlez directement à la personne qui a mené les 100+ projets — du diagnostic à l'exécution.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq3Q">Et si mon projet ne rentre dans aucune des 3 offres ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq3A">On en discute 15 minutes, sans engagement. Si je ne suis pas le bon interlocuteur, je vous le dis directement — et si possible, je vous oriente vers quelqu'un qui l'est.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq4Q">Combien de temps avant de voir des résultats ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq4A">Le diagnostic stratégique livre des recommandations actionnables en 10 jours. Le sprint stratégique lance l'exécution en 2 à 4 semaines. Rien ne traîne.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question"><span data-i18n="faq5Q">Vous allez piloter à la place de mon équipe ?</span><span class="icon">+</span></button>
+    <div class="faq-answer" data-i18n="faq5A">Non. Je structure le cadre avec vous, mais l'objectif n'est pas que je reste indispensable — c'est que votre équipe interne pilote seule, plus vite et plus sereinement, une fois la méthode posée.</div>
+  </div>
+</section>
+
+<section class="control-section">
+  <div class="control-card">
+    <div class="control-eyebrow" data-i18n="controlEyebrow">Le modèle Evolsphere</div>
+    <h2 class="control-title" data-i18n="controlTitle">Votre projet avance. Votre équipe reste aux commandes.</h2>
+    <div class="control-grid">
+      <div><strong data-i18n="control1Title">Daily stand-up</strong><span data-i18n="control1Desc">Animation courte, décisions immédiates, blocages visibles.</span></div>
+      <div><strong data-i18n="control2Title">Weekly direction</strong><span data-i18n="control2Desc">Synthèse exécutive, arbitrages et priorités.</span></div>
+      <div><strong data-i18n="control3Title">Reporting</strong><span data-i18n="control3Desc">Un reporting utile à la décision, pas un rapport de plus.</span></div>
+    </div>
+    <button class="btn btn-primary" id="controlQuoteBtn" data-i18n="quoteBtn">Demandez-moi un devis</button>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2 class="final-cta-title" data-i18n="finalTitle">Ne rien faire, c'est déjà choisir de perdre.</h2>
+  <div class="final-cta-sub" data-i18n="finalSub"></div>
+  <a class="btn btn-primary" id="finalCtaBtn" href="#" data-i18n="quoteBtn">Demandez-moi un devis</a>
+  <div class="final-cta-note" data-i18n="finalCtaNote">Écrivez. Je réponds. Simple.</div>
+</section>
+
+<section class="roi-section compact-secondary">
+  <div class="roi-head">
+    <div class="roi-title" data-i18n="roiTitle">Combien vous coûte un projet mal piloté ?</div>
+    <div class="roi-sub" data-i18n="roiSub">Ajustez les curseurs selon votre contexte pour une estimation d'ordre de grandeur.</div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-field">
+      <label><span data-i18n="roiBudgetLabel">Budget annuel du projet</span><span class="val" id="roiBudgetVal">2 000 000 €</span></label>
+      <input type="range" id="roiBudget" min="200000" max="50000000" step="100000" value="2000000" />
+    </div>
+    <div class="roi-field">
+      <label><span data-i18n="roiSlipLabel">Dérive de planning estimée</span><span class="val" id="roiSlipVal">20%</span></label>
+      <input type="range" id="roiSlip" min="0" max="60" step="5" value="20" />
+    </div>
+    <div class="roi-field">
+      <label><span data-i18n="roiTeamLabel">Taille de l'équipe projet</span><span class="val" id="roiTeamVal">15 personnes</span></label>
+      <input type="range" id="roiTeam" min="2" max="100" step="1" value="15" />
+    </div>
+    <div class="roi-result">
+      <div class="roi-result-label" data-i18n="roiResultLabel">Coût estimé de la dérive</div>
+      <div class="roi-result-num" id="roiResultNum">400 000 €</div>
+      <div class="roi-result-note" data-i18n="roiResultNote">C'est l'ordre de grandeur de ce qu'un cadrage insuffisant peut coûter — avant même de compter l'impact sur les équipes et la crédibilité interne.</div>
+      <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener" data-i18n="roiCta">Éviter cette facture</a>
+    </div>
+    <div class="roi-disclaimer" data-i18n="roiDisclaimer">Estimation indicative basée sur des ratios de dérive budgétaire couramment observés sur des projets de transformation. Ne remplace pas un diagnostic réel — chaque contexte est différent.</div>
+  </div>
+</section>
+
+<section class="radar-section compact-secondary">
+  <div class="radar-head">
+    <div class="radar-title" data-i18n="radarTitle">Risk Radar — démonstration</div>
+    <div class="radar-sub" data-i18n="radarSub">Chaque risque est noté par le manager (niveau brut en €, si le risque survient) et suivi par celui qui l'exécute (niveau de maîtrise, %). Ajustez les curseurs : la cartographie évolue en temps réel, comme en cours de projet.</div>
+  </div>
+
+  <div class="radar-layout">
+    <div class="radar-chart-card">
+      <svg id="radarChart" viewBox="0 0 340 300" style="width:100%; height:auto;">
+        <!-- axes -->
+        <line x1="40" y1="20" x2="40" y2="250" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <line x1="40" y1="250" x2="320" y2="250" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <text x="10" y="18" fill="var(--ink-dim)" font-size="9" font-family="Arial">€ brut</text>
+        <text x="270" y="266" fill="var(--ink-dim)" font-size="9" font-family="Arial" data-i18n="radarAxisX">Maîtrise →</text>
+        <!-- danger zone hint -->
+        <rect x="40" y="20" width="140" height="115" fill="rgba(255,62,154,0.06)"/>
+        <g id="riskDots"></g>
+      </svg>
+      <div class="radar-legend">
+        <div class="radar-legend-item"><span class="radar-legend-dot" style="background:var(--teal);"></span><span data-i18n="radarLegendInterne">Interne</span></div>
+        <div class="radar-legend-item"><span class="radar-legend-dot" style="background:var(--violet);"></span><span data-i18n="radarLegendIT">IT</span></div>
+        <div class="radar-legend-item"><span class="radar-legend-dot" style="background:var(--amber);"></span><span data-i18n="radarLegendExterne">Externe</span></div>
+      </div>
+    </div>
+
+    <div class="radar-table" id="radarTable">
+      <div class="risk-row" data-cat="it" data-gross="180000">
+        <div class="risk-row-head">
+          <span class="risk-cat it" data-i18n="radarLegendIT">IT</span>
+          <span class="risk-name" data-i18n="risk1Name">Migration WMS non stabilisée à date go-live</span>
+          <span class="risk-gross">180 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">40</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="40" />
+        </div>
+        <div class="risk-action" data-i18n="risk1Action"><b>Action :</b> plan de tests de charge renforcé — piloté par l'intégrateur, avant le 15 du mois.</div>
+      </div>
+
+      <div class="risk-row" data-cat="interne" data-gross="90000">
+        <div class="risk-row-head">
+          <span class="risk-cat interne" data-i18n="radarLegendInterne">Interne</span>
+          <span class="risk-name" data-i18n="risk2Name">Disponibilité des équipes métier sur le cadrage</span>
+          <span class="risk-gross">90 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">65</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="65" />
+        </div>
+        <div class="risk-action" data-i18n="risk2Action"><b>Action :</b> créneaux dédiés bloqués en agenda — porté par le sponsor métier, dès la semaine prochaine.</div>
+      </div>
+
+      <div class="risk-row" data-cat="externe" data-gross="250000">
+        <div class="risk-row-head">
+          <span class="risk-cat externe" data-i18n="radarLegendExterne">Externe</span>
+          <span class="risk-name" data-i18n="risk3Name">Délai de livraison d'un fournisseur clé</span>
+          <span class="risk-gross">250 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">25</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="25" />
+        </div>
+        <div class="risk-action" data-i18n="risk3Action"><b>Action :</b> clause de pénalité de retard à activer — piloté par les achats, ce trimestre.</div>
+      </div>
+
+      <div class="risk-row" data-cat="it" data-gross="60000">
+        <div class="risk-row-head">
+          <span class="risk-cat it" data-i18n="radarLegendIT">IT</span>
+          <span class="risk-name" data-i18n="risk4Name">Dette technique sur l'interfaçage ERP</span>
+          <span class="risk-gross">60 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">70</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="70" />
+        </div>
+        <div class="risk-action" data-i18n="risk4Action"><b>Action :</b> revue d'architecture programmée — pilotée par le PMO, sous 3 semaines.</div>
+      </div>
+
+      <div class="risk-row" data-cat="interne" data-gross="130000">
+        <div class="risk-row-head">
+          <span class="risk-cat interne" data-i18n="radarLegendInterne">Interne</span>
+          <span class="risk-name" data-i18n="risk5Name">Résistance au changement en magasin/entrepôt</span>
+          <span class="risk-gross">130 000 €</span>
+        </div>
+        <div class="risk-controls">
+          <div class="risk-control-label"><span data-i18n="radarMasteryLabel">Niveau de maîtrise</span><span class="val"><span class="risk-mastery-val">50</span>%</span></div>
+          <input type="range" class="risk-mastery" min="0" max="100" value="50" />
+        </div>
+        <div class="risk-action" data-i18n="risk5Action"><b>Action :</b> plan de conduite du changement renforcé — porté par les RH/Communication, en continu.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="radar-note" data-i18n="radarNote">Exemple illustratif à visée pédagogique — sur un vrai projet, cette cartographie est mise à jour à chaque comité, avec vos propres risques.</div>
+</section>
+
+
+
+<div class="modal-overlay" id="tomesModal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" id="closeTomesBtn" aria-label="Fermer">✕</button>
+    <div class="test-eyebrow" data-i18n="tomesEyebrow">EVOLSPHERE EDITIONS</div>
+    <h2 class="offers-title" data-i18n="tomesTitle">Catalogue 1 — Stratégie &amp; Transformation</h2>
+    <p class="offer-desc" data-i18n="tomesDesc">5 Tomes exécutifs, pensés pour les CODIR et COMEX. Chaque catalogue se lit indépendamment ou en collection complète.</p>
+
+    <div class="tomes-catalogue-list" style="text-align:left; margin:16px 0; display:flex; flex-direction:column; gap:8px;">
+      <div class="tome-line"><b>Tome 1</b> — <span data-i18n="cat1t1">Stratégie de Transformation &amp; Optimisation Opérationnelle</span></div>
+      <div class="tome-line"><b>Tome 2</b> — <span data-i18n="cat1t2">Synergies Groupe &amp; Modèles de Distribution</span></div>
+      <div class="tome-line"><b>Tome 3</b> — <span data-i18n="cat1t3">Transformer sans subir</span></div>
+      <div class="tome-line"><b>Tome 4</b> — <span data-i18n="cat1t4">L'entreprise augmentée — Data, automatisation et IA</span></div>
+      <div class="tome-line"><b>Tome 5</b> — <span data-i18n="cat1t5">2030 — Le prochain cercle</span></div>
+    </div>
+
+    <div class="tomes-price-row" style="display:flex; align-items:baseline; gap:10px; justify-content:center; margin:14px 0;">
+      <span style="font-size:26px; font-weight:800; color:var(--teal);">199 € HT</span>
+      <span class="offer-desc" data-i18n="cat1PriceNote" style="margin:0;">le catalogue, 5 Tomes</span>
+    </div>
+
+    <p class="form-info" data-i18n="tomesAccessNote">Accès illimité en lecture en ligne. Version imprimable disponible en option.</p>
+    <p class="form-info" data-i18n="tomesStatus">Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.</p>
+
+    <a class="btn btn-primary" id="tomesStripeBtn" href="https://buy.stripe.com/aFa3coc2Q4ovbwJ3y1gw000" data-i18n="tomesBuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 1 — 199 € HT</a>
+    <button class="btn btn-ghost" id="tomesNotifyBtn" data-i18n="tomesNotify" style="margin-top:10px;">Être informé des prochains catalogues</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="quoteModal" aria-hidden="true">
+  <div class="modal-card wide">
+    <button class="modal-close" id="closeQuoteBtn" aria-label="Fermer">✕</button>
+    <div class="test-eyebrow" data-i18n="quoteEyebrow">DEMANDE DE DEVIS</div>
+    <h2 class="offers-title" data-i18n="quoteTitle">Parlez-moi de votre enjeu.</h2>
+    <p class="offer-desc" data-i18n="quoteSub">Quelques informations suffisent. Je vous réponds directement.</p>
+    <form id="quoteForm" class="quote-form" novalidate>
+      <div class="form-grid">
+        <label><span data-i18n="formName">Nom / Prénom *</span><input name="name" autocomplete="name" required></label>
+        <label><span data-i18n="formCompany">Entreprise *</span><input name="company" autocomplete="organization" required></label>
+        <label><span data-i18n="formEmail">Email professionnel *</span><input type="email" name="email" autocomplete="email" required></label>
+        <label><span data-i18n="formPhone">Téléphone</span><input type="tel" name="phone" autocomplete="tel"></label>
+      </div>
+      <label><span data-i18n="formNeed">Votre enjeu / projet *</span><textarea name="need" rows="4" required></textarea></label>
+      <label class="consent-line"><input type="checkbox" name="privacy" required><span data-i18n-html="privacyConsent">J’accepte que les informations saisies soient utilisées par Evolsphere pour répondre à ma demande, conformément à la <a href="#" data-legal="privacy">politique de confidentialité</a>. *</span></label>
+      <p class="form-info" data-i18n="formInfo">Les champs marqués * sont nécessaires au traitement de votre demande. Les données sont utilisées uniquement pour répondre à votre demande et sont conservées pendant la durée nécessaire à cette finalité, sous réserve des obligations légales applicables.</p>
+      <button class="btn btn-primary" type="submit" data-i18n="formSubmit">Envoyer ma demande</button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="legalModal" aria-hidden="true">
+  <div class="modal-card wide">
+    <button class="modal-close" id="closeLegalBtn" aria-label="Fermer">✕</button>
+    <div class="test-eyebrow" id="legalEyebrow">INFORMATIONS LÉGALES</div>
+    <h2 class="offers-title" id="legalTitle"></h2>
+    <div class="legal-content" id="legalContent"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="testModal">
+  <div class="modal-card" id="testCard">
+    <button class="modal-close" id="closeTestBtn">✕</button>
+    <!-- content injected by JS -->
+  </div>
+</div>
+
+
+<section id="raphael-profile" class="raphael-profile" style="margin:48px auto 20px;max-width:1000px;padding:28px 30px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.035);">
+  <div style="display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;opacity:.65;">Evolsphere</div>
+      <h2 style="margin:.35rem 0 .45rem;">Raphaël de Bruijn</h2>
+      <p style="margin:0;opacity:.82;">Transformation digitale · ERP · IT &amp; Operations · Pilotage de projets</p>
+    </div>
+    <a href="evolsphere-one-pager.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="white-space:nowrap;">Voir mon CV</a>
+  </div>
+</section>
+
+<footer>
+  <div class="tagline">Evolsphere — <b id="tagWord1">structurer</b>, <b id="tagWord2">sécuriser</b>, <b id="tagWord3">livrer</b>. <span id="copyrightYear" style="opacity:0.55;">© 2026</span></div>
+  <nav class="legal-nav" aria-label="Informations légales">
+    <a href="#" data-legal="legal" data-i18n="legalNotice">Mentions légales</a>
+    <a href="#" data-legal="privacy" data-i18n="privacyPolicy">Confidentialité</a>
+    <a href="#" data-legal="cgv" data-i18n="cgv">CGV</a>
+    <a href="#" data-legal="cookies" data-i18n="cookies">Cookies</a>
+  </nav>
+  <div class="sound-toggle" id="soundToggle">
+    <div class="bars"><i></i><i></i><i></i></div>
+    <span id="soundLabel">Activer le son</span>
+  </div>
 </footer>
 
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text">
+    <span data-i18n="stickyMain">Demandez-moi un devis</span>
+    <span data-i18n="stickySub">Réponse directe, sans intermédiaire.</span>
+  </div>
+  <a class="btn btn-primary" id="stickyCtaBtn" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=Discutons%20d%27un%20projet" target="_blank" rel="noopener" data-i18n="stickyBtn">Demandez-moi un devis</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+<script>
+(function(){
+try{
+  // ---------- 3D SCENE ----------
+  const holder = document.getElementById('canvas-holder');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 100);
+  camera.position.set(0, 0, 9.5);
+
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  holder.appendChild(renderer.domElement);
+
+  const key = new THREE.PointLight(0x29f0d0, 4.2, 24);
+  key.position.set(4, 3, 5);
+  scene.add(key);
+  const rim = new THREE.PointLight(0xa56bff, 4.0, 24);
+  rim.position.set(-4.5, -2, -3);
+  scene.add(rim);
+  const hotLight = new THREE.PointLight(0xff3e9a, 2.2, 22);
+  hotLight.position.set(0, -3.5, 4);
+  scene.add(hotLight);
+  scene.add(new THREE.AmbientLight(0x1a1226, 1.0));
+
+  const geo = new THREE.IcosahedronGeometry(2.1, 5);
+  const colors = [];
+  const c1 = new THREE.Color(0x29f0d0);
+  const c2 = new THREE.Color(0xa56bff);
+  const c3 = new THREE.Color(0xff3e9a);
+  const c4 = new THREE.Color(0xff9b4a);
+  const pos = geo.attributes.position;
+  for(let i=0; i<pos.count; i++){
+    const y = (pos.getY(i) / 2.1 + 1) / 2;
+    let col;
+    if(y < 0.33) col = c1.clone().lerp(c2, y/0.33);
+    else if(y < 0.66) col = c2.clone().lerp(c3, (y-0.33)/0.33);
+    else col = c3.clone().lerp(c4, (y-0.66)/0.34);
+    colors.push(col.r, col.g, col.b);
+  }
+  geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+  const mat = new THREE.MeshStandardMaterial({
+    vertexColors: true, roughness: 0.3, metalness: 0.2,
+    emissive: 0x180d26, emissiveIntensity: 0.55
+  });
+  const sphere = new THREE.Mesh(geo, mat);
+  scene.add(sphere);
+
+  const wireGeo = new THREE.IcosahedronGeometry(2.16, 2);
+  const wireMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe:true, transparent:true, opacity:0.08 });
+  const wireSphere = new THREE.Mesh(wireGeo, wireMat);
+  scene.add(wireSphere);
+
+  // orbiting particle ring for extra energy
+  const particleCount = 260;
+  const pGeo = new THREE.BufferGeometry();
+  const pPos = new Float32Array(particleCount*3);
+  const pColor = new Float32Array(particleCount*3);
+  const orbitRadius = [];
+  const orbitAngle = [];
+  const orbitTilt = [];
+  const palette = [c1, c2, c3, c4];
+  for(let i=0;i<particleCount;i++){
+    const r = 3.0 + Math.random()*2.2;
+    const a = Math.random()*Math.PI*2;
+    const tlt = (Math.random()-0.5)*1.4;
+    orbitRadius.push(r); orbitAngle.push(a); orbitTilt.push(tlt);
+    const col = palette[Math.floor(Math.random()*palette.length)];
+    pColor[i*3]=col.r; pColor[i*3+1]=col.g; pColor[i*3+2]=col.b;
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  pGeo.setAttribute('color', new THREE.BufferAttribute(pColor, 3));
+  const pMat = new THREE.PointsMaterial({ size:0.05, vertexColors:true, transparent:true, opacity:0.85, sizeAttenuation:true });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  const basePositions = Float32Array.from(pos.array);
+
+  function fade(t){ return t*t*t*(t*(t*6-15)+10); }
+  function lerp(t,a,b){ return a+t*(b-a); }
+  function grad(hash,x,y,z){
+    const h = hash & 15;
+    const u = h<8 ? x : y;
+    const v = h<4 ? y : (h===12||h===14 ? x : z);
+    return ((h&1)===0 ? u : -u) + ((h&2)===0 ? v : -v);
+  }
+  const permBase = [];
+  for(let i=0;i<256;i++) permBase[i]=i;
+  for(let i=255;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [permBase[i],permBase[j]]=[permBase[j],permBase[i]]; }
+  const perm = new Array(512);
+  for(let i=0;i<512;i++) perm[i]=permBase[i&255];
+
+  function noise3(x,y,z){
+    const X=Math.floor(x)&255, Y=Math.floor(y)&255, Z=Math.floor(z)&255;
+    x-=Math.floor(x); y-=Math.floor(y); z-=Math.floor(z);
+    const u=fade(x), v=fade(y), w=fade(z);
+    const A=perm[X]+Y, AA=perm[A]+Z, AB=perm[A+1]+Z;
+    const B=perm[X+1]+Y, BA=perm[B]+Z, BB=perm[B+1]+Z;
+    return lerp(w,
+      lerp(v, lerp(u, grad(perm[AA],x,y,z), grad(perm[BA],x-1,y,z)),
+              lerp(u, grad(perm[AB],x,y-1,z), grad(perm[BB],x-1,y-1,z))),
+      lerp(v, lerp(u, grad(perm[AA+1],x,y,z-1), grad(perm[BA+1],x-1,y,z-1)),
+              lerp(u, grad(perm[AB+1],x,y-1,z-1), grad(perm[BB+1],x-1,y-1,z-1)))
+    );
+  }
+
+  let audioLevel = 0;
+  let beatPulse = 0; // short decaying pulse triggered on each pluck hit
+  const clock = { start: performance.now() };
+
+  function animate(t){
+    requestAnimationFrame(animate);
+    const elapsed = (t - clock.start) * 0.001;
+    const time = t * 0.00032;
+    const amp = 0.22 + audioLevel * 0.85 + beatPulse * 0.35;
+
+    const p = geo.attributes.position;
+    for(let i=0;i<p.count;i++){
+      const ix = i*3;
+      const bx = basePositions[ix], by = basePositions[ix+1], bz = basePositions[ix+2];
+      const len = Math.sqrt(bx*bx+by*by+bz*bz);
+      const nx = bx/len, ny = by/len, nz = bz/len;
+      const n = noise3(nx*1.7 + time*4.2, ny*1.7 + time*4.2, nz*1.7 + time*4.2);
+      const displaced = len + n * amp;
+      p.setXYZ(i, nx*displaced, ny*displaced, nz*displaced);
+    }
+    p.needsUpdate = true;
+    geo.computeVertexNormals();
+
+    const scalePulse = 1 + beatPulse * 0.09 + Math.sin(time*2.2)*0.02;
+    sphere.scale.setScalar(scalePulse);
+
+    sphere.rotation.y += 0.0032 + audioLevel*0.01;
+    sphere.rotation.x = Math.sin(time*0.8)*0.2;
+    wireSphere.rotation.y -= 0.0022;
+    wireSphere.rotation.x = sphere.rotation.x;
+    wireSphere.scale.setScalar(1 + beatPulse*0.06);
+
+    // particles orbit + drift
+    const pp = pGeo.attributes.position;
+    for(let i=0;i<particleCount;i++){
+      orbitAngle[i] += 0.0025 + audioLevel*0.01 + beatPulse*0.006;
+      const r = orbitRadius[i] + Math.sin(elapsed*0.6+i)*0.15 + beatPulse*0.3;
+      const a = orbitAngle[i];
+      const tlt = orbitTilt[i];
+      pp.array[i*3]   = Math.cos(a) * r;
+      pp.array[i*3+1] = Math.sin(a) * r * 0.4 + tlt*1.5;
+      pp.array[i*3+2] = Math.sin(a) * r * 0.6;
+    }
+    pp.needsUpdate = true;
+    particles.rotation.y += 0.0016;
+
+    // camera micro dolly + shake tied to beat
+    camera.position.z = 9.5 - beatPulse*0.4 - audioLevel*0.5;
+    camera.position.x = Math.sin(elapsed*0.35) * 0.18;
+    camera.position.y = Math.cos(elapsed*0.28) * 0.12;
+    camera.lookAt(0,0,0);
+
+    key.intensity = 3.2 + audioLevel*3.5 + beatPulse*2.5;
+    rim.intensity = 3.0 + audioLevel*2.8;
+    hotLight.intensity = 1.6 + beatPulse*3.5;
+
+    beatPulse *= 0.90; // decay
+
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(animate);
+
+  window.addEventListener('resize', ()=>{
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // ---------- AMBIENT GENERATIVE MUSIC (Tone.js) — punchier, faster ----------
+  let started = false;
+  let analyser, pad, pluck, bass, reverb, filter, delay;
+
+  window.__triggerBeatPulse = function(){ beatPulse = 1; };
+
+  async function startAudio(){
+    if(started) return;
+    started = true;
+    await Tone.start();
+
+    reverb = new Tone.Reverb({ decay: 5, wet: 0.4 }).toDestination();
+    delay = new Tone.FeedbackDelay('8n', 0.28).connect(reverb);
+    filter = new Tone.Filter(2000, 'lowpass').connect(delay);
+    analyser = new Tone.Analyser('waveform', 256);
+    filter.connect(analyser);
+
+    pad = new Tone.PolySynth(Tone.Synth, {
+      oscillator: { type: 'sawtooth' },
+      envelope: { attack: 0.8, decay: 0.6, sustain: 0.5, release: 2.2 }
+    }).connect(filter);
+    pad.volume.value = -16;
+
+    pluck = new Tone.Synth({
+      oscillator: { type: 'triangle' },
+      envelope: { attack: 0.005, decay: 0.25, sustain: 0, release: 0.5 }
+    }).connect(filter);
+    pluck.volume.value = -10;
+
+    bass = new Tone.MembraneSynth({
+      pitchDecay: 0.02, octaves: 4,
+      envelope: { attack: 0.001, decay: 0.35, sustain: 0 }
+    }).connect(reverb);
+    bass.volume.value = -6;
+
+    const padChords = [
+      ['C3','G3','D4'], ['A2','E3','C4'],
+      ['F2','C3','G3'], ['G2','D3','A3']
+    ];
+    let chordIdx = 0;
+    new Tone.Loop((time)=>{
+      pad.triggerAttackRelease(padChords[chordIdx % padChords.length], '2n', time);
+      chordIdx++;
+    }, '1m').start(0);
+
+    const pluckNotes = ['C5','D5','E5','G5','A5','C6'];
+    new Tone.Sequence((time, note)=>{
+      if(note !== null){
+        pluck.triggerAttackRelease(note, '16n', time);
+        Tone.Draw.schedule(()=>{ window.__triggerBeatPulse(); }, time);
+      }
+    }, [
+      pluckNotes[0], null, pluckNotes[2], pluckNotes[1],
+      null, pluckNotes[3], null, pluckNotes[4],
+      pluckNotes[2], null, pluckNotes[5], null,
+      pluckNotes[1], null, pluckNotes[3], null
+    ], '16n').start(0);
+
+    new Tone.Loop((time)=>{
+      bass.triggerAttackRelease('C1', '8n', time);
+      Tone.Draw.schedule(()=>{ window.__triggerBeatPulse(); }, time);
+    }, '2n').start('0');
+
+    Tone.Transport.bpm.value = 104;
+    Tone.Transport.start();
+
+    function pollLevel(){
+      if(!started) return;
+      const wave = analyser.getValue();
+      let sum = 0;
+      for(let i=0;i<wave.length;i++) sum += Math.abs(wave[i]);
+      const level = Math.min(1, (sum/wave.length) * 7);
+      audioLevel += (level - audioLevel) * 0.25;
+      requestAnimationFrame(pollLevel);
+    }
+    pollLevel();
+  }
+
+  function stopAudio(){
+    started = false;
+    Tone.Transport.stop();
+    Tone.Transport.cancel();
+    if(pad) pad.releaseAll();
+    audioLevel = 0;
+  }
+
+  window.__evolStartAudio = startAudio;
+  window.__evolStopAudio = stopAudio;
+
+}catch(err){
+  console.error('Scène 3D/audio indisponible, l\'interface reste fonctionnelle:', err);
+}
+})();
+</script>
+
+<!--
+  Ce script est volontairement séparé et placé APRÈS les librairies 3D/audio
+  mais ne dépend d'AUCUNE des deux : le test de méthode, l'ouverture/fermeture
+  de la modale et le bouton son fonctionnent même si Three.js ou Tone.js
+  ne se chargent pas (CDN bloqué, réseau restrictif, etc.).
+-->
+<script>
+(function(){
+  let currentLang = 'fr';
+
+  // ---------- TRANSLATIONS (static UI copy) ----------
+  const translations = {
+    fr: {
+      pageTitle: "Evolsphere — Transformation digitale & pilotage de projets pour dirigeants",
+      metaDescription: "Evolsphere accompagne les dirigeants sur leurs projets critiques : ERP, WMS, achats, transformation digitale, finance et organisation. Gouvernance PMP, Agile ou hybride.",
+      quoteBtn: "Demandez-moi un devis", controlNote: "L’offre qui vous permet de garder le contrôle et le rythme : animation des Daily stand-up, weekly et reporting.",
+      controlEyebrow: "Le modèle Evolsphere", controlTitle: "Votre projet avance. Votre équipe reste aux commandes.",
+      control1Title: "Daily stand-up", control1Desc: "Animation courte, décisions immédiates, blocages visibles.",
+      control2Title: "Weekly direction", control2Desc: "Synthèse exécutive, arbitrages et priorités.",
+      control3Title: "Reporting", control3Desc: "Un reporting utile à la décision, pas un rapport de plus.",
+      quoteEyebrow: "DEMANDE DE DEVIS", quoteTitle: "Parlez-moi de votre enjeu.", quoteSub: "Quelques informations suffisent. Je vous réponds directement.",
+      formName: "Nom / Prénom *", formCompany: "Entreprise *", formEmail: "Email professionnel *", formPhone: "Téléphone", formNeed: "Votre enjeu / projet *",
+      privacyConsent: "J’accepte que les informations saisies soient utilisées par Evolsphere pour répondre à ma demande, conformément à la <a href=\"#\" data-legal=\"privacy\">politique de confidentialité</a>. *",
+      formInfo: "Les champs marqués * sont nécessaires au traitement de votre demande. Les données sont utilisées uniquement pour répondre à votre demande et sont conservées pendant la durée nécessaire à cette finalité, sous réserve des obligations légales applicables.",
+      formSubmit: "Envoyer ma demande", legalNotice: "Mentions légales", privacyPolicy: "Confidentialité", cgv: "CGV", cookies: "Cookies",
+      badge: "Pensez autrement. Gardez le contrôle. Les cabinets classiques sont dépassés.",
+      eyebrow: "Grands groupes, ETI, PME — le modèle a changé",
+      h1: ["Restez en 1980.", "Ou passez en 2026."],
+      sub: "Transformation digitale, ERP, WMS, achats, finance, organisation et pilotage de projets critiques.",
+      chipDigital: "Transformation digitale",
+      chipStandup: "Stand-up quotidien",
+      chipWeekly: "Reporting hebdomadaire direction",
+      chipChange: "Conduite du changement",
+      chipDirGen: "Direction Générale",
+      chipOpsSteering: "Pilotage opérationnel",
+      chipRemote: "100% à distance",
+      chipFiscal: "Fiscal",
+      chipReporting: "Reporting direction",
+      chipMultisite: "Multi-sites / Multi-pays",
+      casesTitle: "Sur le terrain, pas sur slides",
+      caseLabelContext: "Contexte",
+      caseLabelActions: "Actions",
+      caseLabelResult: "Résultat",
+      case1Years: "COO — 2017-2020",
+      case1Context: "Forte croissance, entrée au capital du Groupe Carrefour, besoin urgent de structurer des fonctions support en tension.",
+      case1Actions: "Refonte DSI 'Buy', changement de WMS, structuration du PMO sur 200+ projets, mise en place du pilotage OPEX/CAPEX.",
+      case1Result: "Fonctions support structurées, gouvernance projet en place, équipe de 40 personnes pilotée en direct.",
+      case2Years: "Directeur de la Transformation — 2008-2016",
+      case2Context: "Mutation du commerce de centre-ville, nécessité de rapprocher siège et magasins, virage omnicanal à négocier.",
+      case2Actions: "Harmonisation des SI France/Tunisie, déploiement ERP Symphony/Gold, refonte e-commerce, intégration post-acquisition de Naturalia.",
+      case2Result: "Transformation digitale et organisationnelle menée sur 8 ans, à l'échelle d'un groupe international.",
+      case3Years: "Contrôleur de Gestion Europe & Excellence Opérationnelle — 2004-2008",
+      case3Context: "Besoin d'harmoniser les pratiques entre sièges européens et de renforcer la conformité, sous exigence SOA du Groupe LVMH.",
+      case3Actions: "Pilotage des audits internes en Europe (France, Espagne, Italie, Portugal), outil digital d'audit conforme SOA, coordination avec l'Audit Groupe LVMH.",
+      case3Result: "Conformité SOA atteinte, pratiques alignées à l'échelle européenne, amélioration continue installée en magasin.",
+      case4Years: "Projet ELAN — Practice Retail, depuis 2022",
+      case4Context: "WMS INFOLOG en fin de support (2027), obsolescence technique, besoin de moderniser la performance opérationnelle et SI de la Supply Chain LEMI.",
+      case4Actions: "Cadrage et pilotage du changement de WMS vers REFLEX (éditeur HARDIS), structuration de la gouvernance projet (COPIL, comité stratégique), définition des facteurs clés de succès, pilotage en mode Agile.",
+      case4Result: "Guide lines et gouvernance projet posées, équipe multi-parties prenantes (STIME, HARDIS, métiers) alignée, trajectoire de déploiement sécurisée.",
+      comparisonTitle: "Cabinet classique / Evolsphere",
+      oldColHead: "Cabinet classique",
+      oldRow1: "Junior facturé au prix senior, supervisé à distance par un associé qui ne touche plus le dossier.",
+      oldRow2: "Décision par comité : plusieurs allers-retours avant validation.",
+      oldRow3: "Livrable : un rapport de 80 pages, sans owner d'exécution derrière.",
+      oldRow4: "Reporting trimestriel en slides, déconnecté du quotidien opérationnel.",
+      oldRow5: "Équipe tournante — le consultant qui a cadré n'est plus celui qui exécute.",
+      newColHead: "Evolsphere — méthode 2026",
+      newRow1: "La personne qui structure a occupé le poste (CIO/COO) — elle sait ce que veut dire livrer.",
+      newRow2: "RACI clair dès le premier jour : qui décide quoi, sans ambiguïté.",
+      newRow3: "Livrable : un plan d'action exécutable, sous 10 jours.",
+      newRow4: "Reporting direction condensé, mensuel, orienté décision.",
+      newRow5: "Un seul interlocuteur, du diagnostic à l'exécution, disponible en continu.",
+      clientsLabel: "Grands groupes, ETI et PME — la méthode s'adapte à votre taille",
+      aboutEyebrow: "Qui pilote",
+      aboutRole: "CIO / COO / Direction Générale / Pilotage Opérationnel / Transformation IT & Digitale — PMP®",
+      aboutTeaser: "20 ans, 5 groupes (KPMG, Sephora, Monoprix, Showroomprivé, Practice Retail), 200+ projets pilotés.",
+      viewParcoursBtn: "Voir le parcours complet",
+      badgeMaster: "Master Management & Finance — SKEMA",
+      badgeAgile: "Certifié Agile",
+      badgeIntl: "Europe / Afrique du Nord",
+      tl1Years: "Depuis 2020",
+      tl1Role: "Conseil, Audit & Management de transition — Practice Retail",
+      tl1Desc: "Transformation IT, logistique et organisationnelle pour de grands comptes : Groupement Les Mousquetaires, Cora, McDonald's.",
+      tl2Years: "2017 – 2020",
+      tl2Role: "COO — Showroomprivé",
+      tl2Desc: "Structuration de l'ensemble des fonctions support, management direct de 40 collaborateurs, pilotage de 200+ projets, entrée au capital du Groupe Carrefour.",
+      tl3Years: "2008 – 2016",
+      tl3Role: "Directeur de la Transformation — Groupe Monoprix",
+      tl3Desc: "Transformation digitale et harmonisation des SI en France et en Tunisie, refonte e-commerce, intégration post-acquisition de Naturalia.",
+      tl4Years: "2004 – 2008",
+      tl4Role: "Contrôleur de Gestion Europe & Excellence Opérationnelle — Sephora (Groupe LVMH)",
+      tl4Desc: "Pilotage du contrôle de gestion retail Europe, audits internes multi-pays, conformité SOA, amélioration continue des processus boutiques.",
+      tl5Years: "2000 – 2004",
+      tl5Role: "Auditeur Senior — KPMG",
+      tl5Desc: "Commissariat aux comptes pour groupes cotés (CAC 40, ETI), due diligence financière, consolidation de groupes — spécialisation secteur Information, Communication &amp; Entertainment (ICE).",
+      chipBudget: "Pilotage budgétaire",
+      chipTestLearn: "Test & Learn",
+      chipLegal: "Juridique & contrats",
+      chipAchats: "Achats",
+      chipOrga: "Organisation",
+      testBtn: "Macro Diag — Méthode gratuite",
+      contactBtn: "Echangeons",
+      contactSubject: "Echangeons sur votre projet",
+      whatsappBtn: "WhatsApp",
+      tomesBtn: "Evolsphere Editions",
+      tomesEyebrow: "EVOLSPHERE EDITIONS", tomesTitle: "Catalogue 1 — Stratégie &amp; Transformation", tomesDesc: "5 Tomes exécutifs, pensés pour les CODIR et COMEX. Chaque catalogue se lit indépendamment ou en collection complète.", tomesStatus: "Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.", tomesNotify: "Être informé des prochains catalogues", tomesAccessNote: "Accès illimité en lecture en ligne. Version imprimable disponible en option.", tomesBuyBtn: "Accéder au Catalogue 1 — 199 € HT",
+      cat1t1: "Stratégie de Transformation &amp; Optimisation Opérationnelle",
+      cat1t2: "Synergies Groupe &amp; Modèles de Distribution",
+      cat1t3: "Transformer sans subir",
+      cat1t4: "L'entreprise augmentée — Data, automatisation et IA",
+      cat1t5: "2030 — Le prochain cercle",
+      cat1PriceNote: "le catalogue, 5 Tomes",
+      tagWords: ["structurer", "sécuriser", "livrer"],
+      soundOn: "Activer le son",
+      soundOff: "Couper le son",
+      stat1: "ans à sécuriser des projets critiques",
+      stat2: "projets pilotés en portefeuille",
+      stat3: "personnes pilotées en équipe projet",
+      stat4: "budget piloté sur le dernier projet",
+      offersEyebrow: "Concrètement, sur le terrain",
+      offersTitle: "Exemples d'accompagnement régulièrement réalisés",
+      offer0Name: "Étude d'opportunité",
+      offer0Desc: "Étude d'opportunité, de faisabilité et d'impacts — avant d'engager le moindre budget.",
+      offer1Name: "Structuration du projet",
+      offer1Desc: "Structuration du projet à lancer : Project Management Plan, Stakeholders Engagement Plan, RACI.",
+      offer2Badge: "Le plus demandé",
+      offer2Name: "Animation de projet",
+      offer2Desc: "Animation adaptée au projet — daily stand-up, weekly review, weekly reports, préparation des supports de COPIL.",
+      offer3Name: "Suivi planning &amp; reporting",
+      offer3Desc: "Suivi planning et reporting — notamment sur les projets long cycle en V, pour éviter l'effet tunnel — et communication interne (rythme, contenu, destinataires) pour garder l'implication de tous.",
+      offersMoreNote: "Et bien d'autres formats, selon votre contexte.",
+      offersContactBtn: "Pour en savoir plus, contactez-moi",
+      finalTitle: "Ne rien faire, c'est déjà choisir de perdre.",
+      finalSub: "3 créneaux ce trimestre. Après, c'est non.",
+      finalCtaBtn: "Je réserve mon créneau",
+      finalSubject: "Discutons d'un projet",
+      ctaNote: "Réponse sous 24h. Sans exception.",
+      finalCtaNote: "Écrivez. Je réponds. Simple.",
+      processTitle: "Comment ça se passe, concrètement",
+      step1Title: "Vous écrivez",
+      step1Desc: "Un mail direct, 2 lignes suffisent. Pas de formulaire à rallonge, pas de standard.",
+      step2Title: "On cadre en 15 minutes",
+      step2Desc: "Un appel court pour comprendre l'enjeu réel et vous dire honnêtement si je peux aider.",
+      step3Title: "L'exécution démarre",
+      step3Desc: "Diagnostic, sprint ou pilotage continu — le format le plus adapté à votre enjeu, pas le plus cher. Tout se fait à distance : gain de temps et de coût pour vous comme pour moi.",
+      faqTitle: "Questions fréquentes",
+      faq1Q: "C'est cher pour un audit de 10 jours ?",
+      faq1A: "Un audit mal fait coûte plus cher qu'un projet qui n'avance pas depuis 6 mois. Le diagnostic sert à décider vite, avec les vrais risques sur la table — pas à occuper du temps.",
+      faq2Q: "Pourquoi vous plutôt qu'un grand cabinet de conseil ?",
+      faq2A: "Pas d'équipe junior facturée au prix senior, pas de rapport de 80 pages. Vous parlez directement à la personne qui a mené les 100+ projets — du diagnostic à l'exécution.",
+      faq3Q: "Et si mon projet ne rentre dans aucune des 3 offres ?",
+      faq3A: "On en discute 15 minutes, sans engagement. Si je ne suis pas le bon interlocuteur, je vous le dis directement — et si possible, je vous oriente vers quelqu'un qui l'est.",
+      faq4Q: "Combien de temps avant de voir des résultats ?",
+      faq4A: "Le diagnostic stratégique livre des recommandations actionnables en 10 jours. Le sprint stratégique lance l'exécution en 2 à 4 semaines. Rien ne traîne.",
+      faq5Q: "Vous allez piloter à la place de mon équipe ?",
+      faq5A: "Non. Je structure le cadre avec vous, mais l'objectif n'est pas que je reste indispensable — c'est que votre équipe interne pilote seule, plus vite et plus sereinement, une fois la méthode posée.",
+      stickyMain: "Demandez-moi un devis",
+      stickySub: "Réponse directe, sans intermédiaire.",
+      stickyBtn: "Je fonce",
+      downloadCv: "Télécharger mon profil (PDF)",
+      roiTitle: "Combien vous coûte un projet mal piloté ?",
+      roiSub: "Ajustez les curseurs selon votre contexte pour une estimation d'ordre de grandeur.",
+      roiBudgetLabel: "Budget annuel du projet",
+      roiSlipLabel: "Dérive de planning estimée",
+      roiTeamLabel: "Taille de l'équipe projet",
+      roiPeopleSuffix: "personnes",
+      roiResultLabel: "Coût estimé de la dérive",
+      roiResultNote: "C'est l'ordre de grandeur de ce qu'un cadrage insuffisant peut coûter — avant même de compter l'impact sur les équipes et la crédibilité interne.",
+      roiCta: "Éviter cette facture",
+      roiDisclaimer: "Estimation indicative basée sur des ratios de dérive budgétaire couramment observés sur des projets de transformation. Ne remplace pas un diagnostic réel — chaque contexte est différent.",
+      radarTitle: "Risk Radar — démonstration",
+      radarSub: "Chaque risque est noté par le manager (niveau brut en €, si le risque survient) et suivi par celui qui l'exécute (niveau de maîtrise, %). Ajustez les curseurs : la cartographie évolue en temps réel, comme en cours de projet.",
+      radarAxisX: "Maîtrise →",
+      radarLegendInterne: "Interne",
+      radarLegendIT: "IT",
+      radarLegendExterne: "Externe",
+      radarMasteryLabel: "Niveau de maîtrise",
+      risk1Name: "Migration WMS non stabilisée à date go-live",
+      risk1Action: "Action : plan de tests de charge renforcé — piloté par l'intégrateur, avant le 15 du mois.",
+      risk2Name: "Disponibilité des équipes métier sur le cadrage",
+      risk2Action: "Action : créneaux dédiés bloqués en agenda — porté par le sponsor métier, dès la semaine prochaine.",
+      risk3Name: "Délai de livraison d'un fournisseur clé",
+      risk3Action: "Action : clause de pénalité de retard à activer — piloté par les achats, ce trimestre.",
+      risk4Name: "Dette technique sur l'interfaçage ERP",
+      risk4Action: "Action : revue d'architecture programmée — pilotée par le PMO, sous 3 semaines.",
+      risk5Name: "Résistance au changement en magasin/entrepôt",
+      risk5Action: "Action : plan de conduite du changement renforcé — porté par les RH/Communication, en continu.",
+      radarNote: "Exemple illustratif à visée pédagogique — sur un vrai projet, cette cartographie est mise à jour à chaque comité, avec vos propres risques.",
+      positioningLine: '<span class="strike">3 juniors facturés au prix senior.</span> Un rapport de 80 pages. Zéro exécution.',
+      positioningSub: "Pas d’équipe de juniors vendus au prix senior. Un interlocuteur expérimenté, une exécution directe et une gouvernance conçue pour que votre équipe garde le contrôle."
+    },
+    en: {
+      pageTitle: "Evolsphere — Project Management Consulting: PMP, Agile & SAP for Executives",
+      metaDescription: "Evolsphere supports executives on critical projects: ERP, WMS, procurement, group-wide transformation. PMP, Agile, or hybrid governance.",
+      quoteBtn: "Request a quote", controlNote: "The offer that keeps you in control and on pace: daily stand-ups, weekly leadership reviews and reporting.",
+      controlEyebrow: "The Evolsphere model", controlTitle: "Your project moves forward. Your team stays in control.",
+      control1Title: "Daily stand-up", control1Desc: "Short facilitation, immediate decisions, visible blockers.",
+      control2Title: "Weekly leadership", control2Desc: "Executive synthesis, trade-offs and priorities.",
+      control3Title: "Reporting", control3Desc: "Decision-ready reporting — not another report.",
+      quoteEyebrow: "REQUEST A QUOTE", quoteTitle: "Tell me about your challenge.", quoteSub: "A few details are enough. You will hear directly from me.",
+      formName: "Name / First name *", formCompany: "Company *", formEmail: "Business email *", formPhone: "Phone", formNeed: "Your challenge / project *",
+      privacyConsent: "I agree that the information provided may be used by Evolsphere to respond to my request, in accordance with the <a href=\"#\" data-legal=\"privacy\">privacy policy</a>. *",
+      formInfo: "Fields marked * are required to process your request. Data is used only to respond to your request and retained for as long as necessary for that purpose, subject to applicable legal obligations.",
+      formSubmit: "Send my request", legalNotice: "Legal notice", privacyPolicy: "Privacy", cgv: "Terms & Conditions", cookies: "Cookies",
+      badge: "Think differently. Stay in control. Traditional consulting firms are outdated.",
+      eyebrow: "Large groups, mid-caps, SMEs — the model changed",
+      h1: ["Stay stuck in 1980.", "Or move to 2026."],
+      sub: "Digital transformation, ERP, WMS, procurement, finance, organization and critical project leadership.",
+      chipDigital: "Digital transformation",
+      chipStandup: "Daily stand-up",
+      chipWeekly: "Weekly board reporting",
+      chipChange: "Change management",
+      chipDirGen: "General Management",
+      chipOpsSteering: "Operational Steering",
+      chipRemote: "100% Remote",
+      chipFiscal: "Tax",
+      chipReporting: "Board reporting",
+      chipMultisite: "Multi-site / Multi-country",
+      casesTitle: "On the ground, not on slides",
+      caseLabelContext: "Context",
+      caseLabelActions: "Actions",
+      caseLabelResult: "Result",
+      case1Years: "COO — 2017-2020",
+      case1Context: "Fast growth, Carrefour Group capital entry, urgent need to structure support functions under pressure.",
+      case1Actions: "Overhauled the 'Buy' IT function, changed WMS, structured PMO across 200+ projects, set up OPEX/CAPEX oversight.",
+      case1Result: "Support functions structured, project governance in place, 40-person team led directly.",
+      case2Years: "Transformation Director — 2008-2016",
+      case2Context: "City-center retail shifting fast, need to bring HQ and stores closer together, omnichannel pivot to negotiate.",
+      case2Actions: "Harmonized IT systems across France and Tunisia, deployed the Symphony/Gold ERP, overhauled e-commerce, integrated Naturalia post-acquisition.",
+      case2Result: "Digital and organizational transformation led over 8 years, at the scale of an international group.",
+      case3Years: "Financial Controller Europe & Operational Excellence — 2004-2008",
+      case3Context: "Needed to harmonize practices across European HQs and strengthen compliance under LVMH Group's SOA requirements.",
+      case3Actions: "Led internal audits across Europe (France, Spain, Italy, Portugal), built an SOA-compliant digital audit tool, coordinated with LVMH Group Audit.",
+      case3Result: "SOA compliance achieved, practices aligned across Europe, continuous improvement embedded in stores.",
+      case4Years: "ELAN project — Practice Retail, since 2022",
+      case4Context: "INFOLOG WMS reaching end of support (2027), technical obsolescence, need to modernize operational and IT performance of the LEMI supply chain.",
+      case4Actions: "Scoped and steered the WMS migration to REFLEX (HARDIS), structured project governance (steering committee, strategic committee), defined success factors, agile-based delivery.",
+      case4Result: "Guidelines and project governance established, multi-stakeholder team (STIME, HARDIS, business units) aligned, deployment trajectory secured.",
+      comparisonTitle: "Traditional firm / Evolsphere",
+      oldColHead: "Classic firm",
+      oldRow1: "A junior billed at senior rates, remotely supervised by a partner who no longer touches the file.",
+      oldRow2: "Committee-based decisions: several rounds before anything gets validated.",
+      oldRow3: "Deliverable: an 80-page report, with no execution owner behind it.",
+      oldRow4: "Quarterly slide-deck reporting, disconnected from day-to-day operations.",
+      oldRow5: "Rotating team — the consultant who scoped it isn't the one executing it.",
+      newColHead: "Evolsphere — 2026 method",
+      newRow1: "The person structuring it has held the role (CIO/COO) — knows what delivering actually means.",
+      newRow2: "Clear RACI from day one: who decides what, with no ambiguity.",
+      newRow3: "Deliverable: an executable action plan, within 10 days.",
+      newRow4: "Condensed board reporting, monthly, decision-oriented.",
+      newRow5: "One point of contact, from diagnosis to execution, available continuously.",
+      clientsLabel: "Large groups, mid-caps and SMEs — the method scales to your size",
+      aboutEyebrow: "Who's steering",
+      aboutRole: "CIO / COO / General Management / Operational Steering / IT & Digital Transformation — PMP®",
+      aboutTeaser: "20 years, 5 groups (KPMG, Sephora, Monoprix, Showroomprivé, Practice Retail), 200+ projects steered.",
+      viewParcoursBtn: "View full background",
+      badgeMaster: "Master in Management & Finance — SKEMA",
+      badgeAgile: "Agile Certified",
+      badgeIntl: "Europe / North Africa",
+      tl1Years: "Since 2020",
+      tl1Role: "Consulting, Audit & Interim Management — Practice Retail",
+      tl1Desc: "IT, logistics and organizational transformation for major accounts: Groupement Les Mousquetaires, Cora, McDonald's.",
+      tl2Years: "2017 – 2020",
+      tl2Role: "COO — Showroomprivé",
+      tl2Desc: "Structured all support functions, direct management of 40 staff, 200+ project portfolio, Carrefour Group capital entry.",
+      tl3Years: "2008 – 2016",
+      tl3Role: "Transformation Director — Groupe Monoprix",
+      tl3Desc: "Digital transformation and IT systems harmonization across France and Tunisia, e-commerce overhaul, Naturalia post-acquisition integration.",
+      tl4Years: "2004 – 2008",
+      tl4Role: "Financial Controller Europe & Operational Excellence — Sephora (LVMH Group)",
+      tl4Desc: "Led retail financial control across Europe, multi-country internal audits, SOA compliance, continuous improvement of store processes.",
+      tl5Years: "2000 – 2004",
+      tl5Role: "Senior Auditor — KPMG",
+      tl5Desc: "Statutory audit for listed groups (CAC 40, mid-caps), financial due diligence, group consolidation — specialized in the Information, Communication &amp; Entertainment (ICE) sector.",
+      chipBudget: "Budget ownership",
+      chipTestLearn: "Test & Learn",
+      chipLegal: "Legal & contracts",
+      chipAchats: "Procurement",
+      chipOrga: "Organization",
+      testBtn: "Free Method Macro-Diagnosis",
+      contactBtn: "Let's talk",
+      contactSubject: "Let's discuss your project",
+      whatsappBtn: "WhatsApp",
+      tomesBtn: "Evolsphere Editions",
+      tomesEyebrow: "EVOLSPHERE EDITIONS", tomesTitle: "Catalogue 1 — Strategy &amp; Transformation", tomesDesc: "5 executive Tomes, designed for CODIR and COMEX. Each catalogue reads independently or as a full collection.", tomesStatus: "Tome 1 and Tome 2 available. Tomes 3 to 5 delivered as they're released. Secure payment via Stripe.", tomesNotify: "Notify me about future catalogues", tomesAccessNote: "Unlimited online reading access. Printable version available as an option.", tomesBuyBtn: "Access Catalogue 1 — €199 excl. VAT",
+      cat1t1: "Transformation Strategy &amp; Operational Optimization",
+      cat1t2: "Group Synergies &amp; Distribution Models",
+      cat1t3: "Transform Without Suffering",
+      cat1t4: "The Augmented Enterprise — Data, Automation and AI",
+      cat1t5: "2030 — The Next Circle",
+      cat1PriceNote: "for the catalogue, 5 Tomes",
+      tagWords: ["structure", "secure", "deliver"],
+      soundOn: "Turn on sound",
+      soundOff: "Mute sound",
+      stat1: "years securing critical projects",
+      stat2: "projects steered across portfolios",
+      stat3: "people led across project teams",
+      stat4: "budget owned on the latest project",
+      offersEyebrow: "In practice, on the ground",
+      offersTitle: "Examples of engagements regularly delivered",
+      offer0Name: "Opportunity study",
+      offer0Desc: "Opportunity, feasibility and impact study — before committing any budget.",
+      offer1Name: "Project structuring",
+      offer1Desc: "Structuring the project to launch: Project Management Plan, Stakeholders Engagement Plan, RACI.",
+      offer2Badge: "Most requested",
+      offer2Name: "Project facilitation",
+      offer2Desc: "Facilitation tailored to the project — daily stand-up, weekly review, weekly reports, steering committee materials.",
+      offer3Name: "Planning &amp; reporting follow-up",
+      offer3Desc: "Planning and reporting follow-up — especially on long waterfall-cycle projects, to avoid the tunnel effect — plus internal communication (pace, content, audience) to keep everyone engaged.",
+      offersMoreNote: "And many other formats, depending on your context.",
+      offersContactBtn: "To find out more, contact me",
+      finalTitle: "Doing nothing is already choosing to lose.",
+      finalSub: "3 slots this quarter. After that, no.",
+      finalCtaBtn: "I'm in.",
+      finalSubject: "Let's talk about a project",
+      ctaNote: "Reply within 24h. No exceptions.",
+      finalCtaNote: "Write. I reply. Simple.",
+      processTitle: "How it actually works",
+      step1Title: "You write",
+      step1Desc: "A direct email, 2 lines is enough. No lengthy form, no call center.",
+      step2Title: "We frame it in 15 minutes",
+      step2Desc: "A short call to understand the real issue and tell you honestly if I can help.",
+      step3Title: "Execution starts",
+      step3Desc: "Diagnosis, sprint, or ongoing oversight — whichever fits your stake, not the most expensive one. Everything runs remotely: less time and cost, for both of us.",
+      faqTitle: "Frequently asked questions",
+      faq1Q: "Isn't that expensive for a 10-day audit?",
+      faq1A: "A badly done audit costs more than a project that hasn't moved in 6 months. The diagnosis is there to help you decide fast, with the real risks on the table — not to fill time.",
+      faq2Q: "Why you instead of a large consulting firm?",
+      faq2A: "No junior team billed at senior rates, no 80-page report. You talk directly to the person who has run 100+ projects — from diagnosis to execution.",
+      faq3Q: "What if my project doesn't fit any of the 3 offers?",
+      faq3A: "We talk for 15 minutes, no commitment. If I'm not the right fit, I'll tell you directly — and point you toward someone who is, when I can.",
+      faq4Q: "How long before I see results?",
+      faq4A: "The strategic diagnosis delivers actionable recommendations in 10 days. The strategic sprint kicks off execution in 2 to 4 weeks. Nothing drags on.",
+      faq5Q: "Will you run things instead of my team?",
+      faq5A: "No. I help structure the framework with you, but the goal isn't to stay indispensable — it's for your internal team to lead on their own, faster and with more confidence, once the method is in place.",
+      stickyMain: "Let's work differently.",
+      stickySub: "24h. No excuses.",
+      stickyBtn: "I'm in",
+      downloadCv: "Download my profile (PDF)",
+      roiTitle: "What does a poorly run project cost you?",
+      roiSub: "Adjust the sliders to your context for an order-of-magnitude estimate.",
+      roiBudgetLabel: "Annual project budget",
+      roiSlipLabel: "Estimated schedule slippage",
+      roiTeamLabel: "Project team size",
+      roiPeopleSuffix: "people",
+      roiResultLabel: "Estimated cost of slippage",
+      roiResultNote: "This is the order of magnitude of what insufficient framing can cost — before even counting the impact on teams and internal credibility.",
+      roiCta: "Avoid this bill",
+      roiDisclaimer: "Indicative estimate based on commonly observed budget-slippage ratios on transformation projects. Not a substitute for a real diagnosis — every context differs.",
+      radarTitle: "Risk Radar — demo",
+      radarSub: "Each risk is rated by the manager (gross level in €, if it happens) and tracked by the person executing it (mastery level, %). Adjust the sliders: the map updates live, just like during a real project.",
+      radarAxisX: "Mastery →",
+      radarLegendInterne: "Internal",
+      radarLegendIT: "IT",
+      radarLegendExterne: "External",
+      radarMasteryLabel: "Mastery level",
+      risk1Name: "WMS migration not stabilized by go-live date",
+      risk1Action: "Action: reinforced load-testing plan — led by the integrator, before the 15th.",
+      risk2Name: "Business teams' availability for scoping",
+      risk2Action: "Action: dedicated time slots blocked in calendar — owned by the business sponsor, starting next week.",
+      risk3Name: "Delivery delay from a key supplier",
+      risk3Action: "Action: late-delivery penalty clause to activate — owned by procurement, this quarter.",
+      risk4Name: "Technical debt on the ERP interface",
+      risk4Action: "Action: architecture review scheduled — owned by the PMO, within 3 weeks.",
+      risk5Name: "Change resistance in stores/warehouse",
+      risk5Action: "Action: reinforced change-management plan — owned by HR/Communications, ongoing.",
+      radarNote: "Illustrative example for demonstration purposes — on a real project, this map is updated at every steering committee, with your own risks.",
+      positioningLine: '<span class="strike">3 juniors billed at senior rates.</span> An 80-page report. Zero execution.',
+      positioningSub: "No junior team billed at senior rates. One experienced point of contact, direct execution and governance designed so your team stays in control."
+    },
+  };
+
+  // ---------- QUIZ CONTENT PER LANGUAGE ----------
+  const quizData = {
+    fr: {
+      questions: [
+        {
+          q: "Le périmètre de votre projet est-il déjà bien défini ?",
+          options: [
+            { label: "Oui, le cahier des charges est stable dès le départ.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Non, il va s'affiner au fur et à mesure.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "En partie — le cadre est posé, les détails évoluent.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "Quel niveau de reporting attend votre direction ?",
+          options: [
+            { label: "Un suivi formel, jalons et livrables documentés.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Des points courts et réguliers, priorité à l'avancement réel.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Un cadre rassurant pour la direction, souple pour l'équipe.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "À quelle vitesse le contexte du projet peut-il changer ?",
+          options: [
+            { label: "Rarement — l'environnement est stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Souvent — le marché ou les retours utilisateurs bougent vite.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Certaines parties bougent, d'autres non.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        }
+      ],
+      results: {
+        pmp: { tag: "Méthode recommandée", title: "PMP", desc: "Votre contexte demande de la prévisibilité : périmètre stable, jalons clairs, gouvernance solide. Le cadre PMP structure le projet de bout en bout et sécurise les décisions à chaque étape." },
+        agile: { tag: "Méthode recommandée", title: "Agile", desc: "Votre projet évolue vite et a besoin de s'adapter en continu. L'approche Agile priorise la valeur livrée rapidement, avec des itérations courtes et des ajustements permanents." },
+        hybride: { tag: "Méthode recommandée", title: "Hybride", desc: "Vous avez besoin des deux : une gouvernance qui rassure la direction, et une exécution assez souple pour s'adapter au terrain. Un cadre hybride combine les deux logiques sans sacrifier ni l'un ni l'autre." }
+      },
+      questionLabel: (i,n)=>`Test de méthode — question ${i} / ${n}`,
+      resultCta: (title)=>`Mon projet - profil ${title}`,
+      discussBtn: "En discuter avec Evolsphere",
+      restartBtn: "Refaire le test"
+    },
+    en: {
+      questions: [
+        {
+          q: "Is your project's scope already clearly defined?",
+          options: [
+            { label: "Yes, the specifications are stable from the start.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "No, it will get refined along the way.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Partly — the frame is set, details keep evolving.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "What level of reporting does your leadership expect?",
+          options: [
+            { label: "Formal tracking, documented milestones and deliverables.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Short, regular check-ins, focused on real progress.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "A reassuring frame for leadership, flexible for the team.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        },
+        {
+          q: "How fast can the project's context change?",
+          options: [
+            { label: "Rarely — the environment is stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
+            { label: "Often — the market or user feedback moves fast.", score: { pmp: 0, agile: 2, hybride: 1 } },
+            { label: "Some parts move, others don't.", score: { pmp: 1, agile: 1, hybride: 2 } }
+          ]
+        }
+      ],
+      results: {
+        pmp: { tag: "Recommended method", title: "PMP", desc: "Your context calls for predictability: stable scope, clear milestones, solid governance. The PMP framework structures the project end to end and secures decisions at every stage." },
+        agile: { tag: "Recommended method", title: "Agile", desc: "Your project moves fast and needs to adapt continuously. Agile prioritizes delivering value quickly, with short iterations and constant adjustments." },
+        hybride: { tag: "Recommended method", title: "Hybrid", desc: "You need both: governance that reassures leadership, and execution flexible enough to adapt on the ground. A hybrid framework combines both logics without sacrificing either." }
+      },
+      questionLabel: (i,n)=>`Method test — question ${i} / ${n}`,
+      resultCta: (title)=>`My project - ${title} profile`,
+      discussBtn: "Discuss it with Evolsphere",
+      restartBtn: "Retake the test"
+    },
+  };
+
+  // ---------- SOUND TOGGLE (UI only, dégrade proprement si l'audio n'est pas dispo) ----------
+  const toggle = document.getElementById('soundToggle');
+  const label = document.getElementById('soundLabel');
+  let isOn = false;
+  toggle.addEventListener('click', async ()=>{
+    isOn = !isOn;
+    const t = translations[currentLang];
+    if(isOn){
+      toggle.classList.add('sound-on');
+      label.textContent = t.soundOff;
+      try{
+        if(typeof window.__evolStartAudio === 'function'){ await window.__evolStartAudio(); }
+      }catch(e){ console.error('Audio indisponible:', e); }
+    } else {
+      toggle.classList.remove('sound-on');
+      label.textContent = t.soundOn;
+      try{
+        if(typeof window.__evolStopAudio === 'function'){ window.__evolStopAudio(); }
+      }catch(e){ console.error(e); }
+    }
+  });
+
+  if (typeof window.sendPrompt !== 'function') {
+    window.sendPrompt = function(text){ console.log('sendPrompt:', text); };
+  }
+
+  // ---------- METHOD TEST (PMP / Agile / Hybride) ----------
+  let currentQ = 0;
+  const scores = { pmp: 0, agile: 0, hybride: 0 };
+  const testModal = document.getElementById('testModal');
+  const testCard = document.getElementById('testCard');
+  const openTestBtn = document.getElementById('openTestBtn');
+
+  function renderQuestion(){
+    const qd = quizData[currentLang];
+    const item = qd.questions[currentQ];
+    const progressDots = qd.questions.map((_, i)=>`<i class="${i <= currentQ ? 'done' : ''}"></i>`).join('');
+    testCard.innerHTML = `
+      <button class="modal-close" id="closeTestBtn">✕</button>
+      <div class="test-eyebrow">${qd.questionLabel(currentQ+1, qd.questions.length)}</div>
+      <div class="test-progress">${progressDots}</div>
+      <div class="test-question">${item.q}</div>
+      <div class="test-options">
+        ${item.options.map((opt, i)=>`<button class="test-option" data-i="${i}">${opt.label}</button>`).join('')}
+      </div>
+    `;
+    testCard.querySelectorAll('.test-option').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const opt = item.options[parseInt(btn.dataset.i,10)];
+        scores.pmp += opt.score.pmp;
+        scores.agile += opt.score.agile;
+        scores.hybride += opt.score.hybride;
+        currentQ++;
+        if(currentQ < qd.questions.length){
+          renderQuestion();
+        } else {
+          renderResult();
+        }
+      });
+    });
+    testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
+  }
+
+  function renderResult(){
+    const qd = quizData[currentLang];
+    let winner = 'hybride';
+    if(scores.pmp > scores.agile && scores.pmp > scores.hybride) winner = 'pmp';
+    else if(scores.agile > scores.pmp && scores.agile > scores.hybride) winner = 'agile';
+    const r = qd.results[winner];
+    testCard.innerHTML = `
+      <button class="modal-close" id="closeTestBtn">✕</button>
+      <div class="test-result-tag">${r.tag}</div>
+      <div class="test-result-title">${r.title}</div>
+      <div class="test-result-desc">${r.desc}</div>
+      <div class="test-actions">
+        <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(qd.resultCta(r.title))}" target="_blank" rel="noopener">${qd.discussBtn}</a>
+        <button class="btn btn-ghost test-restart" id="restartTestBtn">${qd.restartBtn}</button>
+      </div>
+    `;
+    testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
+    testCard.querySelector('#restartTestBtn').addEventListener('click', ()=>{
+      currentQ = 0; scores.pmp = 0; scores.agile = 0; scores.hybride = 0;
+      renderQuestion();
+    });
+  }
+
+  function openTest(){ openQuote(); }
+  function closeTest(){
+    testModal.classList.remove('open');
+  }
+
+  openTestBtn.addEventListener('click', openTest);
+  testModal.addEventListener('click', (e)=>{ if(e.target === testModal) closeTest(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeTest(); });
+
+  // ---------- PARCOURS MODAL ----------
+  const parcoursModal = document.getElementById('parcoursModal');
+  const openParcoursBtn = document.getElementById('openParcoursBtn');
+  const closeParcoursBtn = document.getElementById('closeParcoursBtn');
+  function openParcours(){ parcoursModal.classList.add('open'); }
+  function closeParcours(){ parcoursModal.classList.remove('open'); }
+  if(openParcoursBtn){
+    openParcoursBtn.addEventListener('click', openParcours);
+    closeParcoursBtn.addEventListener('click', closeParcours);
+    parcoursModal.addEventListener('click', (e)=>{ if(e.target === parcoursModal) closeParcours(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeParcours(); });
+  }
+
+  // ---------- LANGUAGE SWITCH ----------
+  const contactBtnMain = document.getElementById('contactBtnMain');
+
+  function applyLanguage(lang){
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    const t = translations[lang];
+
+    if(t.pageTitle) document.title = t.pageTitle;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if(metaDesc && t.metaDescription) metaDesc.setAttribute('content', t.metaDescription);
+
+    document.querySelector('[data-i18n="badge"]').textContent = t.badge;
+    document.querySelector('[data-i18n="eyebrow"]').textContent = t.eyebrow;
+    document.getElementById('h1line1').textContent = t.h1[0];
+    document.getElementById('h1line2').textContent = t.h1[1];
+    document.querySelector('[data-i18n="sub"]').textContent = t.sub;
+    document.querySelector('[data-i18n="chipAchats"]').textContent = t.chipAchats;
+    document.querySelector('[data-i18n="chipOrga"]').textContent = t.chipOrga;
+    document.querySelector('[data-i18n="chipBudget"]').textContent = t.chipBudget;
+    document.querySelector('[data-i18n="chipFiscal"]').textContent = t.chipFiscal;
+    document.querySelector('[data-i18n="chipReporting"]').textContent = t.chipReporting;
+    document.querySelector('[data-i18n="chipMultisite"]').textContent = t.chipMultisite;
+    document.querySelector('[data-i18n="chipStandup"]').textContent = t.chipStandup;
+    document.querySelector('[data-i18n="chipWeekly"]').textContent = t.chipWeekly;
+    document.querySelector('[data-i18n="chipChange"]').textContent = t.chipChange;
+    document.querySelector('[data-i18n="chipDirGen"]').textContent = t.chipDirGen;
+    document.querySelector('[data-i18n="chipOpsSteering"]').textContent = t.chipOpsSteering;
+    document.querySelector('[data-i18n="chipRemote"]').textContent = t.chipRemote;
+
+    document.querySelector('[data-i18n="casesTitle"]').textContent = t.casesTitle;
+    document.querySelectorAll('[data-i18n="caseLabelContext"]').forEach(el=> el.textContent = t.caseLabelContext);
+    document.querySelectorAll('[data-i18n="caseLabelActions"]').forEach(el=> el.textContent = t.caseLabelActions);
+    document.querySelectorAll('[data-i18n="caseLabelResult"]').forEach(el=> el.textContent = t.caseLabelResult);
+    ['case1','case2','case3','case4'].forEach(k=>{
+      document.querySelector(`[data-i18n="${k}Years"]`).textContent = t[k+'Years'];
+      document.querySelector(`[data-i18n="${k}Context"]`).textContent = t[k+'Context'];
+      document.querySelector(`[data-i18n="${k}Actions"]`).textContent = t[k+'Actions'];
+      document.querySelector(`[data-i18n="${k}Result"]`).textContent = t[k+'Result'];
+    });
+
+    document.querySelector('[data-i18n="comparisonTitle"]').textContent = t.comparisonTitle;
+    document.querySelector('[data-i18n="oldColHead"]').textContent = t.oldColHead;
+    document.querySelector('[data-i18n="newColHead"]').textContent = t.newColHead;
+    [1,2,3,4,5].forEach(n=>{
+      document.querySelector(`[data-i18n="oldRow${n}"]`).textContent = t['oldRow'+n];
+      document.querySelector(`[data-i18n="newRow${n}"]`).textContent = t['newRow'+n];
+    });
+
+    document.querySelector('[data-i18n="clientsLabel"]').textContent = t.clientsLabel;
+    document.querySelectorAll('[data-i18n="aboutEyebrow"]').forEach(el=> el.textContent = t.aboutEyebrow);
+    document.querySelectorAll('[data-i18n="aboutRole"]').forEach(el=> el.textContent = t.aboutRole);
+    const teaserEl = document.querySelector('[data-i18n="aboutTeaser"]');
+    if(teaserEl && t.aboutTeaser) teaserEl.textContent = t.aboutTeaser;
+    const viewBtnEl = document.getElementById('openParcoursBtn');
+    if(viewBtnEl && t.viewParcoursBtn) viewBtnEl.textContent = t.viewParcoursBtn;
+    document.querySelector('[data-i18n="badgeMaster"]').textContent = t.badgeMaster;
+    const agileEl = document.querySelector('[data-i18n="badgeAgile"]');
+    if(agileEl && t.badgeAgile) agileEl.textContent = t.badgeAgile;
+    document.querySelector('[data-i18n="badgeIntl"]').textContent = t.badgeIntl;
+    ['tl1','tl2','tl3','tl4','tl5'].forEach(k=>{
+      document.querySelector(`[data-i18n="${k}Years"]`).textContent = t[k+'Years'];
+      document.querySelector(`[data-i18n="${k}Role"]`).textContent = t[k+'Role'];
+      document.querySelector(`[data-i18n="${k}Desc"]`).textContent = t[k+'Desc'];
+    });
+    document.querySelector('[data-i18n="chipTestLearn"]').textContent = t.chipTestLearn;
+    document.querySelector('[data-i18n="chipLegal"]').textContent = t.chipLegal;
+    if(t.positioningLine) document.querySelector('[data-i18n-html="positioningLine"]').innerHTML = t.positioningLine;
+    if(t.positioningSub) document.querySelector('[data-i18n="positioningSub"]').textContent = t.positioningSub;
+    openTestBtn.textContent = t.testBtn;
+    contactBtnMain.textContent = t.contactBtn;
+    contactBtnMain.href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.contactSubject)}`;
+    document.getElementById('tagWord1').textContent = t.tagWords[0];
+    document.getElementById('tagWord2').textContent = t.tagWords[1];
+    document.getElementById('tagWord3').textContent = t.tagWords[2];
+    label.textContent = isOn ? t.soundOff : t.soundOn;
+
+    document.querySelector('[data-i18n="stat1"]').textContent = t.stat1;
+    document.querySelector('[data-i18n="stat2"]').textContent = t.stat2;
+    document.querySelector('[data-i18n="stat3"]').textContent = t.stat3;
+    document.querySelector('[data-i18n="stat4"]').textContent = t.stat4;
+    document.querySelector('[data-i18n="offersEyebrow"]').textContent = t.offersEyebrow;
+    document.querySelector('[data-i18n="offersTitle"]').textContent = t.offersTitle;
+    document.querySelector('[data-i18n="offer0Name"]').textContent = t.offer0Name;
+    document.querySelector('[data-i18n="offer0Desc"]').textContent = t.offer0Desc;
+    document.querySelector('[data-i18n="offer1Name"]').textContent = t.offer1Name;
+    document.querySelector('[data-i18n="offer1Desc"]').textContent = t.offer1Desc;
+    document.querySelector('[data-i18n="offer2Badge"]').textContent = t.offer2Badge;
+    document.querySelector('[data-i18n="offer2Name"]').textContent = t.offer2Name;
+    document.querySelector('[data-i18n="offer2Desc"]').textContent = t.offer2Desc;
+    document.querySelector('[data-i18n="offer3Name"]').textContent = t.offer3Name;
+    document.querySelector('[data-i18n="offer3Desc"]').textContent = t.offer3Desc;
+    const offersMoreNoteEl = document.querySelector('[data-i18n="offersMoreNote"]');
+    if(offersMoreNoteEl && t.offersMoreNote) offersMoreNoteEl.textContent = t.offersMoreNote;
+    const offersContactBtnEl = document.querySelector('[data-i18n="offersContactBtn"]');
+    if(offersContactBtnEl && t.offersContactBtn) offersContactBtnEl.textContent = t.offersContactBtn;
+    document.querySelector('[data-i18n="finalTitle"]').textContent = t.finalTitle;
+    document.querySelector('[data-i18n="finalSub"]').textContent = t.finalSub;
+    document.getElementById('finalCtaBtn').textContent = t.finalCtaBtn;
+    document.getElementById('finalCtaBtn').href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.finalSubject)}`;
+    document.querySelector('[data-i18n="ctaNote"]').textContent = t.ctaNote;
+    document.querySelector('[data-i18n="finalCtaNote"]').textContent = t.finalCtaNote;
+
+    document.querySelector('[data-i18n="processTitle"]').textContent = t.processTitle;
+    document.querySelector('[data-i18n="step1Title"]').textContent = t.step1Title;
+    document.querySelector('[data-i18n="step1Desc"]').textContent = t.step1Desc;
+    document.querySelector('[data-i18n="step2Title"]').textContent = t.step2Title;
+    document.querySelector('[data-i18n="step2Desc"]').textContent = t.step2Desc;
+    document.querySelector('[data-i18n="step3Title"]').textContent = t.step3Title;
+    document.querySelector('[data-i18n="step3Desc"]').textContent = t.step3Desc;
+
+    document.querySelector('[data-i18n="faqTitle"]').textContent = t.faqTitle;
+    document.querySelector('[data-i18n="faq1Q"]').textContent = t.faq1Q;
+    document.querySelector('[data-i18n="faq1A"]').textContent = t.faq1A;
+    document.querySelector('[data-i18n="faq2Q"]').textContent = t.faq2Q;
+    document.querySelector('[data-i18n="faq2A"]').textContent = t.faq2A;
+    document.querySelector('[data-i18n="faq3Q"]').textContent = t.faq3Q;
+    document.querySelector('[data-i18n="faq3A"]').textContent = t.faq3A;
+    document.querySelector('[data-i18n="faq4Q"]').textContent = t.faq4Q;
+    document.querySelector('[data-i18n="faq4A"]').textContent = t.faq4A;
+    document.querySelector('[data-i18n="faq5Q"]').textContent = t.faq5Q;
+    document.querySelector('[data-i18n="faq5A"]').textContent = t.faq5A;
+
+    document.querySelector('[data-i18n="stickyMain"]').textContent = t.stickyMain;
+    document.querySelector('[data-i18n="stickySub"]').textContent = t.stickySub;
+    document.getElementById('stickyCtaBtn').textContent = t.stickyBtn;
+    document.getElementById('stickyCtaBtn').href = `https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su=${encodeURIComponent(t.contactSubject)}`;
+
+    const dlCv = document.querySelector('[data-i18n="downloadCv"]');
+    if(dlCv && t.downloadCv) dlCv.textContent = t.downloadCv;
+
+    const roiKeys = ['roiTitle','roiSub','roiBudgetLabel','roiSlipLabel','roiTeamLabel','roiResultLabel','roiResultNote','roiCta','roiDisclaimer'];
+    roiKeys.forEach(k=>{
+      const el = document.querySelector(`[data-i18n="${k}"]`);
+      if(el && t[k]) el.textContent = t[k];
+    });
+    if(typeof updateRoi === 'function') updateRoi();
+
+    const radarSingleKeys = ['radarTitle','radarSub','radarAxisX','radarNote',
+      'risk1Name','risk1Action','risk2Name','risk2Action','risk3Name','risk3Action',
+      'risk4Name','risk4Action','risk5Name','risk5Action'];
+    radarSingleKeys.forEach(k=>{
+      const el = document.querySelector(`[data-i18n="${k}"]`);
+      if(el && t[k]) el.textContent = t[k];
+    });
+    ['radarLegendInterne','radarLegendIT','radarLegendExterne','radarMasteryLabel'].forEach(k=>{
+      document.querySelectorAll(`[data-i18n="${k}"]`).forEach(el=>{ if(t[k]) el.textContent = t[k]; });
+    });
+
+    document.querySelectorAll('.lang-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+
+    // Generic pass: keeps every visible FR/EN label synchronized, including the compact C-level layer and legal UI.
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key=el.dataset.i18n;
+      if(t[key] !== undefined) el.textContent=t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+      const key=el.dataset.i18nHtml;
+      if(t[key] !== undefined) el.innerHTML=t[key];
+    });
+
+    // reset quiz state so questions/results don't mix languages mid-flow
+    currentQ = 0; scores.pmp = 0; scores.agile = 0; scores.hybride = 0;
+    if(testModal.classList.contains('open')){
+      renderQuestion();
+    }
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
+
+  // ---------- RISK RADAR ----------
+  const CAT_COLORS = { interne: '#29F0D0', it: '#A56BFF', externe: '#FF9B4A' };
+  const riskDotsG = document.getElementById('riskDots');
+  const radarRows = document.querySelectorAll('#radarTable .risk-row');
+
+  function renderRadar(){
+    if(!riskDotsG) return;
+    riskDotsG.innerHTML = '';
+    const maxGross = 300000; // chart scale ceiling
+    radarRows.forEach((row, i)=>{
+      const cat = row.dataset.cat;
+      const gross = parseFloat(row.dataset.gross);
+      const masterySlider = row.querySelector('.risk-mastery');
+      const mastery = parseInt(masterySlider.value, 10);
+      // chart area: x from 40 to 320 (mastery 0-100), y from 250 (0) to 20 (maxGross)
+      const x = 40 + (mastery/100) * 280;
+      const y = 250 - (Math.min(gross, maxGross)/maxGross) * 230;
+      const r = 6 + (gross/maxGross) * 10;
+      const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      circle.setAttribute('cx', x);
+      circle.setAttribute('cy', y);
+      circle.setAttribute('r', r);
+      circle.setAttribute('fill', CAT_COLORS[cat] || '#fff');
+      circle.setAttribute('fill-opacity', '0.85');
+      circle.setAttribute('stroke', '#07040D');
+      circle.setAttribute('stroke-width', '1.5');
+      riskDotsG.appendChild(circle);
+    });
+  }
+
+  radarRows.forEach(row=>{
+    const slider = row.querySelector('.risk-mastery');
+    const valEl = row.querySelector('.risk-mastery-val');
+    slider.addEventListener('input', ()=>{
+      valEl.textContent = slider.value;
+      renderRadar();
+    });
+  });
+  renderRadar();
+
+  // ---------- ROI CALCULATOR ----------
+  const roiBudget = document.getElementById('roiBudget');
+  const roiSlip = document.getElementById('roiSlip');
+  const roiTeam = document.getElementById('roiTeam');
+  const roiBudgetVal = document.getElementById('roiBudgetVal');
+  const roiSlipVal = document.getElementById('roiSlipVal');
+  const roiTeamVal = document.getElementById('roiTeamVal');
+  const roiResultNum = document.getElementById('roiResultNum');
+
+  function formatEUR(n){
+    return Math.round(n).toLocaleString('fr-FR') + ' €';
+  }
+
+  function updateRoi(){
+    if(!roiBudget) return;
+    const budget = parseInt(roiBudget.value, 10);
+    const slipPct = parseInt(roiSlip.value, 10);
+    const team = parseInt(roiTeam.value, 10);
+
+    roiBudgetVal.textContent = formatEUR(budget);
+    roiSlipVal.textContent = slipPct + '%';
+    const teamLabel = currentTeamLabel(team);
+    roiTeamVal.textContent = teamLabel;
+
+    // Illustrative estimate: budget slippage + a team-time overhead factor
+    const budgetImpact = budget * (slipPct / 100);
+    const teamOverhead = team * 550 * (slipPct / 20); // ~550€/day fully-loaded cost proxy, scaled by slip severity
+    const total = budgetImpact + teamOverhead;
+
+    roiResultNum.textContent = formatEUR(total);
+  }
+
+  function currentTeamLabel(team){
+    const t = translations[currentLang];
+    const suffix = t && t.roiPeopleSuffix ? t.roiPeopleSuffix : 'personnes';
+    return team + ' ' + suffix;
+  }
+
+  if(roiBudget){
+    [roiBudget, roiSlip, roiTeam].forEach(el=> el.addEventListener('input', updateRoi));
+    updateRoi();
+  }
+
+
+
+  // ---------- QUOTE FORM ----------
+  contactBtnMain?.addEventListener('click',()=>{
+    const subject = encodeURIComponent(translations[currentLang].contactSubject || (currentLang==='fr'?'Echangeons sur votre projet':'Let\'s discuss your project'));
+    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su='+subject,'_blank','noopener');
+  });
+  const tomesModal=document.getElementById('tomesModal');
+  const openTomesBtn=document.getElementById('openTomesBtn');
+  const closeTomesBtn=document.getElementById('closeTomesBtn');
+  function openTomes(){ if(tomesModal){tomesModal.classList.add('open');tomesModal.setAttribute('aria-hidden','false');} }
+  function closeTomes(){ if(tomesModal){tomesModal.classList.remove('open');tomesModal.setAttribute('aria-hidden','true');} }
+  openTomesBtn?.addEventListener('click',openTomes); closeTomesBtn?.addEventListener('click',closeTomes);
+  tomesModal?.addEventListener('click',e=>{if(e.target===tomesModal)closeTomes();});
+  document.getElementById('tomesNotifyBtn')?.addEventListener('click',()=>{
+    const subject=encodeURIComponent(currentLang==='fr'?'Tomes Evolsphere — ouverture':'Evolsphere Tomes — opening');
+    window.location.href='mailto:raphaeldebruijn@gmail.com?subject='+subject;
+  });
+  const quoteModal = document.getElementById('quoteModal');
+  const quoteForm = document.getElementById('quoteForm');
+  const formStatus = document.getElementById('formStatus');
+  const closeQuoteBtn = document.getElementById('closeQuoteBtn');
+  function openQuote(){
+    if(quoteModal){ quoteModal.classList.add('open'); quoteModal.setAttribute('aria-hidden','false'); setTimeout(()=>quoteForm?.querySelector('input')?.focus(),80); }
+  }
+  function closeQuote(){
+    if(quoteModal){ quoteModal.classList.remove('open'); quoteModal.setAttribute('aria-hidden','true'); }
+  }
+  document.getElementById('controlQuoteBtn')?.addEventListener('click', openQuote);
+  document.getElementById('openTestBtn')?.addEventListener('click', openQuote);
+  document.getElementById('finalCtaBtn')?.addEventListener('click', (e)=>{e.preventDefault();openQuote();});
+  document.getElementById('stickyCtaBtn')?.addEventListener('click', (e)=>{e.preventDefault();openQuote();});
+  closeQuoteBtn?.addEventListener('click', closeQuote);
+  quoteModal?.addEventListener('click',(e)=>{if(e.target===quoteModal)closeQuote();});
+
+  quoteForm?.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    if(!quoteForm.checkValidity()){ quoteForm.reportValidity(); return; }
+    const fd=new FormData(quoteForm);
+    const subject=currentLang==='fr' ? 'Demande de devis — Evolsphere' : 'Quote request — Evolsphere';
+    const body=(currentLang==='fr'
+      ? `Nom: ${fd.get('name')}\nEntreprise: ${fd.get('company')}\nEmail: ${fd.get('email')}\nTéléphone: ${fd.get('phone')||'-'}\n\nEnjeu / projet:\n${fd.get('need')}`
+      : `Name: ${fd.get('name')}\nCompany: ${fd.get('company')}\nEmail: ${fd.get('email')}\nPhone: ${fd.get('phone')||'-'}\n\nChallenge / project:\n${fd.get('need')}`);
+    window.location.href=`mailto:raphaeldebruijn@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    formStatus.textContent=currentLang==='fr' ? 'Votre messagerie va s’ouvrir pour finaliser l’envoi.' : 'Your email application will open to complete the request.';
+  });
+
+  // ---------- LEGAL INFORMATION ----------
+  const legalModal=document.getElementById('legalModal'), legalTitle=document.getElementById('legalTitle'), legalContent=document.getElementById('legalContent');
+  const legalCopy={
+    fr:{
+      legal:{title:'Mentions légales',html:`<h3>Éditeur</h3><p><strong>Evolsphere</strong><br>Responsable : Raphaël de Bruijn<br>Email : raphaeldebruijn@gmail.com<br>Téléphone : +33 6 73 97 75 76<br>Site : evolsphere.com</p><p>Les informations d’identification de l’entreprise (forme juridique, adresse, SIREN/SIRET, TVA intracommunautaire, directeur de publication et hébergeur) doivent être complétées avec les données officielles avant mise en production.</p><h3>Propriété intellectuelle</h3><p>Les contenus du site sont protégés par les règles applicables en matière de propriété intellectuelle. Toute reproduction non autorisée est interdite.</p>`},
+      privacy:{title:'Politique de confidentialité',html:`<h3>Responsable et finalité</h3><p>Evolsphere traite les données transmises via le formulaire uniquement pour répondre aux demandes de contact et de devis, assurer le suivi de la relation et, si nécessaire, satisfaire aux obligations légales.</p><h3>Données collectées</h3><p>Nom, entreprise, email, téléphone (facultatif) et description du besoin.</p><h3>Conservation et destinataires</h3><p>Les données sont conservées pendant la durée nécessaire à la finalité poursuivie, puis supprimées ou archivées lorsque la loi l’exige. Elles sont accessibles aux seules personnes habilitées à traiter la demande et aux prestataires techniques nécessaires au fonctionnement du site.</p><h3>Vos droits</h3><p>Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou vous opposer au traitement lorsque les conditions légales sont réunies. Pour exercer vos droits : raphaeldebruijn@gmail.com.</p><p>Cette page doit être adaptée à la base légale réellement retenue, aux outils utilisés et aux durées de conservation effectivement appliquées.</p>`},
+      cgv:{title:'Conditions générales de vente',html:`<h3>Objet</h3><p>Les présentes conditions encadrent les prestations de conseil, pilotage, management de transition, diagnostic et accompagnement proposées par Evolsphere.</p><h3>Devis et commande</h3><p>Chaque prestation fait l’objet d’un devis ou d’une proposition précisant le périmètre, les livrables, les délais et les conditions financières. La commande devient ferme après acceptation selon les modalités prévues au devis.</p><h3>Facturation et paiement</h3><p>Les conditions de prix, d’acompte, d’échéance et de pénalités de retard sont celles précisées sur le devis et la facture.</p><h3>Responsabilité</h3><p>Evolsphere est tenue à une obligation de moyens dans le cadre des prestations de conseil et de pilotage.</p><p><strong>À faire valider juridiquement</strong> avant publication, notamment pour les clauses de propriété intellectuelle, confidentialité, responsabilité, résiliation et droit applicable.</p>`},
+      cookies:{title:'Cookies et traceurs',html:`<h3>Principe</h3><p>Le site utilise uniquement les traceurs nécessaires à son fonctionnement, sauf activation ultérieure d’outils nécessitant un consentement.</p><p>Si des cookies d’analyse, publicité, réseaux sociaux ou autres traceurs soumis au consentement sont ajoutés, un mécanisme de consentement préalable et de retrait doit être activé avant leur dépôt ou lecture.</p><p>Le choix de langue et les traceurs strictement nécessaires peuvent relever d’un régime différent selon leur configuration.</p>`}
+    },
+    en:{
+      legal:{title:'Legal notice',html:`<h3>Publisher</h3><p><strong>Evolsphere</strong><br>Responsible: Raphaël de Bruijn<br>Email: raphaeldebruijn@gmail.com<br>Phone: +33 6 73 97 75 76<br>Website: evolsphere.com</p><p>Official company details (legal form, registered address, SIREN/SIRET, VAT number, publication director and hosting provider) must be completed before production.</p><h3>Intellectual property</h3><p>Site content is protected by applicable intellectual property rules. Unauthorized reproduction is prohibited.</p>`},
+      privacy:{title:'Privacy policy',html:`<h3>Controller and purpose</h3><p>Evolsphere processes information submitted through the form to respond to contact and quote requests, manage the relationship and comply with legal obligations where applicable.</p><h3>Data collected</h3><p>Name, company, email, phone (optional) and project description.</p><h3>Retention and recipients</h3><p>Data is retained only for as long as necessary for the stated purpose, then deleted or archived where required by law. Access is limited to authorized persons and necessary technical providers.</p><h3>Your rights</h3><p>You may request access, rectification, deletion, restriction or object where legally applicable. Contact: raphaeldebruijn@gmail.com.</p><p>This notice must be aligned with the actual legal basis, tools and retention periods before publication.</p>`},
+      cgv:{title:'Terms & Conditions',html:`<h3>Scope</h3><p>These terms govern consulting, project leadership, interim management, diagnostic and support services provided by Evolsphere.</p><h3>Quote and order</h3><p>Each service is covered by a quote or proposal defining scope, deliverables, timing and fees. The order becomes binding once accepted under the conditions stated in the proposal.</p><h3>Billing and payment</h3><p>Pricing, deposits, payment deadlines and late-payment terms are those stated in the quote and invoice.</p><h3>Liability</h3><p>Evolsphere provides consulting and project leadership services under an obligation of means.</p><p><strong>Legal review is recommended</strong> before publication, especially for IP, confidentiality, liability, termination and governing law.</p>`},
+      cookies:{title:'Cookies and trackers',html:`<h3>Principle</h3><p>The site uses only trackers necessary for operation unless additional tools requiring consent are activated.</p><p>If analytics, advertising, social or other consent-based trackers are added, prior consent and an equally simple withdrawal mechanism must be implemented.</p><p>Language preferences and strictly necessary trackers may be subject to a different regime depending on their configuration.</p>`}
+    }
+  };
+  function openLegal(type){
+    const item=legalCopy[currentLang][type]||legalCopy[currentLang].legal;
+    legalTitle.textContent=item.title; legalContent.innerHTML=item.html;
+    legalModal.classList.add('open'); legalModal.setAttribute('aria-hidden','false');
+  }
+  function closeLegal(){legalModal.classList.remove('open');legalModal.setAttribute('aria-hidden','true');}
+  document.querySelectorAll('[data-legal]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openLegal(a.dataset.legal);}));
+  document.getElementById('closeLegalBtn')?.addEventListener('click',closeLegal);
+  legalModal?.addEventListener('click',e=>{if(e.target===legalModal)closeLegal();});
+
+  // ---------- DYNAMIC COPYRIGHT YEAR ----------
+  const copyEl = document.getElementById('copyrightYear');
+  if(copyEl){ copyEl.textContent = `© ${new Date().getFullYear()}`; }
+
+  // ---------- FAQ ACCORDION ----------
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', ()=>{
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o=> o.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ---------- STICKY CTA BAR ----------
+  const stickyCta = document.getElementById('stickyCta');
+  const heroMain = document.querySelector('main');
+  if(stickyCta && heroMain){
+    window.addEventListener('scroll', ()=>{
+      const heroBottom = heroMain.getBoundingClientRect().bottom;
+      if(heroBottom < 0){
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }, { passive:true });
+  }
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </body>
 </html>
