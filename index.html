@@ -3,261 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evolsphere Executive Library — Catalogue</title>
-<link rel="stylesheet" href="style.css">
+<title>evolspere — Catalogue 5 Tomes</title>
 <style>
-:root{ --accent:#7c9cff; --accent-2:#7c5cff; }
-body[data-lang="en"] [data-fr]{display:none;}
-body[data-lang="fr"] [data-en]{display:none;}
+  :root{
+    --navy:#10243E;
+    --navy-deep:#0C1B2E;
+    --teal:#3FA796;
+    --teal-soft:#DCEFEC;
+    --gold:#E9B44C;
+    --ink:#10243E;
+    --muted:#5B6B77;
+    --bg:#FAFAF8;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Poppins','Futura PT','Century Gothic',Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:28px 6vw;
+  }
+  .logo{ height:44px; }
+  nav a{
+    color:var(--navy);
+    text-decoration:none;
+    font-size:14px;
+    letter-spacing:1px;
+    margin-left:28px;
+    font-weight:500;
+  }
+  .hero{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    padding:60px 6vw 90px;
+    flex-wrap:wrap;
+  }
+  .hero-text{ flex:1; min-width:320px; }
+  .eyebrow{
+    display:inline-block;
+    color:var(--teal);
+    letter-spacing:3px;
+    font-size:13px;
+    font-weight:600;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(34px,5vw,56px);
+    line-height:1.08;
+    margin:0 0 20px;
+    font-weight:600;
+  }
+  h1 span{ color:var(--teal); }
+  .lead{
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.6;
+    max-width:480px;
+    margin-bottom:34px;
+  }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:30px;
+  }
+  .price{ font-size:44px; font-weight:700; color:var(--navy); }
+  .price-tag{ color:var(--muted); font-size:15px; }
 
-.hero{
-  position:relative; overflow:hidden; min-height:78vh;
-  display:flex; flex-direction:column; justify-content:center;
-  padding:56px 8vw;
-  background:
-    radial-gradient(1200px 700px at 15% 10%, rgba(45,212,191,.10), transparent 55%),
-    radial-gradient(1000px 650px at 85% 25%, rgba(124,92,255,.14), transparent 55%),
-    radial-gradient(900px 600px at 60% 90%, rgba(96,165,250,.10), transparent 55%),
-    linear-gradient(180deg, var(--bg-1), var(--bg-0) 75%);
-}
-.hero .eyebrow{color:var(--accent); font-weight:700; letter-spacing:.14em; font-size:13px; text-transform:uppercase;}
-.hero h1{
-  font-family:var(--serif); font-weight:600; font-size:clamp(2.6rem,6vw,4.6rem);
-  line-height:1.05; margin:16px 0 20px; max-width:20ch;
-  background:linear-gradient(90deg,#eef2fb,#c9d3ec);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.hero p{max-width:62ch; color:var(--text-muted); font-size:1.1rem;}
-.hero .cta-row{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
-.btn{
-  display:inline-block; padding:12px 22px; border-radius:999px; font-weight:600; font-size:.92rem;
-  border:1px solid var(--card-border);
-}
-.btn.primary{background:linear-gradient(90deg,var(--accent-2),var(--accent)); color:#04070f; border:none;}
-.btn.ghost{color:var(--text-muted);}
-.btn.ghost:hover{color:var(--text); text-decoration:none;}
+  .buy-btn{
+    display:inline-block;
+    background:var(--navy);
+    color:#fff;
+    padding:16px 34px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:0.3px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .buy-btn:hover{ background:var(--teal); transform:translateY(-2px); }
 
-.orbits{position:absolute; right:-8%; top:-10%; width:52vw; height:52vw; max-width:640px; max-height:640px; opacity:.85;}
-.orbits .ring{position:absolute; border-radius:50%; border:1px solid rgba(255,255,255,.10);}
-.orbits .r1{inset:0;}
-.orbits .r2{inset:9%;}
-.orbits .r3{inset:18%;}
-.orbits .dot{position:absolute; width:14px; height:14px; border-radius:50%;}
+  .hero-card{
+    flex:1;
+    min-width:300px;
+    max-width:420px;
+    background:var(--card);
+    border-radius:20px;
+    padding:34px;
+    box-shadow:0 20px 60px rgba(16,36,62,0.10);
+    border:1px solid rgba(16,36,62,0.06);
+  }
+  .hero-card .ring{
+    width:100%;
+    height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:22px;
+  }
+  .tome-list{ list-style:none; margin:0; padding:0; }
+  .tome-list li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px solid #EEF1F2;
+    font-size:15px;
+    color:var(--navy);
+  }
+  .tome-list li:last-child{ border-bottom:none; }
+  .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--teal); flex-shrink:0;
+  }
 
-.shelf{padding:70px 8vw; max-width:1300px; margin:0 auto;}
-.shelf h2{font-family:var(--serif); font-size:clamp(1.6rem,2.8vw,2.2rem); margin:0 0 8px;}
-.shelf .sub{color:var(--text-muted); max-width:70ch; margin-bottom:44px;}
+  footer{
+    text-align:center;
+    padding:40px 6vw;
+    color:var(--muted);
+    font-size:13px;
+  }
 
-.grid-tomes{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
-.tome-card{
-  position:relative; border-radius:18px; overflow:hidden; border:1px solid var(--card-border);
-  background:var(--card); display:flex; flex-direction:column; min-height:340px;
-  transition:transform .18s ease, border-color .18s ease;
-}
-.tome-card:hover{transform:translateY(-4px); border-color:var(--tc-accent);}
-.tome-card .top{
-  flex:1; padding:22px 20px; position:relative; overflow:hidden;
-  background:
-    radial-gradient(160% 120% at 15% -10%, var(--tc-accent-soft), transparent 60%),
-    linear-gradient(160deg, var(--bg-1), var(--bg-0));
-}
-.tome-card .num{font-family:var(--serif); font-size:2.6rem; color:var(--tc-accent); font-weight:600; opacity:.9;}
-.tome-card .vol-label{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-dim); margin-top:2px;}
-.tome-card h3{font-family:var(--serif); font-size:1.18rem; margin:14px 0 8px; color:var(--text); line-height:1.25;}
-.tome-card p{font-size:.86rem; color:var(--text-muted); margin:0;}
-.tome-card .bottom{
-  padding:16px 20px; border-top:1px solid var(--card-border);
-  display:flex; justify-content:space-between; align-items:center;
-}
-.tome-card .bottom a{
-  font-size:.82rem; font-weight:700; color:var(--tc-accent); letter-spacing:.03em;
-}
-.tome-card .tag{font-size:.72rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em;}
-
-.divider-band{
-  padding:60px 8vw; text-align:center; border-top:1px solid var(--card-border); border-bottom:1px solid var(--card-border);
-  background:var(--bg-1);
-}
-.divider-band .quote{margin:0 auto; text-align:left; display:inline-block;}
-
-.lang-hero-switch{
-  display:inline-flex; gap:6px; border:1px solid var(--card-border); border-radius:999px; padding:4px; margin-bottom:26px;
-}
-.lang-hero-switch button{
-  background:none; border:none; color:var(--text-muted); padding:6px 16px; border-radius:999px; font-size:.82rem;
-  letter-spacing:.05em; cursor:pointer; font-weight:600;
-}
-.lang-hero-switch button.active{background:var(--accent); color:#04070f;}
-
-footer.site-footer{padding:50px 8vw; border-top:1px solid var(--card-border); color:var(--text-dim); font-size:12px;
-  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; letter-spacing:.04em; text-transform:uppercase;}
+  .placeholder-note{
+    max-width:900px;
+    margin:0 auto 40px;
+    background:#FFF7E6;
+    border:1px solid #F1D999;
+    color:#7A5A00;
+    padding:14px 18px;
+    border-radius:10px;
+    font-size:13px;
+    line-height:1.5;
+  }
+  .placeholder-note code{
+    background:#00000010;
+    padding:2px 6px;
+    border-radius:4px;
+  }
 </style>
 </head>
-<body data-lang="fr">
+<body>
 
-<nav class="evo-nav">
-  <div class="brand">Evol<span>sphere</span></div>
-  <div class="links">
-    <a href="#shelf" data-fr>Collection</a><a href="#shelf" data-en>Collection</a>
-    <a href="#about" data-fr>À propos</a><a href="#about" data-en>About</a>
-    <div class="lang-switch">
-      <a href="#" class="active" id="nav-fr" onclick="setLang('fr');return false;">FR</a>
-      <a href="#" id="nav-en" onclick="setLang('en');return false;">EN</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="orbits">
-    <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
-    <div class="dot" style="left:2%; top:38%; background:#2dd4bf; box-shadow:0 0 24px 6px #2dd4bf88;"></div>
-    <div class="dot" style="left:24%; top:4%; background:#a78bfa; box-shadow:0 0 24px 6px #a78bfa88;"></div>
-    <div class="dot" style="right:6%; top:22%; background:#fbbf24; box-shadow:0 0 24px 6px #fbbf2488;"></div>
-    <div class="dot" style="right:18%; bottom:10%; background:#34d399; box-shadow:0 0 24px 6px #34d39988;"></div>
-    <div class="dot" style="left:44%; bottom:2%; background:#60a5fa; box-shadow:0 0 24px 6px #60a5fa88;"></div>
-  </div>
-
-  <div class="lang-hero-switch">
-    <button class="active" id="hero-fr" onclick="setLang('fr')">Français</button>
-    <button id="hero-en" onclick="setLang('en')">English</button>
-  </div>
-
-  <div class="eyebrow" data-fr>Evolsphere Research Institute</div>
-  <div class="eyebrow" data-en>Evolsphere Research Institute</div>
-
-  <h1 data-fr>Evolsphere Executive Library</h1>
-  <h1 data-en>Evolsphere Executive Library</h1>
-
-  <p data-fr>La collection stratégique complète en 5 tomes — de la transformation opérationnelle à l'architecture d'apogée — pour préparer votre organisation à la Vision 2030. Disponible en français et en anglais.</p>
-  <p data-en>The complete 5-volume strategic collection — from operational transformation to apogee architecture — to prepare your organization for Vision 2030. Available in French and English.</p>
-
-  <div class="cta-row">
-    <a class="btn primary" href="tome1_fr.html" data-fr>Commencer par le Tome 1 →</a>
-    <a class="btn primary" href="tome1_en.html" data-en>Start with Volume 1 →</a>
-    <a class="btn ghost" href="#shelf" data-fr>Voir toute la collection</a>
-    <a class="btn ghost" href="#shelf" data-en>Browse the full collection</a>
-  </div>
-</header>
-
-<section class="shelf" id="shelf">
-  <h2 data-fr>La Collection Stratégique</h2>
-  <h2 data-en>The Strategic Collection</h2>
-  <p class="sub" data-fr>Cinq tomes, un même fil directeur : structurer, sécuriser, livrer. Chaque volume est disponible en français et en anglais, avec une identité visuelle propre au sein d'une charte graphique commune.</p>
-  <p class="sub" data-en>Five volumes, one throughline: structure, secure, deliver. Every volume is available in French and English, each with its own identity within a shared visual system.</p>
-
-  <div class="grid-tomes">
-
-    <div class="tome-card" style="--tc-accent:#2dd4bf; --tc-accent-soft:#2dd4bf22;">
-      <div class="top">
-        <div class="num">01</div>
-        <div class="vol-label" data-fr>Tome 1</div><div class="vol-label" data-en>Volume 1</div>
-        <h3 data-fr>Stratégie de Transformation &amp; Optimisation Opérationnelle</h3>
-        <h3 data-en>Transformation Strategy &amp; Operational Optimization</h3>
-        <p data-fr>Diagnostic des silos, Core Model et Risk Radar de la marge.</p>
-        <p data-en>Silo diagnostics, the Core Model and a margin Risk Radar.</p>
-      </div>
-      <div class="bottom">
-        <span class="tag" data-fr>Cadrage</span><span class="tag" data-en>Framing</span>
-        <a href="tome1_fr.html" data-fr>Lire →</a><a href="tome1_en.html" data-en>Read →</a>
-      </div>
-    </div>
-
-    <div class="tome-card" style="--tc-accent:#a78bfa; --tc-accent-soft:#a78bfa22;">
-      <div class="top">
-        <div class="num">02</div>
-        <div class="vol-label" data-fr>Tome 2</div><div class="vol-label" data-en>Volume 2</div>
-        <h3 data-fr>Synergies Groupe &amp; Modèles de Distribution</h3>
-        <h3 data-en>Group Synergies &amp; Distribution Models</h3>
-        <p data-fr>Des silos à l'entreprise réseau : le modèle hybride.</p>
-        <p data-en>From silos to the networked enterprise: the hybrid model.</p>
-      </div>
-      <div class="bottom">
-        <span class="tag" data-fr>Organisation</span><span class="tag" data-en>Organization</span>
-        <a href="tome2_fr.html" data-fr>Lire →</a><a href="tome2_en.html" data-en>Read →</a>
-      </div>
-    </div>
-
-    <div class="tome-card" style="--tc-accent:#fbbf24; --tc-accent-soft:#fbbf2422;">
-      <div class="top">
-        <div class="num">03</div>
-        <div class="vol-label" data-fr>Tome 3</div><div class="vol-label" data-en>Volume 3</div>
-        <h3 data-fr>Pilotage &amp; Performance</h3>
-        <h3 data-en>Performance Management</h3>
-        <p data-fr>KPIs, OKRs, capital humain et analytics prédictifs.</p>
-        <p data-en>KPIs, OKRs, human capital and predictive analytics.</p>
-      </div>
-      <div class="bottom">
-        <span class="tag" data-fr>Pilotage</span><span class="tag" data-en>Management</span>
-        <a href="tome3_fr.html" data-fr>Lire →</a><a href="tome3_en.html" data-en>Read →</a>
-      </div>
-    </div>
-
-    <div class="tome-card" style="--tc-accent:#34d399; --tc-accent-soft:#34d39922;">
-      <div class="top">
-        <div class="num">04</div>
-        <div class="vol-label" data-fr>Tome 4</div><div class="vol-label" data-en>Volume 4</div>
-        <h3 data-fr>Supply Chain Résiliente &amp; Prévision des Ventes</h3>
-        <h3 data-en>Resilient Supply Chain &amp; Sales Forecasting</h3>
-        <p data-fr>S&amp;OP augmenté par la donnée et trajectoire Net Zero 2030.</p>
-        <p data-en>Data-augmented S&amp;OP and the trajectory to Net Zero 2030.</p>
-      </div>
-      <div class="bottom">
-        <span class="tag" data-fr>Supply Chain</span><span class="tag" data-en>Supply Chain</span>
-        <a href="tome4_fr.html" data-fr>Lire →</a><a href="tome4_en.html" data-en>Read →</a>
-      </div>
-    </div>
-
-    <div class="tome-card" style="--tc-accent:#60a5fa; --tc-accent-soft:#60a5fa22;">
-      <div class="top">
-        <div class="num">05</div>
-        <div class="vol-label" data-fr>Tome 5</div><div class="vol-label" data-en>Volume 5</div>
-        <h3 data-fr>Apogée, Architecture et Mutation</h3>
-        <h3 data-en>Apogee, Architecture and Transformation</h3>
-        <p data-fr>Architecture d'entreprise, risques et stratégie financière — Vision 2030.</p>
-        <p data-en>Enterprise architecture, risk and financial strategy — Vision 2030.</p>
-      </div>
-      <div class="bottom">
-        <span class="tag" data-fr>Vision 2030</span><span class="tag" data-en>Vision 2030</span>
-        <a href="tome5_fr.html" data-fr>Lire →</a><a href="tome5_en.html" data-en>Read →</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider-band">
-  <div class="quote" data-fr>Mutualiser ce qui crée de la force.<br>Préserver ce qui crée de l'agilité.<br>Gouverner ce qui crée du risque.</div>
-  <div class="quote" data-en>Pool what creates strength.<br>Preserve what creates agility.<br>Govern what creates risk.</div>
+<div class="placeholder-note">
+  ⚠️ Page de démonstration — l'ID produit <code>prod_V5XWRONGq49q9X</code> est confirmé, mais remplacez toujours
+  <code>PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE</code> par votre vrai lien de paiement Stripe avant mise en ligne
+  (le bouton ne fonctionnera pas sans ce lien). Vérifiez aussi qu'il s'agit bien de votre compte Stripe live,
+  et non d'un compte de démonstration/formation.
 </div>
 
-<section class="shelf" id="about">
-  <h2 data-fr>À propos de la collection</h2>
-  <h2 data-en>About the collection</h2>
-  <p class="sub" data-fr>L'Evolsphere Executive Library est le référentiel de transformation destiné aux comités de direction : cinq tomes conçus pour être lus dans l'ordre — cadrage, organisation, pilotage, supply chain, puis architecture d'apogée — mais consultables indépendamment selon les priorités du moment. Chaque tome partage le même langage visuel (fond sombre exécutif, sphère en dégradé, code couleur propre) pour une expérience de lecture cohérente sur l'ensemble de la collection.</p>
-  <p class="sub" data-en>The Evolsphere Executive Library is the transformation reference built for management committees: five volumes designed to be read in order — framing, organization, management, supply chain, then apogee architecture — but each stands on its own depending on the moment's priorities. Every volume shares the same visual language (dark executive background, gradient sphere, distinct accent color) for a consistent reading experience across the whole collection.</p>
+<header>
+  <img src="evolspere-logo.svg" alt="evolspere" class="logo">
+  <nav>
+    <a href="#catalogue">Catalogue</a>
+    <a href="#acheter">Acheter</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="catalogue">
+  <div class="hero-text">
+    <span class="eyebrow">Collection complète</span>
+    <h1>Le catalogue<br><span>5 Tomes</span>, intégral.</h1>
+    <p class="lead">
+      L'ensemble de la collection en un seul achat. Facture professionnelle
+      émise automatiquement après paiement.
+    </p>
+
+    <div class="price-row">
+      <span class="price">199&nbsp;€</span>
+      <span class="price-tag">HT — facturation B2B</span>
+    </div>
+
+    <a
+      href="PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE"
+      class="buy-btn"
+      id="acheter"
+      data-product-id="prod_V5XWRONGq49q9X"
+    >
+      Acheter le catalogue →
+    </a>
+  </div>
+
+  <div class="hero-card">
+    <div class="ring">
+      <img src="evolspere-icon.svg" alt="" style="height:140px;">
+    </div>
+    <ul class="tome-list">
+      <li><span class="dot"></span> Tome I — Fondations</li>
+      <li><span class="dot"></span> Tome II — Structures</li>
+      <li><span class="dot"></span> Tome III — Dynamiques</li>
+      <li><span class="dot"></span> Tome IV — Applications</li>
+      <li><span class="dot"></span> Tome V — Perspectives</li>
+    </ul>
+  </div>
 </section>
 
-<footer class="site-footer">
-  <span>Evolsphere Research Institute &amp; Management Consulting</span>
-  <span data-fr>contact@evolsphere-institute.com — evolsphere.com</span>
-  <span data-en>contact@evolsphere-institute.com — evolsphere.com</span>
+<footer id="contact">
+  © 2026 evolspere.com — Facture électronique conforme à la réglementation B2B en vigueur.
 </footer>
 
-<script>
-function setLang(lang){
-  document.body.setAttribute('data-lang', lang);
-  document.documentElement.setAttribute('lang', lang);
-  document.getElementById('hero-fr').classList.toggle('active', lang==='fr');
-  document.getElementById('hero-en').classList.toggle('active', lang==='en');
-  document.getElementById('nav-fr').classList.toggle('active', lang==='fr');
-  document.getElementById('nav-en').classList.toggle('active', lang==='en');
-  try{ localStorage.setItem('evo-lang', lang); }catch(e){}
-}
-(function(){
-  var saved = null;
-  try{ saved = localStorage.getItem('evo-lang'); }catch(e){}
-  if(saved) setLang(saved);
-})();
-</script>
 </body>
 </html>
