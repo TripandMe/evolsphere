@@ -72,6 +72,7 @@
     overflow-x:hidden;
     font-family: var(--body-font);
     color: var(--ink);
+    scroll-behavior:smooth;
   }
   body{
     display:flex; flex-direction:column;
@@ -231,11 +232,38 @@
   }
   .btn-ghost:hover{ transform: translateY(-3px) scale(1.03); border-color: rgba(255,255,255,0.55); }
   .btn-editions{
-    background: linear-gradient(120deg, var(--violet), var(--amber));
-    color: #07040D;
-    box-shadow: 0 8px 26px rgba(255,155,74,0.28);
+    background: linear-gradient(120deg, var(--violet), var(--hot));
+    color: #ffffff;
+    box-shadow: 0 8px 26px rgba(139,107,242,0.35);
   }
-  .btn-editions:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 34px rgba(165,107,255,0.4); }
+  .btn-editions:hover{ transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 34px rgba(139,107,242,0.5); }
+
+  .tome-line.has-toc{ position:relative; cursor:help; padding:4px 0; border-bottom:1px dotted rgba(255,255,255,0.12); }
+  .tome-line.has-toc:hover{ color:var(--teal); }
+  .tome-tooltip{
+    position:absolute; left:0; top:calc(100% + 8px); z-index:50;
+    width:320px; max-width:80vw;
+    background: linear-gradient(160deg, #1c1130, #0e0818);
+    border:1px solid rgba(165,107,242,0.35);
+    border-radius:14px; padding:16px 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    opacity:0; visibility:hidden; transform:translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    pointer-events:none;
+  }
+  .tome-line.has-toc:hover .tome-tooltip,
+  .tome-line.has-toc:focus-within .tome-tooltip{
+    opacity:1; visibility:visible; transform:translateY(0);
+  }
+  .tome-tooltip-title{ font-size:11px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); margin-bottom:8px; }
+  .tome-tooltip ol{ margin:0; padding-left:18px; }
+  .tome-tooltip ol li{ font-size:12.5px; line-height:1.6; color:var(--ink-dim); margin-bottom:4px; }
+  @media (max-width:640px){
+    .tome-tooltip{ position:static; width:100%; max-width:100%; margin-top:8px; opacity:1; visibility:visible; transform:none; display:none; }
+    .tome-line.has-toc:hover .tome-tooltip,
+    .tome-line.has-toc:focus-within .tome-tooltip,
+    .tome-line.has-toc.toc-open .tome-tooltip{ display:block; }
+  }
 
   footer{
     position:relative; z-index:5;
@@ -1104,12 +1132,9 @@
     <span class="chip" data-i18n="chipOpsSteering">Pilotage opérationnel</span>
     <span class="chip" style="border-color: rgba(41,240,208,0.4); color: var(--teal);" data-i18n="chipRemote">100% à distance</span>
   </div>
-<section class="positioning-banner compact-secondary">
-  <div class="positioning-line" data-i18n-html="positioningLine"><span class="strike">3 juniors facturés au prix senior.</span> Un rapport de 80 pages. Zéro exécution.</div>
-  <div class="positioning-sub" data-i18n="positioningSub">Pas d’équipe de juniors vendus au prix senior. Un interlocuteur expérimenté, une exécution directe et une gouvernance conçue pour que votre équipe garde le contrôle.</div>
-</section>
 <section class="comparison-section compact-secondary">
   <div class="comparison-head">
+    <div class="positioning-line" data-i18n-html="positioningLine" style="margin-bottom:10px;"><span class="strike">3 juniors facturés au prix senior.</span> Un rapport de 80 pages. Zéro exécution.</div>
     <div class="comparison-title" data-i18n="comparisonTitle">Cabinet classique / Evolsphere</div>
   </div>
   <div class="comparison-grid">
@@ -1130,6 +1155,7 @@
       <div class="comparison-row" data-i18n="newRow5">Un seul interlocuteur, du diagnostic à l'exécution, disponible en continu.</div>
     </div>
   </div>
+  <div class="positioning-sub" data-i18n="positioningSub" style="text-align:center; margin-top:14px;">Pas d’équipe de juniors vendus au prix senior. Un interlocuteur expérimenté, une exécution directe et une gouvernance conçue pour que votre équipe garde le contrôle.</div>
 </section>
 </main>
 
@@ -1281,7 +1307,7 @@
 
 <section class="offers-section compact-secondary" id="legacyOffers">
   <div class="offers-head">
-    <div class="offers-eyebrow" data-i18n="offersEyebrow">Concrètement, sur le terrain</div>
+    <div class="offers-eyebrow" data-i18n="offersEyebrow">OFFRE CONSEIL — concrètement, sur le terrain</div>
     <h2 class="offers-title" data-i18n="offersTitle">Exemples d'accompagnement régulièrement réalisés</h2>
   </div>
   <div class="offers-grid">
@@ -1358,22 +1384,14 @@
   </div>
 </section>
 
-<section class="control-section">
-  <div class="control-card">
-    <div class="control-eyebrow" data-i18n="controlEyebrow">Le modèle Evolsphere</div>
-    <h2 class="control-title" data-i18n="controlTitle">Votre projet avance. Votre équipe reste aux commandes.</h2>
-    <div class="control-grid">
-      <div><strong data-i18n="control1Title">Daily stand-up</strong><span data-i18n="control1Desc">Animation courte, décisions immédiates, blocages visibles.</span></div>
-      <div><strong data-i18n="control2Title">Weekly direction</strong><span data-i18n="control2Desc">Synthèse exécutive, arbitrages et priorités.</span></div>
-      <div><strong data-i18n="control3Title">Reporting</strong><span data-i18n="control3Desc">Un reporting utile à la décision, pas un rapport de plus.</span></div>
-    </div>
-    <button class="btn btn-primary" id="controlQuoteBtn" data-i18n="quoteBtn">Demandez-moi un devis</button>
-  </div>
-</section>
-
 <section class="final-cta">
   <h2 class="final-cta-title" data-i18n="finalTitle">Ne rien faire, c'est déjà choisir de perdre.</h2>
   <div class="final-cta-sub" data-i18n="finalSub"></div>
+  <div class="control-grid" style="max-width:640px; margin:24px auto;">
+    <div><strong data-i18n="control1Title">Daily stand-up</strong><span data-i18n="control1Desc">Animation courte, décisions immédiates, blocages visibles.</span></div>
+    <div><strong data-i18n="control2Title">Weekly direction</strong><span data-i18n="control2Desc">Synthèse exécutive, arbitrages et priorités.</span></div>
+    <div><strong data-i18n="control3Title">Reporting</strong><span data-i18n="control3Desc">Un reporting utile à la décision, pas un rapport de plus.</span></div>
+  </div>
   <a class="btn btn-primary" id="finalCtaBtn" href="#" data-i18n="quoteBtn">Demandez-moi un devis</a>
   <div class="final-cta-note" data-i18n="finalCtaNote">Écrivez. Je réponds. Simple.</div>
 </section>
@@ -1507,16 +1525,48 @@
 <div class="modal-overlay" id="tomesModal" aria-hidden="true">
   <div class="modal-card">
     <button class="modal-close" id="closeTomesBtn" aria-label="Fermer">✕</button>
-    <div class="test-eyebrow" data-i18n="tomesEyebrow">EVOLSPHERE EDITIONS</div>
+    <div class="test-eyebrow" data-i18n="tomesEyebrow">OFFRE EDITIONS — EVOLSPHERE</div>
     <h2 class="offers-title" data-i18n="tomesTitle">Catalogue 1 — Stratégie &amp; Transformation</h2>
     <p class="offer-desc" data-i18n="tomesDesc">5 Tomes exécutifs, pensés pour les CODIR et COMEX. Chaque catalogue se lit indépendamment ou en collection complète.</p>
 
     <div class="tomes-catalogue-list" style="text-align:left; margin:16px 0; display:flex; flex-direction:column; gap:8px;">
-      <div class="tome-line"><b>Tome 1</b> — <span data-i18n="cat1t1">Stratégie de Transformation &amp; Optimisation Opérationnelle</span></div>
-      <div class="tome-line"><b>Tome 2</b> — <span data-i18n="cat1t2">Synergies Groupe &amp; Modèles de Distribution</span></div>
-      <div class="tome-line"><b>Tome 3</b> — <span data-i18n="cat1t3">Transformer sans subir</span></div>
-      <div class="tome-line"><b>Tome 4</b> — <span data-i18n="cat1t4">L'entreprise augmentée — Data, automatisation et IA</span></div>
-      <div class="tome-line"><b>Tome 5</b> — <span data-i18n="cat1t5">2030 — Le prochain cercle</span></div>
+      <div class="tome-line has-toc"><b>Tome 1</b> — <span data-i18n="cat1t1">Stratégie de Transformation &amp; Optimisation Opérationnelle</span>
+        <div class="tome-tooltip">
+          <div class="tome-tooltip-title" data-i18n="toc1Title">Sommaire — Tome 1</div>
+          <ol>
+            <li data-i18n="toc1c1">Contexte macro-économique &amp; tensions sur les marges</li>
+            <li data-i18n="toc1c2">Diagnostic opérationnel &amp; cartographie des silos SI</li>
+            <li data-i18n="toc1c3">Architecture cible &amp; Core Model processus</li>
+            <li data-i18n="toc1c4">Le Risk Radar &amp; pilotage prédictif de la marge</li>
+            <li data-i18n="toc1c5">Gouvernance, conduite du changement &amp; adoption RH</li>
+            <li data-i18n="toc1c6">Masterplan stratégique à 3 ans &amp; trajectoire ROI</li>
+            <li data-i18n="toc1c7">Annexes — grille d'auto-évaluation CODIR</li>
+          </ol>
+        </div>
+      </div>
+      <div class="tome-line has-toc"><b>Tome 2</b> — <span data-i18n="cat1t2">Synergies Groupe &amp; Modèles de Distribution</span>
+        <div class="tome-tooltip">
+          <div class="tome-tooltip-title" data-i18n="toc2Title">Sommaire — Tome 2</div>
+          <ol>
+            <li data-i18n="toc2c1">Douze jalons : des silos à l'entreprise réseau</li>
+            <li data-i18n="toc2c2">Architecture cible de convergence</li>
+            <li data-i18n="toc2c3">Que mutualiser ? Que laisser local ?</li>
+            <li data-i18n="toc2c4">Le modèle hybride</li>
+            <li data-i18n="toc2c5">La donnée devient le contrat entre les BUs</li>
+            <li data-i18n="toc2c6">Risk Radar : voir les dépendances avant la rupture</li>
+            <li data-i18n="toc2c7">Passer de la vision à l'exécution</li>
+          </ol>
+        </div>
+      </div>
+      <div class="tome-line has-toc"><b>Tome 3</b> — <span data-i18n="cat1t3">Transformer sans subir</span>
+        <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+      </div>
+      <div class="tome-line has-toc"><b>Tome 4</b> — <span data-i18n="cat1t4">L'entreprise augmentée — Data, automatisation et IA</span>
+        <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+      </div>
+      <div class="tome-line has-toc"><b>Tome 5</b> — <span data-i18n="cat1t5">2030 — Le prochain cercle</span>
+        <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+      </div>
     </div>
 
     <div class="tomes-price-row" style="display:flex; align-items:baseline; gap:10px; justify-content:center; margin:14px 0;">
@@ -1527,7 +1577,7 @@
     <p class="form-info" data-i18n="tomesAccessNote">Accès illimité en lecture en ligne. Version imprimable disponible en option.</p>
     <p class="form-info" data-i18n="tomesStatus">Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.</p>
 
-    <a class="btn btn-primary" id="tomesStripeBtn" href="https://buy.stripe.com/aFa3coc2Q4ovbwJ3y1gw000" data-i18n="tomesBuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 1 — 199 € HT</a>
+    <a class="btn btn-primary" id="tomesStripeBtn" href="#" data-i18n="tomesBuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 1 — 199 € HT</a>
     <button class="btn btn-ghost" id="tomesNotifyBtn" data-i18n="tomesNotify" style="margin-top:10px;">Être informé des prochains catalogues</button>
   </div>
 </div>
@@ -1583,7 +1633,7 @@
 </section>
 
 <footer>
-  <div class="tagline">Evolsphere — <b id="tagWord1">structurer</b>, <b id="tagWord2">sécuriser</b>, <b id="tagWord3">livrer</b>. <span id="copyrightYear" style="opacity:0.55;">© 2026</span></div>
+  <div class="tagline">Evolsphere — <b id="tagWord1">structurer</b>, <b id="tagWord2">sécuriser</b>, <b id="tagWord3">livrer</b>. <span id="copyrightYear" style="opacity:0.55;">© 2026</span><br><span style="font-size:10.5px; opacity:0.55;">PRACTICE RETAIL — SASU au capital de 1 000 € — RCS Cannes 819 507 963</span></div>
   <nav class="legal-nav" aria-label="Informations légales">
     <a href="#" data-legal="legal" data-i18n="legalNotice">Mentions légales</a>
     <a href="#" data-legal="privacy" data-i18n="privacyPolicy">Confidentialité</a>
@@ -1981,13 +2031,30 @@ try{
       contactSubject: "Echangeons sur votre projet",
       whatsappBtn: "WhatsApp",
       tomesBtn: "Evolsphere Editions",
-      tomesEyebrow: "EVOLSPHERE EDITIONS", tomesTitle: "Catalogue 1 — Stratégie &amp; Transformation", tomesDesc: "5 Tomes exécutifs, pensés pour les CODIR et COMEX. Chaque catalogue se lit indépendamment ou en collection complète.", tomesStatus: "Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.", tomesNotify: "Être informé des prochains catalogues", tomesAccessNote: "Accès illimité en lecture en ligne. Version imprimable disponible en option.", tomesBuyBtn: "Accéder au Catalogue 1 — 199 € HT",
+      tomesEyebrow: "OFFRE EDITIONS — EVOLSPHERE", tomesTitle: "Catalogue 1 — Stratégie &amp; Transformation", tomesDesc: "5 Tomes exécutifs, pensés pour les CODIR et COMEX. Chaque catalogue se lit indépendamment ou en collection complète.", tomesStatus: "Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.", tomesNotify: "Être informé des prochains catalogues", tomesAccessNote: "Accès illimité en lecture en ligne. Version imprimable disponible en option.", tomesBuyBtn: "Accéder au Catalogue 1 — 199 € HT",
       cat1t1: "Stratégie de Transformation &amp; Optimisation Opérationnelle",
       cat1t2: "Synergies Groupe &amp; Modèles de Distribution",
       cat1t3: "Transformer sans subir",
       cat1t4: "L'entreprise augmentée — Data, automatisation et IA",
       cat1t5: "2030 — Le prochain cercle",
       cat1PriceNote: "le catalogue, 5 Tomes",
+      toc1Title: "Sommaire — Tome 1",
+      toc1c1: "Contexte macro-économique & tensions sur les marges",
+      toc1c2: "Diagnostic opérationnel & cartographie des silos SI",
+      toc1c3: "Architecture cible & Core Model processus",
+      toc1c4: "Le Risk Radar & pilotage prédictif de la marge",
+      toc1c5: "Gouvernance, conduite du changement & adoption RH",
+      toc1c6: "Masterplan stratégique à 3 ans & trajectoire ROI",
+      toc1c7: "Annexes — grille d'auto-évaluation CODIR",
+      toc2Title: "Sommaire — Tome 2",
+      toc2c1: "Douze jalons : des silos à l'entreprise réseau",
+      toc2c2: "Architecture cible de convergence",
+      toc2c3: "Que mutualiser ? Que laisser local ?",
+      toc2c4: "Le modèle hybride",
+      toc2c5: "La donnée devient le contrat entre les BUs",
+      toc2c6: "Risk Radar : voir les dépendances avant la rupture",
+      toc2c7: "Passer de la vision à l'exécution",
+      tocSoon: "Sommaire disponible à la publication du Tome.",
       tagWords: ["structurer", "sécuriser", "livrer"],
       soundOn: "Activer le son",
       soundOff: "Couper le son",
@@ -1995,7 +2062,7 @@ try{
       stat2: "projets pilotés en portefeuille",
       stat3: "personnes pilotées en équipe projet",
       stat4: "budget piloté sur le dernier projet",
-      offersEyebrow: "Concrètement, sur le terrain",
+      offersEyebrow: "OFFRE CONSEIL — concrètement, sur le terrain",
       offersTitle: "Exemples d'accompagnement régulièrement réalisés",
       offer0Name: "Étude d'opportunité",
       offer0Desc: "Étude d'opportunité, de faisabilité et d'impacts — avant d'engager le moindre budget.",
@@ -2160,13 +2227,30 @@ try{
       contactSubject: "Let's discuss your project",
       whatsappBtn: "WhatsApp",
       tomesBtn: "Evolsphere Editions",
-      tomesEyebrow: "EVOLSPHERE EDITIONS", tomesTitle: "Catalogue 1 — Strategy &amp; Transformation", tomesDesc: "5 executive Tomes, designed for CODIR and COMEX. Each catalogue reads independently or as a full collection.", tomesStatus: "Tome 1 and Tome 2 available. Tomes 3 to 5 delivered as they're released. Secure payment via Stripe.", tomesNotify: "Notify me about future catalogues", tomesAccessNote: "Unlimited online reading access. Printable version available as an option.", tomesBuyBtn: "Access Catalogue 1 — €199 excl. VAT",
+      tomesEyebrow: "EDITIONS OFFER — EVOLSPHERE", tomesTitle: "Catalogue 1 — Strategy &amp; Transformation", tomesDesc: "5 executive Tomes, designed for CODIR and COMEX. Each catalogue reads independently or as a full collection.", tomesStatus: "Tome 1 and Tome 2 available. Tomes 3 to 5 delivered as they're released. Secure payment via Stripe.", tomesNotify: "Notify me about future catalogues", tomesAccessNote: "Unlimited online reading access. Printable version available as an option.", tomesBuyBtn: "Access Catalogue 1 — €199 excl. VAT",
       cat1t1: "Transformation Strategy &amp; Operational Optimization",
       cat1t2: "Group Synergies &amp; Distribution Models",
       cat1t3: "Transform Without Suffering",
       cat1t4: "The Augmented Enterprise — Data, Automation and AI",
       cat1t5: "2030 — The Next Circle",
       cat1PriceNote: "for the catalogue, 5 Tomes",
+      toc1Title: "Contents — Tome 1",
+      toc1c1: "Macroeconomic context & margin pressure",
+      toc1c2: "Operational diagnosis & IT silo mapping",
+      toc1c3: "Target architecture & Core Model process",
+      toc1c4: "The Risk Radar & predictive margin steering",
+      toc1c5: "Governance, change management & HR adoption",
+      toc1c6: "3-year strategic masterplan & ROI trajectory",
+      toc1c7: "Appendices — CODIR self-assessment grid",
+      toc2Title: "Contents — Tome 2",
+      toc2c1: "Twelve milestones: from silos to the networked enterprise",
+      toc2c2: "Target convergence architecture",
+      toc2c3: "What to pool? What to keep local?",
+      toc2c4: "The hybrid model",
+      toc2c5: "Data becomes the contract between business units",
+      toc2c6: "Risk Radar: seeing dependencies before the break",
+      toc2c7: "From vision to execution",
+      tocSoon: "Contents available upon publication of this Tome.",
       tagWords: ["structure", "secure", "deliver"],
       soundOn: "Turn on sound",
       soundOff: "Mute sound",
@@ -2174,7 +2258,7 @@ try{
       stat2: "projects steered across portfolios",
       stat3: "people led across project teams",
       stat4: "budget owned on the latest project",
-      offersEyebrow: "In practice, on the ground",
+      offersEyebrow: "CONSULTING OFFER — in practice, on the ground",
       offersTitle: "Examples of engagements regularly delivered",
       offer0Name: "Opportunity study",
       offer0Desc: "Opportunity, feasibility and impact study — before committing any budget.",
@@ -2704,6 +2788,15 @@ try{
   function openTomes(){ if(tomesModal){tomesModal.classList.add('open');tomesModal.setAttribute('aria-hidden','false');} }
   function closeTomes(){ if(tomesModal){tomesModal.classList.remove('open');tomesModal.setAttribute('aria-hidden','true');} }
   openTomesBtn?.addEventListener('click',openTomes); closeTomesBtn?.addEventListener('click',closeTomes);
+  document.querySelectorAll('.tome-line.has-toc').forEach(el=>{
+    el.addEventListener('click',(e)=>{
+      if(window.innerWidth<=640){
+        const wasOpen = el.classList.contains('toc-open');
+        document.querySelectorAll('.tome-line.has-toc.toc-open').forEach(o=>o.classList.remove('toc-open'));
+        if(!wasOpen) el.classList.add('toc-open');
+      }
+    });
+  });
   tomesModal?.addEventListener('click',e=>{if(e.target===tomesModal)closeTomes();});
   document.getElementById('tomesNotifyBtn')?.addEventListener('click',()=>{
     const subject=encodeURIComponent(currentLang==='fr'?'Tomes Evolsphere — ouverture':'Evolsphere Tomes — opening');
@@ -2742,16 +2835,16 @@ try{
   const legalModal=document.getElementById('legalModal'), legalTitle=document.getElementById('legalTitle'), legalContent=document.getElementById('legalContent');
   const legalCopy={
     fr:{
-      legal:{title:'Mentions légales',html:`<h3>Éditeur</h3><p><strong>Evolsphere</strong><br>Responsable : Raphaël de Bruijn<br>Email : raphaeldebruijn@gmail.com<br>Téléphone : +33 6 73 97 75 76<br>Site : evolsphere.com</p><p>Les informations d’identification de l’entreprise (forme juridique, adresse, SIREN/SIRET, TVA intracommunautaire, directeur de publication et hébergeur) doivent être complétées avec les données officielles avant mise en production.</p><h3>Propriété intellectuelle</h3><p>Les contenus du site sont protégés par les règles applicables en matière de propriété intellectuelle. Toute reproduction non autorisée est interdite.</p>`},
-      privacy:{title:'Politique de confidentialité',html:`<h3>Responsable et finalité</h3><p>Evolsphere traite les données transmises via le formulaire uniquement pour répondre aux demandes de contact et de devis, assurer le suivi de la relation et, si nécessaire, satisfaire aux obligations légales.</p><h3>Données collectées</h3><p>Nom, entreprise, email, téléphone (facultatif) et description du besoin.</p><h3>Conservation et destinataires</h3><p>Les données sont conservées pendant la durée nécessaire à la finalité poursuivie, puis supprimées ou archivées lorsque la loi l’exige. Elles sont accessibles aux seules personnes habilitées à traiter la demande et aux prestataires techniques nécessaires au fonctionnement du site.</p><h3>Vos droits</h3><p>Vous pouvez demander l’accès, la rectification, l’effacement, la limitation ou vous opposer au traitement lorsque les conditions légales sont réunies. Pour exercer vos droits : raphaeldebruijn@gmail.com.</p><p>Cette page doit être adaptée à la base légale réellement retenue, aux outils utilisés et aux durées de conservation effectivement appliquées.</p>`},
-      cgv:{title:'Conditions générales de vente',html:`<h3>Objet</h3><p>Les présentes conditions encadrent les prestations de conseil, pilotage, management de transition, diagnostic et accompagnement proposées par Evolsphere.</p><h3>Devis et commande</h3><p>Chaque prestation fait l’objet d’un devis ou d’une proposition précisant le périmètre, les livrables, les délais et les conditions financières. La commande devient ferme après acceptation selon les modalités prévues au devis.</p><h3>Facturation et paiement</h3><p>Les conditions de prix, d’acompte, d’échéance et de pénalités de retard sont celles précisées sur le devis et la facture.</p><h3>Responsabilité</h3><p>Evolsphere est tenue à une obligation de moyens dans le cadre des prestations de conseil et de pilotage.</p><p><strong>À faire valider juridiquement</strong> avant publication, notamment pour les clauses de propriété intellectuelle, confidentialité, responsabilité, résiliation et droit applicable.</p>`},
-      cookies:{title:'Cookies et traceurs',html:`<h3>Principe</h3><p>Le site utilise uniquement les traceurs nécessaires à son fonctionnement, sauf activation ultérieure d’outils nécessitant un consentement.</p><p>Si des cookies d’analyse, publicité, réseaux sociaux ou autres traceurs soumis au consentement sont ajoutés, un mécanisme de consentement préalable et de retrait doit être activé avant leur dépôt ou lecture.</p><p>Le choix de langue et les traceurs strictement nécessaires peuvent relever d’un régime différent selon leur configuration.</p>`}
+      legal:{title:'Mentions légales',html:`<h3>Éditeur</h3><p><strong>Evolsphere</strong> est un nom commercial exploité par <strong>PRACTICE RETAIL</strong>, Société par actions simplifiée à associé unique (SASU) au capital de 1 000 €.<br>Siège social : 68 Boulevard Alexandre III, 06400 Cannes, France.<br>RCS Cannes n° 819 507 963 — SIREN 819 507 963.<br>N° TVA intracommunautaire : FR22819507963.<br>Président : Raphaël de Bruijn.<br>Activité : conseil en stratégie, management, organisation.<br>Email : raphaeldebruijn@gmail.com<br>Téléphone : +33 6 73 97 75 76<br>Site : evolsphere.com</p><h3>Directeur de la publication</h3><p>Raphaël de Bruijn, en qualité de Président de PRACTICE RETAIL.</p><h3>Hébergement</h3><p>Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Email : privacy@vercel.com.</p><h3>Propriété intellectuelle</h3><p>L'ensemble des contenus du site (textes, visuels, méthode Evolsphere, Tomes de la collection Evolsphere Editions) est protégé par le droit de la propriété intellectuelle. Toute reproduction ou représentation, totale ou partielle, sans autorisation préalable est interdite.</p>`},
+      privacy:{title:'Politique de confidentialité',html:`<h3>Responsable de traitement</h3><p>PRACTICE RETAIL (Evolsphere), SASU au capital de 1 000 €, RCS Cannes 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes — représentée par Raphaël de Bruijn. Aucun délégué à la protection des données (DPO) n'est désigné, cette désignation n'étant pas obligatoire au regard de l'activité exercée ; toute question relative à vos données peut être adressée directement au responsable de traitement.</p><h3>Finalités et bases légales</h3><p>Formulaire de contact/devis : traitement fondé sur votre <strong>consentement</strong> (case à cocher) pour répondre à votre demande. Achat sur Evolsphere Editions : traitement fondé sur l'<strong>exécution du contrat</strong> de vente. Obligations comptables et fiscales : traitement fondé sur une <strong>obligation légale</strong>.</p><h3>Données collectées</h3><p>Nom, entreprise, email, téléphone (facultatif), description du besoin ; et pour un achat, les données de facturation traitées directement par notre prestataire de paiement Stripe (Evolsphere ne stocke aucune donnée bancaire). Aucune donnée sensible au sens du RGPD n'est collectée. Aucune décision automatisée ni profilage n'est réalisé à partir de ces données.</p><h3>Destinataires et sous-traitants</h3><p>Les données sont accessibles uniquement à Raphaël de Bruijn et aux sous-traitants techniques nécessaires au fonctionnement du site : Stripe (paiement) et Vercel Inc. (hébergement). Stripe et Vercel sont des sociétés américaines ; les transferts de données hors Union Européenne qui en résultent sont encadrés par leur adhésion au cadre <strong>EU-US Data Privacy Framework</strong> et/ou par des clauses contractuelles types, conformément à l'article 46 du RGPD.</p><h3>Durées de conservation</h3><p>Demande de contact/devis sans suite commerciale : 3 ans à compter du dernier contact. Données liées à une mission ou un achat : durée de la relation contractuelle, puis archivage pendant 10 ans conformément aux obligations comptables (article L123-22 du Code de commerce). Au-delà, les données sont supprimées ou anonymisées.</p><h3>Vos droits</h3><p>Conformément au RGPD, vous pouvez demander l'accès, la rectification, l'effacement, la limitation du traitement, la portabilité de vos données, ou vous opposer au traitement lorsque celui-ci repose sur le consentement ou l'intérêt légitime. Vous pouvez également retirer votre consentement à tout moment, sans effet rétroactif. Pour exercer vos droits : raphaeldebruijn@gmail.com. Vous disposez également du droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>`},
+      cgv:{title:'Conditions générales de vente',html:`<h3>Article 1 — Objet et champ d'application</h3><p>Les présentes conditions générales de vente s'appliquent à l'ensemble des prestations de conseil, pilotage de projet, management de transition et diagnostic (« Prestations ») ainsi qu'à la vente des contenus numériques de la collection <strong>Evolsphere Editions</strong> (« Catalogues »), proposées par PRACTICE RETAIL (Evolsphere), SASU au capital de 1 000 €, RCS Cannes 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes.</p><h3>Article 2 — Prestations de conseil</h3><p>Chaque Prestation fait l'objet d'un échange préalable puis, le cas échéant, d'un devis ou d'une proposition précisant le périmètre, les livrables, les délais et les conditions financières. La commande devient ferme après acceptation selon les modalités prévues au devis.</p><h3>Article 3 — Evolsphere Editions (contenus numériques)</h3><p>Le Catalogue 1 (5 Tomes) est proposé au tarif de 199 € HT, payable en une fois par carte bancaire via la plateforme sécurisée Stripe. L'accès porte sur une consultation en ligne ; une version imprimable peut être proposée en option. Les Tomes non encore publiés au moment de l'achat sont livrés au fil de leur parution, sans date de livraison garantie contractuellement. Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques non fournis sur support matériel dont l'exécution a commencé après accord exprès du client et renoncement à son droit de rétractation.</p><h3>Article 4 — Facturation et paiement</h3><p>Les prix sont exprimés en euros hors taxes. Pour les Prestations, les conditions de prix, d'acompte, d'échéance et de pénalités de retard sont celles précisées sur le devis et la facture. Pour Evolsphere Editions, le paiement est exigible immédiatement à la commande via Stripe.</p><h3>Article 5 — Responsabilité et assurance professionnelle</h3><p>Evolsphere est tenue à une obligation de moyens dans le cadre des Prestations de conseil et de pilotage ; sa responsabilité contractuelle, pour une même mission, est limitée au montant des honoraires perçus au titre de cette mission. Les Catalogues Evolsphere Editions sont fournis à titre informatif et pédagogique et ne constituent pas un conseil personnalisé. L'activité est couverte par une assurance responsabilité civile professionnelle souscrite auprès de <em>[Assureur — coordonnées à compléter]</em>, garantissant les conséquences pécuniaires de la responsabilité civile professionnelle sur le territoire français.</p><h3>Article 6 — Confidentialité</h3><p>Chaque partie s'engage à garder confidentielles les informations non publiques échangées à l'occasion d'une Prestation, pendant la durée de celle-ci et pour une durée de deux ans à son issue, sauf accord contraire ou obligation légale de divulgation.</p><h3>Article 7 — Force majeure</h3><p>Aucune des parties ne pourra être tenue responsable d'un manquement à ses obligations résultant d'un cas de force majeure au sens de l'article 1218 du Code civil.</p><h3>Article 8 — Médiation de la consommation</h3><p>Conformément aux articles L616-1 et suivants du Code de la consommation, tout client consommateur peut recourir gratuitement à un médiateur de la consommation en cas de litige non résolu à l'amiable. Le médiateur compétent sera précisé sur cette page une fois désigné.</p><h3>Article 9 — Droit applicable et litiges</h3><p>Les présentes CGV sont soumises au droit français. Tout litige relève, à défaut de résolution amiable ou de médiation, des tribunaux compétents du ressort de Cannes.</p>`},
+      cookies:{title:'Cookies et traceurs',html:`<h3>Principe</h3><p>Le site evolsphere.com utilise uniquement les traceurs strictement nécessaires à son fonctionnement (préférence de langue, session de paiement Stripe lors d'un achat).</p><p>Ces traceurs sont exemptés de consentement préalable au sens des recommandations de la CNIL, car strictement nécessaires à la fourniture du service demandé par l'utilisateur. Aucune bannière de consentement n'est donc affichée à ce stade.</p><p>Aucun cookie publicitaire, de mesure d'audience ou de réseau social n'est déposé à ce jour. Si de tels outils sont ajoutés ultérieurement, un bandeau de consentement préalable et un mécanisme de retrait seront mis en place conformément à la réglementation applicable.</p>`}
     },
     en:{
-      legal:{title:'Legal notice',html:`<h3>Publisher</h3><p><strong>Evolsphere</strong><br>Responsible: Raphaël de Bruijn<br>Email: raphaeldebruijn@gmail.com<br>Phone: +33 6 73 97 75 76<br>Website: evolsphere.com</p><p>Official company details (legal form, registered address, SIREN/SIRET, VAT number, publication director and hosting provider) must be completed before production.</p><h3>Intellectual property</h3><p>Site content is protected by applicable intellectual property rules. Unauthorized reproduction is prohibited.</p>`},
-      privacy:{title:'Privacy policy',html:`<h3>Controller and purpose</h3><p>Evolsphere processes information submitted through the form to respond to contact and quote requests, manage the relationship and comply with legal obligations where applicable.</p><h3>Data collected</h3><p>Name, company, email, phone (optional) and project description.</p><h3>Retention and recipients</h3><p>Data is retained only for as long as necessary for the stated purpose, then deleted or archived where required by law. Access is limited to authorized persons and necessary technical providers.</p><h3>Your rights</h3><p>You may request access, rectification, deletion, restriction or object where legally applicable. Contact: raphaeldebruijn@gmail.com.</p><p>This notice must be aligned with the actual legal basis, tools and retention periods before publication.</p>`},
-      cgv:{title:'Terms & Conditions',html:`<h3>Scope</h3><p>These terms govern consulting, project leadership, interim management, diagnostic and support services provided by Evolsphere.</p><h3>Quote and order</h3><p>Each service is covered by a quote or proposal defining scope, deliverables, timing and fees. The order becomes binding once accepted under the conditions stated in the proposal.</p><h3>Billing and payment</h3><p>Pricing, deposits, payment deadlines and late-payment terms are those stated in the quote and invoice.</p><h3>Liability</h3><p>Evolsphere provides consulting and project leadership services under an obligation of means.</p><p><strong>Legal review is recommended</strong> before publication, especially for IP, confidentiality, liability, termination and governing law.</p>`},
-      cookies:{title:'Cookies and trackers',html:`<h3>Principle</h3><p>The site uses only trackers necessary for operation unless additional tools requiring consent are activated.</p><p>If analytics, advertising, social or other consent-based trackers are added, prior consent and an equally simple withdrawal mechanism must be implemented.</p><p>Language preferences and strictly necessary trackers may be subject to a different regime depending on their configuration.</p>`}
+      legal:{title:'Legal notice',html:`<h3>Publisher</h3><p><strong>Evolsphere</strong> is a trade name operated by <strong>PRACTICE RETAIL</strong>, a French simplified joint-stock company with a single shareholder (SASU) with share capital of €1,000.<br>Registered office: 68 Boulevard Alexandre III, 06400 Cannes, France.<br>Cannes Trade Register (RCS) No. 819 507 963 — SIREN 819 507 963.<br>Intra-EU VAT number: FR22819507963.<br>Chairman: Raphaël de Bruijn.<br>Business: strategy, management and organization consulting.<br>Email: raphaeldebruijn@gmail.com<br>Phone: +33 6 73 97 75 76<br>Website: evolsphere.com</p><h3>Publication director</h3><p>Raphaël de Bruijn, as Chairman of PRACTICE RETAIL.</p><h3>Hosting</h3><p>Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Email: privacy@vercel.com.</p><h3>Intellectual property</h3><p>All site content (text, visuals, the Evolsphere method, and the Evolsphere Editions Tomes) is protected by intellectual property law. Any reproduction or representation, in whole or in part, without prior authorization is prohibited.</p>`},
+      privacy:{title:'Privacy policy',html:`<h3>Data controller</h3><p>PRACTICE RETAIL (Evolsphere), a SASU with share capital of €1,000, Cannes Trade Register 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes — represented by Raphaël de Bruijn. No Data Protection Officer (DPO) is appointed, as this is not mandatory given the nature of the activity; any question regarding your data can be sent directly to the data controller.</p><h3>Purpose and legal basis</h3><p>Contact/quote form: processing based on your <strong>consent</strong> (checkbox) to respond to your request. Purchase on Evolsphere Editions: processing based on <strong>contract performance</strong>. Accounting and tax obligations: processing based on <strong>legal obligation</strong>.</p><h3>Data collected</h3><p>Name, company, email, phone (optional), project description; and for purchases, billing data processed directly by our payment provider Stripe (Evolsphere never stores card data). No special category data under GDPR is collected. No automated decision-making or profiling is carried out on this data.</p><h3>Recipients and processors</h3><p>Data is accessible only to Raphaël de Bruijn and to the technical processors necessary for the site to operate: Stripe (payment) and Vercel Inc. (hosting). Stripe and Vercel are US companies; the resulting transfers of data outside the European Union are governed by their adherence to the <strong>EU-US Data Privacy Framework</strong> and/or standard contractual clauses, in accordance with Article 46 of the GDPR.</p><h3>Retention periods</h3><p>Contact/quote requests with no resulting business relationship: 3 years from the last contact. Data linked to an engagement or purchase: duration of the contractual relationship, then archived for 10 years under French accounting obligations (Article L123-22 of the French Commercial Code). Data is deleted or anonymized thereafter.</p><h3>Your rights</h3><p>Under GDPR, you may request access, rectification, deletion, restriction of processing, data portability, or object to processing based on consent or legitimate interest. You may withdraw consent at any time, without retroactive effect. To exercise your rights: raphaeldebruijn@gmail.com. You may also lodge a complaint with the CNIL (www.cnil.fr) or your local supervisory authority.</p>`},
+      cgv:{title:'Terms & Conditions',html:`<h3>Article 1 — Scope</h3><p>These terms apply to all consulting, project leadership, interim management and diagnostic services ("Services") as well as to the sale of digital content in the <strong>Evolsphere Editions</strong> collection ("Catalogues"), provided by PRACTICE RETAIL (Evolsphere), a SASU with share capital of €1,000, Cannes Trade Register 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes.</p><h3>Article 2 — Consulting services</h3><p>Each Service is preceded by a discussion and, where applicable, a quote or proposal defining scope, deliverables, timing and fees. The order becomes binding once accepted under the conditions stated in the quote.</p><h3>Article 3 — Evolsphere Editions (digital content)</h3><p>Catalogue 1 (5 Tomes) is offered at €199 excl. VAT, payable in full by card via the secure Stripe platform. Access is for online reading; a printable version may be offered as an option. Tomes not yet published at the time of purchase are delivered as they are released, with no contractually guaranteed delivery date. Under French Consumer Code Article L221-28, the right of withdrawal does not apply to digital content not supplied on a physical medium once performance has begun with the customer's express prior agreement and waiver of that right.</p><h3>Article 4 — Billing and payment</h3><p>Prices are in euros, excluding tax. For Services, pricing, deposit, payment terms and late-payment penalties are those stated in the quote and invoice. For Evolsphere Editions, payment is due immediately upon order via Stripe.</p><h3>Article 5 — Liability and professional insurance</h3><p>Evolsphere provides consulting and project leadership services under an obligation of means; its contractual liability for any given engagement is capped at the fees received for that engagement. Evolsphere Editions Catalogues are provided for informational and educational purposes and do not constitute personalized advice. The business is covered by professional liability insurance taken out with <em>[Insurer — details to be added]</em>, covering the financial consequences of professional civil liability within French territory.</p><h3>Article 6 — Confidentiality</h3><p>Each party agrees to keep confidential any non-public information exchanged in the course of a Service, for its duration and for two years thereafter, unless otherwise agreed or legally required to disclose.</p><h3>Article 7 — Force majeure</h3><p>Neither party shall be held liable for a failure to perform its obligations resulting from a force majeure event within the meaning of Article 1218 of the French Civil Code.</p><h3>Article 8 — Consumer mediation</h3><p>In accordance with Articles L616-1 et seq. of the French Consumer Code, any consumer client may resort free of charge to a consumer mediator in the event of an unresolved dispute. The competent mediator will be specified on this page once appointed.</p><h3>Article 9 — Governing law and disputes</h3><p>These terms are governed by French law. Absent an amicable resolution or mediation, disputes fall under the jurisdiction of the courts of Cannes.</p>`},
+      cookies:{title:'Cookies and trackers',html:`<h3>Principle</h3><p>evolsphere.com uses only trackers strictly necessary for the site to function (language preference, Stripe payment session during a purchase).</p><p>Under CNIL (French data protection authority) guidance, these trackers are exempt from prior consent as they are strictly necessary to provide the service requested by the user. No consent banner is therefore displayed at this stage.</p><p>No advertising, analytics or social network cookies are currently deposited. If such tools are added later, a prior consent banner and a withdrawal mechanism will be implemented in line with applicable regulations.</p>`}
     }
   };
   function openLegal(type){
