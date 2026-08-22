@@ -429,23 +429,49 @@
     font-size:11px; letter-spacing:0.25em; text-transform:uppercase;
     color: var(--teal); margin-bottom:10px;
   }
+  .method-explorer-hint{
+    font-size:12px; color: var(--ink-dim); margin-bottom:12px;
+  }
   .method-explorer{
     display:grid; grid-template-columns:1fr 1fr; gap:8px;
-    margin:14px 0 4px;
+    margin:4px 0;
   }
   .method-chip-anim{
+    position:relative;
     display:flex; flex-direction:column; gap:2px;
     padding:9px 12px; border-radius:10px;
     background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
     opacity:0; transform:translateX(-10px);
-    animation: methodChipIn 0.45s ease forwards;
+    animation: methodChipIn 0.35s ease forwards;
+    cursor:help;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .method-chip-anim:hover, .method-chip-anim:focus{
+    border-color: rgba(41,240,208,0.4); background: rgba(41,240,208,0.06); outline:none;
   }
   @keyframes methodChipIn{ to{ opacity:1; transform:translateX(0); } }
   .method-chip-name{ font-weight:700; font-size:13px; color:var(--ink); }
   .method-chip-tag{ font-size:10.5px; color:var(--ink-dim); }
-  .method-explorer-note{ font-size:12.5px; color:var(--ink-dim); line-height:1.6; margin-top:12px; }
+  .method-tooltip{
+    position:absolute; left:0; top:calc(100% + 6px); z-index:60;
+    width:230px; max-width:70vw;
+    background: linear-gradient(160deg, #1c1130, #0e0818);
+    border:1px solid rgba(41,240,208,0.35);
+    border-radius:12px; padding:12px 14px;
+    font-size:11.5px; line-height:1.5; color: var(--ink-dim);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    opacity:0; visibility:hidden; transform:translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    pointer-events:none;
+  }
+  .method-chip-anim:hover .method-tooltip,
+  .method-chip-anim:focus .method-tooltip{
+    opacity:1; visibility:visible; transform:translateY(0);
+  }
   @media (max-width:640px){
     .method-explorer{ grid-template-columns:1fr; }
+    .method-tooltip{ position:static; width:100%; max-width:100%; margin-top:8px; opacity:1; visibility:visible; transform:none; display:none; pointer-events:auto; }
+    .method-chip-anim.toc-open .method-tooltip{ display:block; }
   }
   .test-progress{
     display:flex; gap:6px; margin-bottom:22px;
@@ -2596,47 +2622,68 @@ try{
     });
   }
 
-  const methodExplorerList = [
-    { name:'Waterfall', tag:'Séquentiel' },
-    { name:'PMP / PMI', tag:'Gouvernance' },
-    { name:'PRINCE2', tag:'Gouvernance structurée' },
-    { name:'Scrum', tag:'Itératif-incrémental' },
-    { name:'Kanban', tag:'Flux continu' },
-    { name:'Itératif', tag:'Cycles courts' },
-    { name:'XP (Extreme Programming)', tag:'Pratiques agiles techniques' },
-    { name:'Rolling Wave', tag:'Planification par vagues' },
-    { name:'SAFe', tag:'Agile à l\'échelle' },
-    { name:'LeSS', tag:'Scrum à grande échelle' },
-    { name:'DSDM', tag:'Agile piloté par la valeur' },
-    { name:'Hybride', tag:'Sur-mesure' }
-  ];
-  let methodExplorerTimer = null;
+  const methodExplorerData = {
+    fr: [
+      { name:'Waterfall', tag:'Séquentiel', principles:'Phases strictement séquentielles : cadrage, conception, réalisation, tests, déploiement. Chaque phase se termine avant que la suivante démarre.' },
+      { name:'PMP / PMI', tag:'Gouvernance', principles:'Référentiel de gouvernance du PMI : 5 groupes de processus, 10 domaines de connaissance, forte formalisation de la planification et du contrôle.' },
+      { name:'PRINCE2', tag:'Gouvernance structurée', principles:'Méthode structurée par processus et par thèmes, avec des points de décision formels (Business Case) validés à chaque étape.' },
+      { name:'Scrum', tag:'Itératif-incrémental', principles:'Sprints courts (2 à 4 semaines), rôles définis (Product Owner, Scrum Master, équipe), livraison incrémentale de valeur.' },
+      { name:'Kanban', tag:'Flux continu', principles:'Flux de travail visualisé sur un tableau, limitation du travail en cours (WIP), amélioration continue sans itérations fixes.' },
+      { name:'Itératif', tag:'Cycles courts', principles:'Cycles de développement répétés : chaque itération affine le produit à partir des retours de la précédente.' },
+      { name:'XP (Extreme Programming)', tag:'Pratiques agiles techniques', principles:'Pratiques d\'ingénierie agiles : programmation en binôme, intégration continue, tests automatisés, livraisons fréquentes.' },
+      { name:'Rolling Wave', tag:'Planification par vagues', principles:'Planification détaillée à court terme, vision macro pour le reste — le détail se précise au fur et à mesure du projet.' },
+      { name:'SAFe', tag:'Agile à l\'échelle', principles:'Cadre Agile à l\'échelle pour synchroniser plusieurs équipes autour d\'objectifs communs (Program Increments).' },
+      { name:'LeSS', tag:'Scrum à grande échelle', principles:'Large Scale Scrum : applique les principes Scrum à plusieurs équipes travaillant sur un seul backlog produit.' },
+      { name:'DSDM', tag:'Agile piloté par la valeur', principles:'Priorisation par la valeur métier (méthode MoSCoW), délais et budget fixes, périmètre ajustable en conséquence.' },
+      { name:'Hybride', tag:'Sur-mesure', principles:'Combine plusieurs approches : gouvernance formelle pour les jalons clés, exécution agile pour le terrain.' }
+    ],
+    en: [
+      { name:'Waterfall', tag:'Sequential', principles:'Strictly sequential phases: scoping, design, build, testing, deployment. Each phase completes before the next begins.' },
+      { name:'PMP / PMI', tag:'Governance', principles:'PMI governance framework: 5 process groups, 10 knowledge areas, strong formalization of planning and control.' },
+      { name:'PRINCE2', tag:'Structured governance', principles:'Process- and theme-based structured method, with formal decision points (Business Case) validated at each stage.' },
+      { name:'Scrum', tag:'Iterative-incremental', principles:'Short sprints (2 to 4 weeks), defined roles (Product Owner, Scrum Master, team), incremental delivery of value.' },
+      { name:'Kanban', tag:'Continuous flow', principles:'Workflow visualized on a board, work-in-progress (WIP) limits, continuous improvement with no fixed iterations.' },
+      { name:'Iterative', tag:'Short cycles', principles:'Repeated development cycles: each iteration refines the product based on feedback from the previous one.' },
+      { name:'XP (Extreme Programming)', tag:'Agile engineering practices', principles:'Agile engineering practices: pair programming, continuous integration, automated testing, frequent releases.' },
+      { name:'Rolling Wave', tag:'Wave planning', principles:'Detailed planning for the near term, high-level view for the rest — detail is refined as the project progresses.' },
+      { name:'SAFe', tag:'Scaled Agile', principles:'Scaled Agile framework to synchronize multiple teams around shared objectives (Program Increments).' },
+      { name:'LeSS', tag:'Large Scale Scrum', principles:'Large Scale Scrum: applies Scrum principles to multiple teams working from a single product backlog.' },
+      { name:'DSDM', tag:'Value-driven Agile', principles:'Prioritization by business value (MoSCoW method), fixed time and budget, scope adjusted accordingly.' },
+      { name:'Hybrid', tag:'Tailored', principles:'Combines several approaches: formal governance for key milestones, agile execution on the ground.' }
+    ]
+  };
 
   function renderMethodExplorer(){
+    const list = methodExplorerData[currentLang];
     testCard.innerHTML = `
       <button class="modal-close" id="closeTestBtn">✕</button>
       <div class="test-eyebrow" data-i18n="methodIntroEyebrow">${currentLang==='fr' ? 'PANORAMA DES MÉTHODES' : 'METHODS OVERVIEW'}</div>
+      <div class="method-explorer-hint">${currentLang==='fr' ? 'Survolez une méthode pour voir ses principes clés.' : 'Hover a method to see its key principles.'}</div>
       <div class="method-explorer">
-        ${methodExplorerList.map((m,i)=>`
-          <div class="method-chip-anim" style="animation-delay:${i*0.28}s">
+        ${list.map((m,i)=>`
+          <div class="method-chip-anim" style="animation-delay:${i*0.05}s" tabindex="0">
             <span class="method-chip-name">${m.name}</span>
             <span class="method-chip-tag">${m.tag}</span>
+            <div class="method-tooltip">${m.principles}</div>
           </div>
         `).join('')}
       </div>
-      <div class="method-explorer-note">${currentLang==='fr' ? "Waterfall, PMP, Scrum, SAFe, Rolling Wave, hybride… le diagnostic identifie la méthode adaptée à votre contexte." : 'Waterfall, PMP, Scrum, SAFe, Rolling Wave, hybrid… the diagnosis identifies the method that fits your context.'}</div>
-      <button class="btn btn-ghost" id="skipExplorerBtn" style="margin-top:16px;">${currentLang==='fr' ? 'Commencer le diagnostic →' : 'Start the diagnosis →'}</button>
+      <button class="btn btn-primary" id="skipExplorerBtn" style="margin-top:18px;">${currentLang==='fr' ? 'Lancer le questionnaire →' : 'Start the questionnaire →'}</button>
     `;
     testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
     testCard.querySelector('#skipExplorerBtn').addEventListener('click', ()=>{
-      clearTimeout(methodExplorerTimer);
       currentQ = 0; Object.keys(scores).forEach(k=> scores[k]=0);
       renderQuestion();
     });
-    methodExplorerTimer = setTimeout(()=>{
-      currentQ = 0; Object.keys(scores).forEach(k=> scores[k]=0);
-      renderQuestion();
-    }, 9800);
+    testCard.querySelectorAll('.method-chip-anim').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        if(window.innerWidth<=640){
+          const wasOpen = el.classList.contains('toc-open');
+          testCard.querySelectorAll('.method-chip-anim.toc-open').forEach(o=>o.classList.remove('toc-open'));
+          if(!wasOpen) el.classList.add('toc-open');
+        }
+      });
+    });
   }
 
   function openMethodExplorer(){
@@ -2644,7 +2691,6 @@ try{
     renderMethodExplorer();
   }
   function closeTest(){
-    clearTimeout(methodExplorerTimer);
     testModal.classList.remove('open');
   }
 
