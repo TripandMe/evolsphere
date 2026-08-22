@@ -429,6 +429,24 @@
     font-size:11px; letter-spacing:0.25em; text-transform:uppercase;
     color: var(--teal); margin-bottom:10px;
   }
+  .method-explorer{
+    display:grid; grid-template-columns:1fr 1fr; gap:8px;
+    margin:14px 0 4px;
+  }
+  .method-chip-anim{
+    display:flex; flex-direction:column; gap:2px;
+    padding:9px 12px; border-radius:10px;
+    background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+    opacity:0; transform:translateX(-10px);
+    animation: methodChipIn 0.45s ease forwards;
+  }
+  @keyframes methodChipIn{ to{ opacity:1; transform:translateX(0); } }
+  .method-chip-name{ font-weight:700; font-size:13px; color:var(--ink); }
+  .method-chip-tag{ font-size:10.5px; color:var(--ink-dim); }
+  .method-explorer-note{ font-size:12.5px; color:var(--ink-dim); line-height:1.6; margin-top:12px; }
+  @media (max-width:640px){
+    .method-explorer{ grid-template-columns:1fr; }
+  }
   .test-progress{
     display:flex; gap:6px; margin-bottom:22px;
   }
@@ -1112,10 +1130,9 @@
   </h1>
   <p class="sub" data-i18n="sub">Transformation digitale, ERP, WMS, achats, finance, organisation et pilotage de projets critiques.</p>
   <div class="cta-row cta-main-row">
-    <button class="btn btn-primary" id="openTestBtn" data-i18n="testBtn">Macro Diag — Méthode gratuite</button>
+    <button class="btn btn-primary" id="openTestBtn" data-i18n="testBtn">Challenger ma méthode projet — 3 min</button>
     <button class="btn btn-ghost" id="contactBtnMain" data-i18n="contactBtn">Echangeons</button>
     <button class="btn btn-editions" id="openTomesBtn" data-i18n="tomesBtn">Evolsphere Editions</button>
-    <a class="btn btn-ghost whatsapp-short" id="whatsappBtn" href="https://wa.me/33673977576?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20sur%20un%20projet" target="_blank" rel="noopener" data-i18n="whatsappBtn">WhatsApp</a>
   </div>
   <div class="offer-control-note" data-i18n="controlNote">L’offre qui vous permet de garder le contrôle et le rythme : animation des Daily stand-up, weekly et reporting.</div>
   <div class="cta-note" data-i18n="ctaNote">Réponse sous 24h. Sans exception.</div>
@@ -2060,7 +2077,7 @@ try{
       chipLegal: "Juridique & contrats",
       chipAchats: "Achats",
       chipOrga: "Organisation",
-      testBtn: "Macro Diag — Méthode gratuite",
+      testBtn: "Challenger ma méthode projet — 3 min",
       contactBtn: "Echangeons",
       contactSubject: "Echangeons sur votre projet",
       whatsappBtn: "WhatsApp",
@@ -2263,7 +2280,7 @@ try{
       chipLegal: "Legal & contracts",
       chipAchats: "Procurement",
       chipOrga: "Organization",
-      testBtn: "Free Method Macro-Diagnosis",
+      testBtn: "Challenge my project method — 3 min",
       contactBtn: "Let's talk",
       contactSubject: "Let's discuss your project",
       whatsappBtn: "WhatsApp",
@@ -2385,32 +2402,51 @@ try{
         {
           q: "Le périmètre de votre projet est-il déjà bien défini ?",
           options: [
-            { label: "Oui, le cahier des charges est stable dès le départ.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "Non, il va s'affiner au fur et à mesure.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "En partie — le cadre est posé, les détails évoluent.", score: { pmp: 1, agile: 1, hybride: 2 } }
+            { label: "Oui, le cahier des charges est stable dès le départ.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Non, il va s'affiner au fur et à mesure.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 1 } },
+            { label: "En partie — le cadre est posé, les détails évoluent.", score: { pmp: 1, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } }
           ]
         },
         {
           q: "Quel niveau de reporting attend votre direction ?",
           options: [
-            { label: "Un suivi formel, jalons et livrables documentés.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "Des points courts et réguliers, priorité à l'avancement réel.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "Un cadre rassurant pour la direction, souple pour l'équipe.", score: { pmp: 1, agile: 1, hybride: 2 } }
+            { label: "Un suivi formel, jalons et livrables documentés.", score: { pmp: 2, agile: 0, hybride: 1, safe: 1, rollingwave: 0 } },
+            { label: "Des points courts et réguliers, priorité à l'avancement réel.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Un cadre rassurant pour la direction, souple pour l'équipe.", score: { pmp: 1, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } }
           ]
         },
         {
           q: "À quelle vitesse le contexte du projet peut-il changer ?",
           options: [
-            { label: "Rarement — l'environnement est stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "Souvent — le marché ou les retours utilisateurs bougent vite.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "Certaines parties bougent, d'autres non.", score: { pmp: 1, agile: 1, hybride: 2 } }
+            { label: "Rarement — l'environnement est stable.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Souvent — le marché ou les retours utilisateurs bougent vite.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Certaines parties bougent, d'autres non.", score: { pmp: 1, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "Quelle est la portée géographique et organisationnelle du projet ?",
+          options: [
+            { label: "Local — un seul site, une seule équipe.", score: { pmp: 0, agile: 1, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Multisite — plusieurs sites ou entités, même pays.", score: { pmp: 0, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
+            { label: "International — plusieurs pays ou filiales à coordonner.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "Quel est l'horizon prévu de mise en production (« go-live ») ?",
+          options: [
+            { label: "Moins d'1 mois.", score: { pmp: 0, agile: 3, hybride: 0, safe: 0, rollingwave: 0 } },
+            { label: "Environ 6 mois.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
+            { label: "Environ 1 an.", score: { pmp: 2, agile: 0, hybride: 1, safe: 1, rollingwave: 0 } },
+            { label: "2 ans ou plus, avec de l'incertitude sur le détail.", score: { pmp: 2, agile: 0, hybride: 0, safe: 0, rollingwave: 3 } }
           ]
         }
       ],
       results: {
-        pmp: { tag: "Méthode recommandée", title: "PMP", desc: "Votre contexte demande de la prévisibilité : périmètre stable, jalons clairs, gouvernance solide. Le cadre PMP structure le projet de bout en bout et sécurise les décisions à chaque étape." },
-        agile: { tag: "Méthode recommandée", title: "Agile", desc: "Votre projet évolue vite et a besoin de s'adapter en continu. L'approche Agile priorise la valeur livrée rapidement, avec des itérations courtes et des ajustements permanents." },
-        hybride: { tag: "Méthode recommandée", title: "Hybride", desc: "Vous avez besoin des deux : une gouvernance qui rassure la direction, et une exécution assez souple pour s'adapter au terrain. Un cadre hybride combine les deux logiques sans sacrifier ni l'un ni l'autre." }
+        pmp: { tag: "Méthode recommandée", title: "PMP / Waterfall", desc: "Votre contexte demande de la prévisibilité : périmètre stable, jalons clairs, gouvernance solide. Un cadre séquentiel type PMP/Waterfall structure le projet de bout en bout et sécurise les décisions à chaque étape." },
+        agile: { tag: "Méthode recommandée", title: "Agile / Scrum", desc: "Votre projet évolue vite et a besoin de s'adapter en continu. L'approche Agile/Scrum priorise la valeur livrée rapidement, avec des itérations courtes et des ajustements permanents." },
+        hybride: { tag: "Méthode recommandée", title: "Hybride", desc: "Vous avez besoin des deux : une gouvernance qui rassure la direction, et une exécution assez souple pour s'adapter au terrain. Un cadre hybride combine les deux logiques sans sacrifier ni l'un ni l'autre." },
+        safe: { tag: "Méthode recommandée", title: "Agile à l'échelle (SAFe)", desc: "Plusieurs équipes, plusieurs sites ou entités à synchroniser : un cadre scalé type SAFe structure la coordination inter-équipes sans sacrifier l'agilité locale de chacune." },
+        rollingwave: { tag: "Méthode recommandée", title: "Rolling Wave Planning", desc: "Horizon long, visibilité limitée au-delà de quelques mois : un planning en vagues (Rolling Wave) permet de détailler précisément le court terme sans figer prématurément ce qui reste incertain." }
       },
       questionLabel: (i,n)=>`Test de méthode — question ${i} / ${n}`,
       resultCta: (title)=>`Mon projet - profil ${title}`,
@@ -2422,32 +2458,51 @@ try{
         {
           q: "Is your project's scope already clearly defined?",
           options: [
-            { label: "Yes, the specifications are stable from the start.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "No, it will get refined along the way.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "Partly — the frame is set, details keep evolving.", score: { pmp: 1, agile: 1, hybride: 2 } }
+            { label: "Yes, the specifications are stable from the start.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "No, it will get refined along the way.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 1 } },
+            { label: "Partly — the frame is set, details keep evolving.", score: { pmp: 1, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } }
           ]
         },
         {
           q: "What level of reporting does your leadership expect?",
           options: [
-            { label: "Formal tracking, documented milestones and deliverables.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "Short, regular check-ins, focused on real progress.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "A reassuring frame for leadership, flexible for the team.", score: { pmp: 1, agile: 1, hybride: 2 } }
+            { label: "Formal tracking, documented milestones and deliverables.", score: { pmp: 2, agile: 0, hybride: 1, safe: 1, rollingwave: 0 } },
+            { label: "Short, regular check-ins, focused on real progress.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "A reassuring frame for leadership, flexible for the team.", score: { pmp: 1, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } }
           ]
         },
         {
           q: "How fast can the project's context change?",
           options: [
-            { label: "Rarely — the environment is stable.", score: { pmp: 2, agile: 0, hybride: 1 } },
-            { label: "Often — the market or user feedback moves fast.", score: { pmp: 0, agile: 2, hybride: 1 } },
-            { label: "Some parts move, others don't.", score: { pmp: 1, agile: 1, hybride: 2 } }
+            { label: "Rarely — the environment is stable.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Often — the market or user feedback moves fast.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Some parts move, others don't.", score: { pmp: 1, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "What is the geographic and organizational scope of the project?",
+          options: [
+            { label: "Local — a single site, a single team.", score: { pmp: 0, agile: 1, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Multi-site — several sites or entities, same country.", score: { pmp: 0, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
+            { label: "International — several countries or subsidiaries to coordinate.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "What's the expected go-live horizon?",
+          options: [
+            { label: "Less than 1 month.", score: { pmp: 0, agile: 3, hybride: 0, safe: 0, rollingwave: 0 } },
+            { label: "About 6 months.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
+            { label: "About 1 year.", score: { pmp: 2, agile: 0, hybride: 1, safe: 1, rollingwave: 0 } },
+            { label: "2+ years, with uncertainty on the details.", score: { pmp: 2, agile: 0, hybride: 0, safe: 0, rollingwave: 3 } }
           ]
         }
       ],
       results: {
-        pmp: { tag: "Recommended method", title: "PMP", desc: "Your context calls for predictability: stable scope, clear milestones, solid governance. The PMP framework structures the project end to end and secures decisions at every stage." },
-        agile: { tag: "Recommended method", title: "Agile", desc: "Your project moves fast and needs to adapt continuously. Agile prioritizes delivering value quickly, with short iterations and constant adjustments." },
-        hybride: { tag: "Recommended method", title: "Hybrid", desc: "You need both: governance that reassures leadership, and execution flexible enough to adapt on the ground. A hybrid framework combines both logics without sacrificing either." }
+        pmp: { tag: "Recommended method", title: "PMP / Waterfall", desc: "Your context calls for predictability: stable scope, clear milestones, solid governance. A sequential PMP/Waterfall framework structures the project end to end and secures decisions at every stage." },
+        agile: { tag: "Recommended method", title: "Agile / Scrum", desc: "Your project moves fast and needs to adapt continuously. Agile/Scrum prioritizes delivering value quickly, with short iterations and constant adjustments." },
+        hybride: { tag: "Recommended method", title: "Hybrid", desc: "You need both: governance that reassures leadership, and execution flexible enough to adapt on the ground. A hybrid framework combines both logics without sacrificing either." },
+        safe: { tag: "Recommended method", title: "Scaled Agile (SAFe)", desc: "Several teams, several sites or entities to synchronize: a scaled framework such as SAFe structures cross-team coordination without sacrificing each team's local agility." },
+        rollingwave: { tag: "Recommended method", title: "Rolling Wave Planning", desc: "Long horizon, limited visibility beyond a few months: Rolling Wave planning lets you detail the near term precisely without prematurely locking in what remains uncertain." }
       },
       questionLabel: (i,n)=>`Method test — question ${i} / ${n}`,
       resultCta: (title)=>`My project - ${title} profile`,
@@ -2484,7 +2539,7 @@ try{
 
   // ---------- METHOD TEST (PMP / Agile / Hybride) ----------
   let currentQ = 0;
-  const scores = { pmp: 0, agile: 0, hybride: 0 };
+  const scores = { pmp: 0, agile: 0, hybride: 0, safe: 0, rollingwave: 0 };
   const testModal = document.getElementById('testModal');
   const testCard = document.getElementById('testCard');
   const openTestBtn = document.getElementById('openTestBtn');
@@ -2505,9 +2560,7 @@ try{
     testCard.querySelectorAll('.test-option').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const opt = item.options[parseInt(btn.dataset.i,10)];
-        scores.pmp += opt.score.pmp;
-        scores.agile += opt.score.agile;
-        scores.hybride += opt.score.hybride;
+        Object.keys(scores).forEach(k=>{ scores[k] += (opt.score[k]||0); });
         currentQ++;
         if(currentQ < qd.questions.length){
           renderQuestion();
@@ -2521,9 +2574,10 @@ try{
 
   function renderResult(){
     const qd = quizData[currentLang];
-    let winner = 'hybride';
-    if(scores.pmp > scores.agile && scores.pmp > scores.hybride) winner = 'pmp';
-    else if(scores.agile > scores.pmp && scores.agile > scores.hybride) winner = 'agile';
+    let winner = 'hybride', best = -Infinity;
+    Object.keys(scores).forEach(k=>{
+      if(scores[k] > best){ best = scores[k]; winner = k; }
+    });
     const r = qd.results[winner];
     testCard.innerHTML = `
       <button class="modal-close" id="closeTestBtn">✕</button>
@@ -2537,17 +2591,64 @@ try{
     `;
     testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
     testCard.querySelector('#restartTestBtn').addEventListener('click', ()=>{
-      currentQ = 0; scores.pmp = 0; scores.agile = 0; scores.hybride = 0;
+      currentQ = 0; Object.keys(scores).forEach(k=> scores[k]=0);
       renderQuestion();
     });
   }
 
-  function openTest(){ openQuote(); }
+  const methodExplorerList = [
+    { name:'Waterfall', tag:'Séquentiel' },
+    { name:'PMP / PMI', tag:'Gouvernance' },
+    { name:'PRINCE2', tag:'Gouvernance structurée' },
+    { name:'Scrum', tag:'Itératif-incrémental' },
+    { name:'Kanban', tag:'Flux continu' },
+    { name:'Itératif', tag:'Cycles courts' },
+    { name:'XP (Extreme Programming)', tag:'Pratiques agiles techniques' },
+    { name:'Rolling Wave', tag:'Planification par vagues' },
+    { name:'SAFe', tag:'Agile à l\'échelle' },
+    { name:'LeSS', tag:'Scrum à grande échelle' },
+    { name:'DSDM', tag:'Agile piloté par la valeur' },
+    { name:'Hybride', tag:'Sur-mesure' }
+  ];
+  let methodExplorerTimer = null;
+
+  function renderMethodExplorer(){
+    testCard.innerHTML = `
+      <button class="modal-close" id="closeTestBtn">✕</button>
+      <div class="test-eyebrow" data-i18n="methodIntroEyebrow">${currentLang==='fr' ? 'PANORAMA DES MÉTHODES' : 'METHODS OVERVIEW'}</div>
+      <div class="method-explorer">
+        ${methodExplorerList.map((m,i)=>`
+          <div class="method-chip-anim" style="animation-delay:${i*0.28}s">
+            <span class="method-chip-name">${m.name}</span>
+            <span class="method-chip-tag">${m.tag}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="method-explorer-note">${currentLang==='fr' ? "Waterfall, PMP, Scrum, SAFe, Rolling Wave, hybride… le diagnostic identifie la méthode adaptée à votre contexte." : 'Waterfall, PMP, Scrum, SAFe, Rolling Wave, hybrid… the diagnosis identifies the method that fits your context.'}</div>
+      <button class="btn btn-ghost" id="skipExplorerBtn" style="margin-top:16px;">${currentLang==='fr' ? 'Commencer le diagnostic →' : 'Start the diagnosis →'}</button>
+    `;
+    testCard.querySelector('#closeTestBtn').addEventListener('click', closeTest);
+    testCard.querySelector('#skipExplorerBtn').addEventListener('click', ()=>{
+      clearTimeout(methodExplorerTimer);
+      currentQ = 0; Object.keys(scores).forEach(k=> scores[k]=0);
+      renderQuestion();
+    });
+    methodExplorerTimer = setTimeout(()=>{
+      currentQ = 0; Object.keys(scores).forEach(k=> scores[k]=0);
+      renderQuestion();
+    }, 9800);
+  }
+
+  function openMethodExplorer(){
+    testModal.classList.add('open');
+    renderMethodExplorer();
+  }
   function closeTest(){
+    clearTimeout(methodExplorerTimer);
     testModal.classList.remove('open');
   }
 
-  openTestBtn.addEventListener('click', openTest);
+  openTestBtn.addEventListener('click', openMethodExplorer);
   testModal.addEventListener('click', (e)=>{ if(e.target === testModal) closeTest(); });
   document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeTest(); });
 
@@ -2728,7 +2829,7 @@ try{
     });
 
     // reset quiz state so questions/results don't mix languages mid-flow
-    currentQ = 0; scores.pmp = 0; scores.agile = 0; scores.hybride = 0;
+    currentQ = 0; Object.keys(scores).forEach(k=> scores[k]=0);
     if(testModal.classList.contains('open')){
       renderQuestion();
     }
@@ -2824,10 +2925,7 @@ try{
 
 
   // ---------- QUOTE FORM ----------
-  contactBtnMain?.addEventListener('click',()=>{
-    const subject = encodeURIComponent(translations[currentLang].contactSubject || (currentLang==='fr'?'Echangeons sur votre projet':'Let\'s discuss your project'));
-    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=raphaeldebruijn@gmail.com&su='+subject,'_blank','noopener');
-  });
+  contactBtnMain?.addEventListener('click',()=>{ openQuote(); });
   const tomesModal=document.getElementById('tomesModal');
   const openTomesBtn=document.getElementById('openTomesBtn');
   const closeTomesBtn=document.getElementById('closeTomesBtn');
@@ -2859,29 +2957,59 @@ try{
     if(quoteModal){ quoteModal.classList.remove('open'); quoteModal.setAttribute('aria-hidden','true'); }
   }
   document.getElementById('controlQuoteBtn')?.addEventListener('click', openQuote);
-  document.getElementById('openTestBtn')?.addEventListener('click', openQuote);
   document.getElementById('finalCtaBtn')?.addEventListener('click', (e)=>{e.preventDefault();openQuote();});
   document.getElementById('stickyCtaBtn')?.addEventListener('click', (e)=>{e.preventDefault();openQuote();});
   closeQuoteBtn?.addEventListener('click', closeQuote);
   quoteModal?.addEventListener('click',(e)=>{if(e.target===quoteModal)closeQuote();});
 
-  quoteForm?.addEventListener('submit',(e)=>{
+  const WEB3FORMS_ACCESS_KEY = 'b90fdb0a-848c-4724-9d26-f8937f37264e';
+
+  quoteForm?.addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(!quoteForm.checkValidity()){ quoteForm.reportValidity(); return; }
-    const fd=new FormData(quoteForm);
-    const subject=currentLang==='fr' ? 'Demande de devis — Evolsphere' : 'Quote request — Evolsphere';
-    const body=(currentLang==='fr'
+    const fd = new FormData(quoteForm);
+    const subject = currentLang==='fr' ? 'Demande de devis — Evolsphere' : 'Quote request — Evolsphere';
+    const body = (currentLang==='fr'
       ? `Nom: ${fd.get('name')}\nEntreprise: ${fd.get('company')}\nEmail: ${fd.get('email')}\nTéléphone: ${fd.get('phone')||'-'}\n\nEnjeu / projet:\n${fd.get('need')}`
       : `Name: ${fd.get('name')}\nCompany: ${fd.get('company')}\nEmail: ${fd.get('email')}\nPhone: ${fd.get('phone')||'-'}\n\nChallenge / project:\n${fd.get('need')}`);
-    window.location.href=`mailto:raphaeldebruijn@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    formStatus.textContent=currentLang==='fr' ? 'Votre messagerie va s’ouvrir pour finaliser l’envoi.' : 'Your email application will open to complete the request.';
 
-    // Always show a manual fallback in case no mail client is configured
-    const fallbackBox = document.getElementById('formFallback');
-    const fallbackText = document.getElementById('fallbackText');
-    if(fallbackBox && fallbackText){
-      fallbackText.textContent = `${subject}\n\n${body}`;
-      fallbackBox.style.display = 'block';
+    const submitBtn = quoteForm.querySelector('button[type="submit"]');
+    const originalLabel = submitBtn ? submitBtn.textContent : '';
+    if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = currentLang==='fr' ? 'Envoi en cours…' : 'Sending…'; }
+
+    fd.append('access_key', WEB3FORMS_ACCESS_KEY);
+    fd.append('subject', subject);
+    fd.set('message', body);
+
+    try{
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method:'POST',
+        headers:{ 'Accept':'application/json' },
+        body: fd
+      });
+      const data = await res.json();
+      if(!res.ok || !data.success) throw new Error(data.message || 'Web3Forms error');
+
+      formStatus.textContent = currentLang==='fr'
+        ? 'Merci — votre demande a bien été envoyée. Réponse sous 24h.'
+        : 'Thank you — your request has been sent. Reply within 24h.';
+      quoteForm.reset();
+      const fallbackBox = document.getElementById('formFallback');
+      if(fallbackBox) fallbackBox.style.display = 'none';
+    }catch(err){
+      // Network / service failure only: fall back to mailto + manual copy
+      window.location.href=`mailto:raphaeldebruijn@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      formStatus.textContent = currentLang==='fr'
+        ? "L'envoi automatique a échoué — votre messagerie va s'ouvrir pour finaliser l'envoi."
+        : 'Automatic sending failed — your email application will open to complete the request.';
+      const fallbackBox = document.getElementById('formFallback');
+      const fallbackText = document.getElementById('fallbackText');
+      if(fallbackBox && fallbackText){
+        fallbackText.textContent = `${subject}\n\n${body}`;
+        fallbackBox.style.display = 'block';
+      }
+    }finally{
+      if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
     }
   });
   document.getElementById('copyFallbackBtn')?.addEventListener('click', async ()=>{
@@ -2900,13 +3028,13 @@ try{
   const legalCopy={
     fr:{
       legal:{title:'Mentions légales',html:`<h3>Éditeur</h3><p><strong>Evolsphere</strong> est un nom commercial exploité par <strong>PRACTICE RETAIL</strong>, Société par actions simplifiée à associé unique (SASU) au capital de 1 000 €.<br>Siège social : 68 Boulevard Alexandre III, 06400 Cannes, France.<br>RCS Cannes n° 819 507 963 — SIREN 819 507 963.<br>N° TVA intracommunautaire : FR22819507963.<br>Président : Raphaël de Bruijn.<br>Activité : conseil en stratégie, management, organisation.<br>Email : raphaeldebruijn@gmail.com<br>Téléphone : +33 6 73 97 75 76<br>Site : evolsphere.com</p><h3>Directeur de la publication</h3><p>Raphaël de Bruijn, en qualité de Président de PRACTICE RETAIL.</p><h3>Hébergement</h3><p>Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Email : privacy@vercel.com.</p><h3>Propriété intellectuelle</h3><p>L'ensemble des contenus du site (textes, visuels, méthode Evolsphere, Tomes de la collection Evolsphere Editions) est protégé par le droit de la propriété intellectuelle. Toute reproduction ou représentation, totale ou partielle, sans autorisation préalable est interdite.</p>`},
-      privacy:{title:'Politique de confidentialité',html:`<h3>Responsable de traitement</h3><p>PRACTICE RETAIL (Evolsphere), SASU au capital de 1 000 €, RCS Cannes 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes — représentée par Raphaël de Bruijn. Aucun délégué à la protection des données (DPO) n'est désigné, cette désignation n'étant pas obligatoire au regard de l'activité exercée ; toute question relative à vos données peut être adressée directement au responsable de traitement.</p><h3>Finalités et bases légales</h3><p>Formulaire de contact/devis : traitement fondé sur votre <strong>consentement</strong> (case à cocher) pour répondre à votre demande. Achat sur Evolsphere Editions : traitement fondé sur l'<strong>exécution du contrat</strong> de vente. Obligations comptables et fiscales : traitement fondé sur une <strong>obligation légale</strong>.</p><h3>Données collectées</h3><p>Nom, entreprise, email, téléphone (facultatif), description du besoin ; et pour un achat, les données de facturation traitées directement par notre prestataire de paiement Stripe (Evolsphere ne stocke aucune donnée bancaire). Aucune donnée sensible au sens du RGPD n'est collectée. Aucune décision automatisée ni profilage n'est réalisé à partir de ces données.</p><h3>Destinataires et sous-traitants</h3><p>Les données sont accessibles uniquement à Raphaël de Bruijn et aux sous-traitants techniques nécessaires au fonctionnement du site : Stripe (paiement) et Vercel Inc. (hébergement). Stripe et Vercel sont des sociétés américaines ; les transferts de données hors Union Européenne qui en résultent sont encadrés par leur adhésion au cadre <strong>EU-US Data Privacy Framework</strong> et/ou par des clauses contractuelles types, conformément à l'article 46 du RGPD.</p><h3>Durées de conservation</h3><p>Demande de contact/devis sans suite commerciale : 3 ans à compter du dernier contact. Données liées à une mission ou un achat : durée de la relation contractuelle, puis archivage pendant 10 ans conformément aux obligations comptables (article L123-22 du Code de commerce). Au-delà, les données sont supprimées ou anonymisées.</p><h3>Vos droits</h3><p>Conformément au RGPD, vous pouvez demander l'accès, la rectification, l'effacement, la limitation du traitement, la portabilité de vos données, ou vous opposer au traitement lorsque celui-ci repose sur le consentement ou l'intérêt légitime. Vous pouvez également retirer votre consentement à tout moment, sans effet rétroactif. Pour exercer vos droits : raphaeldebruijn@gmail.com. Vous disposez également du droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>`},
+      privacy:{title:'Politique de confidentialité',html:`<h3>Responsable de traitement</h3><p>PRACTICE RETAIL (Evolsphere), SASU au capital de 1 000 €, RCS Cannes 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes — représentée par Raphaël de Bruijn. Aucun délégué à la protection des données (DPO) n'est désigné, cette désignation n'étant pas obligatoire au regard de l'activité exercée ; toute question relative à vos données peut être adressée directement au responsable de traitement.</p><h3>Finalités et bases légales</h3><p>Formulaire de contact/devis : traitement fondé sur votre <strong>consentement</strong> (case à cocher) pour répondre à votre demande. Achat sur Evolsphere Editions : traitement fondé sur l'<strong>exécution du contrat</strong> de vente. Obligations comptables et fiscales : traitement fondé sur une <strong>obligation légale</strong>.</p><h3>Données collectées</h3><p>Nom, entreprise, email, téléphone (facultatif), description du besoin ; et pour un achat, les données de facturation traitées directement par notre prestataire de paiement Stripe (Evolsphere ne stocke aucune donnée bancaire). Aucune donnée sensible au sens du RGPD n'est collectée. Aucune décision automatisée ni profilage n'est réalisé à partir de ces données.</p><h3>Destinataires et sous-traitants</h3><p>Les données sont accessibles uniquement à Raphaël de Bruijn et aux sous-traitants techniques nécessaires au fonctionnement du site : Stripe (paiement), Vercel Inc. (hébergement) et Web3Forms (transmission du formulaire de contact/devis). Web3Forms héberge les données sur des serveurs AWS chiffrés au repos, conserve les soumissions 30 jours maximum avant suppression automatique, et ne revend ni ne partage les données avec des tiers publicitaires ; un accord de traitement des données (DPA) est disponible auprès de ce prestataire. Stripe, Vercel et Web3Forms sont des sociétés américaines ; les transferts de données hors Union Européenne qui en résultent sont encadrés par leur adhésion au cadre <strong>EU-US Data Privacy Framework</strong> et/ou par des clauses contractuelles types, conformément à l'article 46 du RGPD.</p><h3>Durées de conservation</h3><p>Demande de contact/devis sans suite commerciale : 3 ans à compter du dernier contact. Données liées à une mission ou un achat : durée de la relation contractuelle, puis archivage pendant 10 ans conformément aux obligations comptables (article L123-22 du Code de commerce). Au-delà, les données sont supprimées ou anonymisées.</p><h3>Vos droits</h3><p>Conformément au RGPD, vous pouvez demander l'accès, la rectification, l'effacement, la limitation du traitement, la portabilité de vos données, ou vous opposer au traitement lorsque celui-ci repose sur le consentement ou l'intérêt légitime. Vous pouvez également retirer votre consentement à tout moment, sans effet rétroactif. Pour exercer vos droits : raphaeldebruijn@gmail.com. Vous disposez également du droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>`},
       cgv:{title:'Conditions générales de vente',html:`<h3>Article 1 — Objet et champ d'application</h3><p>Les présentes conditions générales de vente s'appliquent à l'ensemble des prestations de conseil, pilotage de projet, management de transition et diagnostic (« Prestations ») ainsi qu'à la vente des contenus numériques de la collection <strong>Evolsphere Editions</strong> (« Catalogues »), proposées par PRACTICE RETAIL (Evolsphere), SASU au capital de 1 000 €, RCS Cannes 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes.</p><h3>Article 2 — Prestations de conseil</h3><p>Chaque Prestation fait l'objet d'un échange préalable puis, le cas échéant, d'un devis ou d'une proposition précisant le périmètre, les livrables, les délais et les conditions financières. La commande devient ferme après acceptation selon les modalités prévues au devis.</p><h3>Article 3 — Evolsphere Editions (contenus numériques)</h3><p>Le Catalogue 1 (5 Tomes) est proposé au tarif de 199 € HT, payable en une fois par carte bancaire via la plateforme sécurisée Stripe. L'accès porte sur une consultation en ligne ; une version imprimable peut être proposée en option. Les Tomes non encore publiés au moment de l'achat sont livrés au fil de leur parution, sans date de livraison garantie contractuellement. Chaque catalogue de la collection Evolsphere Editions peut être acquis et lu de manière indépendante ; un tarif préférentiel peut être proposé à l'achat de plusieurs catalogues, selon les conditions en vigueur au moment de la commande. Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique pas aux contenus numériques non fournis sur support matériel dont l'exécution a commencé après accord exprès du client et renoncement à son droit de rétractation.</p><h3>Article 4 — Facturation et paiement</h3><p>Les prix sont exprimés en euros hors taxes. Pour les Prestations, les conditions de prix, d'acompte, d'échéance et de pénalités de retard sont celles précisées sur le devis et la facture. Pour Evolsphere Editions, le paiement est exigible immédiatement à la commande via Stripe.</p><h3>Article 5 — Responsabilité et assurance professionnelle</h3><p>Evolsphere est tenue à une obligation de moyens dans le cadre des Prestations de conseil et de pilotage ; sa responsabilité contractuelle, pour une même mission, est limitée au montant des honoraires perçus au titre de cette mission. Les Catalogues Evolsphere Editions sont fournis à titre informatif et pédagogique et ne constituent pas un conseil personnalisé. L'activité est couverte par une assurance responsabilité civile professionnelle souscrite auprès de <em>[Assureur — coordonnées à compléter]</em>, garantissant les conséquences pécuniaires de la responsabilité civile professionnelle sur le territoire français.</p><h3>Article 6 — Confidentialité</h3><p>Chaque partie s'engage à garder confidentielles les informations non publiques échangées à l'occasion d'une Prestation, pendant la durée de celle-ci et pour une durée de deux ans à son issue, sauf accord contraire ou obligation légale de divulgation.</p><h3>Article 7 — Force majeure</h3><p>Aucune des parties ne pourra être tenue responsable d'un manquement à ses obligations résultant d'un cas de force majeure au sens de l'article 1218 du Code civil.</p><h3>Article 8 — Médiation de la consommation</h3><p>Conformément aux articles L616-1 et suivants du Code de la consommation, tout client consommateur peut recourir gratuitement à un médiateur de la consommation en cas de litige non résolu à l'amiable. Le médiateur compétent sera précisé sur cette page une fois désigné.</p><h3>Article 9 — Droit applicable et litiges</h3><p>Les présentes CGV sont soumises au droit français. Tout litige relève, à défaut de résolution amiable ou de médiation, des tribunaux compétents du ressort de Cannes.</p>`},
       cookies:{title:'Cookies et traceurs',html:`<h3>Principe</h3><p>Le site evolsphere.com utilise uniquement les traceurs strictement nécessaires à son fonctionnement (préférence de langue, session de paiement Stripe lors d'un achat).</p><p>Ces traceurs sont exemptés de consentement préalable au sens des recommandations de la CNIL, car strictement nécessaires à la fourniture du service demandé par l'utilisateur. Aucune bannière de consentement n'est donc affichée à ce stade.</p><p>Aucun cookie publicitaire, de mesure d'audience ou de réseau social n'est déposé à ce jour. Si de tels outils sont ajoutés ultérieurement, un bandeau de consentement préalable et un mécanisme de retrait seront mis en place conformément à la réglementation applicable.</p>`}
     },
     en:{
       legal:{title:'Legal notice',html:`<h3>Publisher</h3><p><strong>Evolsphere</strong> is a trade name operated by <strong>PRACTICE RETAIL</strong>, a French simplified joint-stock company with a single shareholder (SASU) with share capital of €1,000.<br>Registered office: 68 Boulevard Alexandre III, 06400 Cannes, France.<br>Cannes Trade Register (RCS) No. 819 507 963 — SIREN 819 507 963.<br>Intra-EU VAT number: FR22819507963.<br>Chairman: Raphaël de Bruijn.<br>Business: strategy, management and organization consulting.<br>Email: raphaeldebruijn@gmail.com<br>Phone: +33 6 73 97 75 76<br>Website: evolsphere.com</p><h3>Publication director</h3><p>Raphaël de Bruijn, as Chairman of PRACTICE RETAIL.</p><h3>Hosting</h3><p>Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Email: privacy@vercel.com.</p><h3>Intellectual property</h3><p>All site content (text, visuals, the Evolsphere method, and the Evolsphere Editions Tomes) is protected by intellectual property law. Any reproduction or representation, in whole or in part, without prior authorization is prohibited.</p>`},
-      privacy:{title:'Privacy policy',html:`<h3>Data controller</h3><p>PRACTICE RETAIL (Evolsphere), a SASU with share capital of €1,000, Cannes Trade Register 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes — represented by Raphaël de Bruijn. No Data Protection Officer (DPO) is appointed, as this is not mandatory given the nature of the activity; any question regarding your data can be sent directly to the data controller.</p><h3>Purpose and legal basis</h3><p>Contact/quote form: processing based on your <strong>consent</strong> (checkbox) to respond to your request. Purchase on Evolsphere Editions: processing based on <strong>contract performance</strong>. Accounting and tax obligations: processing based on <strong>legal obligation</strong>.</p><h3>Data collected</h3><p>Name, company, email, phone (optional), project description; and for purchases, billing data processed directly by our payment provider Stripe (Evolsphere never stores card data). No special category data under GDPR is collected. No automated decision-making or profiling is carried out on this data.</p><h3>Recipients and processors</h3><p>Data is accessible only to Raphaël de Bruijn and to the technical processors necessary for the site to operate: Stripe (payment) and Vercel Inc. (hosting). Stripe and Vercel are US companies; the resulting transfers of data outside the European Union are governed by their adherence to the <strong>EU-US Data Privacy Framework</strong> and/or standard contractual clauses, in accordance with Article 46 of the GDPR.</p><h3>Retention periods</h3><p>Contact/quote requests with no resulting business relationship: 3 years from the last contact. Data linked to an engagement or purchase: duration of the contractual relationship, then archived for 10 years under French accounting obligations (Article L123-22 of the French Commercial Code). Data is deleted or anonymized thereafter.</p><h3>Your rights</h3><p>Under GDPR, you may request access, rectification, deletion, restriction of processing, data portability, or object to processing based on consent or legitimate interest. You may withdraw consent at any time, without retroactive effect. To exercise your rights: raphaeldebruijn@gmail.com. You may also lodge a complaint with the CNIL (www.cnil.fr) or your local supervisory authority.</p>`},
+      privacy:{title:'Privacy policy',html:`<h3>Data controller</h3><p>PRACTICE RETAIL (Evolsphere), a SASU with share capital of €1,000, Cannes Trade Register 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes — represented by Raphaël de Bruijn. No Data Protection Officer (DPO) is appointed, as this is not mandatory given the nature of the activity; any question regarding your data can be sent directly to the data controller.</p><h3>Purpose and legal basis</h3><p>Contact/quote form: processing based on your <strong>consent</strong> (checkbox) to respond to your request. Purchase on Evolsphere Editions: processing based on <strong>contract performance</strong>. Accounting and tax obligations: processing based on <strong>legal obligation</strong>.</p><h3>Data collected</h3><p>Name, company, email, phone (optional), project description; and for purchases, billing data processed directly by our payment provider Stripe (Evolsphere never stores card data). No special category data under GDPR is collected. No automated decision-making or profiling is carried out on this data.</p><h3>Recipients and processors</h3><p>Data is accessible only to Raphaël de Bruijn and to the technical processors necessary for the site to operate: Stripe (payment), Vercel Inc. (hosting) and Web3Forms (contact/quote form delivery). Web3Forms hosts data on AWS servers encrypted at rest, retains submissions for a maximum of 30 days before automatic deletion, and does not sell or share data with advertising third parties; a Data Processing Agreement (DPA) is available from this provider. Stripe, Vercel and Web3Forms are US companies; the resulting transfers of data outside the European Union are governed by their adherence to the <strong>EU-US Data Privacy Framework</strong> and/or standard contractual clauses, in accordance with Article 46 of the GDPR.</p><h3>Retention periods</h3><p>Contact/quote requests with no resulting business relationship: 3 years from the last contact. Data linked to an engagement or purchase: duration of the contractual relationship, then archived for 10 years under French accounting obligations (Article L123-22 of the French Commercial Code). Data is deleted or anonymized thereafter.</p><h3>Your rights</h3><p>Under GDPR, you may request access, rectification, deletion, restriction of processing, data portability, or object to processing based on consent or legitimate interest. You may withdraw consent at any time, without retroactive effect. To exercise your rights: raphaeldebruijn@gmail.com. You may also lodge a complaint with the CNIL (www.cnil.fr) or your local supervisory authority.</p>`},
       cgv:{title:'Terms & Conditions',html:`<h3>Article 1 — Scope</h3><p>These terms apply to all consulting, project leadership, interim management and diagnostic services ("Services") as well as to the sale of digital content in the <strong>Evolsphere Editions</strong> collection ("Catalogues"), provided by PRACTICE RETAIL (Evolsphere), a SASU with share capital of €1,000, Cannes Trade Register 819 507 963, 68 Boulevard Alexandre III, 06400 Cannes.</p><h3>Article 2 — Consulting services</h3><p>Each Service is preceded by a discussion and, where applicable, a quote or proposal defining scope, deliverables, timing and fees. The order becomes binding once accepted under the conditions stated in the quote.</p><h3>Article 3 — Evolsphere Editions (digital content)</h3><p>Catalogue 1 (5 Tomes) is offered at €199 excl. VAT, payable in full by card via the secure Stripe platform. Access is for online reading; a printable version may be offered as an option. Tomes not yet published at the time of purchase are delivered as they are released, with no contractually guaranteed delivery date. Each catalogue in the Evolsphere Editions collection may be purchased and read independently; a preferential rate may be offered when purchasing multiple catalogues, subject to the conditions in effect at the time of order. Under French Consumer Code Article L221-28, the right of withdrawal does not apply to digital content not supplied on a physical medium once performance has begun with the customer's express prior agreement and waiver of that right.</p><h3>Article 4 — Billing and payment</h3><p>Prices are in euros, excluding tax. For Services, pricing, deposit, payment terms and late-payment penalties are those stated in the quote and invoice. For Evolsphere Editions, payment is due immediately upon order via Stripe.</p><h3>Article 5 — Liability and professional insurance</h3><p>Evolsphere provides consulting and project leadership services under an obligation of means; its contractual liability for any given engagement is capped at the fees received for that engagement. Evolsphere Editions Catalogues are provided for informational and educational purposes and do not constitute personalized advice. The business is covered by professional liability insurance taken out with <em>[Insurer — details to be added]</em>, covering the financial consequences of professional civil liability within French territory.</p><h3>Article 6 — Confidentiality</h3><p>Each party agrees to keep confidential any non-public information exchanged in the course of a Service, for its duration and for two years thereafter, unless otherwise agreed or legally required to disclose.</p><h3>Article 7 — Force majeure</h3><p>Neither party shall be held liable for a failure to perform its obligations resulting from a force majeure event within the meaning of Article 1218 of the French Civil Code.</p><h3>Article 8 — Consumer mediation</h3><p>In accordance with Articles L616-1 et seq. of the French Consumer Code, any consumer client may resort free of charge to a consumer mediator in the event of an unresolved dispute. The competent mediator will be specified on this page once appointed.</p><h3>Article 9 — Governing law and disputes</h3><p>These terms are governed by French law. Absent an amicable resolution or mediation, disputes fall under the jurisdiction of the courts of Cannes.</p>`},
       cookies:{title:'Cookies and trackers',html:`<h3>Principle</h3><p>evolsphere.com uses only trackers strictly necessary for the site to function (language preference, Stripe payment session during a purchase).</p><p>Under CNIL (French data protection authority) guidance, these trackers are exempt from prior consent as they are strictly necessary to provide the service requested by the user. No consent banner is therefore displayed at this stage.</p><p>No advertising, analytics or social network cookies are currently deposited. If such tools are added later, a prior consent banner and a withdrawal mechanism will be implemented in line with applicable regulations.</p>`}
     }
