@@ -259,16 +259,22 @@
   .tome-tooltip ol{ margin:0; padding-left:18px; }
   .tome-tooltip ol li{ font-size:12.5px; line-height:1.6; color:var(--ink-dim); margin-bottom:4px; }
 
-  .catalogue-divider{ height:1px; background:rgba(255,255,255,0.12); margin:26px 0 22px; }
-  .catalogue-locked{
-    border:1px dashed rgba(255,255,255,0.22);
-    border-radius:14px; padding:18px 20px;
-    background:rgba(255,255,255,0.02);
-    opacity:0.82;
+  .catalogue-divider{ height:1px; background:rgba(255,255,255,0.12); margin:22px 0 18px; }
+
+  .catalogue-tabs{ display:flex; gap:8px; margin:14px 0 18px; border-bottom:1px solid rgba(255,255,255,0.12); }
+  .cat-tab{
+    background:none; border:none; color:var(--ink-dim);
+    font-family: var(--body-font); font-size:13.5px; font-weight:700;
+    padding:10px 4px; margin-right:16px; cursor:pointer;
+    border-bottom:2px solid transparent; transition: color 0.2s ease, border-color 0.2s ease;
   }
-  .catalogue-locked-head{ display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }
-  .lock-icon{ font-size:18px; line-height:1; margin-top:2px; }
-  .catalogue-locked-title{ font-size:15px; font-weight:700; color:var(--ink); }
+  .cat-tab:hover{ color:var(--ink); }
+  .cat-tab.active{ color:var(--teal); border-bottom-color:var(--teal); }
+
+  .tomes-catalogue-list{ text-align:left; margin:16px 0; display:flex; flex-direction:column; gap:8px; }
+  .tomes-price-row{ display:flex; align-items:baseline; gap:10px; justify-content:center; margin:14px 0; }
+  .tomes-price-num{ font-size:26px; font-weight:800; color:var(--teal); }
+
   @media (max-width:640px){
     .tome-tooltip{ position:static; width:100%; max-width:100%; margin-top:8px; opacity:1; visibility:visible; transform:none; display:none; }
     .tome-line.has-toc:hover .tome-tooltip,
@@ -455,11 +461,11 @@
   .method-tooltip{
     position:absolute; left:0; top:calc(100% + 6px); z-index:60;
     width:230px; max-width:70vw;
-    background: linear-gradient(160deg, #1c1130, #0e0818);
-    border:1px solid rgba(41,240,208,0.35);
+    background: #ffffff;
+    border:1px solid rgba(0,0,0,0.08);
     border-radius:12px; padding:12px 14px;
-    font-size:11.5px; line-height:1.5; color: var(--ink-dim);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    font-size:11.5px; line-height:1.5; color: #3A3055;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
     opacity:0; visibility:hidden; transform:translateY(-4px);
     transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
     pointer-events:none;
@@ -1580,62 +1586,144 @@
 
 
 <div class="modal-overlay" id="tomesModal" aria-hidden="true">
-  <div class="modal-card">
+  <div class="modal-card wide">
     <button class="modal-close" id="closeTomesBtn" aria-label="Fermer">✕</button>
     <div class="test-eyebrow" data-i18n="tomesEyebrow">OFFRE EDITIONS — EVOLSPHERE</div>
-    <h2 class="offers-title" data-i18n="tomesTitle">Catalogue 1 — Stratégie &amp; Transformation</h2>
-    <p class="offer-desc" data-i18n="tomesDesc">5 Tomes exécutifs, pensés pour les CODIR et COMEX. Chaque catalogue se lit indépendamment ou en collection complète.</p>
 
-    <div class="tomes-catalogue-list" style="text-align:left; margin:16px 0; display:flex; flex-direction:column; gap:8px;">
-      <div class="tome-line has-toc"><b>Tome 1</b> — <span data-i18n="cat1t1">Stratégie de Transformation &amp; Optimisation Opérationnelle</span>
-        <div class="tome-tooltip">
-          <div class="tome-tooltip-title" data-i18n="toc1Title">Sommaire — Tome 1</div>
-          <ol>
-            <li data-i18n="toc1c1">Contexte macro-économique &amp; tensions sur les marges</li>
-            <li data-i18n="toc1c2">Diagnostic opérationnel &amp; cartographie des silos SI</li>
-            <li data-i18n="toc1c3">Architecture cible &amp; Core Model processus</li>
-            <li data-i18n="toc1c4">Le Risk Radar &amp; pilotage prédictif de la marge</li>
-            <li data-i18n="toc1c5">Gouvernance, conduite du changement &amp; adoption RH</li>
-            <li data-i18n="toc1c6">Masterplan stratégique à 3 ans &amp; trajectoire ROI</li>
-            <li data-i18n="toc1c7">Annexes — grille d'auto-évaluation CODIR</li>
-          </ol>
-        </div>
-      </div>
-      <div class="tome-line has-toc"><b>Tome 2</b> — <span data-i18n="cat1t2">Synergies Groupe &amp; Modèles de Distribution</span>
-        <div class="tome-tooltip">
-          <div class="tome-tooltip-title" data-i18n="toc2Title">Sommaire — Tome 2</div>
-          <ol>
-            <li data-i18n="toc2c1">Douze jalons : des silos à l'entreprise réseau</li>
-            <li data-i18n="toc2c2">Architecture cible de convergence</li>
-            <li data-i18n="toc2c3">Que mutualiser ? Que laisser local ?</li>
-            <li data-i18n="toc2c4">Le modèle hybride</li>
-            <li data-i18n="toc2c5">La donnée devient le contrat entre les BUs</li>
-            <li data-i18n="toc2c6">Risk Radar : voir les dépendances avant la rupture</li>
-            <li data-i18n="toc2c7">Passer de la vision à l'exécution</li>
-          </ol>
-        </div>
-      </div>
-      <div class="tome-line has-toc"><b>Tome 3</b> — <span data-i18n="cat1t3">Transformer sans subir</span>
-        <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
-      </div>
-      <div class="tome-line has-toc"><b>Tome 4</b> — <span data-i18n="cat1t4">L'entreprise augmentée — Data, automatisation et IA</span>
-        <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
-      </div>
-      <div class="tome-line has-toc"><b>Tome 5</b> — <span data-i18n="cat1t5">2030 — Le prochain cercle</span>
-        <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
-      </div>
+    <div class="catalogue-tabs">
+      <button class="cat-tab active" id="catTab1" data-cat="1" data-i18n="catTabLabel1">Catalogue 1</button>
+      <button class="cat-tab" id="catTab2" data-cat="2" data-i18n="catTabLabel2">Catalogue 2</button>
     </div>
 
-    <div class="tomes-price-row" style="display:flex; align-items:baseline; gap:10px; justify-content:center; margin:14px 0;">
-      <span style="font-size:26px; font-weight:800; color:var(--teal);">199 € HT</span>
-      <span class="offer-desc" data-i18n="cat1PriceNote" style="margin:0;">le catalogue, 5 Tomes</span>
+    <!-- ===== CATALOGUE 1 ===== -->
+    <div class="catalogue-panel" id="catPanel1">
+      <h2 class="offers-title" data-i18n="tomesTitle">Catalogue 1 — Stratégie &amp; Transformation</h2>
+      <p class="offer-desc" data-i18n="tomesDesc">5 Tomes exécutifs, pensés pour les CODIR et COMEX. Chaque catalogue se lit indépendamment ou en collection complète.</p>
+
+      <div class="tomes-catalogue-list">
+        <div class="tome-line has-toc"><b>Tome 1</b> — <span data-i18n="cat1t1">Stratégie de Transformation &amp; Optimisation Opérationnelle</span>
+          <div class="tome-tooltip">
+            <div class="tome-tooltip-title" data-i18n="toc1Title">Sommaire — Tome 1</div>
+            <ol>
+              <li data-i18n="toc1c1">Contexte macro-économique &amp; tensions sur les marges</li>
+              <li data-i18n="toc1c2">Diagnostic opérationnel &amp; cartographie des silos SI</li>
+              <li data-i18n="toc1c3">Architecture cible &amp; Core Model processus</li>
+              <li data-i18n="toc1c4">Le Risk Radar &amp; pilotage prédictif de la marge</li>
+              <li data-i18n="toc1c5">Gouvernance, conduite du changement &amp; adoption RH</li>
+              <li data-i18n="toc1c6">Masterplan stratégique à 3 ans &amp; trajectoire ROI</li>
+              <li data-i18n="toc1c7">Annexes — grille d'auto-évaluation CODIR</li>
+            </ol>
+          </div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 2</b> — <span data-i18n="cat1t2">Synergies Groupe &amp; Modèles de Distribution</span>
+          <div class="tome-tooltip">
+            <div class="tome-tooltip-title" data-i18n="toc2Title">Sommaire — Tome 2</div>
+            <ol>
+              <li data-i18n="toc2c1">Douze jalons : des silos à l'entreprise réseau</li>
+              <li data-i18n="toc2c2">Architecture cible de convergence</li>
+              <li data-i18n="toc2c3">Que mutualiser ? Que laisser local ?</li>
+              <li data-i18n="toc2c4">Le modèle hybride</li>
+              <li data-i18n="toc2c5">La donnée devient le contrat entre les BUs</li>
+              <li data-i18n="toc2c6">Risk Radar : voir les dépendances avant la rupture</li>
+              <li data-i18n="toc2c7">Passer de la vision à l'exécution</li>
+            </ol>
+          </div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 3</b> — <span data-i18n="cat1t3">Transformer sans subir</span>
+          <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 4</b> — <span data-i18n="cat1t4">L'entreprise augmentée — Data, automatisation et IA</span>
+          <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 5</b> — <span data-i18n="cat1t5">2030 — Le prochain cercle</span>
+          <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+        </div>
+      </div>
+
+      <div class="tomes-price-row">
+        <span class="tomes-price-num">199 € HT</span>
+        <span class="offer-desc" data-i18n="cat1PriceNote" style="margin:0;">le catalogue, 5 Tomes</span>
+      </div>
+
+      <p class="form-info" data-i18n="tomesAccessNote">Accès illimité en lecture en ligne. Version imprimable disponible en option.</p>
+      <p class="form-info" data-i18n="tomesStatus">Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.</p>
+      <p class="form-info" data-i18n="deliveryNote" style="opacity:0.8;">Vos Tomes vous sont envoyés par email en pièce jointe dans les 24h suivant l'achat.</p>
+
+      <a class="btn btn-primary" id="tomesStripeBtn1" href="https://buy.stripe.com/aFa3coc2Q4ovbwJ3y1gw000" data-i18n="tomesBuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 1 — 199 € HT</a>
     </div>
 
-    <p class="form-info" data-i18n="tomesAccessNote">Accès illimité en lecture en ligne. Version imprimable disponible en option.</p>
-    <p class="form-info" data-i18n="tomesStatus">Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.</p>
+    <!-- ===== CATALOGUE 2 ===== -->
+    <div class="catalogue-panel" id="catPanel2" style="display:none;">
+      <h2 class="offers-title" data-i18n="cat2CatTitle">Catalogue 2 — Croissance Augmentée</h2>
+      <p class="offer-desc" data-i18n="cat2CatDesc">5 Tomes exécutifs sur l'IA décisionnelle, la croissance internationale et l'intégration post-acquisition. 3 Tomes disponibles dès aujourd'hui.</p>
 
-    <a class="btn btn-primary" id="tomesStripeBtn" href="https://buy.stripe.com/aFa3coc2Q4ovbwJ3y1gw000" data-i18n="tomesBuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 1 — 199 € HT</a>
-    <button class="btn btn-ghost" id="tomesNotifyBtn" data-i18n="tomesNotify" style="margin-top:10px;">Être informé des prochains catalogues</button>
+      <div class="tomes-catalogue-list">
+        <div class="tome-line has-toc"><b>Tome 6</b> — <span data-i18n="cat2t6">Intelligence Artificielle &amp; Automatisation Décisionnelle</span>
+          <div class="tome-tooltip">
+            <div class="tome-tooltip-title" data-i18n="toc6Title">Sommaire — Tome 6</div>
+            <ol>
+              <li data-i18n="toc6c1">Du copilote à l'agent : le nouveau paradigme décisionnel</li>
+              <li data-i18n="toc6c2">Cartographie des cas d'usage IA à fort ROI</li>
+              <li data-i18n="toc6c3">Architecture technique : agents gouvernés &amp; MCP d'entreprise</li>
+              <li data-i18n="toc6c4">L'AI Risk Radar : biais, hallucination &amp; conformité</li>
+              <li data-i18n="toc6c5">Conduite du changement &amp; montée en compétence IA</li>
+              <li data-i18n="toc6c6">Masterplan IA à 3 ans &amp; trajectoire ROI</li>
+              <li data-i18n="toc6c7">Annexes — grille d'auto-évaluation de maturité IA</li>
+            </ol>
+          </div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 7</b> — <span data-i18n="cat2t7">Expansion Internationale &amp; Architecture Multi-Pays</span>
+          <div class="tome-tooltip">
+            <div class="tome-tooltip-title" data-i18n="toc7Title">Sommaire — Tome 7</div>
+            <ol>
+              <li data-i18n="toc7c1">Les nouvelles routes de la croissance internationale</li>
+              <li data-i18n="toc7c2">Méthodologie de sélection &amp; séquencement des marchés</li>
+              <li data-i18n="toc7c3">Architecture SI multi-pays &amp; Core Model localisé</li>
+              <li data-i18n="toc7c4">Le Compliance Radar : fiscalité, douanes &amp; régulation locale</li>
+              <li data-i18n="toc7c5">Organisation, gouvernance &amp; talents locaux</li>
+              <li data-i18n="toc7c6">Masterplan d'expansion à 3 ans &amp; trajectoire ROI</li>
+              <li data-i18n="toc7c7">Annexes — grille d'auto-évaluation de maturité internationale</li>
+            </ol>
+          </div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 8</b> — <span data-i18n="cat2t8">Fusions-Acquisitions &amp; Intégration Post-Deal</span>
+          <div class="tome-tooltip">
+            <div class="tome-tooltip-title" data-i18n="toc8Title">Sommaire — Tome 8</div>
+            <ol>
+              <li data-i18n="toc8c1">Pourquoi la majorité des synergies annoncées ne se matérialisent pas</li>
+              <li data-i18n="toc8c2">Due diligence opérationnelle &amp; data avant signature</li>
+              <li data-i18n="toc8c3">Le Core Model d'intégration &amp; les 100 premiers jours</li>
+              <li data-i18n="toc8c4">Le Synergy Radar : pilotage des gains &amp; des risques de dérive</li>
+              <li data-i18n="toc8c5">Culture, rétention des talents clés &amp; gouvernance</li>
+              <li data-i18n="toc8c6">Masterplan d'intégration à 3 ans &amp; trajectoire ROI</li>
+              <li data-i18n="toc8c7">Annexes — grille d'auto-évaluation de préparation à l'intégration</li>
+            </ol>
+          </div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 9</b> — <span data-i18n="cat2t9">Capital Humain &amp; Organisation Apprenante</span>
+          <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+        </div>
+        <div class="tome-line has-toc"><b>Tome 10</b> — <span data-i18n="cat2t10">Souveraineté des Données &amp; Cybersécurité</span>
+          <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
+        </div>
+      </div>
+
+      <p class="offer-desc" data-i18n="cat2Highlights" style="text-align:center; font-size:12px; margin:10px 0;">Déjà mesuré : +310 bps de marge via l'IA décisionnelle (Tome 6) · +3,4 pays d'expansion en moyenne sur 3 ans (Tome 7) · 53% des synergies M&amp;A matérialisées avec Core Model (Tome 8).</p>
+
+      <div class="tomes-price-row">
+        <span class="tomes-price-num">199 € HT</span>
+        <span class="offer-desc" data-i18n="cat2PriceNote" style="margin:0;">le catalogue, 5 Tomes</span>
+      </div>
+
+      <p class="form-info" data-i18n="tomesAccessNote">Accès illimité en lecture en ligne. Version imprimable disponible en option.</p>
+      <p class="form-info" data-i18n="cat2Status">Tomes 6, 7 et 8 disponibles. Tomes 9 et 10 livrés au fil de l'eau. Paiement sécurisé par Stripe.</p>
+      <p class="form-info" data-i18n="deliveryNote" style="opacity:0.8;">Vos Tomes vous sont envoyés par email en pièce jointe dans les 24h suivant l'achat.</p>
+
+      <a class="btn btn-primary" id="tomesStripeBtn2" href="#" data-i18n="cat2BuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 2 — 199 € HT</a>
+    </div>
+
+    <div class="catalogue-divider"></div>
+    <button class="btn btn-ghost" id="tomesNotifyBtn" data-i18n="tomesNotify">Être informé des prochains catalogues</button>
     <div id="notifyInlineForm" style="display:none; margin-top:10px; gap:8px; flex-direction:column;">
       <div style="display:flex; gap:8px;">
         <input type="email" id="notifyEmailInput" placeholder="Votre email professionnel" data-i18n-placeholder="notifyEmailPlaceholder" required style="flex:1; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.16); border-radius:10px; padding:10px 12px; color:var(--ink); font-size:13px;">
@@ -1643,26 +1731,12 @@
       </div>
       <p class="form-info" id="notifyStatus" style="margin:0;"></p>
     </div>
-
-    <div class="catalogue-divider"></div>
-
-    <div class="catalogue-locked">
-      <div class="catalogue-locked-head">
-        <span class="lock-icon">⏳</span>
-        <div>
-          <div class="test-eyebrow" style="margin-bottom:2px;" data-i18n="cat2Eyebrow">CATALOGUE 2 — BIENTÔT DISPONIBLE</div>
-          <div class="catalogue-locked-title" data-i18n="cat2Title">Thème et sommaire à venir</div>
-        </div>
-      </div>
-      <p class="offer-desc" data-i18n="cat2Desc">Les titres des 5 Tomes et leur sommaire seront publiés ici dès leur finalisation.</p>
-      <p class="form-info" data-i18n="cat2Access">Chaque catalogue se lit de manière indépendante. Nous recommandons de commencer par le Catalogue 1, qui pose les bases de la méthode Evolsphere.</p>
-    </div>
-
     <p class="form-info" data-i18n="futureCataloguesNote" style="margin-top:14px; opacity:0.75;">Les catalogues suivants seront livrés au fil de l'eau. Un tarif préférentiel sera proposé aux acheteurs de plusieurs catalogues.</p>
   </div>
 </div>
 
 <div class="modal-overlay" id="quoteModal" aria-hidden="true">
+
   <div class="modal-card wide">
     <button class="modal-close" id="closeQuoteBtn" aria-label="Fermer">✕</button>
     <div class="test-eyebrow" data-i18n="quoteEyebrow">DEMANDE DE DEVIS</div>
@@ -2142,6 +2216,43 @@ try{
       toc2c6: "Risk Radar : voir les dépendances avant la rupture",
       toc2c7: "Passer de la vision à l'exécution",
       tocSoon: "Sommaire disponible à la publication du Tome.",
+      catTabLabel1: "Catalogue 1", catTabLabel2: "Catalogue 2",
+      cat2CatTitle: "Catalogue 2 — Croissance Augmentée",
+      cat2CatDesc: "5 Tomes exécutifs sur l'IA décisionnelle, la croissance internationale et l'intégration post-acquisition. 3 Tomes disponibles dès aujourd'hui.",
+      cat2t6: "Intelligence Artificielle &amp; Automatisation Décisionnelle",
+      cat2t7: "Expansion Internationale &amp; Architecture Multi-Pays",
+      cat2t8: "Fusions-Acquisitions &amp; Intégration Post-Deal",
+      cat2t9: "Capital Humain &amp; Organisation Apprenante",
+      cat2t10: "Souveraineté des Données &amp; Cybersécurité",
+      toc6Title: "Sommaire — Tome 6",
+      toc6c1: "Du copilote à l'agent : le nouveau paradigme décisionnel",
+      toc6c2: "Cartographie des cas d'usage IA à fort ROI",
+      toc6c3: "Architecture technique : agents gouvernés &amp; MCP d'entreprise",
+      toc6c4: "L'AI Risk Radar : biais, hallucination &amp; conformité",
+      toc6c5: "Conduite du changement &amp; montée en compétence IA",
+      toc6c6: "Masterplan IA à 3 ans &amp; trajectoire ROI",
+      toc6c7: "Annexes — grille d'auto-évaluation de maturité IA",
+      toc7Title: "Sommaire — Tome 7",
+      toc7c1: "Les nouvelles routes de la croissance internationale",
+      toc7c2: "Méthodologie de sélection &amp; séquencement des marchés",
+      toc7c3: "Architecture SI multi-pays &amp; Core Model localisé",
+      toc7c4: "Le Compliance Radar : fiscalité, douanes &amp; régulation locale",
+      toc7c5: "Organisation, gouvernance &amp; talents locaux",
+      toc7c6: "Masterplan d'expansion à 3 ans &amp; trajectoire ROI",
+      toc7c7: "Annexes — grille d'auto-évaluation de maturité internationale",
+      toc8Title: "Sommaire — Tome 8",
+      toc8c1: "Pourquoi la majorité des synergies annoncées ne se matérialisent pas",
+      toc8c2: "Due diligence opérationnelle &amp; data avant signature",
+      toc8c3: "Le Core Model d'intégration &amp; les 100 premiers jours",
+      toc8c4: "Le Synergy Radar : pilotage des gains &amp; des risques de dérive",
+      toc8c5: "Culture, rétention des talents clés &amp; gouvernance",
+      toc8c6: "Masterplan d'intégration à 3 ans &amp; trajectoire ROI",
+      toc8c7: "Annexes — grille d'auto-évaluation de préparation à l'intégration",
+      cat2Highlights: "Déjà mesuré : +310 bps de marge via l'IA décisionnelle (Tome 6) · +3,4 pays d'expansion en moyenne sur 3 ans (Tome 7) · 53% des synergies M&amp;A matérialisées avec Core Model (Tome 8).",
+      cat2PriceNote: "le catalogue, 5 Tomes",
+      cat2Status: "Tomes 6, 7 et 8 disponibles. Tomes 9 et 10 livrés au fil de l'eau. Paiement sécurisé par Stripe.",
+      cat2BuyBtn: "Accéder au Catalogue 2 — 199 € HT",
+      deliveryNote: "Vos Tomes vous sont envoyés par email en pièce jointe dans les 24h suivant l'achat.",
       cat2Eyebrow: "CATALOGUE 2 — BIENTÔT DISPONIBLE",
       cat2Title: "Thème et sommaire à venir",
       cat2Desc: "Les titres des 5 Tomes et leur sommaire seront publiés ici dès leur finalisation.",
@@ -2345,6 +2456,43 @@ try{
       toc2c6: "Risk Radar: seeing dependencies before the break",
       toc2c7: "From vision to execution",
       tocSoon: "Contents available upon publication of this Tome.",
+      catTabLabel1: "Catalogue 1", catTabLabel2: "Catalogue 2",
+      cat2CatTitle: "Catalogue 2 — Augmented Growth",
+      cat2CatDesc: "5 executive Tomes on decisional AI, international growth and post-acquisition integration. 3 Tomes available today.",
+      cat2t6: "Artificial Intelligence &amp; Decisional Automation",
+      cat2t7: "International Expansion &amp; Multi-Country Architecture",
+      cat2t8: "Mergers &amp; Acquisitions and Post-Deal Integration",
+      cat2t9: "Human Capital &amp; the Learning Organization",
+      cat2t10: "Data Sovereignty &amp; Cybersecurity",
+      toc6Title: "Contents — Tome 6",
+      toc6c1: "From copilot to agent: the new decision-making paradigm",
+      toc6c2: "Mapping high-ROI AI use cases",
+      toc6c3: "Technical architecture: governed agents &amp; enterprise MCP",
+      toc6c4: "The AI Risk Radar: bias, hallucination &amp; compliance",
+      toc6c5: "Change management &amp; AI upskilling",
+      toc6c6: "3-year AI masterplan &amp; ROI trajectory",
+      toc6c7: "Appendices — AI maturity self-assessment grid",
+      toc7Title: "Contents — Tome 7",
+      toc7c1: "The new routes of international growth",
+      toc7c2: "Market selection &amp; sequencing methodology",
+      toc7c3: "Multi-country IT architecture &amp; localized Core Model",
+      toc7c4: "The Compliance Radar: taxation, customs &amp; local regulation",
+      toc7c5: "Organization, governance &amp; local talent",
+      toc7c6: "3-year expansion masterplan &amp; ROI trajectory",
+      toc7c7: "Appendices — international maturity self-assessment grid",
+      toc8Title: "Contents — Tome 8",
+      toc8c1: "Why most announced synergies never materialize",
+      toc8c2: "Operational &amp; data due diligence before signing",
+      toc8c3: "The integration Core Model &amp; the first 100 days",
+      toc8c4: "The Synergy Radar: tracking gains &amp; drift risks",
+      toc8c5: "Culture, key talent retention &amp; governance",
+      toc8c6: "3-year integration masterplan &amp; ROI trajectory",
+      toc8c7: "Appendices — integration readiness self-assessment grid",
+      cat2Highlights: "Already measured: +310 bps margin via decisional AI (Tome 6) · +3.4 additional countries on average over 3 years (Tome 7) · 53% of M&amp;A synergies materialized with a Core Model (Tome 8).",
+      cat2PriceNote: "for the catalogue, 5 Tomes",
+      cat2Status: "Tomes 6, 7 and 8 available. Tomes 9 and 10 delivered as they're released. Secure payment via Stripe.",
+      cat2BuyBtn: "Access Catalogue 2 — €199 excl. VAT",
+      deliveryNote: "Your Tomes are emailed to you as attachments within 24h of purchase.",
       cat2Eyebrow: "CATALOGUE 2 — COMING SOON",
       cat2Title: "Theme and contents to be announced",
       cat2Desc: "The 5 Tome titles and their contents will be published here once finalized.",
@@ -2475,6 +2623,33 @@ try{
             { label: "Environ 1 an.", score: { pmp: 2, agile: 0, hybride: 1, safe: 1, rollingwave: 0 } },
             { label: "2 ans ou plus, avec de l'incertitude sur le détail.", score: { pmp: 2, agile: 0, hybride: 0, safe: 0, rollingwave: 3 } }
           ]
+        },
+        {
+          q: "Combien de collaborateurs sont impliqués dans le projet (internes et/ou externes) ?",
+          options: [
+            { label: "Moins de 5 personnes.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Entre 5 et 15 personnes.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
+            { label: "Entre 15 et 50 personnes.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
+            { label: "Plus de 50 personnes.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "Combien de collaborateurs sont estimés impactés par le projet, au global ?",
+          options: [
+            { label: "Moins de 20 personnes.", score: { pmp: 0, agile: 2, hybride: 0, safe: 0, rollingwave: 0 } },
+            { label: "Entre 20 et 100 personnes.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
+            { label: "Entre 100 et 500 personnes.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
+            { label: "Plus de 500 personnes.", score: { pmp: 2, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "Quel est l'objectif principal du projet ?",
+          options: [
+            { label: "Réduire les coûts.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Développer la productivité.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Accroître l'activité.", score: { pmp: 0, agile: 1, hybride: 1, safe: 1, rollingwave: 0 } },
+            { label: "Optimiser l'expérience client.", score: { pmp: 0, agile: 2, hybride: 0, safe: 0, rollingwave: 1 } }
+          ]
         }
       ],
       results: {
@@ -2530,6 +2705,33 @@ try{
             { label: "About 6 months.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
             { label: "About 1 year.", score: { pmp: 2, agile: 0, hybride: 1, safe: 1, rollingwave: 0 } },
             { label: "2+ years, with uncertainty on the details.", score: { pmp: 2, agile: 0, hybride: 0, safe: 0, rollingwave: 3 } }
+          ]
+        },
+        {
+          q: "How many people are involved in the project (internal and/or external)?",
+          options: [
+            { label: "Fewer than 5 people.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Between 5 and 15 people.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
+            { label: "Between 15 and 50 people.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
+            { label: "More than 50 people.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "How many people are estimated to be impacted by the project overall?",
+          options: [
+            { label: "Fewer than 20 people.", score: { pmp: 0, agile: 2, hybride: 0, safe: 0, rollingwave: 0 } },
+            { label: "Between 20 and 100 people.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
+            { label: "Between 100 and 500 people.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
+            { label: "More than 500 people.", score: { pmp: 2, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+          ]
+        },
+        {
+          q: "What is the project's main objective?",
+          options: [
+            { label: "Reduce costs.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Improve productivity.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
+            { label: "Grow the business.", score: { pmp: 0, agile: 1, hybride: 1, safe: 1, rollingwave: 0 } },
+            { label: "Optimize the customer experience.", score: { pmp: 0, agile: 2, hybride: 0, safe: 0, rollingwave: 1 } }
           ]
         }
       ],
@@ -2998,6 +3200,15 @@ try{
   function openTomes(){ if(tomesModal){tomesModal.classList.add('open');tomesModal.setAttribute('aria-hidden','false');} }
   function closeTomes(){ if(tomesModal){tomesModal.classList.remove('open');tomesModal.setAttribute('aria-hidden','true');} }
   openTomesBtn?.addEventListener('click',openTomes); closeTomesBtn?.addEventListener('click',closeTomes);
+  document.querySelectorAll('.cat-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.catalogue-panel').forEach(p=>p.style.display='none');
+      tab.classList.add('active');
+      const panel = document.getElementById('catPanel'+tab.dataset.cat);
+      if(panel) panel.style.display='block';
+    });
+  });
   document.querySelectorAll('.tome-line.has-toc').forEach(el=>{
     el.addEventListener('click',(e)=>{
       if(window.innerWidth<=640){
