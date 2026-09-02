@@ -204,6 +204,21 @@
     animation: dropIn 0.7s 0.95s cubic-bezier(.16,1.4,.4,1) forwards;
   }
 
+  .hero-punchline{
+    margin-top: 14px;
+    font-size: clamp(13px, 1.3vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    background: linear-gradient(120deg, var(--teal), var(--hot));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    opacity:0;
+    animation: dropIn 0.7s 0.85s cubic-bezier(.16,1.4,.4,1) forwards;
+  }
+  @media (max-width: 640px){
+    .hero-punchline{ white-space: normal; font-size: 13px; }
+  }
+
   .cta-row{
     margin-top: 38px;
     display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
@@ -1160,9 +1175,10 @@
 <main>
   <div class="eyebrow" data-i18n="eyebrow">Grands groupes, ETI, PME — le modèle a changé</div>
   <h1>
-    <span class="line"><span id="h1line1">Restez en 1980.</span></span>
-    <span class="line"><span id="h1line2">Ou passez en 2026.</span></span>
+    <span class="line"><span id="h1line1">L'évolution n'attend pas.</span></span>
+    <span class="line"><span id="h1line2">Changez de cercle le premier.</span></span>
   </h1>
+  <p class="hero-punchline" data-i18n="heroPunchline">Ne rien faire, c'est déjà choisir de perdre.</p>
   <p class="sub" data-i18n="sub">Transformation digitale, ERP, WMS, achats, finance, organisation et pilotage de projets critiques.</p>
   <div class="cta-row cta-main-row">
     <button class="btn btn-primary" id="openTestBtn" data-i18n="testBtn">Challenger ma méthode projet — 3 min</button>
@@ -1649,7 +1665,7 @@
       <p class="form-info" data-i18n="tomesStatus">Tome 1 et Tome 2 disponibles. Tomes 3 à 5 livrés au fil de l'eau. Paiement sécurisé par Stripe.</p>
       <p class="form-info" data-i18n="deliveryNote" style="opacity:0.8;">Vos Tomes vous sont envoyés par email en pièce jointe dans les 24h suivant l'achat.</p>
 
-      <a class="btn btn-primary" id="tomesStripeBtn1" href="https://buy.stripe.com/aFa3coc2Q4ovbwJ3y1gw000" data-i18n="tomesBuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 1 — 199 € HT</a>
+      <a class="btn btn-primary" id="tomesStripeBtn1" href="https://buy.stripe.com/aFa3coc2Q4ovbwJ3y1gw000?client_reference_id=catalogue1" data-i18n="tomesBuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 1 — 199 € HT</a>
     </div>
 
     <!-- ===== CATALOGUE 2 ===== -->
@@ -1700,10 +1716,10 @@
             </ol>
           </div>
         </div>
-        <div class="tome-line has-toc"><b>Tome 9</b> — <span data-i18n="cat2t9">Capital Humain &amp; Organisation Apprenante</span>
+        <div class="tome-line has-toc"><b>Tome 9</b> — <span data-i18n="cat2t9">Capital Humain</span>
           <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
         </div>
-        <div class="tome-line has-toc"><b>Tome 10</b> — <span data-i18n="cat2t10">Souveraineté des Données &amp; Cybersécurité</span>
+        <div class="tome-line has-toc"><b>Tome 10</b> — <span data-i18n="cat2t10">Souveraineté des Données, Cybersécurité &amp; RSE</span>
           <div class="tome-tooltip"><div class="tome-tooltip-title" data-i18n="tocSoon">Sommaire disponible à la publication du Tome.</div></div>
         </div>
       </div>
@@ -1719,7 +1735,7 @@
       <p class="form-info" data-i18n="cat2Status">Tomes 6, 7 et 8 disponibles. Tomes 9 et 10 livrés au fil de l'eau. Paiement sécurisé par Stripe.</p>
       <p class="form-info" data-i18n="deliveryNote" style="opacity:0.8;">Vos Tomes vous sont envoyés par email en pièce jointe dans les 24h suivant l'achat.</p>
 
-      <a class="btn btn-primary" id="tomesStripeBtn2" href="#" data-i18n="cat2BuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 2 — 199 € HT</a>
+      <a class="btn btn-primary" id="tomesStripeBtn2" href="https://buy.stripe.com/aFa3coc2Q4ovbwJ3y1gw000?client_reference_id=catalogue2" data-i18n="cat2BuyBtn" target="_blank" rel="noopener">Accéder au Catalogue 2 — 199 € HT</a>
     </div>
 
     <div class="catalogue-divider"></div>
@@ -2114,7 +2130,7 @@ try{
       copyBtn: "Copier le message",
       badge: "Pensez autrement. Gardez le contrôle. Les cabinets classiques sont dépassés.",
       eyebrow: "Grands groupes, ETI, PME — le modèle a changé",
-      h1: ["Restez en 1980.", "Ou passez en 2026."],
+      h1: ["L'évolution n'attend pas.", "Changez de cercle le premier."],
       sub: "Transformation digitale, ERP, WMS, achats, finance, organisation et pilotage de projets critiques.",
       chipDigital: "Transformation digitale",
       chipStandup: "Stand-up quotidien",
@@ -2222,8 +2238,8 @@ try{
       cat2t6: "Intelligence Artificielle &amp; Automatisation Décisionnelle",
       cat2t7: "Expansion Internationale &amp; Architecture Multi-Pays",
       cat2t8: "Fusions-Acquisitions &amp; Intégration Post-Deal",
-      cat2t9: "Capital Humain &amp; Organisation Apprenante",
-      cat2t10: "Souveraineté des Données &amp; Cybersécurité",
+      cat2t9: "Capital Humain",
+      cat2t10: "Souveraineté des Données, Cybersécurité &amp; RSE",
       toc6Title: "Sommaire — Tome 6",
       toc6c1: "Du copilote à l'agent : le nouveau paradigme décisionnel",
       toc6c2: "Cartographie des cas d'usage IA à fort ROI",
@@ -2278,6 +2294,7 @@ try{
       offer3Desc: "Suivi planning et reporting — notamment sur les projets long cycle en V, pour éviter l'effet tunnel — et communication interne (rythme, contenu, destinataires) pour garder l'implication de tous.",
       offersMoreNote: "Et bien d'autres formats, selon votre contexte.",
       offersContactBtn: "Pour en savoir plus, contactez-moi",
+      heroPunchline: "Ne rien faire, c'est déjà choisir de perdre.",
       finalTitle: "Ne rien faire, c'est déjà choisir de perdre.",
       finalSub: "3 créneaux ce trimestre. Après, c'est non.",
       finalCtaBtn: "Je réserve mon créneau",
@@ -2354,7 +2371,7 @@ try{
       copyBtn: "Copy message",
       badge: "Think differently. Stay in control. Traditional consulting firms are outdated.",
       eyebrow: "Large groups, mid-caps, SMEs — the model changed",
-      h1: ["Stay stuck in 1980.", "Or move to 2026."],
+      h1: ["Evolution doesn't wait.", "Change circles first."],
       sub: "Digital transformation, ERP, WMS, procurement, finance, organization and critical project leadership.",
       chipDigital: "Digital transformation",
       chipStandup: "Daily stand-up",
@@ -2462,8 +2479,8 @@ try{
       cat2t6: "Artificial Intelligence &amp; Decisional Automation",
       cat2t7: "International Expansion &amp; Multi-Country Architecture",
       cat2t8: "Mergers &amp; Acquisitions and Post-Deal Integration",
-      cat2t9: "Human Capital &amp; the Learning Organization",
-      cat2t10: "Data Sovereignty &amp; Cybersecurity",
+      cat2t9: "Human Capital",
+      cat2t10: "Data Sovereignty, Cybersecurity &amp; CSR",
       toc6Title: "Contents — Tome 6",
       toc6c1: "From copilot to agent: the new decision-making paradigm",
       toc6c2: "Mapping high-ROI AI use cases",
@@ -2518,6 +2535,7 @@ try{
       offer3Desc: "Planning and reporting follow-up — especially on long waterfall-cycle projects, to avoid the tunnel effect — plus internal communication (pace, content, audience) to keep everyone engaged.",
       offersMoreNote: "And many other formats, depending on your context.",
       offersContactBtn: "To find out more, contact me",
+      heroPunchline: "Doing nothing is already choosing to lose.",
       finalTitle: "Doing nothing is already choosing to lose.",
       finalSub: "3 slots this quarter. After that, no.",
       finalCtaBtn: "I'm in.",
