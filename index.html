@@ -623,7 +623,7 @@
     color: var(--ink);
   }
   .offers-grid{
-    display:grid; grid-template-columns: repeat(4, 1fr); gap:20px;
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px;
   }
   .offer-card{
     background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
@@ -1489,6 +1489,10 @@
     <div class="offer-card">
       <h3 class="offer-name" data-i18n="offer3Name">Suivi planning &amp; reporting</h3>
       <div class="offer-desc" data-i18n="offer3Desc">Suivi planning et reporting — notamment sur les projets long cycle en V, pour éviter l'effet tunnel — et communication interne (rythme, contenu, destinataires) pour garder l'implication de tous.</div>
+    </div>
+    <div class="offer-card featured">
+      <h3 class="offer-name" data-i18n="offer4Name">Supervision de l'IA en projet</h3>
+      <div class="offer-desc" data-i18n="offer4Desc">Cadrage des cas d'usage IA, niveaux d'autonomie, points de contrôle — pour que l'IA accélère l'exécution sans multiplier les erreurs.</div>
     </div>
   </div>
   <div style="text-align:center; margin-top:24px;">
@@ -2375,6 +2379,8 @@ try{
       offer2Desc: "Animation adaptée au projet — daily stand-up, weekly review, weekly reports, préparation des supports de COPIL.",
       offer3Name: "Suivi planning &amp; reporting",
       offer3Desc: "Suivi planning et reporting — notamment sur les projets long cycle en V, pour éviter l'effet tunnel — et communication interne (rythme, contenu, destinataires) pour garder l'implication de tous.",
+      offer4Name: "Supervision de l'IA en projet",
+      offer4Desc: "Cadrage des cas d'usage IA, niveaux d'autonomie, points de contrôle — pour que l'IA accélère l'exécution sans multiplier les erreurs.",
       offersMoreNote: "Et bien d'autres formats, selon votre contexte.",
       offersContactBtn: "Pour en savoir plus, contactez-moi",
       heroPunchline: "Ne rien faire, c'est déjà choisir de perdre.",
@@ -2628,6 +2634,8 @@ try{
       offer2Desc: "Facilitation tailored to the project — daily stand-up, weekly review, weekly reports, steering committee materials.",
       offer3Name: "Planning &amp; reporting follow-up",
       offer3Desc: "Planning and reporting follow-up — especially on long waterfall-cycle projects, to avoid the tunnel effect — plus internal communication (pace, content, audience) to keep everyone engaged.",
+      offer4Name: "AI supervision in projects",
+      offer4Desc: "Scoping AI use cases, autonomy levels, control points — so AI speeds up execution without multiplying mistakes.",
       offersMoreNote: "And many other formats, depending on your context.",
       offersContactBtn: "To find out more, contact me",
       heroPunchline: "Doing nothing is already choosing to lose.",
@@ -2750,21 +2758,12 @@ try{
           ]
         },
         {
-          q: "Combien de collaborateurs sont impliqués dans le projet (internes et/ou externes) ?",
+          q: "Combien de personnes sont concernées par ce projet au total (équipe + collaborateurs impactés) ?",
           options: [
-            { label: "Moins de 5 personnes.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
-            { label: "Entre 5 et 15 personnes.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "Entre 15 et 50 personnes.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
-            { label: "Plus de 50 personnes.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
-          ]
-        },
-        {
-          q: "Combien de collaborateurs sont estimés impactés par le projet, au global ?",
-          options: [
-            { label: "Moins de 20 personnes.", score: { pmp: 0, agile: 2, hybride: 0, safe: 0, rollingwave: 0 } },
+            { label: "Moins de 20 personnes.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
             { label: "Entre 20 et 100 personnes.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
             { label: "Entre 100 et 500 personnes.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
-            { label: "Plus de 500 personnes.", score: { pmp: 2, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+            { label: "Plus de 500 personnes.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
           ]
         },
         {
@@ -2785,35 +2784,11 @@ try{
           ]
         },
         {
-          q: "Vos projets passés ont-ils tenu leurs délais, planning et budget ?",
-          options: [
-            { label: "Systématiquement.", score: { pmp: 0, agile: 1, hybride: 0, safe: 1, rollingwave: 0 } },
-            { label: "Parfois.", score: { pmp: 1, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "Rarement.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } }
-          ]
-        },
-        {
-          q: "Votre structure IT est-elle agile et capable de s'adapter rapidement ?",
-          options: [
-            { label: "Oui, très agile.", score: { pmp: 0, agile: 2, hybride: 0, safe: 1, rollingwave: 0 } },
-            { label: "Moyennement.", score: { pmp: 1, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "Non, plutôt rigide.", score: { pmp: 2, agile: 0, hybride: 0, safe: 0, rollingwave: 1 } }
-          ]
-        },
-        {
           q: "Les relations avec les instances représentatives du personnel (IRP) face au changement sont-elles bonnes ?",
           options: [
             { label: "Bonnes, dialogue social fluide.", score: { pmp: 0, agile: 1, hybride: 0, safe: 1, rollingwave: 0 } },
             { label: "Neutres.", score: { pmp: 0, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
             { label: "Tendues.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } }
-          ]
-        },
-        {
-          q: "Les organes de direction (CODIR/COMEX) sont-ils alignés sur les objectifs du projet ?",
-          options: [
-            { label: "Alignés.", score: { pmp: 0, agile: 1, hybride: 0, safe: 2, rollingwave: 0 } },
-            { label: "Partiellement alignés.", score: { pmp: 0, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "Divergents.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } }
           ]
         },
         {
@@ -2890,21 +2865,12 @@ try{
           ]
         },
         {
-          q: "How many people are involved in the project (internal and/or external)?",
+          q: "How many people are concerned by this project overall (team + people impacted)?",
           options: [
-            { label: "Fewer than 5 people.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
-            { label: "Between 5 and 15 people.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "Between 15 and 50 people.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
-            { label: "More than 50 people.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
-          ]
-        },
-        {
-          q: "How many people are estimated to be impacted by the project overall?",
-          options: [
-            { label: "Fewer than 20 people.", score: { pmp: 0, agile: 2, hybride: 0, safe: 0, rollingwave: 0 } },
+            { label: "Fewer than 20 people.", score: { pmp: 0, agile: 2, hybride: 1, safe: 0, rollingwave: 0 } },
             { label: "Between 20 and 100 people.", score: { pmp: 0, agile: 1, hybride: 2, safe: 0, rollingwave: 0 } },
             { label: "Between 100 and 500 people.", score: { pmp: 1, agile: 0, hybride: 1, safe: 2, rollingwave: 0 } },
-            { label: "More than 500 people.", score: { pmp: 2, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
+            { label: "More than 500 people.", score: { pmp: 1, agile: 0, hybride: 0, safe: 3, rollingwave: 0 } }
           ]
         },
         {
@@ -2925,35 +2891,11 @@ try{
           ]
         },
         {
-          q: "Have your past projects met their deadlines, schedule and budget?",
-          options: [
-            { label: "Consistently.", score: { pmp: 0, agile: 1, hybride: 0, safe: 1, rollingwave: 0 } },
-            { label: "Sometimes.", score: { pmp: 1, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "Rarely.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } }
-          ]
-        },
-        {
-          q: "Is your IT structure agile and able to adapt quickly?",
-          options: [
-            { label: "Yes, very agile.", score: { pmp: 0, agile: 2, hybride: 0, safe: 1, rollingwave: 0 } },
-            { label: "Moderately.", score: { pmp: 1, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "No, rather rigid.", score: { pmp: 2, agile: 0, hybride: 0, safe: 0, rollingwave: 1 } }
-          ]
-        },
-        {
           q: "Are relations with employee representative bodies regarding change good?",
           options: [
             { label: "Good, smooth social dialogue.", score: { pmp: 0, agile: 1, hybride: 0, safe: 1, rollingwave: 0 } },
             { label: "Neutral.", score: { pmp: 0, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
             { label: "Tense.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } }
-          ]
-        },
-        {
-          q: "Is senior leadership (executive committee/board) aligned on the project's objectives?",
-          options: [
-            { label: "Aligned.", score: { pmp: 0, agile: 1, hybride: 0, safe: 2, rollingwave: 0 } },
-            { label: "Partially aligned.", score: { pmp: 0, agile: 0, hybride: 2, safe: 0, rollingwave: 0 } },
-            { label: "Diverging.", score: { pmp: 2, agile: 0, hybride: 1, safe: 0, rollingwave: 0 } }
           ]
         },
         {
